@@ -883,6 +883,11 @@ video {
   padding-bottom: 5rem;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .pl-10 {
   padding-left: 2.5rem;
 }
@@ -1115,14 +1120,14 @@ html {
     color: rgb(250 250 250 / var(--tw-text-opacity));
   }
 
-  .dark\:text-white {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
-  }
-
   .dark\:text-neutral-500 {
     --tw-text-opacity: 1;
     color: rgb(115 115 115 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 
   .dark\:placeholder-neutral-400::-moz-placeholder {
