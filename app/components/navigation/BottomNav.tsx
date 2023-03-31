@@ -1,5 +1,5 @@
 import BottomNavButton from "./BottomNavButton";
-import { useLocation, useNavigate } from "@remix-run/react";
+import { useLocation } from "@remix-run/react";
 import { useState } from "react";
 import {
   BeakerIcon,
@@ -10,7 +10,7 @@ import {
 const BottomNav = () => {
   const location = useLocation().pathname.split("/")[2];
   const [active, setActive] = useState<string>(location);
-  const navigate = useNavigate();
+
   const handleNav = (path: string) => {
     setActive(path);
   };
