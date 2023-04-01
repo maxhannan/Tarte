@@ -23,7 +23,7 @@ const BottomNavButton = ({ handleNav, active, Icon, path }: buttonProps) => {
             : "dark:bg-neutral-900 bg-neutral-100 text-neutral-700 dark:text-neutral-600")
         }
       >
-        <Icon className={"  w-8 h-8 mb-1   "} />
+        <Icon className={"  w-8 h-8   "} />
         <span className="sr-only">{path}</span>
       </div>
     </button>
