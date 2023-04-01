@@ -45,7 +45,7 @@ export default function App() {
         />
         <Links />
       </head>
-      <body className="bg-neutral-200 dark:bg-neutral-800 ">
+      <body className="bg-neutral-100 dark:bg-neutral-900  ">
         <Outlet />
         <ScrollRestoration />
         <Scripts />

@@ -2,10 +2,12 @@
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    fontFamily: {
-      sans: ["Helvetica Neue"],
+    extend: {
+      fontFamily: {
+        openSans: ["Open Sans", "sans-serif"],
+        manRope: ["Manrope", "sans-serif"],
+      },
     },
-    extend: {},
   },
-  plugins: [],
+  plugins: [require("@headlessui/tailwindcss")],
 };

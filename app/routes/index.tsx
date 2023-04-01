@@ -1,3 +1,4 @@
+import { Transition } from "@headlessui/react";
 import {
   AdjustmentsHorizontalIcon,
   MagnifyingGlassIcon,
@@ -10,29 +11,41 @@ import RecipeFeed from "~/components/recipefeed/RecipeFeed";
 
 export default function Index() {
   return (
-    <div className="h-screen py-20 px-3 ">
+    <div className=" ">
       <AppBar />
-      <div className="container max-w-2xl mx-auto flex  gap-2  ">
-        <div className=" grow">
-          <IconTextField
-            Icon={MagnifyingGlassIcon}
-            fieldName="Search For Beakers"
-            identifier="beakers"
-          />
+      <Transition
+        enter="transition-all transform  ease-in-out  duration-500"
+        enterFrom=" opacity-0 -translate-y-full "
+        enterTo=" opacity-100 translate-y-0"
+        leave="transition ease-in duration-100"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+        appear
+        show
+      >
+        <div className="container max-w-2xl mx-auto flex  gap-2 px-3 mt-2">
+          <div className=" grow">
+            <IconTextField
+              Icon={MagnifyingGlassIcon}
+              fieldName="Search For Beakers"
+              identifier="beakers"
+            />
+          </div>
+          <div className=" flex items-center">
+            <button
+              type="button"
+              className="  text-neutral-700 border border-neutral-400 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium rounded-xl text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500"
+            >
+              <AdjustmentsHorizontalIcon className="w-6 h-6" />
+              <span className="sr-only">Icon description</span>
+            </button>
+          </div>
         </div>
-        <div className=" flex items-center">
-          <button
-            type="button"
-            className="  text-neutral-700 border border-neutral-400 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium rounded-2xl text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500"
-          >
-            <AdjustmentsHorizontalIcon className="w-6 h-6" />
-            <span className="sr-only">Icon description</span>
-          </button>
-        </div>
-      </div>
-      <div className="pb-24">
+      </Transition>
+      <div className="pb-16 px-3">
         <RecipeFeed />
       </div>
+
       <BottomNav />
     </div>
   );
