@@ -1,5 +1,5 @@
 import BottomNavButton from "./BottomNavButton";
-import { useLocation } from "@remix-run/react";
+import { useLocation, useNavigate } from "@remix-run/react";
 import { useState } from "react";
 import {
   BeakerIcon,
@@ -9,42 +9,47 @@ import {
   PaperClipIcon,
   ChatBubbleBottomCenterIcon,
 } from "@heroicons/react/24/solid";
-const BottomNav = () => {
-  const location = useLocation().pathname.split("/")[2];
-  const [active, setActive] = useState<string>(location);
-
+const BottomNav = ({
+  page,
+  setPage,
+}: {
+  page: string;
+  setPage: (path: string) => void;
+}) => {
+  const navigate = useNavigate();
   const handleNav = (path: string) => {
-    setActive(path);
+    setPage(path);
+    navigate(`/app/${path}`);
   };
   return (
     <div className="fixed z-50 w-full h-24  rounded-xl   bottom-0 left-0 bg-neutral-100    dark:bg-neutral-900 border-neutral-200 dark:border-neutral-600">
       <div className="grid h-full max-w-lg pb-6   mx-auto grid-cols-5 gap-0">
         <BottomNavButton
-          active={active}
+          active={page}
           handleNav={handleNav}
           path="prep"
           Icon={ClipboardDocumentCheckIcon}
         />
         <BottomNavButton
-          active={active}
+          active={page}
           handleNav={handleNav}
           path="recipes"
           Icon={FolderIcon}
         />
         <BottomNavButton
-          active={active}
+          active={page}
           handleNav={handleNav}
           path="convert"
           Icon={CalculatorIcon}
         />
         <BottomNavButton
-          active={active}
+          active={page}
           handleNav={handleNav}
           path="order"
           Icon={PaperClipIcon}
         />
         <BottomNavButton
-          active={active}
+          active={page}
           handleNav={handleNav}
           path="chat"
           Icon={ChatBubbleBottomCenterIcon}

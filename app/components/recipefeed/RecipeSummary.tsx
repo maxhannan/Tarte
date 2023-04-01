@@ -1,7 +1,4 @@
-import {
-  ArrowRightCircleIcon,
-  ArrowRightIcon,
-} from "@heroicons/react/24/solid";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 interface recipeSummaryProps {
   id?: string;

@@ -3,16 +3,12 @@ import {
   AdjustmentsHorizontalIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/solid";
-import { Outlet } from "@remix-run/react";
-
 import IconTextField from "~/components/forms/IconTextField";
-import AppBar from "~/components/navigation/AppBar";
-import BottomNav from "~/components/navigation/BottomNav";
 import RecipeFeed from "~/components/recipefeed/RecipeFeed";
 
-export default function Index() {
+const RecipesPage = () => {
   return (
-    <div className=" px-4">
+    <>
       <Transition
         enter="transition-all transform  ease-in-out  duration-500"
         enterFrom=" opacity-0 -translate-y-full "
@@ -23,8 +19,6 @@ export default function Index() {
         appear
         show
       >
-        <AppBar />
-
         <div className="container max-w-2xl mx-auto flex  gap-2  mt-2">
           <div className=" grow">
             <IconTextField
@@ -47,8 +41,8 @@ export default function Index() {
       <div className="pb-16 ">
         <RecipeFeed />
       </div>
-      <Outlet />
-      <BottomNav />
-    </div>
+    </>
   );
-}
+};
+
+export default RecipesPage;
