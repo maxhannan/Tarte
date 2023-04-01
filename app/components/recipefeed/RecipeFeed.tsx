@@ -13,7 +13,7 @@ const RecipeFeed = () => {
       appear
       show
     >
-      <div className="grid  grid-flow-row  auto-rows-max gap-y-2 max-w-2xl mx-auto mt-3">
+      <div className="grid  grid-flow-row  auto-rows-max gap-y-2 max-w-2xl mx-auto mt-4 mb-16">
         <RecipeSummary />
         <RecipeSummary />
         <RecipeSummary />
