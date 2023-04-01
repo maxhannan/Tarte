@@ -11,7 +11,7 @@ import RecipeFeed from "~/components/recipefeed/RecipeFeed";
 
 export default function Index() {
   return (
-    <div className=" ">
+    <div className=" px-4">
       <AppBar />
       <Transition
         enter="transition-all transform  ease-in-out  duration-500"
@@ -23,7 +23,7 @@ export default function Index() {
         appear
         show
       >
-        <div className="container max-w-2xl mx-auto flex  gap-2 px-3 mt-2">
+        <div className="container max-w-2xl mx-auto flex  gap-2  mt-2">
           <div className=" grow">
             <IconTextField
               Icon={MagnifyingGlassIcon}
@@ -34,15 +34,15 @@ export default function Index() {
           <div className=" flex items-center">
             <button
               type="button"
-              className="  text-neutral-700 border border-neutral-400 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium rounded-xl text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500"
+              className="  text-neutral-700 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium rounded-xl text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500"
             >
-              <AdjustmentsHorizontalIcon className="w-6 h-6" />
+              <AdjustmentsHorizontalIcon className="w-7 h-7" />
               <span className="sr-only">Icon description</span>
             </button>
           </div>
         </div>
       </Transition>
-      <div className="pb-16 px-3">
+      <div className="pb-16 ">
         <RecipeFeed />
       </div>
 

@@ -5,6 +5,9 @@ import {
   BeakerIcon,
   FolderIcon,
   CalculatorIcon,
+  ClipboardDocumentCheckIcon,
+  PaperClipIcon,
+  ChatBubbleBottomCenterIcon,
 } from "@heroicons/react/24/solid";
 const BottomNav = () => {
   const location = useLocation().pathname.split("/")[2];
@@ -14,13 +17,13 @@ const BottomNav = () => {
     setActive(path);
   };
   return (
-    <div className="fixed z-50 w-52 h-16 max-w-md -translate-x-1/2 rounded-3xl  bottom-6 left-1/2  shadow-md  bg-neutral-100  border  dark:bg-neutral-900 border-neutral-200 dark:border-neutral-600">
-      <div className="grid h-full max-w-lg   mx-auto grid-cols-3">
+    <div className="fixed z-50 w-full h-20  rounded-xl   bottom-0 left-0 shadow-opacity shadow-slate-50  bg-neutral-100    dark:bg-neutral-900 border-neutral-200 dark:border-neutral-600">
+      <div className="grid h-full max-w-lg    mx-auto grid-cols-5 gap-0">
         <BottomNavButton
           active={active}
           handleNav={handleNav}
           path="prep"
-          Icon={BeakerIcon}
+          Icon={ClipboardDocumentCheckIcon}
         />
         <BottomNavButton
           active={active}
@@ -33,6 +36,18 @@ const BottomNav = () => {
           handleNav={handleNav}
           path="convert"
           Icon={CalculatorIcon}
+        />
+        <BottomNavButton
+          active={active}
+          handleNav={handleNav}
+          path="order"
+          Icon={PaperClipIcon}
+        />
+        <BottomNavButton
+          active={active}
+          handleNav={handleNav}
+          path="chat"
+          Icon={ChatBubbleBottomCenterIcon}
         />
       </div>
     </div>

@@ -12,16 +12,16 @@ const RecipeSummary = ({
   return (
     <div
       onClick={() => console.log(id)}
-      className=" h-20 w-full bg-neutral-200 rounded-2xl  border-l-violet-600 border-l-8  flex justify-start items-center  px-4 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-violet-400"
+      className=" h-24 w-full bg-neutral-200 rounded-r-2xl rounded-l-md   border-l-8 border-l-pink-300 flex justify-start items-center  px-4 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-l-pink-400"
     >
-      <div className=" z-0  inline-flex items-center  justify-center w-12 h-12 overflow-hidden bg-violet-500 rounded-2xl dark:bg-violet-400">
-        <span className=" text-2xl text-gray-100 dark:text-gray-300">mh</span>
+      <div className=" z-0  inline-flex items-center  justify-center w-14 h-14 overflow-hidden bg-neutral-700 rounded-r-2xl rounded-l-md rounded-bl-2xl dark:bg-neutral-700">
+        <span className=" text-3xl text-gray-100 dark:text-gray-300">mh</span>
       </div>
       <div className="ml-6">
-        <h5 className="text-xl text-neutral-700 dark:text-neutral-50">
+        <h5 className="text-xl text-neutral-700 dark:text-neutral-100">
           {name}
         </h5>
-        <h6 className="text-sm  text-violet-500 dark:text-violet-400">
+        <h6 className="text-md  text-neutral-500 dark:text-neutral-400">
           {category}
         </h6>
       </div>
