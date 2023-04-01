@@ -31,7 +31,7 @@ const RecipeSummary = ({
         </h6>
       </div>
       <div className=" ml-auto ">
-        <ArrowRightIcon className="text-neutral-800 w-6 h-6" />
+        <ArrowRightIcon className="text-neutral-800 dark:text-neutral-200 w-6 h-6" />
       </div>
     </div>
   );
