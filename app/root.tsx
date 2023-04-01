@@ -40,7 +40,7 @@ export default function App() {
         <Meta />
         <meta
           name="theme-color"
-          content="#262626"
+          content="#171717"
           media="(prefers-color-scheme: dark)"
         />
         <Links />
