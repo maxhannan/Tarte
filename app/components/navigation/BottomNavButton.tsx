@@ -17,9 +17,9 @@ const BottomNavButton = ({ handleNav, active, Icon, path }: buttonProps) => {
     >
       <Icon
         className={
-          "transition ease-in-out  w-8 h-8 mb-1   group-hover:text-indigo-500 dark:group-hover:text-indigo-500 " +
+          "transition ease-in-out  w-8 h-8 mb-1   group-hover:text-violet-500 dark:group-hover:text-violet-400 " +
           (active === path
-            ? "text-indigo-500  dark:text-indigo-400 scale-110"
+            ? "text-violet-500  dark:text-violet-400 scale-110"
             : "text-neutral-600 dark:text-neutral-300 ")
         }
       />

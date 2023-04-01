@@ -10,9 +10,9 @@ import RecipeFeed from "~/components/recipefeed/RecipeFeed";
 
 export default function Index() {
   return (
-    <div className="h-screen py-20 px-3">
+    <div className="h-screen py-20 px-3 ">
       <AppBar />
-      <div className="container max-w-2xl mx-auto flex  gap-2 ">
+      <div className="container max-w-2xl mx-auto flex  gap-2  ">
         <div className=" grow">
           <IconTextField
             Icon={MagnifyingGlassIcon}
@@ -30,7 +30,9 @@ export default function Index() {
           </button>
         </div>
       </div>
-      <RecipeFeed />
+      <div className="pb-24">
+        <RecipeFeed />
+      </div>
       <BottomNav />
     </div>
   );
