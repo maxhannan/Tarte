@@ -15,7 +15,7 @@ const BottomNav = () => {
     setActive(path);
   };
   return (
-    <div className="fixed z-50 w-80 h-16 max-w-md -translate-x-1/2 rounded-lg  bottom-6 left-1/2 border shadow-md  bg-neutral-50   dark:bg-neutral-800 border-neutral-200 dark:border-neutral-600">
+    <div className="fixed z-50 w-80 h-16 max-w-md -translate-x-1/2 rounded-3xl  bottom-6 left-1/2 border shadow-md  bg-neutral-50   dark:bg-neutral-800 border-neutral-200 dark:border-neutral-600">
       <div className="grid h-full max-w-lg   mx-auto grid-cols-4">
         <BottomNavButton
           active={active}
