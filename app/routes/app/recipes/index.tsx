@@ -10,6 +10,7 @@ import {
   DocumentPlusIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
+import { useNavigate } from "@remix-run/react";
 import { Fragment, useState } from "react";
 import IconTextField from "~/components/forms/IconTextField";
 import SelectBox from "~/components/forms/SelectBox";
@@ -18,6 +19,7 @@ import RecipeFeed from "~/components/recipefeed/RecipeFeed";
 
 const RecipesPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
       <AppBar
@@ -26,7 +28,7 @@ const RecipesPage = () => {
           {
             Icon: DocumentPlusIcon,
             buttonName: "Add Recipe",
-            action: () => console.log("addRecipe"),
+            action: () => navigate("/app/recipes/addrecipe"),
           },
           {
             Icon: UserIcon,

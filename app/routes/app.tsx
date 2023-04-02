@@ -1,7 +1,7 @@
 import { Transition } from "@headlessui/react";
 import { Outlet } from "@remix-run/react";
 import { useState } from "react";
-import AppBar from "~/components/navigation/AppBar";
+
 import BottomNav from "~/components/navigation/BottomNav";
 
 const App = () => {

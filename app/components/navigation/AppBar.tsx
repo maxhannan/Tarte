@@ -10,7 +10,7 @@ const AppBar = ({
 }: {
   page: string;
   textSize?: string;
-  buttons: buttonProps[];
+  buttons?: buttonProps[];
 }) => {
   return (
     <Transition
@@ -32,14 +32,15 @@ const AppBar = ({
         </h1>
 
         <div className="grow flex justify-end gap-2">
-          {buttons.map((b) => (
-            <IconButton
-              key={b.buttonName}
-              Icon={b.Icon}
-              action={b.action}
-              buttonName={b.buttonName}
-            />
-          ))}
+          {buttons &&
+            buttons.map((b) => (
+              <IconButton
+                key={b.buttonName}
+                Icon={b.Icon}
+                action={b.action}
+                buttonName={b.buttonName}
+              />
+            ))}
         </div>
       </nav>
     </Transition>

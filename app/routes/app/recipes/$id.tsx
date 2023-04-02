@@ -1,10 +1,8 @@
 import { Transition } from "@headlessui/react";
 import {
   ArrowUturnLeftIcon,
-  DocumentPlusIcon,
   LanguageIcon,
   PencilSquareIcon,
-  UserIcon,
 } from "@heroicons/react/24/solid";
 import { useNavigate } from "@remix-run/react";
 import AppBar from "~/components/navigation/AppBar";
