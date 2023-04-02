@@ -1,11 +1,4 @@
-import { Transition } from "@headlessui/react";
-import {
-  DocumentPlusIcon,
-  UserCircleIcon,
-  UserIcon,
-} from "@heroicons/react/24/solid";
-
-import IconButton from "../buttons/IconButton";
+import { DocumentPlusIcon, UserIcon } from "@heroicons/react/24/solid";
 
 const AppBar = ({ page }: { page: string }) => {
   return (

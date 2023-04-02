@@ -1,8 +1,7 @@
 import BottomNavButton from "./BottomNavButton";
-import { useLocation, useNavigate } from "@remix-run/react";
-import { useState } from "react";
+import { useNavigate } from "@remix-run/react";
+
 import {
-  BeakerIcon,
   FolderIcon,
   CalculatorIcon,
   ClipboardDocumentCheckIcon,
