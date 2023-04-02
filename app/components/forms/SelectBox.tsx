@@ -3,7 +3,7 @@ import { CheckIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import { Fragment, useState } from "react";
 
 const people = [
-  { id: 1, name: "Durward Reynolds", unavailable: false },
+  { id: 1, name: "Unit", unavailable: false },
   { id: 2, name: "Kenton Towne", unavailable: false },
   { id: 3, name: "Therese Wunsch", unavailable: false },
   { id: 4, name: "Benedict Kessler", unavailable: true },
@@ -15,7 +15,7 @@ const SelectBox = () => {
   return (
     <Listbox value={selected} onChange={setSelected}>
       <div className="">
-        <Listbox.Button className="relative h-12 w-full text-lg cursor-default  rounded-r-2xl rounded-l-md rounded-bl-2xl  bg-neutral-200 focus:ring-2 focus:border-neutral-50  focus:ring-neutral-400  dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-neutral-50 py-2 pl-3 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 ">
+        <Listbox.Button className="relative h-14 w-full text-xl cursor-default pl-4 rounded-r-2xl rounded-l-md rounded-bl-2xl  bg-neutral-200 focus:ring-2 focus:border-neutral-50  focus:ring-neutral-400  dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-neutral-50 py-2 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 ">
           <span className="block truncate">{selected.name}</span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
             <ChevronDownIcon
@@ -33,7 +33,7 @@ const SelectBox = () => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options className="absolute mt-2 bg-neutral-100 z-50   rounded-r-2xl rounded-l-sm rounded-bl-2xl max-h-60 w-full  overflow-auto rounded-md  dark:bg-neutral-800 py-1 text-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  ">
+          <Listbox.Options className="absolute mt-2 bg-neutral-100 z-50   rounded-r-2xl rounded-l-sm rounded-bl-2xl max-h-48 w-full  overflow-auto rounded-md  dark:bg-neutral-800 py-1 text-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  ">
             {people.map((person, personIdx) => (
               <Listbox.Option
                 key={personIdx}

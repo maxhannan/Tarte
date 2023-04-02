@@ -13,6 +13,7 @@ import {
 import { useNavigate } from "@remix-run/react";
 import { Fragment, useState } from "react";
 import IconTextField from "~/components/forms/IconTextField";
+import SearchBar from "~/components/forms/SearchBar";
 import SelectBox from "~/components/forms/SelectBox";
 import AppBar from "~/components/navigation/AppBar";
 import RecipeFeed from "~/components/recipefeed/RecipeFeed";
@@ -49,11 +50,7 @@ const RecipesPage = () => {
       >
         <div className="container max-w-2xl mx-auto flex  gap-2  mt-2">
           <div className=" grow">
-            <IconTextField
-              Icon={MagnifyingGlassIcon}
-              fieldName=""
-              identifier="beakers"
-            />
+            <SearchBar />
           </div>
           <div className=" flex items-center ">
             <button
@@ -63,7 +60,7 @@ const RecipesPage = () => {
                 openFilter
                   ? "rounded-r-2xl rounded-l-md rounded-tl-2xl "
                   : "rounded-r-2xl rounded-l-md rounded-bl-2xl "
-              } duration-300 text-neutral-700 transition-all bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium   text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500`}
+              } duration-300 text-neutral-700 transition-all h-12 w-12 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium   text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500`}
             >
               {openFilter ? (
                 <XMarkIcon className="w-7 h-7" />
@@ -77,7 +74,7 @@ const RecipesPage = () => {
       </Transition>
       <Transition
         show={openFilter}
-        className="z-30 relative "
+        className="z-30 relative flex-col flex gap-4 mt-4 "
         enter="transition-all ease-linear duration-500  overflow-hidden"
         enterFrom="transform opacity-0 max-h-0"
         enterTo="transform opacity-100 max-h-96"

@@ -9,7 +9,7 @@ interface recipeSummaryProps {
 
 const RecipeSummary = ({
   id = "1",
-  name = "Saffron Mayo",
+  name = "Saffron Mayo ",
   category = "Sauces",
 }: recipeSummaryProps) => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const RecipeSummary = ({
         <h5 className="text-xl  text-neutral-700 dark:text-neutral-100">
           {name}
         </h5>
-        <h6 className="text-md  text-neutral-500 dark:text-neutral-400">
+        <h6 className="text-md mt-1  text-neutral-500 dark:text-neutral-400">
           {category}
         </h6>
       </div>

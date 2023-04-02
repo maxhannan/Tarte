@@ -27,12 +27,12 @@ const RecipePage = () => {
         buttons={[
           {
             Icon: PencilSquareIcon,
-            buttonName: "Add Recipe",
+            buttonName: "Edit Recipe",
             action: () => console.log("addRecipe"),
           },
           {
             Icon: LanguageIcon,
-            buttonName: "Add Recipe",
+            buttonName: "Language",
             action: () => console.log("addRecipe"),
           },
           {
