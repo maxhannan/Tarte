@@ -1,5 +1,6 @@
 import { Transition } from "@headlessui/react";
 import AppBar from "~/components/navigation/AppBar";
+import RecipeStep from "~/components/recipePage/RecipeStep";
 
 const RecipePage = () => {
   return (
@@ -84,42 +85,25 @@ const RecipePage = () => {
         appear
         show
       >
-        <div className="dark:bg-neutral-700 border-l-8 border-l-green-500 bg-neutral-200 rounded-r-3xl p-6 font-light rounded-l-md rounded-bl-3xl text-lg text-neutral-700 dark:text-neutral-100 mt-4">
-          <h5 className="text-2xl mb-2">Step One</h5>
-          <p className="text-base">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+        <RecipeStep
+          stepNum="One"
+          content="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus
             quos est totam voluptates veniam magni fugiat ad. Deleniti fuga ex
             rem? Deleniti alias labore, similique maxime expedita modi quo
-            ratione.
-          </p>
-        </div>
-        <div className="dark:bg-neutral-800 bg-neutral-200 border-l-8 border-l-pink-500 rounded-r-3xl p-6 font-light rounded-l-md rounded-bl-3xl text-lg text-neutral-700 dark:text-neutral-100 mt-4">
-          <h5 className="text-2xl mb-2">Step Two</h5>
-          <p className="text-base">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
-        <div className="dark:bg-neutral-800 bg-neutral-200 border-l-8 border-l-pink-500 rounded-r-3xl p-6 font-light rounded-l-md rounded-bl-3xl text-lg text-neutral-700 dark:text-neutral-100 mt-4">
-          <h5 className="text-2xl mb-2">Step Three</h5>
-          <p className="text-base">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
-        <div className="dark:bg-neutral-800 bg-neutral-200 border-l-8 border-l-pink-500 rounded-r-3xl p-6 font-light rounded-l-md rounded-bl-3xl text-lg text-neutral-700 dark:text-neutral-100 mt-4">
-          <h5 className="text-2xl mb-2">Step Four</h5>
-          <p className="text-base">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </div>
-        <div className="dark:bg-neutral-800 border-l-8 border-l-pink-500 bg-neutral-200 rounded-r-3xl p-6 font-light rounded-l-md rounded-bl-3xl text-lg text-neutral-700 dark:text-neutral-100 mt-4">
-          <h5 className="text-2xl mb-2">Step Five</h5>
-          <p className="text-base">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            quos est totam voluptates veniam magni fugiat ad. Deleniti fuga ex
-            rem? Deleniti alias labore, similique maxime expedita modi quo
-            ratione.
-          </p>
-        </div>
+            ratione."
+        />
+        <RecipeStep
+          stepNum="Two"
+          content="Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+        />
+        <RecipeStep
+          stepNum="Three"
+          content="Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+        />
+        <RecipeStep
+          stepNum="Four"
+          content="Lorem, ipsum dolor sit amet consectetur adipisicing elit."
+        />
       </Transition>
     </div>
   );
