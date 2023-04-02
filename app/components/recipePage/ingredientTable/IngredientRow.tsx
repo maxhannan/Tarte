@@ -15,7 +15,9 @@ const IngredientRow = ({
   return (
     <tr
       onClick={() => setChecked(!checked)}
-      className={`${checked && "bg-green-500"} bg-opacity-70  `}
+      className={`${
+        checked && "bg-green-500"
+      } transition-all duration-300 bg-opacity-70  `}
     >
       <th
         scope="row"
