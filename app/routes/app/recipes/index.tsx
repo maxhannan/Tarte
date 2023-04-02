@@ -30,7 +30,7 @@ const RecipesPage = () => {
           <div className=" grow">
             <IconTextField
               Icon={MagnifyingGlassIcon}
-              fieldName="Search For Beakers"
+              fieldName=""
               identifier="beakers"
             />
           </div>
