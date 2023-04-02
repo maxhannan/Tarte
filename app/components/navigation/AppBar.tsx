@@ -1,3 +1,4 @@
+import { Transition } from "@headlessui/react";
 import {
   DocumentPlusIcon,
   UserCircleIcon,
@@ -12,6 +13,7 @@ const AppBar = ({ page }: { page: string }) => {
       <h1 className="text-4xl  text-neutral-700 dark:text-neutral-100 ">
         {page.charAt(0).toUpperCase() + page.slice(1)}
       </h1>
+
       <div className="grow flex justify-end gap-2">
         <button
           type="button"

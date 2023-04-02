@@ -9,11 +9,12 @@ const RecipeFeed = () => {
       enterTo=" opacity-100 translate-y-0"
       leave="transition ease-in duration-100"
       leaveFrom="opacity-100"
+      className="z-0"
       leaveTo="opacity-0"
       appear
       show
     >
-      <div className="grid  grid-flow-row  auto-rows-max gap-y-2 max-w-2xl mx-auto mt-4 mb-16">
+      <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2 max-w-2xl mx-auto mt-4 mb-16">
         <RecipeSummary />
         <RecipeSummary />
         <RecipeSummary />

@@ -14,9 +14,9 @@ const RecipeSummary = ({
   return (
     <div
       onClick={() => console.log(id)}
-      className=" h-20 w-full bg-neutral-200 rounded-r-2xl rounded-l-md rounded-bl-2xl    flex justify-start items-center  px-4 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-l-pink-400"
+      className=" relative h-20 w-full  bg-neutral-200 rounded-r-2xl rounded-l-md rounded-bl-2xl    flex justify-start items-center  px-4 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-l-pink-400"
     >
-      <div className=" z-0  inline-flex items-center  justify-center w-14 h-14 overflow-hidden bg-neutral-700 rounded-r-2xl rounded-l-md rounded-bl-2xl dark:bg-neutral-700">
+      <div className="inline-flex items-center  justify-center w-14 h-14 overflow-hidden bg-neutral-700 rounded-r-2xl rounded-l-md rounded-bl-2xl dark:bg-neutral-700">
         <span className=" text-3xl text-gray-100 dark:text-gray-300">mh</span>
       </div>
       <div className="ml-6">

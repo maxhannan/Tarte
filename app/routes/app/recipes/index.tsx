@@ -5,19 +5,15 @@ import {
   ChevronDownIcon,
   ChevronUpDownIcon,
   MagnifyingGlassIcon,
+  XMarkIcon,
 } from "@heroicons/react/24/solid";
 import { Fragment, useState } from "react";
 import IconTextField from "~/components/forms/IconTextField";
+import SelectBox from "~/components/forms/SelectBox";
 import RecipeFeed from "~/components/recipefeed/RecipeFeed";
-const people = [
-  { id: 1, name: "Durward Reynolds", unavailable: false },
-  { id: 2, name: "Kenton Towne", unavailable: false },
-  { id: 3, name: "Therese Wunsch", unavailable: false },
-  { id: 4, name: "Benedict Kessler", unavailable: true },
-  { id: 5, name: "Katelyn Rohan", unavailable: false },
-];
+
 const RecipesPage = () => {
-  const [selected, setSelected] = useState(people[0]);
+  const [openFilter, setOpenFilter] = useState(false);
   return (
     <>
       <Transition
@@ -38,73 +34,41 @@ const RecipesPage = () => {
               identifier="beakers"
             />
           </div>
-          <div className=" flex items-center">
+          <div className=" flex items-center ">
             <button
               type="button"
-              className="  text-neutral-700 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium rounded-r-2xl rounded-l-md rounded-bl-2xl  text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500"
+              onClick={() => setOpenFilter(!openFilter)}
+              className={`${
+                openFilter
+                  ? "rounded-r-2xl rounded-l-md rounded-tl-2xl "
+                  : "rounded-r-2xl rounded-l-md rounded-bl-2xl "
+              } duration-300 text-neutral-700 transition-all bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium   text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500`}
             >
-              <AdjustmentsHorizontalIcon className="w-7 h-7" />
+              {openFilter ? (
+                <XMarkIcon className="w-7 h-7" />
+              ) : (
+                <AdjustmentsHorizontalIcon className="w-7 h-7" />
+              )}
               <span className="sr-only">Icon description</span>
             </button>
           </div>
         </div>
       </Transition>
-      <div className="z-40 relative">
-        <Listbox value={selected} onChange={setSelected}>
-          <div className=" mt-4">
-            <Listbox.Button className="relative h-12 w-full text-lg cursor-default  rounded-r-2xl rounded-l-md rounded-bl-2xl  bg-neutral-200 focus:ring-2 focus:border-neutral-50  focus:ring-neutral-400  dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-neutral-50 py-2 pl-3 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 ">
-              <span className="block truncate">{selected.name}</span>
-              <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                <ChevronDownIcon
-                  className="h-5 w-5 text-neutral-700"
-                  aria-hidden="true"
-                />
-              </span>
-            </Listbox.Button>
-            <Transition
-              as={Fragment}
-              leave="transition ease-in duration-100"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <Listbox.Options className="z-50 absolute mt-2 bg-neutral-100   rounded-r-2xl rounded-l-sm rounded-bl-2xl max-h-60 w-full  overflow-auto rounded-md  dark:bg-neutral-800 py-1 text-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  ">
-                {people.map((person, personIdx) => (
-                  <Listbox.Option
-                    key={personIdx}
-                    className={({ active }) =>
-                      `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                        active
-                          ? "bg-neutral-700  text-neutral-100"
-                          : "dark:text-neutral-300 text-neutral-700"
-                      }`
-                    }
-                    value={person}
-                  >
-                    {({ selected }) => (
-                      <>
-                        <span
-                          className={`block truncate ${
-                            selected ? "font-medium" : "font-normal"
-                          }`}
-                        >
-                          {person.name}
-                        </span>
-                        {selected ? (
-                          <span className="absolute inset-y-0 left-0 flex items-center pl-3 dark:text-neutral-100">
-                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                          </span>
-                        ) : null}
-                      </>
-                    )}
-                  </Listbox.Option>
-                ))}
-              </Listbox.Options>
-            </Transition>
-          </div>
-        </Listbox>
-      </div>
+      <Transition
+        show={openFilter}
+        className="z-30 relative "
+        enter="transition-all ease-linear duration-500  overflow-hidden"
+        enterFrom="transform opacity-0 max-h-0"
+        enterTo="transform opacity-100 max-h-96"
+        leave="transition-all ease-linear duration-200 overflow-hidden"
+        leaveFrom="transform opacity-100 max-h-96"
+        leaveTo="transform opacity-0 max-h-0"
+      >
+        <SelectBox />
+        <SelectBox />
+      </Transition>
 
-      <div className="pb-16 ">
+      <div className="pb-16  ">
         <RecipeFeed />
       </div>
     </>

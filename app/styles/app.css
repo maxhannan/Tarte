@@ -623,6 +623,10 @@ video {
   z-index: 40;
 }
 
+.z-30 {
+  z-index: 30;
+}
+
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
@@ -762,6 +766,14 @@ video {
 
 .max-h-60 {
   max-height: 15rem;
+}
+
+.max-h-0 {
+  max-height: 0px;
+}
+
+.max-h-96 {
+  max-height: 24rem;
 }
 
 .w-10 {
@@ -1064,6 +1076,10 @@ video {
 
 .rounded-bl-2xl {
   border-bottom-left-radius: 1rem;
+}
+
+.rounded-tl-2xl {
+  border-top-left-radius: 1rem;
 }
 
 .border {
@@ -1652,6 +1668,10 @@ video {
 
 .duration-500 {
   transition-duration: 500ms;
+}
+
+.duration-200 {
+  transition-duration: 200ms;
 }
 
 .ease-in {
