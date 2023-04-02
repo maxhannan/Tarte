@@ -26,7 +26,10 @@ const SelectBox = () => {
         </Listbox.Button>
         <Transition
           as={Fragment}
-          leave="transition ease-in duration-100"
+          enter="transition ease-out duration-200"
+          leave="transition ease-in duration-300"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
