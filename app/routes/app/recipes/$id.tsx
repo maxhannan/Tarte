@@ -4,7 +4,7 @@ import AppBar from "~/components/navigation/AppBar";
 const RecipePage = () => {
   return (
     <>
-      <AppBar page={"Compressed Watermelon"} titleSize="2xl" />
+      <AppBar page={"Compressed Watermelon"} textSize="text-2xl" />
       <Transition
         enter="transition-all transform  ease-in-out  duration-500"
         enterFrom=" opacity-0 translate-y-full "
@@ -29,7 +29,7 @@ const RecipePage = () => {
                   scope="col"
                   className="px-6 py-3  font-light border-none  rounded-tr-3xl"
                 >
-                  Color
+                  Qty
                 </th>
               </tr>
             </thead>
@@ -41,7 +41,7 @@ const RecipePage = () => {
                 >
                   Olive Oil
                 </th>
-                <td className="px-6 py-4">100g</td>
+                <td className="px-6 py-4">TT</td>
               </tr>
               <tr>
                 <th
