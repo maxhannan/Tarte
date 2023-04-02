@@ -31,7 +31,7 @@ const AddRecipe = () => {
           <SelectBox />
         </div>
         <div className="flex gap-x-2 col-span-5">
-          <div className="grow border-l-8 h-14 inline-flex items-center border-l-red-500 border-r-none dark:bg-neutral-800 bg-neutral-200 transition-all duration-300 rounded-r-2xl   pl-3 font-light rounded-l-md rounded-bl-2xl text-lg text-neutral-700 dark:text-neutral-100  ">
+          <div className="grow border-l-8 h-14 inline-flex items-center border-l-red-500  dark:border-r-neutral-800 border-r-neutral-200  dark:bg-neutral-800 bg-neutral-200 transition-all duration-300 rounded-r-2xl   pl-3 font-light rounded-l-md rounded-bl-2xl text-lg text-neutral-700 dark:text-neutral-100  ">
             <h4 className="text-3xl dark:text-neutral-100 "> Ingredients</h4>
           </div>
         </div>
