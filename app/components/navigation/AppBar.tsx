@@ -1,13 +1,16 @@
 import { Transition } from "@headlessui/react";
 import { DocumentPlusIcon, UserIcon } from "@heroicons/react/24/solid";
 import { Fragment } from "react";
+import IconButton, { buttonProps } from "../buttons/IconButton";
 
 const AppBar = ({
   page,
   textSize = "text-4xl",
+  buttons,
 }: {
   page: string;
   textSize?: string;
+  buttons: buttonProps[];
 }) => {
   return (
     <Transition
@@ -29,20 +32,14 @@ const AppBar = ({
         </h1>
 
         <div className="grow flex justify-end gap-2">
-          <button
-            type="button"
-            className="  text-neutral-700 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium rounded-r-2xl rounded-l-md rounded-bl-2xl text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500"
-          >
-            <DocumentPlusIcon className="w-7 h-7" />
-            <span className="sr-only">Icon description</span>
-          </button>
-          <button
-            type="button"
-            className="  text-neutral-700 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium rounded-r-2xl rounded-l-md rounded-bl-2xl text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500"
-          >
-            <UserIcon className="w-7 h-7 " />
-            <span className="sr-only">Icon description</span>
-          </button>
+          {buttons.map((b) => (
+            <IconButton
+              key={b.buttonName}
+              Icon={b.Icon}
+              action={b.action}
+              buttonName={b.buttonName}
+            />
+          ))}
         </div>
       </nav>
     </Transition>

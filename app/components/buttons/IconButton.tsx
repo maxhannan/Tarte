@@ -1,21 +1,27 @@
+import { DocumentPlusIcon } from "@heroicons/react/24/solid";
 import type { ElementType } from "react";
 
-interface buttonProps {
+export interface buttonProps {
   Icon: ElementType;
   buttonName: string;
   type?: "button" | "submit" | "reset";
+  action: () => void;
 }
 
-const IconButton = ({ Icon, buttonName, type = "button" }: buttonProps) => {
+const IconButton = ({
+  Icon,
+  buttonName,
+  type = "button",
+  action,
+}: buttonProps) => {
   return (
     <button
-      type={type}
-      name={buttonName}
-      className=" h-12 transition shadow-inner text-xs  justify-center duration-300 bg-violet-500  dark:bg-violet-400  text-neutral-100  active:scale-90 focus:ring-2 focus:outline-none  focus:ring-neutral-400 font-medium rounded-xl  p-2.5  inline-flex items-center  dark:border-blue-400 dark:text-neutral-100  dark:focus:ring-blue-800 "
+      onClick={action}
+      type="button"
+      className="  text-neutral-700 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium rounded-r-2xl rounded-l-md rounded-bl-2xl text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500"
     >
-      <Icon className="w-5 h-5 mr-2 " />
-      <span className=" text-sm mx-auto">{buttonName}</span>
-      <span className="sr-only">{buttonName}</span>
+      <Icon className="w-7 h-7" />
+      <span className="sr-only">buttonName</span>
     </button>
   );
 };

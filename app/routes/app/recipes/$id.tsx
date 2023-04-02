@@ -1,4 +1,12 @@
 import { Transition } from "@headlessui/react";
+import {
+  ArrowUturnLeftIcon,
+  DocumentPlusIcon,
+  LanguageIcon,
+  PencilSquareIcon,
+  UserIcon,
+} from "@heroicons/react/24/solid";
+import { useNavigate } from "@remix-run/react";
 import AppBar from "~/components/navigation/AppBar";
 import IngredientTable from "~/components/recipePage/ingredientTable/ingredientTable";
 import RecipeStep from "~/components/recipePage/RecipeStep";
@@ -12,9 +20,30 @@ const Allergens = [
   "Shellfish",
 ];
 const RecipePage = () => {
+  const navigate = useNavigate();
   return (
     <div className="mb-28">
-      <AppBar page={"Compressed Watermelon"} textSize="text-2xl" />
+      <AppBar
+        page={"Compressed Watermelon"}
+        textSize="text-2xl"
+        buttons={[
+          {
+            Icon: PencilSquareIcon,
+            buttonName: "Add Recipe",
+            action: () => console.log("addRecipe"),
+          },
+          {
+            Icon: LanguageIcon,
+            buttonName: "Add Recipe",
+            action: () => console.log("addRecipe"),
+          },
+          {
+            Icon: ArrowUturnLeftIcon,
+            buttonName: "User",
+            action: () => navigate(-1),
+          },
+        ]}
+      />
       <Transition
         enter="transition-all transform  ease-in-out  duration-500"
         enterFrom=" opacity-0 translate-y-full "

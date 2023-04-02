@@ -1,4 +1,5 @@
 import { Listbox, Transition } from "@headlessui/react";
+
 import {
   AdjustmentsHorizontalIcon,
   CheckIcon,
@@ -6,6 +7,8 @@ import {
   ChevronUpDownIcon,
   MagnifyingGlassIcon,
   XMarkIcon,
+  DocumentPlusIcon,
+  UserIcon,
 } from "@heroicons/react/24/solid";
 import { Fragment, useState } from "react";
 import IconTextField from "~/components/forms/IconTextField";
@@ -17,7 +20,21 @@ const RecipesPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
   return (
     <>
-      <AppBar page={"Recipes"} />
+      <AppBar
+        page={"Recipes"}
+        buttons={[
+          {
+            Icon: DocumentPlusIcon,
+            buttonName: "Add Recipe",
+            action: () => console.log("addRecipe"),
+          },
+          {
+            Icon: UserIcon,
+            buttonName: "User",
+            action: () => console.log("USer"),
+          },
+        ]}
+      />
       <Transition
         enter="transition-all transform  ease-in-out  duration-700"
         enterFrom=" opacity-0 -translate-y-full "
