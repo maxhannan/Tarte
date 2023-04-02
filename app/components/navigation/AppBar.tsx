@@ -2,7 +2,13 @@ import { Transition } from "@headlessui/react";
 import { DocumentPlusIcon, UserIcon } from "@heroicons/react/24/solid";
 import { Fragment } from "react";
 
-const AppBar = ({ page }: { page: string }) => {
+const AppBar = ({
+  page,
+  titleSize = "4xl",
+}: {
+  page: string;
+  titleSize?: string;
+}) => {
   return (
     <Transition
       as={Fragment}
@@ -15,8 +21,10 @@ const AppBar = ({ page }: { page: string }) => {
       appear
       show
     >
-      <nav className=" flex flex-wrap max-w-2xl mx-auto  h-16 items-center justify-between  duration-300 bg-neutral-100 dark:bg-neutral-900   w-full z-50 top-0 left-0  ">
-        <h1 className="text-4xl  text-neutral-700 dark:text-neutral-100 ">
+      <nav className=" flex py-4 max-w-2xl mx-auto max-h-full items-center justify-between  duration-300 bg-neutral-100 dark:bg-neutral-900   w-full z-50 top-0 left-0  ">
+        <h1
+          className={`text-${titleSize} mr-6 text-neutral-700 dark:text-neutral-100`}
+        >
           {page.charAt(0).toUpperCase() + page.slice(1)}
         </h1>
 
