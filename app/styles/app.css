@@ -1179,6 +1179,11 @@ video {
   border-bottom-left-radius: 1.5rem;
 }
 
+.rounded-b-2xl {
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
 .rounded-bl-2xl {
   border-bottom-left-radius: 1rem;
 }
@@ -1424,6 +1429,14 @@ video {
 
 .bg-opacity-60 {
   --tw-bg-opacity: 0.6;
+}
+
+.bg-opacity-40 {
+  --tw-bg-opacity: 0.4;
+}
+
+.bg-opacity-70 {
+  --tw-bg-opacity: 0.7;
 }
 
 .p-2 {
@@ -1933,6 +1946,20 @@ video {
 
 html {
   -webkit-tap-highlight-color: transparent;
+}
+
+.last\:rounded-b-3xl:last-child {
+  border-bottom-right-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+}
+
+.last\:rounded-bl-3xl:last-child {
+  border-bottom-left-radius: 1.5rem;
+}
+
+.last\:bg-red-500:last-child {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-neutral-300:hover {
