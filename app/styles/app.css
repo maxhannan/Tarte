@@ -1034,6 +1034,15 @@ video {
   border-width: 0px;
 }
 
+.border-8 {
+  border-width: 8px;
+}
+
+.border-x-8 {
+  border-left-width: 8px;
+  border-right-width: 8px;
+}
+
 .border-l-8 {
   border-left-width: 8px;
 }
@@ -1581,6 +1590,11 @@ html {
   .dark\:border-neutral-600 {
     --tw-border-opacity: 1;
     border-color: rgb(82 82 82 / var(--tw-border-opacity));
+  }
+
+  .dark\:border-neutral-800 {
+    --tw-border-opacity: 1;
+    border-color: rgb(38 38 38 / var(--tw-border-opacity));
   }
 
   .dark\:border-l-pink-400 {

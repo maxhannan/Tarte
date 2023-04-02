@@ -1,18 +1,14 @@
-import { Listbox, Transition } from "@headlessui/react";
+import { Transition } from "@headlessui/react";
 
 import {
   AdjustmentsHorizontalIcon,
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpDownIcon,
-  MagnifyingGlassIcon,
   XMarkIcon,
   DocumentPlusIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
 import { useNavigate } from "@remix-run/react";
 import { Fragment, useState } from "react";
-import IconTextField from "~/components/forms/IconTextField";
+
 import SearchBar from "~/components/forms/SearchBar";
 import SelectBox from "~/components/forms/SelectBox";
 import AppBar from "~/components/navigation/AppBar";
