@@ -1448,6 +1448,16 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
+.placeholder\:text-neutral-200::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(229 229 229 / var(--tw-text-opacity));
+}
+
+.placeholder\:text-neutral-200::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(229 229 229 / var(--tw-text-opacity));
+}
+
 .hover\:bg-neutral-300:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(212 212 212 / var(--tw-bg-opacity));
@@ -1461,6 +1471,10 @@ html {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.focus\:border-none:focus {
+  border-style: none;
 }
 
 .focus\:border-neutral-50:focus {
@@ -1653,6 +1667,16 @@ html {
   .dark\:placeholder-gray-400::placeholder {
     --tw-placeholder-opacity: 1;
     color: rgb(156 163 175 / var(--tw-placeholder-opacity));
+  }
+
+  .dark\:placeholder\:text-neutral-500::-moz-placeholder {
+    --tw-text-opacity: 1;
+    color: rgb(115 115 115 / var(--tw-text-opacity));
+  }
+
+  .dark\:placeholder\:text-neutral-500::placeholder {
+    --tw-text-opacity: 1;
+    color: rgb(115 115 115 / var(--tw-text-opacity));
   }
 
   .dark\:hover\:bg-neutral-500:hover {
