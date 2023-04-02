@@ -22,11 +22,7 @@ const AppBar = ({
       show
     >
       <nav className=" flex py-4 max-w-2xl mx-auto max-h-full items-center justify-between  duration-300 bg-neutral-100 dark:bg-neutral-900   w-full z-50 top-0 left-0  ">
-        <h1
-          className={`text-${
-            titleSize || "4xl"
-          }  mr-6 text-neutral-700 dark:text-neutral-100`}
-        >
+        <h1 className="text-4xl mr-6 text-neutral-700 dark:text-neutral-100">
           {page.charAt(0).toUpperCase() + page.slice(1)}
         </h1>
 
