@@ -1,5 +1,12 @@
+import AppBar from "~/components/navigation/AppBar";
+
 const PrepPage = () => {
-  return <h1>Hello From Prep</h1>;
+  return (
+    <div>
+      <AppBar page={"Prep"} />
+      <h1>Hello From Prep</h1>
+    </div>
+  );
 };
 
 export default PrepPage;

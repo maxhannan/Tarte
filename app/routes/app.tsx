@@ -17,9 +17,7 @@ const App = () => {
         leaveTo="opacity-0"
         appear
         show
-      >
-        <AppBar page={page} />
-      </Transition>
+      ></Transition>
       <div className="container max-w-2xl mx-auto">
         <Outlet />
       </div>

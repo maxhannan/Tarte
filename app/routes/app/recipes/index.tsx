@@ -10,17 +10,19 @@ import {
 import { Fragment, useState } from "react";
 import IconTextField from "~/components/forms/IconTextField";
 import SelectBox from "~/components/forms/SelectBox";
+import AppBar from "~/components/navigation/AppBar";
 import RecipeFeed from "~/components/recipefeed/RecipeFeed";
 
 const RecipesPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
   return (
     <>
+      <AppBar page={"Recipes"} />
       <Transition
-        enter="transition-all transform  ease-in-out  duration-500"
+        enter="transition-all transform  ease-in-out  duration-700"
         enterFrom=" opacity-0 -translate-y-full "
         enterTo=" opacity-100 translate-y-0"
-        leave="transition ease-in duration-100"
+        leave="transition ease-in duration-400"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
         appear
