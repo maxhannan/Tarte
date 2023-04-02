@@ -9,11 +9,6 @@ const Allergens = [
   "Eggs",
   "Fish",
   "Shellfish",
-  "Tree nuts",
-  "Peanuts",
-  "Soy",
-  "Not Halal",
-  "Not Kosher",
 ];
 const RecipePage = () => {
   return (
