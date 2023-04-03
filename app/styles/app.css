@@ -834,6 +834,12 @@ video {
           user-select: none;
 }
 
+.appearance-none {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
 .grid-flow-row {
   grid-auto-flow: row;
 }
