@@ -8,7 +8,7 @@ const RecipeStep = ({ show }: { show: boolean }) => {
   return (
     <>
       <div className="flex gap-x-2 col-span-5 ">
-        <div className="grow border-l-8 h-12 inline-flex border-r-none items-center border-l-neutral-300 dark:bg-neutral-800 bg-neutral-200 transition-all duration-300 rounded-r-2xl   pl-3 font-light rounded-l-md rounded-bl-2xl text-lg text-neutral-700 dark:text-neutral-100  ">
+        <div className="grow h-12 inline-flex  items-center  dark:bg-neutral-800 bg-neutral-200 transition-all duration-300 rounded-r-xl   pl-3 font-light rounded-l-md rounded-bl-xl text-lg text-neutral-700 dark:text-neutral-100  ">
           <h4 className="text-xl dark:text-neutral-100 "> Step One</h4>
         </div>
         <div className="flex justify-center items-center ml-auto">
