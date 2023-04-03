@@ -1,11 +1,5 @@
 import { Transition } from "@headlessui/react";
-import {
-  CheckCircleIcon,
-  PlusCircleIcon,
-  PlusIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/solid";
-import { TextareaAutosize } from "@mui/base";
+
 import { Fragment, useState } from "react";
 import IconButton from "../buttons/IconButton";
 import CustomTextInput from "../forms/CustomTextInput";

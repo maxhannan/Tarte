@@ -1,8 +1,7 @@
-import { Transition } from "@headlessui/react";
-import { PlusIcon, ScaleIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import IconButton from "../buttons/IconButton";
 import CustomTextInput from "../forms/CustomTextInput";
-import IconTextField from "../forms/IconTextField";
+
 import SelectBox from "../forms/SelectBox";
 
 const IngredientAdder = () => {

@@ -1,9 +1,5 @@
-import { Transition } from "@headlessui/react";
-import { PlusCircleIcon, PlusIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { Fragment } from "react";
-import IconButton from "../buttons/IconButton";
-import IconTextField from "../forms/IconTextField";
-import SelectBox from "../forms/SelectBox";
+import { PlusCircleIcon } from "@heroicons/react/24/solid";
+
 import IngredientAdder from "./IngredientAdder";
 
 const IngredientSection = () => {
