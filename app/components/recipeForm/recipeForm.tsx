@@ -4,6 +4,7 @@ import { Fragment, useState } from "react";
 import IconButton from "../buttons/IconButton";
 import CustomTextInput from "../forms/CustomTextInput";
 import IconTextField from "../forms/IconTextField";
+import MultiSelectBox from "../forms/MultiSelectBox";
 
 import SelectBox from "../forms/SelectBox";
 import IngredientSection from "./IngredientsSection";
@@ -31,12 +32,15 @@ const RecipeForm = () => {
           <div className="">
             <SelectBox />
           </div>
-          <div className="grid grid-cols-6 gap-x-2">
+          <div className="grid grid-cols-6 gap-x-2 gap-y-4">
             <div className="col-span-2">
               <CustomTextInput fieldName="Yield" identifier="name" />
             </div>
             <div className="relative col-span-4">
               <SelectBox />
+            </div>
+            <div className="relative col-span-6">
+              <MultiSelectBox />
             </div>
           </div>
         </div>
