@@ -1,4 +1,5 @@
-import { ElementType, useState } from "react";
+import { useState } from "react";
+import type { ElementType } from "react";
 
 interface textFieldProp {
   Icon: ElementType;

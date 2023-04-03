@@ -28,15 +28,15 @@ const RecipeForm = () => {
           <div className="col-span-5">
             <CustomTextInput fieldName="Recipe Name" identifier="name" />
           </div>
-          <div className="col-span-5 relative">
+          <div className="">
             <SelectBox />
           </div>
-          <div className="flex gap-x-2 col-span-5">
-            <div className=" ">
+          <div className="grid grid-cols-6 gap-x-2">
+            <div className="col-span-2">
               <CustomTextInput fieldName="Yield" identifier="name" />
             </div>
-            <div className="">
-              <CustomTextInput fieldName="Unit" identifier="name" />
+            <div className="relative col-span-4">
+              <SelectBox />
             </div>
           </div>
         </div>

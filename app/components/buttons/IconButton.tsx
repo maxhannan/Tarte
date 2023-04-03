@@ -1,4 +1,3 @@
-import { DocumentPlusIcon } from "@heroicons/react/24/solid";
 import type { ElementType } from "react";
 
 export interface buttonProps {

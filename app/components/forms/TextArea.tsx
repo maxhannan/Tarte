@@ -1,4 +1,3 @@
-import { Transition } from "@headlessui/react";
 import { TextareaAutosize } from "@mui/base";
 
 const TextAreaCustom = () => {
