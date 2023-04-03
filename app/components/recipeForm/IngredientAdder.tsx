@@ -14,7 +14,7 @@ const IngredientAdder = () => {
         <div className="flex justify-center items-center ml-auto">
           <IconButton
             Icon={XMarkIcon}
-            size="14"
+            size="12"
             buttonName="deleteRecipe"
             action={() => console.log("delete")}
           />
