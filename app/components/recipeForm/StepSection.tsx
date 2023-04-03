@@ -5,25 +5,18 @@ import { Fragment } from "react";
 import IconButton from "../buttons/IconButton";
 import RecipeStep from "./RecipeStep";
 
-const StepSection = () => {
+const StepSection = ({ show }: { show: boolean }) => {
   return (
-    <div className="grid grid-cols-5  gap-y-4 gap-x-2 w-full">
-      <Transition
-        enter="transition-all transform  ease-in-out  duration-500"
-        enterFrom=" opacity-0 translate-y-full "
-        enterTo=" opacity-100 translate-y-0"
-        leave="transition ease-in duration-400"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-        appear
-        show
-        className="flex gap-x-2 col-span-5"
-      >
-        <div className="grow border-l-8 h-14 inline-flex items-center border-l-red-500   dark:bg-neutral-800 bg-neutral-200 transition-all duration-300 rounded-r-2xl   pl-3 font-light rounded-l-md rounded-bl-2xl text-lg text-neutral-700 dark:text-neutral-100  ">
-          <h4 className="text-3xl dark:text-neutral-100 "> Steps</h4>
+    <div className="grid grid-cols-5  gap-y-4 gap-x-2 w-full  z-20">
+      <div className="flex gap-x-2 col-span-5">
+        <div className="grow border-l-8 h-14 inline-flex items-center border-l-red-500 relative z-0   dark:bg-neutral-800 bg-neutral-200 transition-all duration-300 rounded-r-2xl   pl-3 font-light rounded-l-md rounded-bl-2xl text-lg text-neutral-700 dark:text-neutral-100  ">
+          <h4 className="text-3xl dark:text-neutral-100 relative z-20 ">
+            {" "}
+            Steps
+          </h4>
         </div>
-      </Transition>
-      <RecipeStep />
+      </div>
+      <RecipeStep show={show} />
       <div className="col-span-5   h-12 inline-flex border-r-none items-center justify-between px-3 dark:bg-neutral-700 bg-neutral-200 transition-all duration-300 rounded-r-2xl   rounded-l-md rounded-bl-2xl text-lg text-neutral-700 dark:text-neutral-100  ">
         <h4 className="text-xl dark:text-neutral-100 ">Add Ingredient</h4>
         <PlusCircleIcon className="h-7 w-7" />
