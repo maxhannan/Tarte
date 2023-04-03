@@ -8,6 +8,7 @@ import {
 import { TextareaAutosize } from "@mui/base";
 import { Fragment, useState } from "react";
 import IconButton from "../buttons/IconButton";
+import CustomTextInput from "../forms/CustomTextInput";
 import IconTextField from "../forms/IconTextField";
 
 import SelectBox from "../forms/SelectBox";
@@ -31,25 +32,17 @@ const RecipeForm = () => {
       <div className="flex flex-col gap-y-4 mb-32">
         <div className="flex flex-col gap-y-4 ">
           <div className="col-span-5">
-            <IconTextField Icon={PlusIcon} fieldName="Name" identifier="name" />
+            <CustomTextInput fieldName="Recipe Name" identifier="name" />
           </div>
           <div className="col-span-5 relative">
             <SelectBox />
           </div>
           <div className="flex gap-x-2 col-span-5">
             <div className=" ">
-              <IconTextField
-                Icon={PlusIcon}
-                fieldName="Yield"
-                identifier="name"
-              />
+              <CustomTextInput fieldName="Yield" identifier="name" />
             </div>
             <div className="">
-              <IconTextField
-                Icon={PlusIcon}
-                fieldName="Qty"
-                identifier="name"
-              />
+              <CustomTextInput fieldName="Unit" identifier="name" />
             </div>
           </div>
         </div>
