@@ -21,6 +21,7 @@ const AddRecipe = () => {
     <div>
       <AppBar
         page="Add a Recipe"
+        textSize="text-3xl"
         buttons={[
           {
             Icon: CheckCircleIcon,
