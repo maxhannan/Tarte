@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { useNavigate } from "@remix-run/react";
 import { Fragment, useState } from "react";
+import ComboBoxCustom from "~/components/forms/Combobox";
 
 import SearchBar from "~/components/forms/SearchBar";
 import SelectBox from "~/components/forms/SelectBox";
@@ -80,6 +81,7 @@ const RecipesPage = () => {
       >
         <SelectBox />
         <SelectBox />
+        <ComboBoxCustom />
       </Transition>
 
       <div className="pb-16  ">

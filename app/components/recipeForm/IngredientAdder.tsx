@@ -3,6 +3,7 @@ import IconButton from "../buttons/IconButton";
 import CustomTextInput from "../forms/CustomTextInput";
 
 import SelectBox from "../forms/SelectBox";
+import ComboBoxCustom from "../forms/Combobox";
 
 const IngredientAdder = () => {
   return (
@@ -21,13 +22,13 @@ const IngredientAdder = () => {
         </div>
       </div>
       <div className="col-span-5 relative">
-        <SelectBox />
+        <ComboBoxCustom />
       </div>
       <div className="col-span-2 ">
         <CustomTextInput fieldName="Amt" identifier="a" />
       </div>
       <div className="col-span-3  relative ">
-        <SelectBox />
+        <ComboBoxCustom />
       </div>
       <div className="col-span-5 border-b-4 rounded-sm dark:border-neutral-700"></div>
     </div>

@@ -53,17 +53,7 @@ const RecipePage = () => {
         show
       >
         <IngredientTable />
-      </Transition>
-      <Transition
-        enter="transition-all transform  ease-in-out  duration-500"
-        enterFrom=" opacity-0 translate-y-full "
-        enterTo=" opacity-100 translate-y-0"
-        leave="transition ease-in duration-400"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-        appear
-        show
-      >
+
         <div className="flex mt-4 gap-2 flex-wrap">
           {Allergens.map((a) => (
             <div
@@ -74,17 +64,7 @@ const RecipePage = () => {
             </div>
           ))}
         </div>
-      </Transition>
-      <Transition
-        enter="transition-all transform  ease-in-out  duration-500"
-        enterFrom=" opacity-0 translate-y-full "
-        enterTo=" opacity-100 translate-y-0"
-        leave="transition ease-in duration-400"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-        appear
-        show
-      >
+
         <RecipeStep
           stepNum="One"
           content="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus

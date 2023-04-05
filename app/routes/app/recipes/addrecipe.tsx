@@ -1,17 +1,6 @@
-import { Transition } from "@headlessui/react";
-import {
-  ArrowUturnLeftIcon,
-  CheckCircleIcon,
-  PlusCircleIcon,
-  PlusIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/solid";
-import { TextareaAutosize } from "@mui/base";
+import { ArrowUturnLeftIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useNavigate } from "@remix-run/react";
-import { Fragment } from "react";
-import IconButton from "~/components/buttons/IconButton";
-import IconTextField from "~/components/forms/IconTextField";
-import SelectBox from "~/components/forms/SelectBox";
+
 import AppBar from "~/components/navigation/AppBar";
 import RecipeForm from "~/components/recipeForm/recipeForm";
 

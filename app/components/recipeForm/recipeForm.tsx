@@ -9,6 +9,7 @@ import MultiSelectBox from "../forms/MultiSelectBox";
 import SelectBox from "../forms/SelectBox";
 import IngredientSection from "./IngredientsSection";
 import StepSection from "./StepSection";
+import ComboBoxCustom from "../forms/Combobox";
 
 const RecipeForm = () => {
   const [show, setShow] = useState(false);
@@ -37,7 +38,7 @@ const RecipeForm = () => {
               <CustomTextInput fieldName="Yield" identifier="name" />
             </div>
             <div className="relative col-span-4">
-              <SelectBox />
+              <ComboBoxCustom />
             </div>
             <div className="relative col-span-6">
               <MultiSelectBox />
