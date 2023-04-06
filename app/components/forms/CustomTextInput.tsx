@@ -3,16 +3,18 @@ import { useState } from "react";
 const CustomTextInput = ({
   identifier,
   fieldName,
+  type = "text",
 }: {
   identifier: string;
   fieldName: string;
+  type?: string;
 }) => {
   const [value, setValue] = useState("");
   return (
     <input
       id={identifier}
       name={identifier}
-      type="text"
+      type={type}
       className={`${
         value.length > 0
           ? "rounded-r-xl rounded-l-md rounded-tl-xl focus:ring-green-500  border-green-500 border-2 "

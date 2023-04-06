@@ -32,7 +32,7 @@ const RecipesPage = () => {
           {
             Icon: UserIcon,
             buttonName: "User",
-            action: () => console.log("USer"),
+            action: () => navigate("/auth"),
           },
         ]}
       />
