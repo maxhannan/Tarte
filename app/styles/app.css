@@ -858,6 +858,22 @@ select {
   margin-top: 1rem;
 }
 
+.mt-20 {
+  margin-top: 5rem;
+}
+
+.mt-40 {
+  margin-top: 10rem;
+}
+
+.mt-80 {
+  margin-top: 20rem;
+}
+
+.mt-72 {
+  margin-top: 18rem;
+}
+
 .block {
   display: block;
 }
@@ -1435,6 +1451,18 @@ select {
 
 .pr-4 {
   padding-right: 1rem;
+}
+
+.pt-72 {
+  padding-top: 18rem;
+}
+
+.pt-60 {
+  padding-top: 15rem;
+}
+
+.pt-48 {
+  padding-top: 12rem;
 }
 
 .text-left {
