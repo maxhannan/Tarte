@@ -12,6 +12,7 @@
     "@headlessui/tailwindcss": "^0.1.2",
     "@heroicons/react": "^2.0.17",
     "@mui/base": "^5.0.0-alpha.123",
+    "@prisma/client": "^4.12.0",
     "@remix-run/node": "^1.14.3",
     "@remix-run/react": "^1.14.3",
     "@remix-run/vercel": "^1.14.3",

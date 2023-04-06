@@ -28,13 +28,13 @@ export default function MultiSelectBox() {
   return (
     <div className="w-full z-30">
       <Listbox value={selected} onChange={setSelected} multiple>
-        <div className="relative mt-1">
-          <Listbox.Button className=" relative w-full cursor-default border py-2 px-2 border-gray-300 dark:border-neutral-700 rounded-lg bg-neutral-200 dark:bg-neutral-800 pl-3 pr-10 text-left  text-lg focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-300 ">
+        <div className="relative ">
+          <Listbox.Button className=" relative w-full cursor-default border py-2 px-2 border-gray-300 dark:border-neutral-700 rounded-xl rounded-tl-md bg-neutral-200 dark:bg-neutral-800 pl-3 pr-10 text-left  text-lg focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-300 ">
             <span className="flex flex-wrap gap-2 items-center ">
               {selected.length > 0 ? (
                 selected.map((person) => <Chip key={person} content={person} />)
               ) : (
-                <p className=" m-0.5 text-neutral-500  text-md">
+                <p className=" m-0.5 text-neutral-400  text-md">
                   Select Allergens
                 </p>
               )}

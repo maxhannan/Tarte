@@ -1,11 +1,9 @@
 import { Transition } from "@headlessui/react";
 
-import { Fragment, useState } from "react";
-import IconButton from "../buttons/IconButton";
-import CustomTextInput from "../forms/CustomTextInput";
-import IconTextField from "../forms/IconTextField";
-import MultiSelectBox from "../forms/MultiSelectBox";
+import { useState } from "react";
 
+import CustomTextInput from "../forms/CustomTextInput";
+import MultiSelectBox from "../forms/MultiSelectBox";
 import SelectBox from "../forms/SelectBox";
 import IngredientSection from "./IngredientsSection";
 import StepSection from "./StepSection";
@@ -31,23 +29,38 @@ const RecipeForm = () => {
             <CustomTextInput fieldName="Recipe Name" identifier="name" />
           </div>
           <div className="">
-            <SelectBox />
+            <ComboBoxCustom
+              name="category"
+              placeholder="Category"
+              allowCustom
+              options={[
+                { id: "allRecipes", value: "All Recipes" },
+                { id: "sauces", value: "Sauces" },
+              ]}
+            />
           </div>
           <div className="grid grid-cols-6 gap-x-2 gap-y-4">
             <div className="col-span-2">
               <CustomTextInput fieldName="Yield" identifier="name" />
             </div>
             <div className="relative col-span-4">
-              <ComboBoxCustom />
+              <ComboBoxCustom
+                name="yieldUnit"
+                placeholder="Unit"
+                allowCustom
+                options={[
+                  { id: "g", value: "Grams" },
+                  { id: "kg", value: "Kilograms" },
+                  { id: "c", value: "Cups" },
+                ]}
+              />
             </div>
             <div className="relative col-span-6">
               <MultiSelectBox />
             </div>
           </div>
         </div>
-
         <IngredientSection />
-
         <StepSection show={show} />
       </div>
     </Transition>

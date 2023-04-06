@@ -9,3 +9,46 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model User {
+  id        String   @id @default(cuid()) 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  username  String   @unique 
+  email     String   @unique
+  password  String
+  chef      Boolean  @default(false)
+  firstName String
+  lastName  String 
+  recipes   Recipe[] 
+}
+
+model Recipe {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  category    String
+  allergens   String[]
+  yieldAmt    Float 
+  yieldUnit   String   
+  ingredients Ingredient[]
+  steps       String[]
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String  
+  linkedIngredients Ingredient[] @relation("Linked Recipes")
+}
+
+model Ingredient{
+  id          String   @id @default(cuid())
+  recipe      Recipe   @relation(fields: [recipeId], references: [id])
+  recipeId    String
+  ingredient  String
+  qty         String
+  unit        String
+  linkRecipe  Recipe?  @relation(fields: [linkId], references: [id], "Linked Recipes") 
+  linkId      String?  
+}
+
+

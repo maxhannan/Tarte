@@ -9,6 +9,7 @@ import {
 import { useNavigate } from "@remix-run/react";
 import { Fragment, useState } from "react";
 import ComboBoxCustom from "~/components/forms/Combobox";
+import MultiSelectBox from "~/components/forms/MultiSelectBox";
 
 import SearchBar from "~/components/forms/SearchBar";
 import SelectBox from "~/components/forms/SelectBox";
@@ -79,9 +80,15 @@ const RecipesPage = () => {
         leaveFrom="transform opacity-100 max-h-96"
         leaveTo="transform opacity-0 max-h-0"
       >
-        <SelectBox />
-        <SelectBox />
-        <ComboBoxCustom />
+        <ComboBoxCustom
+          name="category"
+          placeholder="Category"
+          options={[
+            { id: "allRecipes", value: "All Recipes" },
+            { id: "sauces", value: "Sauces" },
+          ]}
+        />
+        <MultiSelectBox />
       </Transition>
 
       <div className="pb-16  ">
