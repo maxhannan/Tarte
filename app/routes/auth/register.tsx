@@ -1,10 +1,6 @@
 import { ArrowLongRightIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import {
-  ActionFunction,
-  LoaderFunction,
-  json,
-  redirect,
-} from "@remix-run/node";
+import type { ActionFunction, LoaderFunction } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import { Form, useActionData, useNavigation } from "@remix-run/react";
 import LoadingButton from "~/components/buttons/LoadingButton";
 import CustomTextInput from "~/components/forms/CustomTextInput";

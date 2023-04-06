@@ -1,11 +1,16 @@
 import { ArrowUturnLeftIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
-import { useNavigate } from "@remix-run/react";
+import { useNavigate, useNavigation } from "@remix-run/react";
 
 import AppBar from "~/components/navigation/AppBar";
 import RecipeForm from "~/components/recipeForm/recipeForm";
+import Spinner from "~/components/status/smallSpinner";
 
 const AddRecipe = () => {
   const navigate = useNavigate();
+  const navigation = useNavigation();
+  if (navigation.state === "loading") {
+    return <Spinner size={14} />;
+  }
   return (
     <div>
       <AppBar

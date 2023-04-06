@@ -4,10 +4,11 @@ import {
   LanguageIcon,
   PencilSquareIcon,
 } from "@heroicons/react/24/solid";
-import { useNavigate } from "@remix-run/react";
+import { useNavigate, useNavigation } from "@remix-run/react";
 import AppBar from "~/components/navigation/AppBar";
 import IngredientTable from "~/components/recipePage/ingredientTable/ingredientTable";
 import RecipeStep from "~/components/recipePage/RecipeStep";
+import Spinner from "~/components/status/smallSpinner";
 
 const Allergens = [
   "Not Vegetarian",
@@ -19,6 +20,10 @@ const Allergens = [
 ];
 const RecipePage = () => {
   const navigate = useNavigate();
+  const navigation = useNavigation();
+  if (navigation.state === "loading") {
+    return <Spinner size={14} />;
+  }
   return (
     <div className="mb-28">
       <AppBar

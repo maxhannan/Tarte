@@ -6,20 +6,25 @@ import {
   DocumentPlusIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
-import { Form, useNavigate, useSubmit } from "@remix-run/react";
+import { useNavigate, useNavigation, useSubmit } from "@remix-run/react";
 import { Fragment, useState } from "react";
 import ComboBoxCustom from "~/components/forms/Combobox";
 import MultiSelectBox from "~/components/forms/MultiSelectBox";
 
 import SearchBar from "~/components/forms/SearchBar";
-import SelectBox from "~/components/forms/SelectBox";
+
 import AppBar from "~/components/navigation/AppBar";
 import RecipeFeed from "~/components/recipefeed/RecipeFeed";
+import Spinner from "~/components/status/smallSpinner";
 
 const RecipesPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
   const navigate = useNavigate();
   const submit = useSubmit();
+  const navigation = useNavigation();
+  if (navigation.state === "loading") {
+    return <Spinner size={14} />;
+  }
   return (
     <>
       <AppBar

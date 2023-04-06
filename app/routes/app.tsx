@@ -1,4 +1,4 @@
-import { LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import { useState } from "react";
 

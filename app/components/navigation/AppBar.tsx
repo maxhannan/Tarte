@@ -1,7 +1,8 @@
 import { Transition } from "@headlessui/react";
-import { DocumentPlusIcon, UserIcon } from "@heroicons/react/24/solid";
 import { Fragment } from "react";
-import IconButton, { buttonProps } from "../buttons/IconButton";
+import IconButton from "../buttons/IconButton";
+
+import type { buttonProps } from "../buttons/IconButton";
 
 const AppBar = ({
   page,
