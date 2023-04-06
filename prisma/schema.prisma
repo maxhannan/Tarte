@@ -35,19 +35,19 @@ model Recipe {
   yieldUnit   String   
   ingredients Ingredient[]
   steps       String[]
-  author      User     @relation(fields: [authorId], references: [id])
-  authorId    String  
+  author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  authorId    String?  
   linkedIngredients Ingredient[] @relation("Linked Recipes")
 }
 
 model Ingredient{
   id          String   @id @default(cuid())
-  recipe      Recipe   @relation(fields: [recipeId], references: [id])
+  recipe      Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
   recipeId    String
   ingredient  String
   qty         String
   unit        String
-  linkRecipe  Recipe?  @relation(fields: [linkId], references: [id], "Linked Recipes") 
+  linkRecipe  Recipe?  @relation(fields: [linkId], references: [id], "Linked Recipes", onDelete: Cascade) 
   linkId      String?  
 }
 

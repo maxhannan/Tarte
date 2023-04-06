@@ -38,13 +38,13 @@ export const Register = async (user: UserObj) => {
   });
   if (existsEmail) {
     return json(
-      { error: `User already exists with that email`, status: 400 },
+      { errors: { email: `User already exists with that email` } },
       { status: 400 }
     );
   }
   if (existsUsername) {
     return json(
-      { error: `User already exists with that username` },
+      { errors: { username: `User already exists with that username` } },
       { status: 400 }
     );
   }
@@ -58,7 +58,7 @@ export const Register = async (user: UserObj) => {
       { status: 400 }
     );
   }
-  return createUserSession(newUser.id, "/app");
+  return createUserSession(newUser.id, "/app/recipes");
 };
 
 export async function login({
@@ -73,9 +73,9 @@ export async function login({
   });
 
   if (!user || !(await bcrypt.compare(password, user.password)))
-    return json({ error: `Incorrect login` }, { status: 400 });
+    return json({ error: { form: `Incorrect login` } }, { status: 400 });
 
-  return createUserSession(user.id, "/app");
+  return createUserSession(user.id, "/app/recipes");
 }
 
 export async function requireUserId(
@@ -86,7 +86,7 @@ export async function requireUserId(
   const userId = session.get("userId");
   if (!userId || typeof userId !== "string") {
     const searchParams = new URLSearchParams([["redirectTo", redirectTo]]);
-    throw redirect(`/login?${searchParams}`);
+    throw redirect(`/auth/login?${searchParams}`);
   }
   return userId;
 }

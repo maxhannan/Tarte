@@ -1,7 +1,15 @@
+import { LoaderFunction } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import { useState } from "react";
 
 import BottomNav from "~/components/navigation/BottomNav";
+import { getUser, requireUserId } from "~/utils/auth.server";
+export const loader: LoaderFunction = async ({ request }) => {
+  await requireUserId(request);
+  const user = await getUser(request);
+
+  return user;
+};
 
 const App = () => {
   const [page, setPage] = useState("recipes");

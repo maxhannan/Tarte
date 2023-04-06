@@ -6,7 +6,7 @@ import {
   DocumentPlusIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
-import { useNavigate } from "@remix-run/react";
+import { Form, useNavigate, useSubmit } from "@remix-run/react";
 import { Fragment, useState } from "react";
 import ComboBoxCustom from "~/components/forms/Combobox";
 import MultiSelectBox from "~/components/forms/MultiSelectBox";
@@ -19,6 +19,7 @@ import RecipeFeed from "~/components/recipefeed/RecipeFeed";
 const RecipesPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
   const navigate = useNavigate();
+  const submit = useSubmit();
   return (
     <>
       <AppBar
@@ -32,10 +33,12 @@ const RecipesPage = () => {
           {
             Icon: UserIcon,
             buttonName: "User",
-            action: () => navigate("/auth"),
+            action: () =>
+              submit(null, { action: "/auth/logout", method: "post" }),
           },
         ]}
       />
+
       <Transition
         enter="transition-all transform  ease-in-out  duration-700"
         enterFrom=" opacity-0 -translate-y-full "

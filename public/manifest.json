@@ -1,14 +1,7 @@
 {
-  "short_name": "Flopsi",
-  "name": "Flopsi",
+  "short_name": "Quenelle",
+  "name": "Quenelle",
   "scope": "/",
-  "icons": [
-    {
-      "src": "splash_screens/icon.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
   "display": "standalone",
   "theme_color": "#f5f5f5",
   "background_color": "#f5f5f5"
