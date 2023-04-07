@@ -31,7 +31,7 @@ model Recipe {
   name        String
   category    String
   allergens   String[]
-  yieldAmt    Float 
+  yieldAmt    String 
   yieldUnit   String   
   ingredients Ingredient[]
   steps       String[]
@@ -47,7 +47,7 @@ model Ingredient{
   ingredient  String
   qty         String
   unit        String
-  linkRecipe  Recipe?  @relation(fields: [linkId], references: [id], "Linked Recipes", onDelete: Cascade) 
+  linkRecipe  Recipe?  @relation(fields: [linkId], references: [id], "Linked Recipes", onDelete: SetNull) 
   linkId      String?  
 }
 

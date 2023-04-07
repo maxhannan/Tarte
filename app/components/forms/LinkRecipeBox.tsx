@@ -8,6 +8,8 @@ interface ComboBoxProps {
   name: string;
   allowCustom?: boolean;
   initValue?: Option;
+  selected: Option | null;
+  setSelected: (option: Option | null) => void;
 }
 
 interface Option {
@@ -15,14 +17,15 @@ interface Option {
   value: string;
 }
 
-export default function ComboBoxCustom({
+export default function LinkRecipeComboBox({
   options,
   placeholder,
   name,
   allowCustom = false,
   initValue,
+  selected,
+  setSelected,
 }: ComboBoxProps) {
-  const [selected, setSelected] = useState(initValue || null);
   const [query, setQuery] = useState("");
 
   const filteredList =
@@ -36,16 +39,17 @@ export default function ComboBoxCustom({
     let exists = false;
 
     list.forEach((option) => {
-      option.value.toLowerCase() === query.toLowerCase()
-        ? (exists = true)
-        : null;
+      if (option.value.toLowerCase() === query.toLowerCase()) {
+        exists = true;
+      }
     });
     return exists;
   };
-
+  console.log(selected);
   return (
     <Combobox value={selected} onChange={setSelected}>
       <div className="relative">
+        <input type="hidden" value={selected?.id || ""} name="linkBoxId" />
         <Combobox.Input
           name={name}
           className="rounded-r-xl rounded-l-md rounded-bl-xl focus:ring-neutral-500  border relative  border-neutral-300 dark:border-neutral-700 h-12 w-full p-2 pl-4 text-xl text-neutral-800 appearance-none  focus:ring-2 focus:outline-none focus:border-none bg-neutral-200    placeholder-neutral-500 dark:bg-neutral-800  dark:placeholder-neutral-400 dark:text-neutral-50   "

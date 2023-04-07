@@ -1,38 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CustomTextInput = ({
   identifier,
   fieldName,
   type = "text",
   error,
+  defaultValue,
+  disabled = false,
 }: {
   identifier: string;
   fieldName: string;
   type?: string;
   error?: string;
+  defaultValue?: string;
+  disabled?: boolean;
 }) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(defaultValue || "");
+
+  useEffect(() => {
+    if (defaultValue !== undefined) {
+      setValue(defaultValue);
+    } else {
+      setValue("");
+    }
+  }, [defaultValue]);
   return (
     <>
       <div className="w-full flex flex-col justify-start gap-2">
+        {/* hidden input allows form submission when primary input is disabled */}
+        {disabled && <input type="hidden" name={identifier} value={value} />}
         <input
           id={identifier}
           name={identifier}
           type={type}
-          className={`${
-            value.length > 0
-              ? "rounded-r-xl rounded-l-md rounded-tl-xl focus:ring-green-500  border-green-500 border-2 "
-              : "rounded-r-xl rounded-l-md rounded-bl-xl focus:ring-red-500  "
-          } transition-all duration-300 block border border-neutral-300 dark:border-neutral-700 h-12 w-full p-2 pl-4 text-xl text-neutral-800 appearance-none  focus:ring-2 focus:outline-none focus:border-none bg-neutral-200    placeholder-neutral-500 dark:bg-neutral-800  dark:placeholder-neutral-400 dark:text-neutral-50 `}
+          className={`rounded-r-xl rounded-l-md dark:bg-neutral-800 bg-neutral-200 rounded-bl-xl focus:ring-neutral-500  border relative    h-12 w-full p-2 pl-4 text-xl  appearance-none  focus:ring-2 focus:outline-none focus:border-none     placeholder-neutral-500   dark:placeholder-neutral-400   ${
+            disabled
+              ? "border-2 border-green-500 text-neutral-500"
+              : " text-neutral-800 dark:text-neutral-50 border-neutral-300 dark:border-neutral-700"
+          } `}
           placeholder={fieldName}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           required
+          disabled={disabled}
         />
 
-        <div className="text-xs font-semibold tracking-wide text-red-500 w-full">
-          {error || ""}
-        </div>
+        {error && (
+          <div className="text-xs font-semibold tracking-wide text-red-500 w-full">
+            {error || ""}
+          </div>
+        )}
       </div>
     </>
   );

@@ -1,9 +1,26 @@
 import { ArrowUturnLeftIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
-import { useNavigate, useNavigation } from "@remix-run/react";
+import type { ActionFunction } from "@remix-run/node";
+import { Form, useNavigate, useNavigation } from "@remix-run/react";
 
 import AppBar from "~/components/navigation/AppBar";
 import RecipeForm from "~/components/recipeForm/recipeForm";
 import Spinner from "~/components/status/smallSpinner";
+import { getUser } from "~/utils/auth.server";
+import { createRecipe, extractRecipe } from "~/utils/recipes.server";
+
+export const action: ActionFunction = async ({ request }) => {
+  const user = await getUser(request);
+  const form = await request.formData();
+  const newRecipe = extractRecipe(form);
+
+  if (user) {
+    const savedRecipe = await createRecipe(newRecipe, user.id);
+    console.log({ savedRecipe });
+    return savedRecipe;
+  }
+
+  return null;
+};
 
 const AddRecipe = () => {
   const navigate = useNavigate();
@@ -29,8 +46,9 @@ const AddRecipe = () => {
           },
         ]}
       />
-
-      <RecipeForm />
+      <Form method="post">
+        <RecipeForm />
+      </Form>
     </div>
   );
 };

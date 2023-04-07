@@ -1,10 +1,6 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import {
-  CheckIcon,
-  ChevronUpDownIcon,
-  ChevronDownIcon,
-} from "@heroicons/react/24/solid";
+import { CheckIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import Chip from "./Chip";
 
 const Allergens = [
@@ -22,11 +18,18 @@ const Allergens = [
   "Not Kosher",
 ];
 
-export default function MultiSelectBox() {
-  const [selected, setSelected] = useState([]);
+export default function MultiSelectBox({
+  name,
+  initalValue,
+}: {
+  name: string;
+  initalValue?: string[];
+}) {
+  const [selected, setSelected] = useState(initalValue || []);
 
   return (
     <div className="w-full z-30">
+      <input type="hidden" value={selected.join(",")} name={name} />
       <Listbox value={selected} onChange={setSelected} multiple>
         <div className="relative ">
           <Listbox.Button className=" relative w-full cursor-default border py-2 px-2 border-gray-300 dark:border-neutral-700 rounded-xl rounded-tl-md bg-neutral-200 dark:bg-neutral-800 pl-3 pr-10 text-left  text-lg focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-300 ">
@@ -79,7 +82,7 @@ export default function MultiSelectBox() {
                         {allergen}
                       </span>
                       {selected ? (
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-neutral-600">
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-red-500">
                           <CheckIcon className="h-5 w-5" aria-hidden="true" />
                         </span>
                       ) : null}
