@@ -73,3 +73,60 @@ export const createRecipe = async (recipe: Recipe, userId: string) => {
   });
   return newRecipe;
 };
+
+export const getRecipes = async () => {
+  try {
+    const recipes = await prisma.recipe.findMany({
+      orderBy: [
+        {
+          name: "asc",
+        },
+      ],
+      select: {
+        id: true,
+        name: true,
+        category: true,
+        yieldAmt: true,
+        yieldUnit: true,
+        createdAt: true,
+        allergens: true,
+        steps: true,
+        author: {
+          select: {
+            firstName: true,
+            lastName: true,
+            username: true,
+          },
+        },
+        linkedIngredients: {
+          select: {
+            id: true,
+            recipe: {
+              select: {
+                name: true,
+                id: true,
+              },
+            },
+          },
+        },
+        ingredients: {
+          select: {
+            ingredient: true,
+            qty: true,
+            unit: true,
+            linkId: true,
+            linkRecipe: {
+              select: {
+                name: true,
+                id: true,
+              },
+            },
+          },
+        },
+      },
+    });
+    return recipes;
+  } catch (error) {
+    return null;
+  }
+};

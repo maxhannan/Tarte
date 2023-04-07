@@ -6,7 +6,14 @@ import {
   DocumentPlusIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
-import { useNavigate, useNavigation, useSubmit } from "@remix-run/react";
+import { LoaderFunction } from "@remix-run/node";
+import {
+  useLoaderData,
+  useMatches,
+  useNavigate,
+  useNavigation,
+  useSubmit,
+} from "@remix-run/react";
 import { Fragment, useState } from "react";
 import ComboBoxCustom from "~/components/forms/Combobox";
 import MultiSelectBox from "~/components/forms/MultiSelectBox";
@@ -16,12 +23,17 @@ import SearchBar from "~/components/forms/SearchBar";
 import AppBar from "~/components/navigation/AppBar";
 import RecipeFeed from "~/components/recipefeed/RecipeFeed";
 import Spinner from "~/components/status/smallSpinner";
+import { useRouteData } from "~/hooks/useRouteData";
+import { getRecipes } from "~/utils/recipes.server";
 
 const RecipesPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
   const navigate = useNavigate();
   const submit = useSubmit();
   const navigation = useNavigation();
+
+  const recipes = useRouteData("routes/app/recipes");
+
   if (navigation.state === "loading") {
     return <Spinner size={14} />;
   }
@@ -96,11 +108,11 @@ const RecipesPage = () => {
             { id: "sauces", value: "Sauces" },
           ]}
         />
-        <MultiSelectBox />
+        <MultiSelectBox name="allergens" />
       </Transition>
 
       <div className="pb-16  ">
-        <RecipeFeed />
+        {recipes && <RecipeFeed recipeList={recipes} />}
       </div>
     </>
   );

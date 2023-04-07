@@ -14,38 +14,22 @@ import { v4 } from "uuid";
 const RecipeForm = () => {
   const [show, setShow] = useState(false);
   const recipeValues = {
-    name: "Saffron Aioli",
+    name: "",
     category: { id: "Sauces", value: "Sauces" },
-    allergens: ["Gluten", "Not Vegetarian", "Not Vegan", "Dairy"],
-    yieldAmt: "1",
+    allergens: undefined,
+    yieldAmt: "",
     yieldUnit: { id: "g", value: "Grams" },
     ingredients: [
       {
         id: v4(),
-        ingredient: "Saffron Aioli",
-        qty: "1",
-        unit: "Cups",
-        linkId: "fhjglkjsa",
-        linkRecipe: "Saffron Aioli",
-      },
-      {
-        id: v4(),
-        ingredient: "b",
-        qty: "b",
-        unit: "Grams",
-        linkId: undefined,
-        linkRecipe: undefined,
-      },
-      {
-        id: v4(),
-        ingredient: "Celeriac Soup",
-        qty: "c",
-        unit: "Kilograms",
-        linkId: "gfjskl;",
-        linkRecipe: "Celeriac Soup",
+        ingredient: "",
+        qty: "",
+        unit: "",
+        linkId: "",
+        linkRecipe: "",
       },
     ],
-    steps: ["Step test one", "Step test two"],
+    steps: [""],
   };
 
   return (

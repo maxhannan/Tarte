@@ -6,6 +6,7 @@ import ComboBoxCustom from "../forms/Combobox";
 import type { Ingredient } from "./IngredientsSection";
 import LinkRecipeComboBox from "../forms/LinkRecipeBox";
 import { useState } from "react";
+import { useRouteData } from "~/hooks/useRouteData";
 
 interface Props {
   handleDelete: (id: string) => void;
@@ -13,6 +14,8 @@ interface Props {
 }
 
 const IngredientAdder = ({ handleDelete, ingredient }: Props) => {
+  const recipes = useRouteData("routes/app/recipes");
+  console.log({ recipes }, "ADD RECIPE");
   const linkOption =
     ingredient.linkId && ingredient.linkRecipe
       ? { id: ingredient.linkId, value: ingredient.linkRecipe }
@@ -48,11 +51,7 @@ const IngredientAdder = ({ handleDelete, ingredient }: Props) => {
           placeholder="Link a recipe"
           selected={selectedLink}
           setSelected={setSelectedLink}
-          options={[
-            { id: "fhjglkjsa", value: "Saffron Aioli" },
-            { id: "gfjskl;", value: "Celeriac Soup" },
-            { id: "cgdjsa;k", value: "Pita Bread" },
-          ]}
+          options={recipes.map((r) => ({ id: r.id, value: r.name }))}
         />
       </div>
       <div className="col-span-2 ">
