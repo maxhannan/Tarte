@@ -35,7 +35,7 @@ const RecipePage = () => {
   console.log(recipe);
   if (navigation.state === "loading" || recipe === null) {
     return (
-      <div className="h-screen w-screen flex items-center justify-center">
+      <div className="h-screen  flex items-center justify-center">
         <Spinner size={14} />
       </div>
     );

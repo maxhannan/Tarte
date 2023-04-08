@@ -11,6 +11,7 @@ import LoadingButton from "../buttons/LoadingButton";
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import { v4 } from "uuid";
 import { useRouteData } from "~/hooks/useRouteData";
+import { useNavigation } from "@remix-run/react";
 
 const RecipeForm = () => {
   const [show, setShow] = useState(false);
@@ -36,7 +37,7 @@ const RecipeForm = () => {
     ],
     steps: [""],
   };
-
+  const navigation = useNavigation();
   return (
     <Transition
       enter="transition-all transform  ease-in-out  duration-500"
@@ -103,7 +104,9 @@ const RecipeForm = () => {
         <IngredientSection ingredientList={recipeValues.ingredients} />
         <StepSection show={show} stepsList={recipeValues.steps} />
         <LoadingButton
-          loading={false}
+          loading={
+            navigation.state === "submitting" || navigation.state === "loading"
+          }
           type="submit"
           buttonName="addRecipe"
           buttonText="Add Recipe"

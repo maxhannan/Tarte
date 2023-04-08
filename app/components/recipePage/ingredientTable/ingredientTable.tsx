@@ -14,7 +14,7 @@ const IngredientTable = ({ ingredients }: { ingredients: Ingredient[] }) => {
             <th className="px-3 py-4 text-lg font-semibold "> Qty </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200">
+        <tbody>
           {ingredients.length > 0 &&
             ingredients.map((i) => (
               <IngredientRow

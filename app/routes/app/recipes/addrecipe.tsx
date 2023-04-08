@@ -18,7 +18,8 @@ export const action: ActionFunction = async ({ request }) => {
   if (user) {
     const savedRecipe = await createRecipe(newRecipe, user.id);
     console.log({ savedRecipe });
-    return redirect("/app/recipes");
+
+    return redirect(`/app/recipes/${savedRecipe.id}`);
   }
 
   return null;
@@ -29,7 +30,7 @@ const AddRecipe = () => {
   const navigation = useNavigation();
   if (navigation.state === "loading") {
     return (
-      <div className="h-screen w-screen flex items-center justify-center">
+      <div className="h-screen  flex items-center justify-center">
         <Spinner size={14} />
       </div>
     );

@@ -33,7 +33,7 @@ const RecipesPage = () => {
 
   if (navigation.state === "loading") {
     return (
-      <div className="h-screen w-screen flex items-center justify-center">
+      <div className=" mx-auto h-screen  flex items-center justify-center">
         <Spinner size={14} />
       </div>
     );

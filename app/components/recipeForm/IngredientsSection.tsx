@@ -1,4 +1,4 @@
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { PlusCircleIcon, PlusIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
 import IngredientAdder from "./IngredientAdder";
@@ -65,10 +65,10 @@ const IngredientSection = ({ ingredientList }: Props) => {
 
       <div
         onClick={addIngredient}
-        className="col-span-5   h-12 inline-flex border-r-none items-center dark:hover:text-neutral-700 justify-between px-3 dark:bg-neutral-700 bg-neutral-200 hover:bg-neutral-700 hover:text-neutral-200 hover:dark:bg-neutral-200  transition-all duration-300 rounded-r-2xl   rounded-l-md rounded-bl-2xl text-lg text-neutral-700 dark:text-neutral-100  "
+        className="col-span-5   h-12 inline-flex border-r-none items-center dark:hover:text-neutral-700 justify-between px-3 dark:bg-neutral-900 bg-neutral-100 hover:bg-neutral-700 border dark:border-neutral-700 border-neutral-300 border-dashed hover:text-neutral-200 hover:dark:bg-neutral-200  transition-all duration-300 rounded-r-2xl   rounded-l-md rounded-bl-2xl text-lg text-neutral-700 dark:text-neutral-100  "
       >
         <h4 className="text-xl  ">Add Ingredient</h4>
-        <PlusCircleIcon className="h-7 w-7" />
+        <PlusIcon className="h-7 w-7" />
       </div>
     </div>
   );
