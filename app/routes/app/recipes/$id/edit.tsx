@@ -1,14 +1,12 @@
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
-import { ActionFunction, redirect } from "@remix-run/node";
+import { redirect } from "@remix-run/node";
+import type { ActionFunction } from "@remix-run/node";
 import { Form, useNavigate } from "@remix-run/react";
 import AppBar from "~/components/navigation/AppBar";
 import RecipeForm from "~/components/recipeForm/recipeForm";
 import { useRouteData } from "~/hooks/useRouteData";
-import {
-  CompleteRecipe,
-  extractRecipe,
-  updateRecipe,
-} from "~/utils/recipes.server";
+import { extractRecipe, updateRecipe } from "~/utils/recipes.server";
+import type { CompleteRecipe } from "~/utils/recipes.server";
 
 export const action: ActionFunction = async ({ request, params }) => {
   console.log(params.id);

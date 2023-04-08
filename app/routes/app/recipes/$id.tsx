@@ -1,10 +1,5 @@
 import type { LoaderFunction } from "@remix-run/node";
-import {
-  Outlet,
-  useLoaderData,
-  useNavigate,
-  useNavigation,
-} from "@remix-run/react";
+import { Outlet, useLoaderData, useNavigation } from "@remix-run/react";
 
 import Spinner from "~/components/status/smallSpinner";
 import type { CompleteRecipe } from "~/utils/recipes.server";

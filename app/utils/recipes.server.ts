@@ -79,7 +79,7 @@ export const updateRecipe = async (id: string, recipe: Recipe) => {
   const { name, category, allergens, yieldUnit, yieldAmt, ingredients, steps } =
     recipe;
 
-  const [_, updatedRecipe] = await prisma.$transaction([
+  const data = await prisma.$transaction([
     prisma.ingredient.deleteMany({ where: { recipeId: id } }),
     prisma.recipe.update({
       where: { id: id },
@@ -101,7 +101,7 @@ export const updateRecipe = async (id: string, recipe: Recipe) => {
     }),
   ]);
 
-  return updatedRecipe;
+  return data[1];
 };
 
 export type FullRecipes = Prisma.PromiseReturnType<typeof getRecipes>;
