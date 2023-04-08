@@ -1,5 +1,5 @@
 // app/utils/prisma.server.ts
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client/edge";
 
 let prisma: PrismaClient;
 declare global {
