@@ -113,8 +113,26 @@ export const getRecipeById = async (id: string) => {
       where: { id: id },
       include: {
         author: true,
-        ingredients: true,
-        linkedIngredients: true,
+        ingredients: {
+          include: {
+            linkRecipe: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
+          },
+        },
+        linkedIngredients: {
+          select: {
+            recipe: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
+          },
+        },
       },
     });
     return recipe;

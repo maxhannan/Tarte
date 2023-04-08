@@ -28,7 +28,11 @@ const AddRecipe = () => {
   const navigate = useNavigate();
   const navigation = useNavigation();
   if (navigation.state === "loading") {
-    return <Spinner size={14} />;
+    return (
+      <div className="h-screen w-screen flex items-center justify-center">
+        <Spinner size={14} />
+      </div>
+    );
   }
   return (
     <div>

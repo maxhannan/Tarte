@@ -3,6 +3,7 @@ import {
   ArrowUturnLeftIcon,
   LanguageIcon,
   PencilSquareIcon,
+  ScaleIcon,
 } from "@heroicons/react/24/solid";
 import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useNavigate, useNavigation } from "@remix-run/react";
@@ -33,7 +34,11 @@ const RecipePage = () => {
   const recipe = useLoaderData() as CompleteRecipe;
   console.log(recipe);
   if (navigation.state === "loading" || recipe === null) {
-    return <Spinner size={14} />;
+    return (
+      <div className="h-screen w-screen flex items-center justify-center">
+        <Spinner size={14} />
+      </div>
+    );
   }
   return (
     <div className="mb-28">
@@ -47,7 +52,7 @@ const RecipePage = () => {
             action: () => console.log("addRecipe"),
           },
           {
-            Icon: LanguageIcon,
+            Icon: ScaleIcon,
             buttonName: "Language",
             action: () => console.log("addRecipe"),
           },

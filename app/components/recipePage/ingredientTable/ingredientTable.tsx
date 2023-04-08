@@ -1,4 +1,4 @@
-import { Ingredient } from "@prisma/client";
+import type { Ingredient } from "@prisma/client";
 import IngredientRow from "./IngredientRow";
 
 const IngredientTable = ({ ingredients }: { ingredients: Ingredient[] }) => {
@@ -22,6 +22,7 @@ const IngredientTable = ({ ingredients }: { ingredients: Ingredient[] }) => {
                 ingredient={i.ingredient}
                 unit={i.unit}
                 amt={Number(i.qty)}
+                link={i.linkId ? i.linkId : undefined}
               />
             ))}
         </tbody>
