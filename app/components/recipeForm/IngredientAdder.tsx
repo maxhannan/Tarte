@@ -6,23 +6,17 @@ import ComboBoxCustom from "../forms/Combobox";
 import type { Ingredient } from "./IngredientsSection";
 import LinkRecipeComboBox from "../forms/LinkRecipeBox";
 import { useState } from "react";
-import { useRouteData } from "~/hooks/useRouteData";
 import type { FullRecipes } from "~/utils/recipes.server";
 
 interface Props {
   handleDelete: (id: string) => void;
   ingredient: Ingredient;
+  recipes: FullRecipes;
 }
 
-const IngredientAdder = ({ handleDelete, ingredient }: Props) => {
-  const { recipes } = useRouteData("routes/app/recipes") as {
-    recipes: FullRecipes;
-  };
-
+const IngredientAdder = ({ handleDelete, ingredient, recipes }: Props) => {
   const linkOption =
-    ingredient.linkId && ingredient.linkRecipe
-      ? { id: ingredient.linkId, value: ingredient.linkRecipe }
-      : null;
+    ingredient.linkId && ingredient.linkRecipe ? ingredient.linkRecipe : null;
 
   const [selectedLink, setSelectedLink] = useState(linkOption);
 
@@ -60,6 +54,7 @@ const IngredientAdder = ({ handleDelete, ingredient }: Props) => {
           fieldName="Amt"
           identifier="ingredientAmt"
           type="number"
+          required={false}
           defaultValue={ingredient.qty}
         />
       </div>

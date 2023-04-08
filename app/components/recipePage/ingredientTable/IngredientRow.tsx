@@ -13,18 +13,19 @@ const IngredientRow = ({
   link?: string;
 }) => {
   const navigate = useNavigate();
+
   return (
     <tr className="max-w-xs break-words ">
       <td style={{ maxWidth: "100px" }} className="px-6 py-4 break-all">
         {link ? (
           <p
             onClick={() => navigate(`/app/recipes/${link}`)}
-            className="break-all text-green-500 underline hover:text-green-700 cursor-pointer flex items-center gap-2"
+            className="break-words text-green-500 underline hover:text-green-700 cursor-pointer flex items-center gap-2"
           >
             {ingredient} <ArrowLongRightIcon className="w-6 h-6" />
           </p>
         ) : (
-          <p className="break-all">{ingredient}</p>
+          <p className="break-normal">{ingredient}</p>
         )}
       </td>
       <td className="px-3 py-2">

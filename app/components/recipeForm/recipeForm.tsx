@@ -12,31 +12,45 @@ import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import { v4 } from "uuid";
 import { useRouteData } from "~/hooks/useRouteData";
 import { useNavigation } from "@remix-run/react";
+import type { CompleteRecipe } from "~/utils/recipes.server";
 
-const RecipeForm = () => {
+const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
   const [show, setShow] = useState(false);
   const { categories } = useRouteData("routes/app/recipes") as {
     categories: string[];
   };
 
-  const recipeValues = {
-    name: "",
-    category: undefined,
-    allergens: undefined,
-    yieldAmt: "",
-    yieldUnit: undefined,
-    ingredients: [
-      {
-        id: v4(),
-        ingredient: "",
-        qty: "",
-        unit: "",
-        linkId: "",
-        linkRecipe: "",
-      },
-    ],
-    steps: [""],
+  const formatRecipe = (recipe: CompleteRecipe) => {
+    const category = { id: recipe!.category, value: recipe!.category };
+    const yieldUnit = { id: recipe!.yieldUnit, value: recipe!.yieldUnit };
+    const ingredients = recipe?.ingredients.map((i) => ({
+      ...i,
+      linkRecipe: i.linkRecipe
+        ? { id: i.linkRecipe.id, value: i.linkRecipe.name }
+        : null,
+    }));
+    return { ...recipe, category, yieldUnit, ingredients };
   };
+  const recipeValues = recipe
+    ? formatRecipe(recipe)
+    : {
+        name: "",
+        category: undefined,
+        allergens: undefined,
+        yieldAmt: "",
+        yieldUnit: undefined,
+        ingredients: [
+          {
+            id: v4(),
+            ingredient: "",
+            qty: "",
+            unit: "",
+            linkId: null,
+            linkRecipe: null,
+          },
+        ],
+        steps: [""],
+      };
   const navigation = useNavigation();
   return (
     <Transition
@@ -103,16 +117,31 @@ const RecipeForm = () => {
         </div>
         <IngredientSection ingredientList={recipeValues.ingredients} />
         <StepSection show={show} stepsList={recipeValues.steps} />
-        <LoadingButton
-          loading={
-            navigation.state === "submitting" || navigation.state === "loading"
-          }
-          type="submit"
-          buttonName="addRecipe"
-          buttonText="Add Recipe"
-          loadingText="Adding..."
-          Icon={PlusCircleIcon}
-        />
+        {recipe ? (
+          <LoadingButton
+            loading={
+              navigation.state === "submitting" ||
+              navigation.state === "loading"
+            }
+            type="submit"
+            buttonName="updateRecipe"
+            buttonText="Update Recipe"
+            loadingText="Updating..."
+            Icon={PlusCircleIcon}
+          />
+        ) : (
+          <LoadingButton
+            loading={
+              navigation.state === "submitting" ||
+              navigation.state === "loading"
+            }
+            type="submit"
+            buttonName="addRecipe"
+            buttonText="Add Recipe"
+            loadingText="Adding..."
+            Icon={PlusCircleIcon}
+          />
+        )}
       </div>
     </Transition>
   );

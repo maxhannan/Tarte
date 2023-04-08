@@ -3,6 +3,8 @@ import { useState } from "react";
 
 import IngredientAdder from "./IngredientAdder";
 import { v4 } from "uuid";
+import { FullRecipes } from "~/utils/recipes.server";
+import { useRouteData } from "~/hooks/useRouteData";
 
 interface Props {
   ingredientList?: Ingredient[];
@@ -12,11 +14,19 @@ export interface Ingredient {
   ingredient: string;
   qty: string | undefined;
   unit: string;
-  linkId: string | undefined;
-  linkRecipe: string | undefined;
+  linkId: string | null;
+  linkRecipe: { id: string; value: string } | null;
+  recipeId?: string;
 }
 
 const IngredientSection = ({ ingredientList }: Props) => {
+  const { recipes } = useRouteData("routes/app/recipes") as {
+    recipes: FullRecipes;
+  };
+  const recipeList = ingredientList![0].recipeId
+    ? recipes!.filter((r) => r.id !== ingredientList![0].recipeId)
+    : recipes;
+
   const [ingredients, setIngredients] = useState(
     ingredientList
       ? ingredientList
@@ -26,8 +36,8 @@ const IngredientSection = ({ ingredientList }: Props) => {
             ingredient: "Hello",
             qty: "",
             unit: "",
-            linkId: undefined,
-            linkRecipe: undefined,
+            linkId: null,
+            linkRecipe: null,
           },
         ]
   );
@@ -37,8 +47,8 @@ const IngredientSection = ({ ingredientList }: Props) => {
       ingredient: "",
       qty: "",
       unit: "",
-      linkId: undefined,
-      linkRecipe: undefined,
+      linkId: null,
+      linkRecipe: null,
     };
     setIngredients([...ingredients, newIngredient]);
   };
@@ -59,6 +69,7 @@ const IngredientSection = ({ ingredientList }: Props) => {
         <IngredientAdder
           key={i.id}
           ingredient={i}
+          recipes={recipeList}
           handleDelete={handleDelete}
         />
       ))}

@@ -7,6 +7,7 @@ const CustomTextInput = ({
   error,
   defaultValue,
   disabled = false,
+  required = true,
 }: {
   identifier: string;
   fieldName: string;
@@ -14,6 +15,7 @@ const CustomTextInput = ({
   error?: string;
   defaultValue?: string;
   disabled?: boolean;
+  required?: boolean;
 }) => {
   const [value, setValue] = useState(defaultValue || "");
 
@@ -41,7 +43,7 @@ const CustomTextInput = ({
           placeholder={fieldName}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          required
+          required={required}
           disabled={disabled}
         />
 

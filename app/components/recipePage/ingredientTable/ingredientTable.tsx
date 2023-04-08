@@ -21,7 +21,7 @@ const IngredientTable = ({ ingredients }: { ingredients: Ingredient[] }) => {
                 key={i.id}
                 ingredient={i.ingredient}
                 unit={i.unit}
-                amt={Number(i.qty)}
+                amt={i.qty ? Number(i.qty) : undefined}
                 link={i.linkId ? i.linkId : undefined}
               />
             ))}

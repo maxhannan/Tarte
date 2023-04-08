@@ -75,6 +75,35 @@ export const createRecipe = async (recipe: Recipe, userId: string) => {
   return newRecipe;
 };
 
+export const updateRecipe = async (id: string, recipe: Recipe) => {
+  const { name, category, allergens, yieldUnit, yieldAmt, ingredients, steps } =
+    recipe;
+
+  const [_, updatedRecipe] = await prisma.$transaction([
+    prisma.ingredient.deleteMany({ where: { recipeId: id } }),
+    prisma.recipe.update({
+      where: { id: id },
+      data: {
+        name,
+        category,
+        allergens,
+        yieldUnit,
+        yieldAmt,
+        steps,
+        ingredients: {
+          create: [...ingredients],
+        },
+      },
+      include: {
+        ingredients: true,
+        author: true,
+      },
+    }),
+  ]);
+
+  return updatedRecipe;
+};
+
 export type FullRecipes = Prisma.PromiseReturnType<typeof getRecipes>;
 
 export const getRecipes = async () => {
