@@ -1,9 +1,5 @@
-import {
-  ArrowLongLeftIcon,
-  ArrowLongRightIcon,
-} from "@heroicons/react/24/solid";
+import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 import { useNavigate } from "@remix-run/react";
-import { useState } from "react";
 
 const IngredientRow = ({
   ingredient,
@@ -34,7 +30,7 @@ const IngredientRow = ({
       <td className="px-3 py-2">
         <div className="flex  ">
           <p>
-            {amt + "  "}
+            {amt && amt + "  "}
             <b>{unit}</b>
           </p>
         </div>

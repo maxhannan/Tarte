@@ -1,5 +1,5 @@
 import { Outlet } from "@remix-run/react";
-import { LoaderFunction } from "react-router";
+import type { LoaderFunction } from "react-router";
 import { getRecipes } from "~/utils/recipes.server";
 
 export const loader: LoaderFunction = async () => {

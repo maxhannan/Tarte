@@ -1,26 +1,17 @@
 import { Transition } from "@headlessui/react";
 import {
   ArrowUturnLeftIcon,
-  LanguageIcon,
   PencilSquareIcon,
   ScaleIcon,
 } from "@heroicons/react/24/solid";
-import { LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useNavigate, useNavigation } from "@remix-run/react";
 import AppBar from "~/components/navigation/AppBar";
 import IngredientTable from "~/components/recipePage/ingredientTable/ingredientTable";
 import RecipeStep from "~/components/recipePage/RecipeStep";
 import Spinner from "~/components/status/smallSpinner";
-import { CompleteRecipe, getRecipeById } from "~/utils/recipes.server";
-
-const Allergens = [
-  "Not Vegetarian",
-  "Not Vegan",
-  "Dairy",
-  "Eggs",
-  "Fish",
-  "Shellfish",
-];
+import type { CompleteRecipe } from "~/utils/recipes.server";
+import { getRecipeById } from "~/utils/recipes.server";
 
 export const loader: LoaderFunction = async ({ request, params }) => {
   const recipe = await getRecipeById(params.id!);

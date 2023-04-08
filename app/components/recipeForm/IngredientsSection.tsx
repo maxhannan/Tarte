@@ -1,4 +1,4 @@
-import { PlusCircleIcon, PlusIcon } from "@heroicons/react/24/solid";
+import { PlusIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
 import IngredientAdder from "./IngredientAdder";

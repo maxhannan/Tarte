@@ -1,5 +1,5 @@
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import { Prisma } from "@prisma/client";
+
 import { useNavigate } from "@remix-run/react";
 
 interface recipeSummaryProps {
