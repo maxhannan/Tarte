@@ -10,15 +10,20 @@ import ComboBoxCustom from "../forms/Combobox";
 import LoadingButton from "../buttons/LoadingButton";
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import { v4 } from "uuid";
+import { useRouteData } from "~/hooks/useRouteData";
 
 const RecipeForm = () => {
   const [show, setShow] = useState(false);
+  const { categories } = useRouteData("routes/app/recipes") as {
+    categories: string[];
+  };
+
   const recipeValues = {
     name: "",
-    category: { id: "Sauces", value: "Sauces" },
+    category: undefined,
     allergens: undefined,
     yieldAmt: "",
-    yieldUnit: { id: "g", value: "Grams" },
+    yieldUnit: undefined,
     ingredients: [
       {
         id: v4(),
@@ -59,10 +64,10 @@ const RecipeForm = () => {
               placeholder="Category"
               allowCustom
               initValue={recipeValues.category}
-              options={[
-                { id: "allRecipes", value: "All Recipes" },
-                { id: "sauces", value: "Sauces" },
-              ]}
+              options={categories.map((c) => ({
+                id: c,
+                value: c,
+              }))}
             />
           </div>
           <div className="grid grid-cols-6 gap-x-2  ">

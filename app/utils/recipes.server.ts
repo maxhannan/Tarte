@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import { prisma } from "./prisma.server";
 
 interface Recipe {
@@ -74,6 +75,8 @@ export const createRecipe = async (recipe: Recipe, userId: string) => {
   return newRecipe;
 };
 
+export type FullRecipes = Prisma.PromiseReturnType<typeof getRecipes>;
+
 export const getRecipes = async () => {
   try {
     const recipes = await prisma.recipe.findMany({
@@ -86,11 +89,7 @@ export const getRecipes = async () => {
         id: true,
         name: true,
         category: true,
-        yieldAmt: true,
-        yieldUnit: true,
-        createdAt: true,
         allergens: true,
-        steps: true,
         author: {
           select: {
             firstName: true,
@@ -98,34 +97,27 @@ export const getRecipes = async () => {
             username: true,
           },
         },
-        linkedIngredients: {
-          select: {
-            id: true,
-            recipe: {
-              select: {
-                name: true,
-                id: true,
-              },
-            },
-          },
-        },
-        ingredients: {
-          select: {
-            ingredient: true,
-            qty: true,
-            unit: true,
-            linkId: true,
-            linkRecipe: {
-              select: {
-                name: true,
-                id: true,
-              },
-            },
-          },
-        },
       },
     });
     return recipes;
+  } catch (error) {
+    return null;
+  }
+};
+
+export type CompleteRecipe = Prisma.PromiseReturnType<typeof getRecipeById>;
+
+export const getRecipeById = async (id: string) => {
+  try {
+    const recipe = prisma.recipe.findUnique({
+      where: { id: id },
+      include: {
+        author: true,
+        ingredients: true,
+        linkedIngredients: true,
+      },
+    });
+    return recipe;
   } catch (error) {
     return null;
   }

@@ -4,31 +4,23 @@ const IngredientRow = ({
   ingredient,
   amt,
   unit,
-  last = false,
 }: {
   ingredient: string;
   amt?: number;
   unit: string;
-  last?: boolean;
 }) => {
-  const [checked, setChecked] = useState(false);
   return (
-    <tr
-      onClick={() => setChecked(!checked)}
-      className={`${
-        checked && "bg-green-500"
-      } transition-all duration-300 bg-opacity-70  `}
-    >
-      <th
-        scope="row"
-        className={`${
-          last && "rounded-bl-3xl"
-        }  px-6 py-4  font-light text-gray-900 whitespace-nowrap dark:text-white`}
-      >
-        {ingredient}
-      </th>
-      <td className={`${last && "rounded-br-3xl"}   px-6 py-4`}>
-        {amt ? amt + " " + unit : unit}
+    <tr className="max-w-xs break-words ">
+      <td style={{ maxWidth: "100px" }} className="px-6 py-4 break-all">
+        <p className="break-all">{ingredient}</p>
+      </td>
+      <td className="px-3 py-2">
+        <div className="flex  ">
+          <p>
+            {amt + "  "}
+            <b>{unit}</b>
+          </p>
+        </div>
       </td>
     </tr>
   );

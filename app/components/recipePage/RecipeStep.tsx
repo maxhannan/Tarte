@@ -4,7 +4,7 @@ const RecipeStep = ({
   stepNum,
   content,
 }: {
-  stepNum: string;
+  stepNum: number;
   content: string;
 }) => {
   const [checked, setChecked] = useState(false);

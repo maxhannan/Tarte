@@ -1,23 +1,14 @@
 import { ArrowUturnLeftIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
-import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
-import {
-  Form,
-  useLoaderData,
-  useMatches,
-  useNavigate,
-  useNavigation,
-} from "@remix-run/react";
+import type { ActionFunction } from "@remix-run/node";
+import { redirect } from "@remix-run/node";
+import { Form, useNavigate, useNavigation } from "@remix-run/react";
 
 import AppBar from "~/components/navigation/AppBar";
 import RecipeForm from "~/components/recipeForm/recipeForm";
 import Spinner from "~/components/status/smallSpinner";
-import { useRouteData } from "~/hooks/useRouteData";
+
 import { getUser } from "~/utils/auth.server";
-import {
-  createRecipe,
-  extractRecipe,
-  getRecipes,
-} from "~/utils/recipes.server";
+import { createRecipe, extractRecipe } from "~/utils/recipes.server";
 
 export const action: ActionFunction = async ({ request }) => {
   const user = await getUser(request);

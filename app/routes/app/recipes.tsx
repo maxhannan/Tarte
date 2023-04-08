@@ -4,8 +4,8 @@ import { getRecipes } from "~/utils/recipes.server";
 
 export const loader: LoaderFunction = async () => {
   const recipes = await getRecipes();
-
-  return recipes;
+  const categories = [...new Set(recipes!.map((r) => r.category))];
+  return { recipes, categories };
 };
 const RecipesLayout = () => {
   return <Outlet />;

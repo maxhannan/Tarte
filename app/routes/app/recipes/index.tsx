@@ -6,15 +6,9 @@ import {
   DocumentPlusIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
-import { LoaderFunction } from "@remix-run/node";
-import {
-  useLoaderData,
-  useMatches,
-  useNavigate,
-  useNavigation,
-  useSubmit,
-} from "@remix-run/react";
-import { Fragment, useState } from "react";
+
+import { useNavigate, useNavigation, useSubmit } from "@remix-run/react";
+import { useState } from "react";
 import ComboBoxCustom from "~/components/forms/Combobox";
 import MultiSelectBox from "~/components/forms/MultiSelectBox";
 
@@ -24,7 +18,7 @@ import AppBar from "~/components/navigation/AppBar";
 import RecipeFeed from "~/components/recipefeed/RecipeFeed";
 import Spinner from "~/components/status/smallSpinner";
 import { useRouteData } from "~/hooks/useRouteData";
-import { getRecipes } from "~/utils/recipes.server";
+import type { FullRecipes } from "~/utils/recipes.server";
 
 const RecipesPage = () => {
   const [openFilter, setOpenFilter] = useState(false);
@@ -32,7 +26,10 @@ const RecipesPage = () => {
   const submit = useSubmit();
   const navigation = useNavigation();
 
-  const recipes = useRouteData("routes/app/recipes");
+  const { recipes, categories } = useRouteData("routes/app/recipes") as {
+    recipes: FullRecipes;
+    categories: string[];
+  };
 
   if (navigation.state === "loading") {
     return <Spinner size={14} />;
@@ -103,10 +100,10 @@ const RecipesPage = () => {
         <ComboBoxCustom
           name="category"
           placeholder="Category"
-          options={[
-            { id: "allRecipes", value: "All Recipes" },
-            { id: "sauces", value: "Sauces" },
-          ]}
+          options={categories.map((c) => ({
+            id: c,
+            value: c,
+          }))}
         />
         <MultiSelectBox name="allergens" />
       </Transition>

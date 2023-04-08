@@ -4,11 +4,13 @@ import {
   LanguageIcon,
   PencilSquareIcon,
 } from "@heroicons/react/24/solid";
-import { useNavigate, useNavigation } from "@remix-run/react";
+import { LoaderFunction } from "@remix-run/node";
+import { useLoaderData, useNavigate, useNavigation } from "@remix-run/react";
 import AppBar from "~/components/navigation/AppBar";
 import IngredientTable from "~/components/recipePage/ingredientTable/ingredientTable";
 import RecipeStep from "~/components/recipePage/RecipeStep";
 import Spinner from "~/components/status/smallSpinner";
+import { CompleteRecipe, getRecipeById } from "~/utils/recipes.server";
 
 const Allergens = [
   "Not Vegetarian",
@@ -18,16 +20,25 @@ const Allergens = [
   "Fish",
   "Shellfish",
 ];
+
+export const loader: LoaderFunction = async ({ request, params }) => {
+  const recipe = await getRecipeById(params.id!);
+  return recipe;
+};
+
 const RecipePage = () => {
   const navigate = useNavigate();
   const navigation = useNavigation();
-  if (navigation.state === "loading") {
+
+  const recipe = useLoaderData() as CompleteRecipe;
+  console.log(recipe);
+  if (navigation.state === "loading" || recipe === null) {
     return <Spinner size={14} />;
   }
   return (
     <div className="mb-28">
       <AppBar
-        page={"Compressed Watermelon"}
+        page={recipe!.name}
         textSize="text-2xl"
         buttons={[
           {
@@ -57,38 +68,27 @@ const RecipePage = () => {
         appear
         show
       >
-        <IngredientTable />
+        <IngredientTable ingredients={recipe.ingredients} />
 
         <div className="flex mt-4 gap-2 flex-wrap">
-          {Allergens.map((a) => (
-            <div
-              key={a}
-              className=" bg-red-500 p-2 px-3 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl text-base text-neutral-100 dark:text-neutral-100 "
-            >
-              {a}
-            </div>
-          ))}
+          {recipe.allergens.length > 0 &&
+            recipe.allergens.map((a) => (
+              <div
+                key={a}
+                className=" bg-red-500 p-2 px-3 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl text-base text-neutral-100 dark:text-neutral-100 "
+              >
+                {a}
+              </div>
+            ))}
         </div>
-
-        <RecipeStep
-          stepNum="One"
-          content="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            quos est totam voluptates veniam magni fugiat ad. Deleniti fuga ex
-            rem? Deleniti alias labore, similique maxime expedita modi quo
-            ratione."
-        />
-        <RecipeStep
-          stepNum="Two"
-          content="Lorem, ipsum dolor sit amet consectetur adipisicing elit."
-        />
-        <RecipeStep
-          stepNum="Three"
-          content="Lorem, ipsum dolor sit amet consectetur adipisicing elit."
-        />
-        <RecipeStep
-          stepNum="Four"
-          content="Lorem, ipsum dolor sit amet consectetur adipisicing elit."
-        />
+        {recipe.steps.length > 0 &&
+          recipe.steps.map((s) => (
+            <RecipeStep
+              key={s}
+              stepNum={recipe.steps.indexOf(s) + 1}
+              content={s}
+            />
+          ))}
       </Transition>
     </div>
   );

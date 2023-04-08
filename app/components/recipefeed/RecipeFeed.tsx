@@ -1,7 +1,8 @@
 import { Transition } from "@headlessui/react";
 import RecipeSummary from "./RecipeSummary";
+import type { FullRecipes } from "~/utils/recipes.server";
 
-const RecipeFeed = ({ recipeList }) => {
+const RecipeFeed = ({ recipeList }: { recipeList: FullRecipes }) => {
   return (
     <Transition
       enter="transition-all transform  ease-in-out  duration-500"
@@ -15,14 +16,16 @@ const RecipeFeed = ({ recipeList }) => {
       show
     >
       <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2 max-w-2xl mx-auto mt-4 mb-16">
-        {recipeList.map((r) => (
-          <RecipeSummary
-            key={r.id}
-            id={r.id}
-            name={r.name}
-            category={r.category}
-          />
-        ))}
+        {recipeList &&
+          recipeList.map((r) => (
+            <RecipeSummary
+              key={r.id}
+              id={r.id}
+              name={r.name}
+              category={r.category}
+              user={r.author!.firstName[0] + r.author!.lastName[0]}
+            />
+          ))}
       </div>
     </Transition>
   );

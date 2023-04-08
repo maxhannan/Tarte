@@ -7,6 +7,7 @@ import type { Ingredient } from "./IngredientsSection";
 import LinkRecipeComboBox from "../forms/LinkRecipeBox";
 import { useState } from "react";
 import { useRouteData } from "~/hooks/useRouteData";
+import type { FullRecipes } from "~/utils/recipes.server";
 
 interface Props {
   handleDelete: (id: string) => void;
@@ -14,16 +15,16 @@ interface Props {
 }
 
 const IngredientAdder = ({ handleDelete, ingredient }: Props) => {
-  const recipes = useRouteData("routes/app/recipes");
-  console.log({ recipes }, "ADD RECIPE");
+  const { recipes } = useRouteData("routes/app/recipes") as {
+    recipes: FullRecipes;
+  };
+
   const linkOption =
     ingredient.linkId && ingredient.linkRecipe
       ? { id: ingredient.linkId, value: ingredient.linkRecipe }
       : null;
 
   const [selectedLink, setSelectedLink] = useState(linkOption);
-
-  console.log(selectedLink);
 
   return (
     <div className="grid grid-cols-5  gap-y-4 gap-x-2 w-full col-span-5 ">
@@ -51,7 +52,7 @@ const IngredientAdder = ({ handleDelete, ingredient }: Props) => {
           placeholder="Link a recipe"
           selected={selectedLink}
           setSelected={setSelectedLink}
-          options={recipes.map((r) => ({ id: r.id, value: r.name }))}
+          options={recipes!.map((r) => ({ id: r.id, value: r.name }))}
         />
       </div>
       <div className="col-span-2 ">
