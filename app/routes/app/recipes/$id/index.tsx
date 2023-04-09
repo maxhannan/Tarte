@@ -54,10 +54,10 @@ const RecipeIndex = () => {
         appear
         show
       >
-        <div className="text-3xl  gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-600 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
+        <div className="text-2xl  gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-600 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
           <div>{recipe!.name}</div>
         </div>
-        <div className="text-lg bg-neutral-200 dark:bg-neutral-800 px-3  items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
+        <div className="text-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3  items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
           <div>
             {" "}
             <b>Yields: </b>
