@@ -106,7 +106,7 @@ const RecipeIndex = () => {
         {recipe!.linkedIngredients.length > 0 && (
           <div className="text-xl bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200  p-4 mt-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl ">
             Component of
-            <div className="flex gap-1 flex-wrap r mt-2">
+            <div className="flex gap-3 flex-wrap r mt-2">
               {recipe!.linkedIngredients.map((li) => (
                 <div key={li.recipe.id}>
                   <Link to={`/app/recipes/${li.recipe.id}`}>
