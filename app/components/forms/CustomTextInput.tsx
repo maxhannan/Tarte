@@ -37,7 +37,7 @@ const CustomTextInput = ({
           type={type}
           className={`rounded-r-xl rounded-l-md dark:bg-neutral-800 bg-neutral-200 rounded-bl-xl focus:ring-neutral-500  border relative    h-12 w-full p-2 pl-4 text-xl  appearance-none  focus:ring-2 focus:outline-none focus:border-none     placeholder-neutral-500   dark:placeholder-neutral-400   ${
             disabled
-              ? "border-2 border-green-500 text-neutral-500"
+              ? "border-2 border-violet-500 text-violet-500 "
               : " text-neutral-800 dark:text-neutral-50 border-neutral-300 dark:border-neutral-700"
           } `}
           placeholder={fieldName}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Combobox } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import { XCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
 interface ComboBoxProps {
   options: Option[];
@@ -59,9 +59,9 @@ export default function LinkRecipeComboBox({
           displayValue={selected ? (option: Option) => option.value : undefined}
         />
         {selected !== null && (
-          <XMarkIcon
+          <XCircleIcon
             onClick={() => setSelected(null)}
-            className="w-6 h-6 absolute top-3 right-2 text-neutral-700 dark:text-neutral-200 hover:text-red-500"
+            className="w-6 h-6 absolute top-3 right-2 text-violet-500 dark:text-violet-500 hover:text-violet-600"
           />
         )}
         <Combobox.Options className="absolute mt-2 bg-neutral-100 z-50   rounded-r-2xl rounded-l-sm rounded-bl-2xl max-h-48 w-full  overflow-auto rounded-md  dark:bg-neutral-800 py-1 text-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  ">

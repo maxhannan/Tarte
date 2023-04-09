@@ -1,10 +1,13 @@
 import { Transition } from "@headlessui/react";
 import {
+  ArrowLongRightIcon,
   ArrowUturnLeftIcon,
   PencilSquareIcon,
   ScaleIcon,
 } from "@heroicons/react/24/solid";
-import { useNavigate } from "@remix-run/react";
+import { Link, useNavigate } from "@remix-run/react";
+import dayjs from "dayjs";
+import Chip from "~/components/forms/Chip";
 import AppBar from "~/components/navigation/AppBar";
 import IngredientTable from "~/components/recipePage/ingredientTable/ingredientTable";
 import RecipeStep from "~/components/recipePage/RecipeStep";
@@ -20,7 +23,7 @@ const RecipeIndex = () => {
     <>
       <AppBar
         page={recipe!.name}
-        textSize="text-2xl"
+        textSize="text-3xl"
         buttons={[
           {
             Icon: PencilSquareIcon,
@@ -49,6 +52,18 @@ const RecipeIndex = () => {
         appear
         show
       >
+        <div className="text-xl bg-neutral-200 dark:bg-neutral-800 px-4  items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
+          <div>
+            {" "}
+            <b>Yields: </b>
+            {recipe?.yieldAmt + " " + recipe?.yieldUnit}{" "}
+          </div>
+          <div>
+            <div className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl text-lg text-neutral-100 dark:text-neutral-100 ">
+              {recipe?.category} <ArrowLongRightIcon className="w-5 h-5" />
+            </div>
+          </div>
+        </div>
         <IngredientTable ingredients={recipe!.ingredients} />
 
         <div className="flex mt-4 gap-2 flex-wrap">
@@ -62,6 +77,7 @@ const RecipeIndex = () => {
               </div>
             ))}
         </div>
+
         {recipe!.steps.length > 0 &&
           recipe!.steps.map((s) => (
             <RecipeStep
@@ -70,6 +86,40 @@ const RecipeIndex = () => {
               content={s}
             />
           ))}
+        <div className="text-2xl bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200 p-4 mt-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl ">
+          Recipe Info
+          <div className="flex gap-3 flex-wrap r mt-2 text-xl ">
+            <div>
+              <b>Author: </b>
+              {recipe?.author?.firstName + " " + recipe?.author?.lastName}
+            </div>
+
+            <div>
+              <b>Updated At: </b>
+              {dayjs(recipe?.updatedAt)
+                .format("dddd/MMM/YYYY")
+                .split("/")
+                .join(" ")}
+            </div>
+          </div>
+        </div>
+        {recipe!.linkedIngredients.length > 0 && (
+          <div className="text-xl bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200  p-4 mt-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl ">
+            Component of
+            <div className="flex gap-1 flex-wrap r mt-2">
+              {recipe!.linkedIngredients.map((li) => (
+                <div key={li.recipe.id}>
+                  <Link to={`/app/recipes/${li.recipe.id}`}>
+                    <div className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl text-base text-neutral-100 dark:text-neutral-100 ">
+                      {li.recipe.name}{" "}
+                      <ArrowLongRightIcon className="w-5 h-5" />
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </Transition>
     </>
   );

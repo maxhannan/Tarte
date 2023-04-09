@@ -16,8 +16,8 @@ const RecipeSummary = ({ id, name, category, user }: recipeSummaryProps) => {
       onClick={() => navigate(`/app/recipes/${id}`)}
       className="  w-full max-h-full border-neutral-300 border  bg-neutral-200 rounded-r-2xl rounded-l-md rounded-bl-2xl py-4   flex justify-start items-center  px-4 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-neutral-700"
     >
-      <div className="inline-flex flex-shrink-0 items-center mr-4 justify-center w-14 h-14 overflow-hidden bg-neutral-700 rounded-r-2xl rounded-l-md rounded-bl-2xl dark:bg-neutral-700">
-        <span className=" text-3xl text-gray-100 dark:text-gray-300">
+      <div className="inline-flex flex-shrink-0 items-center mr-4 justify-center w-14 h-14 overflow-hidden bg-neutral-500 text-neutral-700 border-neutral-300 rounded-r-2xl rounded-l-md rounded-bl-2xl dark:bg-neutral-800 border dark:border-neutral-700">
+        <span className=" text-3xl text-neutral-200 dark:text-neutral-300">
           {user.toLowerCase()}
         </span>
       </div>
@@ -25,7 +25,7 @@ const RecipeSummary = ({ id, name, category, user }: recipeSummaryProps) => {
         <h5 className="text-xl  text-neutral-700 dark:text-neutral-100">
           {name}
         </h5>
-        <h6 className="text-md mt-1  text-neutral-500 dark:text-neutral-400">
+        <h6 className="text-lg mt-1  text-violet-500 dark:text-violet-300">
           {category}
         </h6>
       </div>

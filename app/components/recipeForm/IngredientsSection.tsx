@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import IngredientAdder from "./IngredientAdder";
 import { v4 } from "uuid";
-import { FullRecipes } from "~/utils/recipes.server";
+import type { FullRecipes } from "~/utils/recipes.server";
 import { useRouteData } from "~/hooks/useRouteData";
 
 interface Props {
