@@ -42,9 +42,7 @@ export const loader: LoaderFunction = async ({ request }) => {
           allergyFree = false;
         }
       });
-      if (allergyFree) {
-        return r;
-      }
+      return allergyFree;
     });
     recipeList = allergyRecipes;
   }

@@ -3,11 +3,11 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/solid";
 import SearchBar from "../forms/SearchBar";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
-import ComboBoxCustom, { Option } from "../forms/Combobox";
+import type { Option } from "../forms/Combobox";
 import MultiSelectBox from "../forms/MultiSelectBox";
-import { Form } from "@remix-run/react";
+
 import { useDebounce } from "~/hooks/useDebounce";
 import CategoryBox from "../forms/CategoryBox";
 
@@ -29,7 +29,7 @@ const SearchAndFilter = ({
   const category = searchParams.get("category");
   const allergies = searchParams.get("allergies");
 
-  let [debouncedQuery, isDebouncing] = useDebounce(searchValue, 300);
+  let [debouncedQuery] = useDebounce(searchValue, 300);
 
   const handleSearch: (search: string) => void = (search: string) => {
     console.log({ search });
@@ -66,6 +66,7 @@ const SearchAndFilter = ({
       searchParams.delete("search");
       setSearchParams(searchParams);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedQuery]);
 
   return (
