@@ -3,14 +3,13 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/solid";
 import SearchBar from "../forms/SearchBar";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Transition } from "@headlessui/react";
 import type { Option } from "../forms/Combobox";
 import MultiSelectBox from "../forms/MultiSelectBox";
 
 import { useDebounce } from "~/hooks/useDebounce";
 import CategoryBox from "../forms/CategoryBox";
-import { useNavigation } from "@remix-run/react";
 
 interface Props {
   categories: string[];
@@ -40,7 +39,6 @@ const SearchAndFilter = ({
   };
 
   const handleCategorize = (category: Option | null) => {
-    console.log({ category });
     if (category) {
       searchParams.set("category", category.value);
       setSearchParams(searchParams);
@@ -60,15 +58,22 @@ const SearchAndFilter = ({
       setSearchParams(searchParams);
     }
   };
+
+  let initialRender = useRef(true);
+
   useEffect(() => {
     let searchParams = new URLSearchParams(location.search);
-    if (debouncedQuery.length > 0) {
-      searchParams.set("search", debouncedQuery);
-      setSearchParams(searchParams);
+    if (initialRender.current) {
+      initialRender.current = false;
     } else {
-      searchParams.delete("search");
+      if (debouncedQuery.length > 0) {
+        searchParams.set("search", debouncedQuery);
+      } else {
+        searchParams.delete("search");
+      }
       setSearchParams(searchParams);
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedQuery]);
 

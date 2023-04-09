@@ -1,6 +1,6 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { Outlet, useLocation } from "@remix-run/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import BottomNav from "~/components/navigation/BottomNav";
 import { getUser, requireUserId } from "~/utils/auth.server";

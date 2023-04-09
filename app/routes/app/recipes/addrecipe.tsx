@@ -1,7 +1,13 @@
 import { ArrowUturnLeftIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
 import type { ActionFunction } from "@remix-run/node";
-import { redirect } from "@remix-run/node";
-import { Form, useNavigate, useNavigation } from "@remix-run/react";
+
+import {
+  Form,
+  useActionData,
+  useNavigate,
+  useNavigation,
+} from "@remix-run/react";
+import { useEffect } from "react";
 
 import AppBar from "~/components/navigation/AppBar";
 import RecipeForm from "~/components/recipeForm/recipeForm";
@@ -19,15 +25,24 @@ export const action: ActionFunction = async ({ request }) => {
     const savedRecipe = await createRecipe(newRecipe, user.id);
     console.log({ savedRecipe });
 
-    return redirect(`/app/recipes/${savedRecipe.id}`);
+    return savedRecipe.id;
   }
 
-  return null;
+  return undefined;
 };
 
 const AddRecipe = () => {
   const navigate = useNavigate();
   const navigation = useNavigation();
+  const data = useActionData();
+
+  useEffect(() => {
+    if (data !== undefined) {
+      navigate(`/app/recipes/${data}`, { replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
+
   if (navigation.state === "loading") {
     return (
       <div className="h-screen  flex items-center justify-center">
@@ -35,6 +50,7 @@ const AddRecipe = () => {
       </div>
     );
   }
+
   return (
     <div>
       <AppBar

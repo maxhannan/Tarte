@@ -27,7 +27,7 @@ const RecipeIndex = () => {
           {
             Icon: PencilSquareIcon,
             buttonName: "Edit Recipe",
-            action: () => navigate("edit"),
+            action: () => navigate("edit", { replace: true }),
           },
           {
             Icon: ScaleIcon,
