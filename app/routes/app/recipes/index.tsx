@@ -35,7 +35,7 @@ const RecipesPage = () => {
 
   const pageChangeLoading =
     navigation.state === "loading" &&
-    !navigation.location.pathname.includes("/app/recipes");
+    navigation.location.pathname !== "/app/recipes";
 
   const { recipes, recipeList, categories } = useRouteData(
     "routes/app/recipes"
@@ -52,6 +52,8 @@ const RecipesPage = () => {
       </div>
     );
   }
+
+  console.log(navigation.location);
   return (
     <>
       <AppBar
