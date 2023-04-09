@@ -23,9 +23,10 @@ const IngredientSection = ({ ingredientList }: Props) => {
   const { recipes } = useRouteData("routes/app/recipes") as {
     recipes: FullRecipes;
   };
-  const recipeList = ingredientList![0].recipeId
-    ? recipes!.filter((r) => r.id !== ingredientList![0].recipeId)
-    : recipes;
+  const recipeList =
+    ingredientList && ingredientList.length > 0 && ingredientList[0].recipeId
+      ? recipes!.filter((r) => r.id !== ingredientList![0].recipeId)
+      : recipes;
 
   const [ingredients, setIngredients] = useState(
     ingredientList

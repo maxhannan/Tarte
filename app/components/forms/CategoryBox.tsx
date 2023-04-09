@@ -8,7 +8,7 @@ interface ComboBoxProps {
   name: string;
   allowCustom?: boolean;
   initValue?: Option;
-  changeHandler?: (value: Option | null) => void;
+  changeHandler: (value: Option | null) => void;
 }
 
 export interface Option {
@@ -48,15 +48,11 @@ export default function CategoryBox({
   return (
     <Combobox
       value={selected}
-      onChange={
-        changeHandler
-          ? (value) => {
-              console.log({ value });
-              changeHandler(value);
-              setSelected(value);
-            }
-          : setSelected
-      }
+      onChange={(value) => {
+        console.log({ value });
+        changeHandler(value);
+        setSelected(value);
+      }}
     >
       <div className="relative">
         <Combobox.Input
@@ -69,14 +65,10 @@ export default function CategoryBox({
         />
         {selected !== null && (
           <XCircleIcon
-            onClick={
-              changeHandler
-                ? () => {
-                    changeHandler(null);
-                    setSelected(null);
-                  }
-                : setSelected(null)
-            }
+            onClick={() => {
+              changeHandler(null);
+              setSelected(null);
+            }}
             className="w-6 h-6 absolute top-3 right-2 text-violet-500 dark:text-violet-500 hover:text-violet-600 "
           />
         )}

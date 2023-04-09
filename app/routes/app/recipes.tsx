@@ -24,7 +24,7 @@ const filterAndCategorize = (
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   const params = new URLSearchParams(url.search);
-  console.log({ params });
+
   const recipes = await getRecipes();
 
   const search = params.get("search");

@@ -42,12 +42,13 @@ export const extractRecipe = (form: FormData) => {
     };
   });
 
+  console.log("allergies", { allergies });
   return {
     name,
     category,
     yieldAmt,
     yieldUnit,
-    allergens: allergies?.split(","),
+    allergens: allergies.length > 0 ? allergies?.split(",") : [],
     ingredients,
     steps,
   };
@@ -128,7 +129,7 @@ export const getRecipes = async () => {
         },
       },
     });
-    console.log("DATABASE");
+
     return recipes;
   } catch (error) {
     return null;

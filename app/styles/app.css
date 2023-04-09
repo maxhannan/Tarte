@@ -1596,11 +1596,6 @@ select {
   color: rgb(139 92 246 / var(--tw-text-opacity));
 }
 
-.text-violet-700 {
-  --tw-text-opacity: 1;
-  color: rgb(109 40 217 / var(--tw-text-opacity));
-}
-
 .underline {
   text-decoration-line: underline;
 }
@@ -1750,11 +1745,6 @@ html {
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.hover\:text-red-500:hover {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .focus\:border-none:focus {
@@ -1929,11 +1919,6 @@ html {
   .dark\:text-white {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
-  }
-
-  .dark\:text-violet-200 {
-    --tw-text-opacity: 1;
-    color: rgb(221 214 254 / var(--tw-text-opacity));
   }
 
   .dark\:placeholder-neutral-400::-moz-placeholder {
