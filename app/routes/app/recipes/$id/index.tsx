@@ -52,14 +52,14 @@ const RecipeIndex = () => {
         appear
         show
       >
-        <div className="text-xl bg-neutral-200 dark:bg-neutral-800 px-4  items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
+        <div className="text-lg bg-neutral-200 dark:bg-neutral-800 px-3  items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
           <div>
             {" "}
             <b>Yields: </b>
             {recipe?.yieldAmt + " " + recipe?.yieldUnit}{" "}
           </div>
           <div>
-            <div className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl text-lg text-neutral-100 dark:text-neutral-100 ">
+            <div className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl text-lg text-neutral-100 dark:text-neutral-100 ">
               {recipe?.category} <ArrowLongRightIcon className="w-5 h-5" />
             </div>
           </div>
