@@ -71,7 +71,7 @@ const RecipeIndex = () => {
             recipe!.allergens.map((a) => (
               <div
                 key={a}
-                className=" bg-red-500 p-2 px-3 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl text-base text-neutral-100 dark:text-neutral-100 "
+                className=" bg-violet-500 p-2 px-3 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl text-base text-neutral-100 dark:text-neutral-100 "
               >
                 {a}
               </div>
