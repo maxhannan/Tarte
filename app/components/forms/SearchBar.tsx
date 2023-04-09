@@ -1,5 +1,4 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { ChangeEvent, useState } from "react";
 
 const SearchBar = ({
   handleChange,

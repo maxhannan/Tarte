@@ -1,11 +1,4 @@
-import { Transition } from "@headlessui/react";
-
-import {
-  AdjustmentsHorizontalIcon,
-  XMarkIcon,
-  DocumentPlusIcon,
-  UserIcon,
-} from "@heroicons/react/24/solid";
+import { DocumentPlusIcon, UserIcon } from "@heroicons/react/24/solid";
 
 import {
   useNavigate,
@@ -13,17 +6,13 @@ import {
   useSearchParams,
   useSubmit,
 } from "@remix-run/react";
-import { useEffect, useState } from "react";
-import ComboBoxCustom from "~/components/forms/Combobox";
-import MultiSelectBox from "~/components/forms/MultiSelectBox";
 
-import SearchBar from "~/components/forms/SearchBar";
 import SearchAndFilter from "~/components/menus/SearchAndFilter";
 
 import AppBar from "~/components/navigation/AppBar";
 import RecipeFeed from "~/components/recipefeed/RecipeFeed";
 import Spinner from "~/components/status/smallSpinner";
-import { useDebounce } from "~/hooks/useDebounce";
+
 import { useRouteData } from "~/hooks/useRouteData";
 import type { FullRecipes } from "~/utils/recipes.server";
 
@@ -53,7 +42,6 @@ const RecipesPage = () => {
     );
   }
 
-  console.log(navigation);
   return (
     <>
       <AppBar

@@ -2,14 +2,11 @@ import { Transition } from "@headlessui/react";
 import {
   ArrowLongRightIcon,
   ArrowUturnLeftIcon,
-  FaceSmileIcon,
-  PaperClipIcon,
   PencilSquareIcon,
   ScaleIcon,
 } from "@heroicons/react/24/solid";
 import { Link, useNavigate } from "@remix-run/react";
 import dayjs from "dayjs";
-import Chip from "~/components/forms/Chip";
 import AppBar from "~/components/navigation/AppBar";
 import IngredientTable from "~/components/recipePage/ingredientTable/ingredientTable";
 import RecipeStep from "~/components/recipePage/RecipeStep";

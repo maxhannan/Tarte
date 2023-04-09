@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Combobox } from "@headlessui/react";
-import { XCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { XCircleIcon } from "@heroicons/react/24/solid";
 
 interface ComboBoxProps {
   options: Option[];

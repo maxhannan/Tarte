@@ -10,6 +10,7 @@ import MultiSelectBox from "../forms/MultiSelectBox";
 
 import { useDebounce } from "~/hooks/useDebounce";
 import CategoryBox from "../forms/CategoryBox";
+import { useNavigation } from "@remix-run/react";
 
 interface Props {
   categories: string[];
@@ -22,12 +23,14 @@ const SearchAndFilter = ({
   searchParams,
   setSearchParams,
 }: Props) => {
-  const [openFilter, setOpenFilter] = useState(false);
+  const category = searchParams.get("category");
+  const allergies = searchParams.get("allergies");
+  const [openFilter, setOpenFilter] = useState(
+    category !== null || allergies !== null ? true : false
+  );
   const [searchValue, setSearchValue] = useState(
     searchParams.get("search") || ""
   );
-  const category = searchParams.get("category");
-  const allergies = searchParams.get("allergies");
 
   let [debouncedQuery] = useDebounce(searchValue, 300);
 
@@ -107,7 +110,7 @@ const SearchAndFilter = ({
         </div>
 
         <Transition
-          show={openFilter || category !== null || allergies !== null}
+          show={openFilter}
           className="z-30 relative flex-col flex gap-4 mt-4 "
           enter="transition-all ease-linear duration-500  overflow-hidden"
           enterFrom="transform opacity-0 max-h-0"
