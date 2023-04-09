@@ -27,6 +27,7 @@ const SearchAndFilter = ({
     searchParams.get("search") || ""
   );
   const category = searchParams.get("category");
+  const allergies = searchParams.get("allergies");
 
   let [debouncedQuery, isDebouncing] = useDebounce(searchValue, 300);
 
@@ -44,8 +45,17 @@ const SearchAndFilter = ({
       searchParams.delete("category");
       setSearchParams(searchParams);
     }
+  };
 
-    setSearchParams(searchParams);
+  const handleAllergies = (value: string[]) => {
+    console.log(value.join(","));
+    if (value.length > 0) {
+      searchParams.set("allergies", value.join(","));
+      setSearchParams(searchParams);
+    } else {
+      searchParams.delete("allergies");
+      setSearchParams(searchParams);
+    }
   };
   useEffect(() => {
     let searchParams = new URLSearchParams(location.search);
@@ -96,7 +106,7 @@ const SearchAndFilter = ({
         </div>
 
         <Transition
-          show={openFilter || category !== null}
+          show={openFilter || category !== null || allergies !== null}
           className="z-30 relative flex-col flex gap-4 mt-4 "
           enter="transition-all ease-linear duration-500  overflow-hidden"
           enterFrom="transform opacity-0 max-h-0"
@@ -122,7 +132,12 @@ const SearchAndFilter = ({
               value: c,
             }))}
           />
-          <MultiSelectBox name="allergens" />
+          <MultiSelectBox
+            name="allergens"
+            changeHandler={handleAllergies}
+            initalValue={allergies ? allergies.split(",") : []}
+            placeholder="Filter Out Allergens"
+          />
         </Transition>
       </Transition>
     </>

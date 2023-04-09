@@ -29,8 +29,25 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   const search = params.get("search");
   const category = params.get("category");
+  const allergies = params.get("allergies");
+  const alergyList = allergies && allergies.split(",");
 
-  const recipeList = filterAndCategorize(recipes, search, category);
+  let recipeList = filterAndCategorize(recipes, search, category);
+  let allergyRecipes;
+  if (recipeList!.length > 0 && alergyList) {
+    allergyRecipes = recipeList!.filter((r) => {
+      let allergyFree = true;
+      alergyList.forEach((a) => {
+        if (r.allergens.includes(a)) {
+          allergyFree = false;
+        }
+      });
+      if (allergyFree) {
+        return r;
+      }
+    });
+    recipeList = allergyRecipes;
+  }
   const categories = [...new Set(recipes!.map((r) => r.category))];
   return { recipes, recipeList, categories };
 };

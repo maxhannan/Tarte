@@ -53,7 +53,7 @@ const RecipesPage = () => {
     );
   }
 
-  console.log(navigation.location);
+  console.log(navigation);
   return (
     <>
       <AppBar
