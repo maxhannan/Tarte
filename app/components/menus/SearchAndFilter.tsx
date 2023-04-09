@@ -10,7 +10,7 @@ import MultiSelectBox from "../forms/MultiSelectBox";
 
 import { useDebounce } from "~/hooks/useDebounce";
 import CategoryBox from "../forms/CategoryBox";
-import { useNavigate, useNavigation } from "@remix-run/react";
+import { useNavigation } from "@remix-run/react";
 
 interface Props {
   categories: string[];
@@ -33,7 +33,7 @@ const SearchAndFilter = ({
     searchParams.get("search") || ""
   );
 
-  let [debouncedQuery, isDebouncing] = useDebounce(searchValue, 300);
+  let [debouncedQuery, isDebouncing] = useDebounce(searchValue, 500);
 
   const handleSearch: (search: string) => void = (search: string) => {
     console.log({ search });
@@ -78,7 +78,7 @@ const SearchAndFilter = ({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedQuery]);
-  const loading = navigation.state === "loading" || isDebouncing == true;
+
   return (
     <>
       <Transition
@@ -97,7 +97,7 @@ const SearchAndFilter = ({
             <SearchBar
               handleChange={handleSearch}
               value={searchValue}
-              loading={loading}
+              loading={isDebouncing}
             />
           </div>
           <div className=" flex items-center ">
