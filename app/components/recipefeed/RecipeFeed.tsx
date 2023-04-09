@@ -15,7 +15,7 @@ const RecipeFeed = ({ recipeList }: { recipeList: FullRecipes }) => {
       appear
       show
     >
-      <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2 max-w-2xl mx-auto mt-4 mb-16">
+      <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-3 max-w-2xl mx-auto mt-4 mb-16">
         {recipeList && recipeList.length > 0 ? (
           recipeList.map((r) => (
             <RecipeSummary
