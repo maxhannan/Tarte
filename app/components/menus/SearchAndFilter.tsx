@@ -9,6 +9,7 @@ import ComboBoxCustom, { Option } from "../forms/Combobox";
 import MultiSelectBox from "../forms/MultiSelectBox";
 import { Form } from "@remix-run/react";
 import { useDebounce } from "~/hooks/useDebounce";
+import CategoryBox from "../forms/CategoryBox";
 
 interface Props {
   categories: string[];
@@ -66,6 +67,7 @@ const SearchAndFilter = ({
         leave="transition ease-in duration-400"
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
+        className="z-50 relative"
         appear
         show
       >
@@ -103,7 +105,7 @@ const SearchAndFilter = ({
           leaveFrom="transform opacity-100 max-h-96"
           leaveTo="transform opacity-0 max-h-0"
         >
-          <ComboBoxCustom
+          <CategoryBox
             name="category"
             placeholder="Category"
             changeHandler={handleCategorize}

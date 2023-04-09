@@ -62,7 +62,11 @@ const IngredientAdder = ({ handleDelete, ingredient, recipes }: Props) => {
         <ComboBoxCustom
           name="ingredientUnit"
           placeholder="Unit"
-          initValue={{ id: ingredient.unit, value: ingredient.unit }}
+          initValue={
+            ingredient.unit
+              ? { id: ingredient.unit, value: ingredient.unit }
+              : undefined
+          }
           allowCustom
           options={[
             { id: "Grams", value: "Grams" },

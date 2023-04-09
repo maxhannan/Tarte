@@ -13,7 +13,7 @@ export interface Ingredient {
   id: string;
   ingredient: string;
   qty: string | undefined;
-  unit: string;
+  unit: string | undefined;
   linkId: string | null;
   linkRecipe: { id: string; value: string } | null;
   recipeId?: string;
@@ -35,7 +35,7 @@ const IngredientSection = ({ ingredientList }: Props) => {
             id: v4(),
             ingredient: "Hello",
             qty: "",
-            unit: "",
+            unit: undefined,
             linkId: null,
             linkRecipe: null,
           },
@@ -46,7 +46,7 @@ const IngredientSection = ({ ingredientList }: Props) => {
       id: v4(),
       ingredient: "",
       qty: "",
-      unit: "",
+      unit: undefined,
       linkId: null,
       linkRecipe: null,
     };

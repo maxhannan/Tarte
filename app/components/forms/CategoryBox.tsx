@@ -8,6 +8,7 @@ interface ComboBoxProps {
   name: string;
   allowCustom?: boolean;
   initValue?: Option;
+  changeHandler?: (value: Option | null) => void;
 }
 
 export interface Option {
@@ -15,12 +16,13 @@ export interface Option {
   value: string;
 }
 
-export default function ComboBoxCustom({
+export default function CategoryBox({
   options,
   placeholder,
   name,
   allowCustom = false,
   initValue,
+  changeHandler,
 }: ComboBoxProps) {
   const [selected, setSelected] = useState(initValue || null);
   const [query, setQuery] = useState("");
@@ -44,7 +46,18 @@ export default function ComboBoxCustom({
   };
 
   return (
-    <Combobox value={selected} onChange={setSelected}>
+    <Combobox
+      value={selected}
+      onChange={
+        changeHandler
+          ? (value) => {
+              console.log({ value });
+              changeHandler(value);
+              setSelected(value);
+            }
+          : setSelected
+      }
+    >
       <div className="relative">
         <Combobox.Input
           autoComplete="off"
@@ -56,7 +69,14 @@ export default function ComboBoxCustom({
         />
         {selected !== null && (
           <XCircleIcon
-            onClick={() => setSelected(null)}
+            onClick={
+              changeHandler
+                ? () => {
+                    changeHandler(null);
+                    setSelected(null);
+                  }
+                : setSelected(null)
+            }
             className="w-6 h-6 absolute top-3 right-2 text-violet-500 dark:text-violet-500 hover:text-violet-600 "
           />
         )}

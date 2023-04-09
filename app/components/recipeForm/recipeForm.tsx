@@ -43,8 +43,8 @@ const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
           {
             id: v4(),
             ingredient: "",
-            qty: "",
-            unit: "",
+            qty: undefined,
+            unit: undefined,
             linkId: null,
             linkRecipe: null,
           },
