@@ -23,7 +23,7 @@ const RecipeIndex = () => {
     <>
       <AppBar
         page={recipe!.name}
-        textSize="text-3xl"
+        textSize="text-2xl"
         buttons={[
           {
             Icon: PencilSquareIcon,
