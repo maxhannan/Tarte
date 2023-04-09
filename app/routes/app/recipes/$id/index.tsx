@@ -54,14 +54,19 @@ const RecipeIndex = () => {
         <div className="text-2xl  gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-600 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
           <div>{recipe!.name}</div>
         </div>
-        <div className="text-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3  items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
+        <div className="text-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3  items-center flex gap-4 justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
           <div>
             {" "}
             <b>Yields: </b>
             {recipe?.yieldAmt + " " + recipe?.yieldUnit}{" "}
           </div>
           <div>
-            <div className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl text-lg text-neutral-100 dark:text-neutral-100 ">
+            <div
+              onClick={() =>
+                navigate(`/app/recipes?category=${recipe?.category}`)
+              }
+              className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl text-lg text-neutral-100 dark:text-neutral-100 "
+            >
               {recipe?.category} <ArrowLongRightIcon className="w-5 h-5" />
             </div>
           </div>
@@ -88,23 +93,6 @@ const RecipeIndex = () => {
               content={s}
             />
           ))}
-        <div className="text-2xl bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200 p-4 mt-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl ">
-          Recipe Info
-          <div className="flex gap-3 flex-wrap r mt-2 text-xl ">
-            <div>
-              <b>Author: </b>
-              {recipe?.author?.firstName + " " + recipe?.author?.lastName}
-            </div>
-
-            <div>
-              <b>Updated At: </b>
-              {dayjs(recipe?.updatedAt)
-                .format("dddd/MMM/YYYY")
-                .split("/")
-                .join(" ")}
-            </div>
-          </div>
-        </div>
         {recipe!.linkedIngredients.length > 0 && (
           <div className="text-xl bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200  p-4 mt-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl ">
             Component of
@@ -122,6 +110,23 @@ const RecipeIndex = () => {
             </div>
           </div>
         )}
+        <div className="text-2xl bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200 p-4 mt-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl ">
+          Recipe Info
+          <div className="flex gap-3 flex-wrap r mt-2 text-xl ">
+            <div>
+              <b>Author: </b>
+              {recipe?.author?.firstName + " " + recipe?.author?.lastName}
+            </div>
+
+            <div>
+              <b>Updated At: </b>
+              {dayjs(recipe?.updatedAt)
+                .format("dddd/MMM/YYYY")
+                .split("/")
+                .join(" ")}
+            </div>
+          </div>
+        </div>
       </Transition>
     </>
   );
