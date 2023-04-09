@@ -749,6 +749,11 @@ select {
   bottom: 0px;
 }
 
+.inset-y-2 {
+  top: 0.5rem;
+  bottom: 0.5rem;
+}
+
 .bottom-0 {
   bottom: 0px;
 }

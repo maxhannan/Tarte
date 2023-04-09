@@ -1,25 +1,21 @@
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import Spinner from "../status/smallSpinner";
 
 const SearchBar = ({
   handleChange,
   value,
+  loading = false,
 }: {
   handleChange: (e: string) => void;
   value: string;
+  loading?: boolean;
 }) => {
   return (
     <div className="grow">
       <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"></label>
       <div className="relative">
-        <div
-          onClick={value.length > 0 ? () => handleChange("") : undefined}
-          className="absolute inset-y-0 left-0 flex items-center pl-3  cursor-pointer"
-        >
-          {value.length > 0 ? (
-            <XMarkIcon className="w-5 h-5 text-violet-500 dark:text-violet-400 cursor-pointer" />
-          ) : (
-            <MagnifyingGlassIcon className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
-          )}
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3  cursor-pointer">
+          <MagnifyingGlassIcon className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
         </div>
         <input
           id={"search"}
@@ -36,6 +32,17 @@ const SearchBar = ({
           }}
           required
         />
+        <div
+          onClick={
+            value.length > 0 && !loading ? () => handleChange("") : undefined
+          }
+          className="absolute inset-y-0 right-2 flex items-center pl-3  cursor-pointer"
+        >
+          {value.length > 0 && !loading && (
+            <XMarkIcon className="w-5 h-5 text-violet-500 dark:text-violet-400 cursor-pointer" />
+          )}{" "}
+          {value.length > 0 && loading && <Spinner size={5} />}
+        </div>
       </div>
     </div>
   );

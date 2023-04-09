@@ -10,6 +10,7 @@ import MultiSelectBox from "../forms/MultiSelectBox";
 
 import { useDebounce } from "~/hooks/useDebounce";
 import CategoryBox from "../forms/CategoryBox";
+import { useNavigate, useNavigation } from "@remix-run/react";
 
 interface Props {
   categories: string[];
@@ -22,6 +23,7 @@ const SearchAndFilter = ({
   searchParams,
   setSearchParams,
 }: Props) => {
+  const navigation = useNavigation();
   const category = searchParams.get("category");
   const allergies = searchParams.get("allergies");
   const [openFilter, setOpenFilter] = useState(
@@ -31,7 +33,7 @@ const SearchAndFilter = ({
     searchParams.get("search") || ""
   );
 
-  let [debouncedQuery] = useDebounce(searchValue, 300);
+  let [debouncedQuery, isDebouncing] = useDebounce(searchValue, 300);
 
   const handleSearch: (search: string) => void = (search: string) => {
     console.log({ search });
@@ -76,7 +78,7 @@ const SearchAndFilter = ({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedQuery]);
-
+  const loading = navigation.state === "loading" || isDebouncing == true;
   return (
     <>
       <Transition
@@ -92,7 +94,11 @@ const SearchAndFilter = ({
       >
         <div className="container max-w-2xl mx-auto flex  gap-2  mt-2">
           <div className=" grow">
-            <SearchBar handleChange={handleSearch} value={searchValue} />
+            <SearchBar
+              handleChange={handleSearch}
+              value={searchValue}
+              loading={loading}
+            />
           </div>
           <div className=" flex items-center ">
             <button
