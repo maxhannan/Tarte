@@ -1,8 +1,4 @@
-import {
-  ArrowUturnLeftIcon,
-  CheckCircleIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/solid";
+import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import type { ActionFunction } from "@remix-run/node";
 
 import {
@@ -10,7 +6,6 @@ import {
   useActionData,
   useNavigate,
   useNavigation,
-  useSubmit,
 } from "@remix-run/react";
 import { useEffect } from "react";
 
