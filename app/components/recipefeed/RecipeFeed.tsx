@@ -16,7 +16,7 @@ const RecipeFeed = ({ recipeList }: { recipeList: FullRecipes }) => {
       show
     >
       <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2 max-w-2xl mx-auto mt-4 mb-16">
-        {recipeList &&
+        {recipeList && recipeList.length > 0 ? (
           recipeList.map((r) => (
             <RecipeSummary
               key={r.id}
@@ -25,7 +25,10 @@ const RecipeFeed = ({ recipeList }: { recipeList: FullRecipes }) => {
               category={r.category}
               user={r.author!.firstName[0] + r.author!.lastName[0]}
             />
-          ))}
+          ))
+        ) : (
+          <div className="w-full  text-lg ">Nothing Found</div>
+        )}
       </div>
     </Transition>
   );

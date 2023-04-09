@@ -40,7 +40,7 @@ const RecipeIndex = () => {
           {
             Icon: ArrowUturnLeftIcon,
             buttonName: "User",
-            action: () => navigate("/app/recipes"),
+            action: () => navigate(-1),
           },
         ]}
       />

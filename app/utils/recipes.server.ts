@@ -128,6 +128,7 @@ export const getRecipes = async () => {
         },
       },
     });
+    console.log("DATABASE");
     return recipes;
   } catch (error) {
     return null;
