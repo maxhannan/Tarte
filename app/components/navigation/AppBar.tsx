@@ -38,8 +38,10 @@ const AppBar = ({
               <IconButton
                 key={b.buttonName}
                 Icon={b.Icon}
+                type={b.type}
                 action={b.action}
                 buttonName={b.buttonName}
+                loading={b.loading}
               />
             ))}
         </div>

@@ -1,4 +1,8 @@
-import { ArrowUturnLeftIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
+import {
+  ArrowUturnLeftIcon,
+  CheckCircleIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
 import type { ActionFunction } from "@remix-run/node";
 
 import {
@@ -6,6 +10,7 @@ import {
   useActionData,
   useNavigate,
   useNavigation,
+  useSubmit,
 } from "@remix-run/react";
 import { useEffect } from "react";
 
@@ -36,6 +41,9 @@ const AddRecipe = () => {
   const navigation = useNavigation();
   const data = useActionData();
 
+  const loading =
+    navigation.state === "submitting" || navigation.state === "loading";
+
   useEffect(() => {
     if (data !== undefined) {
       navigate(`/app/recipes/${data}`, { replace: true });
@@ -53,23 +61,26 @@ const AddRecipe = () => {
 
   return (
     <div>
-      <AppBar
-        page="Add a Recipe"
-        textSize="text-3xl"
-        buttons={[
-          {
-            Icon: CheckCircleIcon,
-            buttonName: "Submit",
-            action: () => console.log("Save"),
-          },
-          {
-            Icon: ArrowUturnLeftIcon,
-            buttonName: "User",
-            action: () => navigate("/app/recipes"),
-          },
-        ]}
-      />
       <Form method="post">
+        <AppBar
+          page="Add a Recipe"
+          textSize="text-3xl"
+          buttons={[
+            {
+              Icon: CheckCircleIcon,
+              buttonName: "Submit",
+              type: "submit",
+              action: () => console.log("Saving..."),
+              loading: loading,
+            },
+            {
+              Icon: XMarkIcon,
+              buttonName: "User",
+              action: () => navigate("/app/recipes"),
+            },
+          ]}
+        />
+
         <RecipeForm />
       </Form>
     </div>

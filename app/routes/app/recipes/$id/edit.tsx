@@ -1,7 +1,12 @@
-import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
-import { redirect } from "@remix-run/node";
+import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
+
 import type { ActionFunction } from "@remix-run/node";
-import { Form, useActionData, useNavigate } from "@remix-run/react";
+import {
+  Form,
+  useActionData,
+  useNavigate,
+  useNavigation,
+} from "@remix-run/react";
 import { useEffect } from "react";
 import AppBar from "~/components/navigation/AppBar";
 import RecipeForm from "~/components/recipeForm/recipeForm";
@@ -23,8 +28,11 @@ export const action: ActionFunction = async ({ request, params }) => {
 const EditRecipePage = () => {
   const recipe = useRouteData("routes/app/recipes/$id") as CompleteRecipe;
   const navigate = useNavigate();
+  const navigation = useNavigation();
   const data = useActionData();
   console.log(data);
+  const loading =
+    navigation.state === "submitting" || navigation.state === "loading";
 
   useEffect(() => {
     if (data !== undefined) {
@@ -35,18 +43,26 @@ const EditRecipePage = () => {
 
   return (
     <div>
-      <AppBar
-        page={`Edit ${recipe?.name}`}
-        textSize="text-3xl"
-        buttons={[
-          {
-            Icon: ArrowUturnLeftIcon,
-            buttonName: "User",
-            action: () => navigate(-1),
-          },
-        ]}
-      />
       <Form method="post">
+        <AppBar
+          page={`Edit ${recipe?.name}`}
+          textSize="text-3xl"
+          buttons={[
+            {
+              Icon: CheckCircleIcon,
+              buttonName: "Submit",
+              type: "submit",
+              action: () => console.log("Saving..."),
+              loading: loading,
+            },
+            {
+              Icon: XMarkIcon,
+              buttonName: "User",
+              action: () => navigate(`/app/recipes/${recipe!.id}`),
+            },
+          ]}
+        />
+
         <RecipeForm recipe={recipe} />
       </Form>
     </div>
