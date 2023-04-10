@@ -27,7 +27,9 @@ const RecipeFeed = ({ recipeList }: { recipeList: FullRecipes }) => {
             />
           ))
         ) : (
-          <div className="w-full  text-lg ">Nothing Found</div>
+          <div className="w-full  text-xl dark:text-neutral-200 text-neutral-700 ">
+            Nothing Found
+          </div>
         )}
       </div>
     </Transition>

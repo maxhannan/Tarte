@@ -58,7 +58,8 @@ const EditRecipePage = () => {
             {
               Icon: XMarkIcon,
               buttonName: "User",
-              action: () => navigate(`/app/recipes/${recipe!.id}`),
+              action: () =>
+                navigate(`/app/recipes/${recipe!.id}`, { replace: true }),
             },
           ]}
         />

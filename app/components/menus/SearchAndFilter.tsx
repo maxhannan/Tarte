@@ -23,9 +23,11 @@ const SearchAndFilter = ({
   searchParams,
   setSearchParams,
 }: Props) => {
-  const navigation = useNavigation();
   const category = searchParams.get("category");
   const allergies = searchParams.get("allergies");
+  const navigation = useNavigation();
+  const [loadingSearch, setLoadingSearch] = useState(false);
+
   const [openFilter, setOpenFilter] = useState(
     category !== null || allergies !== null ? true : false
   );
@@ -79,6 +81,15 @@ const SearchAndFilter = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedQuery]);
 
+  useEffect(() => {
+    if (navigation.state === "loading" || isDebouncing) {
+      setLoadingSearch(true);
+    }
+    if (navigation.state !== "loading" && !isDebouncing) {
+      setLoadingSearch(false);
+    }
+  }, [navigation.state, isDebouncing]);
+
   return (
     <>
       <Transition
@@ -97,7 +108,7 @@ const SearchAndFilter = ({
             <SearchBar
               handleChange={handleSearch}
               value={searchValue}
-              loading={isDebouncing}
+              loading={loadingSearch}
             />
           </div>
           <div className=" flex items-center ">
