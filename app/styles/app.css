@@ -1377,6 +1377,11 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-violet-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(167 139 250 / var(--tw-bg-opacity));
+}
+
 .fill-violet-500 {
   fill: #8b5cf6;
 }
@@ -1607,6 +1612,11 @@ select {
 .text-violet-500 {
   --tw-text-opacity: 1;
   color: rgb(139 92 246 / var(--tw-text-opacity));
+}
+
+.text-violet-400 {
+  --tw-text-opacity: 1;
+  color: rgb(167 139 250 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -1877,6 +1887,11 @@ html {
   .dark\:bg-violet-500 {
     --tw-bg-opacity: 1;
     background-color: rgb(139 92 246 / var(--tw-bg-opacity));
+  }
+
+  .dark\:bg-neutral-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(115 115 115 / var(--tw-bg-opacity));
   }
 
   .dark\:text-neutral-100 {

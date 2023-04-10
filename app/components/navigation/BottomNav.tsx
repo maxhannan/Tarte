@@ -43,7 +43,7 @@ const BottomNav = ({
           active={page}
           handleNav={handleNav}
           path="recipes"
-          Icon={GiForkKnifeSpoon}
+          Icon={FolderIcon}
         />
         <BottomNavButton
           active={page}
