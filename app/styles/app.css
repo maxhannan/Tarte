@@ -942,6 +942,10 @@ select {
   height: 100vh;
 }
 
+.h-9 {
+  height: 2.25rem;
+}
+
 .max-h-0 {
   max-height: 0px;
 }
@@ -1000,6 +1004,10 @@ select {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-9 {
+  width: 2.25rem;
 }
 
 .max-w-2xl {

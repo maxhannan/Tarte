@@ -11,7 +11,7 @@ import MultiSelectBox from "../forms/MultiSelectBox";
 import { useDebounce } from "~/hooks/useDebounce";
 import CategoryBox from "../forms/CategoryBox";
 import { useNavigation } from "@remix-run/react";
-
+import { MdFilterList } from "react-icons/md";
 interface Props {
   categories: string[];
   searchParams: URLSearchParams;
@@ -124,7 +124,7 @@ const SearchAndFilter = ({
               {openFilter ? (
                 <XMarkIcon className="w-7 h-7" />
               ) : (
-                <AdjustmentsHorizontalIcon className="w-7 h-7" />
+                <MdFilterList className="w-9 h-9" />
               )}
               <span className="sr-only">Icon description</span>
             </button>

@@ -1,6 +1,8 @@
 import BottomNavButton from "./BottomNavButton";
 import { useLocation, useNavigate } from "@remix-run/react";
 
+import { BiDish } from "react-icons/bi";
+import { GiForkKnifeSpoon } from "react-icons/gi";
 import {
   FolderIcon,
   CalculatorIcon,
@@ -41,14 +43,15 @@ const BottomNav = ({
           active={page}
           handleNav={handleNav}
           path="recipes"
-          Icon={FolderIcon}
+          Icon={GiForkKnifeSpoon}
         />
         <BottomNavButton
           active={page}
           handleNav={handleNav}
           path="convert"
-          Icon={CalculatorIcon}
+          Icon={BiDish}
         />
+
         <BottomNavButton
           active={page}
           handleNav={handleNav}
