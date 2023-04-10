@@ -60,6 +60,7 @@ model Menu {
   updatedAt   DateTime @updatedAt
   name        String
   sections    MenuSection[]
+  dishes      Dish[]
   author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
   authorId    String?  
 }
@@ -81,6 +82,7 @@ model Dish {
   name        String
   recipes     Recipe[]
   section     MenuSection[] 
+  Menus       Menu[]
   author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
   authorId    String?  
 }
