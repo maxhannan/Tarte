@@ -70,7 +70,8 @@ model MenuSection {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   name        String
-  menus        Menu[]
+  menu        Menu    @relation(fields: [menuId], references: [id], onDelete: Cascade) 
+  menuId      String
   dishes      Dish[]
 }
 
