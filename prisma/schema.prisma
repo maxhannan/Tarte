@@ -81,8 +81,19 @@ model Dish {
   updatedAt   DateTime @updatedAt
   name        String
   recipes     Recipe[]
+  items       DishItem[]
   section     MenuSection[] 
   Menus       Menu[]
+  Notes       String[]
   author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
   authorId    String?  
+}
+
+model DishItem {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  name        String
+  dish        Dish @relation(fields: [dishId], references: [id], onDelete: Cascade)
+  dishId      String
 }
