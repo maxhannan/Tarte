@@ -8,7 +8,6 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-   directUrl = env("MIGRATE_DATABASE_URL")
 }
 
 
@@ -23,8 +22,6 @@ model User {
   firstName String
   lastName  String 
   recipes   Recipe[] 
-  menus     Menu[]
-  dishes    Dish[]
 }
 
 model Recipe {
@@ -34,7 +31,6 @@ model Recipe {
   name        String
   category    String
   allergens   String[]
-  dishes      Dish[]
   yieldAmt    String 
   yieldUnit   String   
   ingredients Ingredient[]
@@ -44,7 +40,7 @@ model Recipe {
   linkedIngredients Ingredient[] @relation("Linked Recipes")
 }
 
-model Ingredient {
+model Ingredient{
   id          String   @id @default(cuid())
   recipe      Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
   recipeId    String
@@ -55,33 +51,4 @@ model Ingredient {
   linkId      String?  
 }
 
-model Menu {
-  id          String   @id @default(cuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  name        String
-  sections    MenuSection[]
-  author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
-  authorId    String?  
-}
 
-model MenuSection {
-  id          String   @id @default(cuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  name        String
-  menu        Menu    @relation(fields: [menuId], references: [id], onDelete: Cascade) 
-  menuId      String
-  dishes      Dish[]
-}
-
-model Dish {
-  id          String   @id @default(cuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  name        String
-  recipes     Recipe[]
-  section     MenuSection[] 
-  author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
-  authorId    String?  
-}

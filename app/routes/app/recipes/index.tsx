@@ -33,7 +33,6 @@ const RecipesPage = () => {
     recipeList: FullRecipes | [];
     categories: string[];
   };
-  console.log(recipes);
 
   if (navigation.state === "loading" && pageChangeLoading) {
     return (
