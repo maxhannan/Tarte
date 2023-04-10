@@ -19,7 +19,7 @@ const BottomNavButton = ({ handleNav, active, Icon, path }: buttonProps) => {
         className={
           " transition-all duration-500 w-14 h-14 flex items-center justify-center rounded-lg rounded-r-2xl rounded-l-md rounded-bl-2xl  " +
           (active === path
-            ? "dark:bg-neutral-800 bg-neutral-700 text-violet-400 dark:text-violet-400"
+            ? "dark:bg-neutral-800 bg-neutral-200 text-violet-500 dark:text-violet-400"
             : "dark:bg-neutral-900 bg-neutral-100 text-neutral-700 dark:text-neutral-600")
         }
       >
