@@ -2,15 +2,13 @@ import BottomNavButton from "./BottomNavButton";
 import { useLocation, useNavigate } from "@remix-run/react";
 
 import { BiDish } from "react-icons/bi";
-import { GiForkKnifeSpoon } from "react-icons/gi";
 import {
   FolderIcon,
-  CalculatorIcon,
   ClipboardDocumentCheckIcon,
   PaperClipIcon,
   ChatBubbleBottomCenterIcon,
 } from "@heroicons/react/24/solid";
-import { useEffect } from "react";
+
 const BottomNav = ({
   page,
   setPage,
@@ -31,8 +29,8 @@ const BottomNav = ({
     navigate(pathString);
   };
   return (
-    <div className="fixed z-50 w-full h-24  rounded-xl   bottom-0 left-0 bg-neutral-100    dark:bg-neutral-900 border-neutral-200 dark:border-neutral-600">
-      <div className="grid h-full max-w-lg pb-6   mx-auto grid-cols-5 gap-0">
+    <div className="fixed z-50 w-full  h-24 md:h-fit  rounded-xl   bottom-0 left-0 bg-neutral-100    dark:bg-neutral-900 border-neutral-200 dark:border-neutral-600">
+      <div className="grid h-full max-w-lg  pb-4 md:p-3 mx-auto grid-cols-5 gap-0">
         <BottomNavButton
           active={page}
           handleNav={handleNav}

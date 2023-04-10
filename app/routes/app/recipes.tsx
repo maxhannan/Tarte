@@ -36,12 +36,20 @@ export const loader: LoaderFunction = async ({ request }) => {
   let allergyRecipes;
   if (recipeList!.length > 0 && alergyList) {
     allergyRecipes = recipeList!.filter((r) => {
+      let combinedAllergies = [...r.allergens];
+      r.ingredients.forEach((i) => {
+        if (i.linkRecipe && i.linkRecipe.allergens) {
+          combinedAllergies = [...combinedAllergies, ...i.linkRecipe.allergens];
+        }
+      });
+
       let allergyFree = true;
       alergyList.forEach((a) => {
-        if (r.allergens.includes(a)) {
+        if (combinedAllergies.includes(a)) {
           allergyFree = false;
         }
       });
+
       return allergyFree;
     });
     recipeList = allergyRecipes;

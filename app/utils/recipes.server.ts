@@ -120,6 +120,15 @@ export const getRecipes = async () => {
         name: true,
         category: true,
         allergens: true,
+        ingredients: {
+          select: {
+            linkRecipe: {
+              select: {
+                allergens: true,
+              },
+            },
+          },
+        },
         author: {
           select: {
             firstName: true,

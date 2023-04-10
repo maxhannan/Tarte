@@ -1,7 +1,4 @@
-import {
-  AdjustmentsHorizontalIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/solid";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import SearchBar from "../forms/SearchBar";
 import { useEffect, useRef, useState } from "react";
 import { Transition } from "@headlessui/react";
@@ -12,6 +9,7 @@ import { useDebounce } from "~/hooks/useDebounce";
 import CategoryBox from "../forms/CategoryBox";
 import { useNavigation } from "@remix-run/react";
 import { MdFilterList } from "react-icons/md";
+
 interface Props {
   categories: string[];
   searchParams: URLSearchParams;
