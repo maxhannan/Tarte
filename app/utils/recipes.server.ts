@@ -42,7 +42,6 @@ export const extractRecipe = (form: FormData) => {
     };
   });
 
-  console.log("allergies", { allergies });
   return {
     name,
     category,

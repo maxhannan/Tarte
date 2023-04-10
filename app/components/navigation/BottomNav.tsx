@@ -46,7 +46,7 @@ const BottomNav = ({
         <BottomNavButton
           active={page}
           handleNav={handleNav}
-          path="convert"
+          path="menus"
           Icon={BiDish}
         />
 
