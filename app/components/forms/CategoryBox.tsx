@@ -70,7 +70,10 @@ export default function CategoryBox({
         />
         {selected !== null ? (
           <XMarkIcon
-            onClick={() => setSelected(null)}
+            onClick={() => {
+              changeHandler(null);
+              setSelected(null);
+            }}
             className="w-6 h-6 absolute top-3 right-2 text-violet-500 dark:text-violet-500 hover:text-violet-600 "
           />
         ) : (
