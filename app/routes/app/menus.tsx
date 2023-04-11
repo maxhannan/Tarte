@@ -72,7 +72,7 @@ const MenusLayout = () => {
           </div>
         </div>
         {navigation.state === "loading" ? (
-          <div className="h-screen flex items-center justify-center">
+          <div className=" h-32 flex items-center justify-center">
             <Spinner size={14} />
           </div>
         ) : (
