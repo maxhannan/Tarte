@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Combobox } from "@headlessui/react";
-import { XCircleIcon } from "@heroicons/react/24/solid";
+import {
+  ChevronDownIcon,
+  ChevronUpDownIcon,
+  XCircleIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
 
 interface ComboBoxProps {
   options: Option[];
@@ -63,15 +68,20 @@ export default function CategoryBox({
           placeholder={placeholder}
           displayValue={selected ? (option: Option) => option.value : undefined}
         />
-        {selected !== null && (
-          <XCircleIcon
-            onClick={() => {
-              changeHandler(null);
-              setSelected(null);
-            }}
+        {selected !== null ? (
+          <XMarkIcon
+            onClick={() => setSelected(null)}
             className="w-6 h-6 absolute top-3 right-2 text-violet-500 dark:text-violet-500 hover:text-violet-600 "
           />
+        ) : (
+          <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
+            <ChevronDownIcon
+              className="h-5 w-5 text-neutral-700"
+              aria-hidden="true"
+            />
+          </Combobox.Button>
         )}
+
         <Combobox.Options className="absolute mt-2 bg-neutral-100 z-50   rounded-r-2xl rounded-l-sm rounded-bl-2xl max-h-48 w-full  overflow-auto rounded-md  dark:bg-neutral-800 py-1 text-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  ">
           {allowCustom && query.length > 0 && !checkIfExists(query, options) && (
             <Combobox.Option

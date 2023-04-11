@@ -2,7 +2,7 @@ import type { ElementType } from "react";
 import Spinner from "../status/smallSpinner";
 
 interface Props {
-  loading: boolean;
+  loading?: boolean;
   buttonText: string;
   loadingText?: string;
   Icon: ElementType;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const LoadingButton = ({
-  loading,
+  loading = false,
   Icon,
   buttonName,
   type = "button",
@@ -25,7 +25,7 @@ const LoadingButton = ({
       type={type}
       name={buttonName}
       onClick={action ? action : undefined}
-      className="text-neutral-700 inline-flex items-center justify-between px-4 dark:text-neutral-200 bg-neutral-200 dark:bg-neutral-800 h-12 text-xl rounded-xl rounded-tl-md border dark:border-neutral-700 border-neutral-300 hover:bg-violet-500"
+      className="text-neutral-700 hover:text-neutral-200 inline-flex items-center justify-between px-4 dark:text-neutral-200 bg-neutral-200 dark:bg-neutral-800 h-12 text-xl rounded-xl rounded-tl-md border dark:border-neutral-700 border-neutral-300 hover:bg-violet-500"
     >
       {loading ? (
         <>

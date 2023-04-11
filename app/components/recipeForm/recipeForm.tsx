@@ -8,7 +8,7 @@ import IngredientSection from "./IngredientsSection";
 import StepSection from "./StepSection";
 import ComboBoxCustom from "../forms/Combobox";
 import LoadingButton from "../buttons/LoadingButton";
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { ArrowPathIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 import { v4 } from "uuid";
 import { useRouteData } from "~/hooks/useRouteData";
 import { useNavigation } from "@remix-run/react";
@@ -127,7 +127,7 @@ const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
             buttonName="updateRecipe"
             buttonText="Update Recipe"
             loadingText="Updating..."
-            Icon={PlusCircleIcon}
+            Icon={ArrowPathIcon}
           />
         ) : (
           <LoadingButton

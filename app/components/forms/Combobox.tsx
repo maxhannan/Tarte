@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Combobox } from "@headlessui/react";
-import { XCircleIcon } from "@heroicons/react/24/solid";
+import {
+  ChevronDownIcon,
+  ChevronUpDownIcon,
+  XCircleIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
 
 interface ComboBoxProps {
   options: Option[];
@@ -45,20 +50,28 @@ export default function ComboBoxCustom({
 
   return (
     <Combobox value={selected} onChange={setSelected}>
-      <div className="relative">
+      <div className="relative w-full">
         <Combobox.Input
           autoComplete="off"
           name={name}
-          className="rounded-r-xl rounded-l-md rounded-bl-xl focus:ring-neutral-500  border relative  border-neutral-300 dark:border-neutral-700 h-12 w-full p-2 pl-4 text-xl text-neutral-800 appearance-none  focus:ring-2 focus:outline-none focus:border-none bg-neutral-200    placeholder-neutral-500 dark:bg-neutral-800  dark:placeholder-neutral-400 dark:text-neutral-50   "
+          className="rounded-r-xl rounded-l-md  rounded-bl-xl focus:ring-neutral-500 w-full  border   border-neutral-300 dark:border-neutral-700 h-12  p-2 pl-4 text-xl text-neutral-800 appearance-none  focus:ring-2 focus:outline-none focus:border-none bg-neutral-200    placeholder-neutral-500 dark:bg-neutral-800  dark:placeholder-neutral-400 dark:text-neutral-50   "
           onChange={(event) => setQuery(event.target.value)}
           placeholder={placeholder}
           displayValue={selected ? (option: Option) => option.value : undefined}
         />
-        {selected !== null && (
-          <XCircleIcon
+
+        {selected !== null ? (
+          <XMarkIcon
             onClick={() => setSelected(null)}
             className="w-6 h-6 absolute top-3 right-2 text-violet-500 dark:text-violet-500 hover:text-violet-600 "
           />
+        ) : (
+          <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
+            <ChevronDownIcon
+              className="h-5 w-5 text-neutral-700"
+              aria-hidden="true"
+            />
+          </Combobox.Button>
         )}
         <Combobox.Options className="absolute mt-2 bg-neutral-100 z-50   rounded-r-2xl rounded-l-sm rounded-bl-2xl max-h-48 w-full  overflow-auto rounded-md  dark:bg-neutral-800 py-1 text-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  ">
           {allowCustom && query.length > 0 && !checkIfExists(query, options) && (
