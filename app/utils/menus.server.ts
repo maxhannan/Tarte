@@ -1,4 +1,4 @@
-import type { Prisma } from "@prisma/client/edge";
+import { Prisma } from "@prisma/client/edge";
 import { prisma } from "./prisma.server";
 
 export type MenuSummaries = Prisma.PromiseReturnType<typeof getMenus>;
@@ -27,6 +27,35 @@ export const getMenus = async () => {
     return menus;
   } catch (error) {
     console.log({ error });
+    return null;
+  }
+};
+
+export type DishSummaries = Prisma.PromiseReturnType<typeof getDishes>;
+
+export const getDishes = async () => {
+  try {
+    const dishes = await prisma.dish.findMany({
+      select: {
+        _count: true,
+        author: {
+          select: {
+            firstName: true,
+            lastName: true,
+          },
+        },
+        id: true,
+        name: true,
+        Menus: {
+          select: {
+            name: true,
+            id: true,
+          },
+        },
+      },
+    });
+    return dishes;
+  } catch (error) {
     return null;
   }
 };
