@@ -1954,6 +1954,10 @@ html {
     background-color: rgb(23 23 23 / var(--tw-bg-opacity));
   }
 
+  .dark\:bg-opacity-100 {
+    --tw-bg-opacity: 1;
+  }
+
   .dark\:text-neutral-100 {
     --tw-text-opacity: 1;
     color: rgb(245 245 245 / var(--tw-text-opacity));

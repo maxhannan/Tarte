@@ -64,10 +64,10 @@ const MenusLayout = () => {
                   setActiveTab("menus");
                   navigate("/app/menus");
                 }}
-                className={` bg-neutral-200 border border-r-0 border-neutral-300 text-lg justify-center rounded-tl-md rounded-bl-xl  px-4 p-2 inline-flex  h-12 items-center   sm:hover:bg-neutral-300  transition-all duration-200  ${
+                className={` bg-neutral-200 border border-r-0 border-neutral-300 text-lg justify-center rounded-tl-md rounded-bl-xl  px-4 p-2 inline-flex  h-12 items-center   sm:hover:bg-neutral-300  transition-all duration-200 dark:bg-neutral-800  dark:border-neutral-700  ${
                   activeTab === "menus"
-                    ? "text-violet-500 "
-                    : "bg-opacity-50 text-neutral-700"
+                    ? "text-violet-500 dark:bg-neutral-900 "
+                    : "bg-opacity-50 text-neutral-700 dark:text-neutral-200"
                 }`}
               >
                 Menus
@@ -77,10 +77,10 @@ const MenusLayout = () => {
                   setActiveTab("dishes");
                   navigate("/app/menus/dishes");
                 }}
-                className={` bg-neutral-200 border  border-neutral-300 text-lg justify-center rounded-r-xl   px-4 p-2 inline-flex  h-12 items-center   sm:hover:bg-neutral-300  transition-all duration-200  ${
+                className={` bg-neutral-200 border  border-neutral-300 text-lg justify-center rounded-r-xl   px-4 p-2 inline-flex  h-12 items-center   sm:hover:bg-neutral-300  transition-all duration-200 dark:bg-neutral-800  dark:border-neutral-700  ${
                   activeTab === "dishes"
-                    ? "text-violet-500 "
-                    : "bg-opacity-50 text-neutral-700"
+                    ? "text-violet-500 dark:bg-neutral-900 "
+                    : "bg-opacity-50 text-neutral-700   dark:text-neutral-200"
                 }`}
               >
                 Dishes

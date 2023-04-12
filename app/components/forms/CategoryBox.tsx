@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { Combobox } from "@headlessui/react";
-import {
-  ChevronDownIcon,
-  ChevronUpDownIcon,
-  XCircleIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/solid";
+import { ChevronDownIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
 interface ComboBoxProps {
   options: Option[];

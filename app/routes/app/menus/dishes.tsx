@@ -1,11 +1,4 @@
-import {
-  ArrowLongRightIcon,
-  ArrowRightCircleIcon,
-  ArrowUturnLeftIcon,
-} from "@heroicons/react/24/solid";
-import { Link, useNavigate } from "@remix-run/react";
-import ComboBoxCustom from "~/components/forms/Combobox";
-import SearchBar from "~/components/forms/SearchBar";
+import { useNavigate } from "@remix-run/react";
 
 const DishesPage = () => {
   const navigate = useNavigate();
