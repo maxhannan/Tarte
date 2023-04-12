@@ -1,10 +1,11 @@
 import { Disclosure, Transition } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import MenuSummary from "./MenuSummary";
+import MenuDishSummary from "./MenuDishSummary";
 
 export default function Accordion() {
   return (
-    <div className=" rounded-2xl bg-neutral-50 dark:bg-neutral-700 p-2 flex flex-col gap-2">
+    <div className=" rounded-tl-md rounded-2xl   border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 p-2 flex flex-col gap-2">
       <Disclosure defaultOpen>
         {({ open }) => (
           <>
@@ -23,12 +24,14 @@ export default function Accordion() {
               leaveFrom="transform opacity-100 max-h-96"
               leaveTo="transform opacity-0 max-h-0"
             >
-              <Disclosure.Panel className=" pt-2 pb-2 flex flex-col gap-2 text-sm text-gray-500">
-                <MenuSummary id="1" name="Test" category="4" user="MH" />
-                <MenuSummary id="1" name="Test" category="4" user="MH" />
-                <MenuSummary id="1" name="Test" category="4" user="MH" />
-                <MenuSummary id="1" name="Test" category="4" user="MH" />
-                <MenuSummary id="1" name="Test" category="4" user="MH" />
+              <Disclosure.Panel className="  pb-2 flex flex-col gap-2 text-sm text-gray-500">
+                <MenuDishSummary
+                  id="1"
+                  name="Celeriac Soup, Hazelnut gremolata, Roasted Apple, Freekeh"
+                  category="4"
+                  user="MH"
+                />
+                <MenuDishSummary id="1" name="Test" category="4" user="MH" />
               </Disclosure.Panel>
             </Transition>
           </>
