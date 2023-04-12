@@ -13,7 +13,7 @@ const MenuSummary = ({ id, name, category, user }: MenuSummaryProps) => {
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate(`/app/recipes/${id}`)}
+      onClick={() => console.log(id)}
       className="  w-full max-h-full border-neutral-300 border  bg-neutral-200 rounded-r-2xl rounded-l-md rounded-bl-2xl py-4   flex justify-start items-center  px-4 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-neutral-700"
     >
       <div className="inline-flex flex-shrink-0 items-center mr-4 justify-center w-14 h-14 overflow-hidden bg-neutral-500 text-neutral-700 border-neutral-300 rounded-r-2xl rounded-l-md rounded-bl-2xl dark:bg-neutral-800 border dark:border-neutral-700">

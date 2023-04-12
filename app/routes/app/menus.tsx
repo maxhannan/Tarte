@@ -18,7 +18,7 @@ const MenusLayout = () => {
   const navigation = useNavigation();
   const location = useLocation();
 
-  const [activeTab, setActiveTab] = useState("menus");
+  const [activeTab, setActiveTab] = useState("Menus");
 
   const pageChangeLoading =
     navigation.state === "loading" &&
@@ -35,7 +35,7 @@ const MenusLayout = () => {
   return (
     <>
       <AppBar
-        page={location.pathname === "/app/menus/dishes" ? "Dishes" : "Menus"}
+        page={activeTab}
         buttons={[
           {
             Icon: UserIcon,
@@ -45,7 +45,7 @@ const MenusLayout = () => {
           },
         ]}
       />
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <div className="flex gap-2 justify-start w-full items-center">
           <SearchBar value="" handleChange={(e) => console.log(e)} />
         </div>
@@ -61,11 +61,11 @@ const MenusLayout = () => {
             <div className="flex flex-2 ">
               <button
                 onClick={() => {
-                  setActiveTab("menus");
+                  setActiveTab("Menus");
                   navigate("/app/menus");
                 }}
                 className={` bg-neutral-200 border border-r-0 border-neutral-300 text-lg justify-center rounded-tl-md rounded-bl-xl  px-4 p-2 inline-flex  h-12 items-center   sm:hover:bg-neutral-300  transition-all duration-200 dark:bg-neutral-800  dark:border-neutral-700  ${
-                  activeTab === "menus"
+                  activeTab === "Menus"
                     ? "text-violet-500 dark:bg-neutral-900 "
                     : "bg-opacity-50 text-neutral-700 dark:text-neutral-200"
                 }`}
@@ -74,11 +74,11 @@ const MenusLayout = () => {
               </button>
               <button
                 onClick={() => {
-                  setActiveTab("dishes");
+                  setActiveTab("Dishes");
                   navigate("/app/menus/dishes");
                 }}
                 className={` bg-neutral-200 border  border-neutral-300 text-lg justify-center rounded-r-xl   px-4 p-2 inline-flex  h-12 items-center   sm:hover:bg-neutral-300  transition-all duration-200 dark:bg-neutral-800  dark:border-neutral-700  ${
-                  activeTab === "dishes"
+                  activeTab === "Dishes"
                     ? "text-violet-500 dark:bg-neutral-900 "
                     : "bg-opacity-50 text-neutral-700   dark:text-neutral-200"
                 }`}
