@@ -7,7 +7,7 @@ import {
   ClipboardDocumentCheckIcon,
   PaperClipIcon,
   ChatBubbleBottomCenterIcon,
-} from "@heroicons/react/24/solid";
+} from "@heroicons/react/24/outline";
 
 const BottomNav = ({
   page,
