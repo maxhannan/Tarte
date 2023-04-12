@@ -6,6 +6,7 @@ import {
   useNavigation,
   useSubmit,
 } from "@remix-run/react";
+import { useState } from "react";
 import ComboBoxCustom from "~/components/forms/Combobox";
 import SearchBar from "~/components/forms/SearchBar";
 import AppBar from "~/components/navigation/AppBar";
@@ -16,6 +17,8 @@ const MenusLayout = () => {
   const navigate = useNavigate();
   const navigation = useNavigation();
   const location = useLocation();
+
+  const [activeTab, setActiveTab] = useState("menus");
 
   const pageChangeLoading =
     navigation.state === "loading" &&
@@ -57,14 +60,28 @@ const MenusLayout = () => {
             </div>
             <div className="flex flex-2 ">
               <button
-                onClick={() => navigate("/app/menus")}
-                className="bg-neutral-200 border border-r-0 border-neutral-300 text-lg justify-center rounded-tl-md rounded-bl-xl  px-4 p-2 inline-flex  h-12 items-center  text-violet-700 hover:bg-violet-400 hover:text-neutral-100 transition-all duration-200"
+                onClick={() => {
+                  setActiveTab("menus");
+                  navigate("/app/menus");
+                }}
+                className={` bg-neutral-200 border border-r-0 border-neutral-300 text-lg justify-center rounded-tl-md rounded-bl-xl  px-4 p-2 inline-flex  h-12 items-center   sm:hover:bg-neutral-300  transition-all duration-200  ${
+                  activeTab === "menus"
+                    ? "text-violet-500 "
+                    : "bg-opacity-50 text-neutral-700"
+                }`}
               >
                 Menus
               </button>
               <button
-                onClick={() => navigate("/app/menus/dishes")}
-                className="bg-neutral-200 bg-opacity-50 border border-neutral-300 text-lg justify-center  px-4 p-2 rounded-r-xl inline-flex  h-12 items-center  text-neutral-700 hover:bg-violet-400 hover:text-neutral-100 transition-all duration-200"
+                onClick={() => {
+                  setActiveTab("dishes");
+                  navigate("/app/menus/dishes");
+                }}
+                className={` bg-neutral-200 border  border-neutral-300 text-lg justify-center rounded-r-xl   px-4 p-2 inline-flex  h-12 items-center   sm:hover:bg-neutral-300  transition-all duration-200  ${
+                  activeTab === "dishes"
+                    ? "text-violet-500 "
+                    : "bg-opacity-50 text-neutral-700"
+                }`}
               >
                 Dishes
               </button>

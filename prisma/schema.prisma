@@ -64,7 +64,7 @@ model Menu {
   author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
   authorId    String?  
 }
-
+ 
 model MenuSection {
   id          String   @id @default(cuid())
   createdAt   DateTime @default(now())

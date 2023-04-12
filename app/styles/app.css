@@ -2080,6 +2080,23 @@ html {
   }
 }
 
+@media (min-width: 640px) {
+  .sm\:hover\:bg-neutral-300:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(212 212 212 / var(--tw-bg-opacity));
+  }
+
+  .sm\:hover\:bg-neutral-400:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(163 163 163 / var(--tw-bg-opacity));
+  }
+
+  .sm\:hover\:text-neutral-100:hover {
+    --tw-text-opacity: 1;
+    color: rgb(245 245 245 / var(--tw-text-opacity));
+  }
+}
+
 @media (min-width: 768px) {
   .md\:h-fit {
     height: -moz-fit-content;
@@ -2088,5 +2105,15 @@ html {
 
   .md\:p-3 {
     padding: 0.75rem;
+  }
+
+  .md\:hover\:bg-neutral-300:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(212 212 212 / var(--tw-bg-opacity));
+  }
+
+  .md\:hover\:text-neutral-100:hover {
+    --tw-text-opacity: 1;
+    color: rgb(245 245 245 / var(--tw-text-opacity));
   }
 }
