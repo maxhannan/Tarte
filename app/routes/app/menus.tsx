@@ -19,7 +19,7 @@ const MenusLayout = () => {
   const location = useLocation();
 
   const [activeTab, setActiveTab] = useState(
-    location.pathname === "/app/menus/" ? "Menus" : "Dishes"
+    location.pathname === "/app/menus" ? "Menus" : "Dishes"
   );
 
   const pageChangeLoading =
