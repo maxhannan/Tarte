@@ -7,6 +7,7 @@ import {
   ClipboardDocumentCheckIcon,
   PaperClipIcon,
   ChatBubbleBottomCenterIcon,
+  QueueListIcon,
 } from "@heroicons/react/24/outline";
 
 const BottomNav = ({
@@ -47,7 +48,7 @@ const BottomNav = ({
           active={page}
           handleNav={handleNav}
           path="menus"
-          Icon={BiDish}
+          Icon={QueueListIcon}
         />
 
         <BottomNavButton

@@ -1,9 +1,5 @@
 import { Transition } from "@headlessui/react";
-import {
-  ArrowUturnLeftIcon,
-  DocumentPlusIcon,
-  UserIcon,
-} from "@heroicons/react/24/solid";
+import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useNavigate, useNavigation } from "@remix-run/react";
 import Accordion from "~/components/menuComponents/Accordion";
