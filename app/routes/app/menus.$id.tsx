@@ -21,7 +21,7 @@ const MenuPage = () => {
   const navigation = useNavigation();
   console.log({ menu });
   return (
-    <>
+    <div className=" mb-24">
       <AppBar
         page={""}
         buttons={[
@@ -49,7 +49,7 @@ const MenuPage = () => {
 
         <Accordion />
       </Transition>
-    </>
+    </div>
   );
 };
 
