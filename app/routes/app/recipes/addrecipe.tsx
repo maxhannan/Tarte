@@ -1,4 +1,4 @@
-import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import type { ActionFunction } from "@remix-run/node";
 
 import {

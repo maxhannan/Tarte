@@ -12,17 +12,6 @@ import ComboBoxCustom from "~/components/forms/Combobox";
 import SearchBar from "~/components/forms/SearchBar";
 import AppBar from "~/components/navigation/AppBar";
 import Spinner from "~/components/status/smallSpinner";
-export function ErrorBoundary({ error }) {
-  console.log(error);
-  return (
-    <div className="flex items-center justify-center flex-col">
-      <h1>Error</h1>
-      <p>{error.message}</p>
-      <p>The stack trace is:</p>
-      <pre>{error.stack}</pre>
-    </div>
-  );
-}
 
 const MenusLayout = () => {
   const submit = useSubmit();

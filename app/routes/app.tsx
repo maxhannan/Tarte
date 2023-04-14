@@ -1,5 +1,5 @@
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
-import type { LoaderFunction } from "@remix-run/node";
+import type { ErrorBoundaryComponent, LoaderFunction } from "@remix-run/node";
 import {
   Outlet,
   useLocation,
@@ -17,7 +17,8 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   return user;
 };
-export function ErrorBoundary({ error }) {
+
+export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
   const location = useLocation();
   const [page, setPage] = useState(location.pathname.split("/")[2]);
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ export function ErrorBoundary({ error }) {
       <BottomNav page={page} setPage={setPage} />
     </div>
   );
-}
+};
 
 const App = () => {
   const location = useLocation();

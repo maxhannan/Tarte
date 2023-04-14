@@ -115,6 +115,11 @@ export const getDishes = async () => {
         },
         id: true,
         name: true,
+        recipes: {
+          select: {
+            allergens: true,
+          },
+        },
         Menus: {
           select: {
             name: true,
@@ -124,6 +129,56 @@ export const getDishes = async () => {
       },
     });
     return dishes;
+  } catch (error) {
+    return null;
+  }
+};
+
+export type FullDish = Prisma.PromiseReturnType<typeof getDishById>;
+
+export const getDishById = async (id: string) => {
+  try {
+    const dish = await prisma.dish.findUnique({
+      where: {
+        id: id,
+      },
+      select: {
+        id: true,
+        name: true,
+        _count: true,
+        author: {
+          select: {
+            firstName: true,
+            lastName: true,
+          },
+        },
+        createdAt: true,
+        updatedAt: true,
+        Menus: {
+          select: {
+            name: true,
+            id: true,
+          },
+        },
+        recipes: {
+          select: {
+            name: true,
+            id: true,
+            allergens: true,
+            author: {
+              select: {
+                firstName: true,
+                lastName: true,
+              },
+            },
+            category: true,
+          },
+        },
+        items: true,
+        Notes: true,
+      },
+    });
+    return dish;
   } catch (error) {
     return null;
   }

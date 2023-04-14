@@ -4,7 +4,7 @@ import {
   ArrowUturnLeftIcon,
   PencilSquareIcon,
   ScaleIcon,
-} from "@heroicons/react/24/solid";
+} from "@heroicons/react/24/outline";
 import { Link, useNavigate } from "@remix-run/react";
 import dayjs from "dayjs";
 import AppBar from "~/components/navigation/AppBar";
