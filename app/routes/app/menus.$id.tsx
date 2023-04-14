@@ -4,6 +4,7 @@ import { LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useNavigate, useNavigation } from "@remix-run/react";
 import Accordion from "~/components/menuComponents/Accordion";
 import AppBar from "~/components/navigation/AppBar";
+import Spinner from "~/components/status/smallSpinner";
 import { FullMenu, getMenuById } from "~/utils/menus.server";
 
 export const loader: LoaderFunction = async ({ params }) => {
@@ -20,6 +21,13 @@ const MenuPage = () => {
   const menu = useLoaderData() as FullMenu;
   const navigation = useNavigation();
   console.log({ menu });
+
+  if (navigation.state === "loading")
+    return (
+      <div className=" mx-auto h-screen  flex items-center justify-center">
+        <Spinner size={14} />
+      </div>
+    );
   return (
     <div className=" mb-24">
       <AppBar
@@ -29,7 +37,6 @@ const MenuPage = () => {
             Icon: ArrowUturnLeftIcon,
             buttonName: "Add Recipe",
             action: () => navigate(-1),
-            loading: navigation.state === "loading",
           },
         ]}
       />
