@@ -5,16 +5,9 @@ import { useNavigate } from "@remix-run/react";
 interface MenuDishSummaryProps {
   id: string;
   name: string;
-  category: string;
-  user: string;
 }
 
-const MenuDishSummary = ({
-  id,
-  name,
-  category,
-  user,
-}: MenuDishSummaryProps) => {
+const MenuDishSummary = ({ id, name }: MenuDishSummaryProps) => {
   const navigate = useNavigate();
   return (
     <div

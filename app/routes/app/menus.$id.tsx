@@ -54,7 +54,7 @@ const MenuPage = () => {
           <div>{menu!.name}</div>
         </div>
 
-        <Accordion />
+        {menu && <Accordion menu={menu} />}
       </Transition>
     </div>
   );
