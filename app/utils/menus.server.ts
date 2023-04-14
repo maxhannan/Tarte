@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client/edge";
+import type { Prisma } from "@prisma/client/edge";
 import { prisma } from "./prisma.server";
 
 export type MenuSummaries = Prisma.PromiseReturnType<typeof getMenus>;

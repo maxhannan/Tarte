@@ -1,5 +1,4 @@
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-
 import { useNavigate } from "@remix-run/react";
 
 interface MenuDishSummaryProps {
@@ -11,7 +10,7 @@ const MenuDishSummary = ({ id, name }: MenuDishSummaryProps) => {
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => console.log(`/app/menus/${id}`)}
+      onClick={() => navigate(`/app/menus/dishes/${id}`)}
       className="  w-full max-h-full border-neutral-300 border  bg-neutral-100 rounded-2xl rounded-tl-md  py-4   flex justify-start items-center  px-4 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-neutral-700"
     >
       <div className=" font-light">

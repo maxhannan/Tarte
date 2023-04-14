@@ -1,11 +1,12 @@
 import { Transition } from "@headlessui/react";
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
-import { LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData, useNavigate, useNavigation } from "@remix-run/react";
 import Accordion from "~/components/menuComponents/Accordion";
 import AppBar from "~/components/navigation/AppBar";
 import Spinner from "~/components/status/smallSpinner";
-import { FullMenu, getMenuById } from "~/utils/menus.server";
+import { getMenuById } from "~/utils/menus.server";
+import type { FullMenu } from "~/utils/menus.server";
 
 export const loader: LoaderFunction = async ({ params }) => {
   if (params.id) {
