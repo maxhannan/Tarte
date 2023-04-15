@@ -63,19 +63,25 @@ const SearchAndFilter = ({
 
   let initialRender = useRef(true);
 
+  const handleSearchChange = (debouncedQuery: string) => {
+    if (debouncedQuery.length > 0) {
+      searchParams.set("search", debouncedQuery);
+      setSearchParams(searchParams);
+    } else {
+      if (searchParams.get("search")) {
+        searchParams.delete("search");
+        setSearchParams(searchParams);
+      }
+    }
+  };
+
   useEffect(() => {
-    let searchParams = new URLSearchParams(location.search);
     if (initialRender.current) {
       initialRender.current = false;
+      return;
     } else {
-      if (debouncedQuery.length > 0) {
-        searchParams.set("search", debouncedQuery);
-      } else {
-        searchParams.delete("search");
-      }
-      setSearchParams(searchParams);
+      handleSearchChange(debouncedQuery);
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedQuery]);
 
@@ -86,7 +92,7 @@ const SearchAndFilter = ({
     if (navigation.state !== "loading" && !isDebouncing) {
       setLoadingSearch(false);
     }
-  }, [navigation.state, isDebouncing]);
+  }, [isDebouncing]);
 
   return (
     <>

@@ -28,16 +28,17 @@ const MenusLayout = () => {
 
   const pageChangeLoading =
     navigation.state === "loading" &&
-    !navigation.location.pathname.includes("/app/menus");
+    navigation.location.pathname.includes("/app/menus");
 
-  if (navigation.state === "loading" && pageChangeLoading) {
+  console.log(pageChangeLoading);
+
+  if (navigation.state === "loading" && !pageChangeLoading) {
     return (
-      <div className="h-screen flex items-center justify-center">
+      <div className="flex items-center justify-center h-screen">
         <Spinner size={14} />
       </div>
     );
   }
-
   return (
     <>
       <AppBar
@@ -90,52 +91,9 @@ const MenusLayout = () => {
             Dishes
           </button>
         </div>
-
-        {location.pathname === "/app/menus" ? (
-          <Transition
-            enter="transition-all transform  ease-in-out  duration-700"
-            enterFrom=" opacity-0 -translate-y-full "
-            enterTo=" opacity-100 translate-y-0"
-            leave="transition ease-in duration-400"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-            className="z-50 relative"
-            appear
-            show
-          >
-            <div className="flex flex-col gap-3">
-              <div className="flex gap-2 justify-start w-full items-center">
-                <SearchBar value="" handleChange={(e) => console.log(e)} />
-              </div>
-              <div>
-                <div className="flex gap-2 grow w-full  ">
-                  <div className="flex flex-2 w-full ">
-                    <ComboBoxCustom
-                      name="Category"
-                      placeholder="Service"
-                      options={[{ id: "1", value: "Brunch" }]}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Transition>
-        ) : (
-          <SearchAndFilter
-            searchParams={searchParams}
-            setSearchParams={setSearchParams}
-            categories={["Breakfast", "Lunch", "Dinner"]}
-          />
-        )}
       </Transition>
       <div className="mt-3">
-        {navigation.state === "loading" ? (
-          <div className=" h-32 flex items-center justify-center">
-            <Spinner size={14} />
-          </div>
-        ) : (
-          <Outlet />
-        )}
+        <Outlet />
       </div>
     </>
   );

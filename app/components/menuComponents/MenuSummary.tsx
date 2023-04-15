@@ -1,15 +1,23 @@
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 import { useNavigate } from "@remix-run/react";
+import Spinner from "../status/smallSpinner";
 
 interface MenuSummaryProps {
   id: string;
   name: string;
   category: string;
   user: string;
+  loading?: boolean;
 }
 
-const MenuSummary = ({ id, name, category, user }: MenuSummaryProps) => {
+const MenuSummary = ({
+  id,
+  name,
+  category,
+  user,
+  loading = false,
+}: MenuSummaryProps) => {
   const navigate = useNavigate();
   return (
     <div
@@ -30,7 +38,11 @@ const MenuSummary = ({ id, name, category, user }: MenuSummaryProps) => {
         </h6>
       </div>
       <div className=" ml-auto ">
-        <ArrowRightIcon className="text-neutral-800 dark:text-neutral-200 w-6 h-6" />
+        {loading ? (
+          <Spinner size={7} />
+        ) : (
+          <ArrowRightIcon className="text-neutral-800 dark:text-neutral-200 w-6 h-6" />
+        )}
       </div>
     </div>
   );
