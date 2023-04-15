@@ -92,7 +92,8 @@ const SearchAndFilter = ({
     if (navigation.state !== "loading" && !isDebouncing) {
       setLoadingSearch(false);
     }
-  }, [isDebouncing]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigation.state, isDebouncing]);
 
   return (
     <>

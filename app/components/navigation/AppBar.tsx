@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import IconButton from "../buttons/IconButton";
 
 import type { buttonProps } from "../buttons/IconButton";
+import SlideDownTransition from "../animations/slideDown";
 
 const AppBar = ({
   page,
@@ -14,17 +15,7 @@ const AppBar = ({
   buttons?: buttonProps[];
 }) => {
   return (
-    <Transition
-      as={Fragment}
-      enter="transition-all transform  ease-in-out  duration-300"
-      enterFrom=" opacity-0 -translate-y-full "
-      enterTo=" opacity-100 translate-y-0"
-      leave="transition ease-in duration-100"
-      leaveFrom="opacity-100"
-      leaveTo="opacity-0"
-      appear
-      show
-    >
+    <SlideDownTransition>
       <nav className=" flex py-4 max-w-2xl mx-auto max-h-full items-center justify-between  duration-300 bg-neutral-100 dark:bg-neutral-900   w-full z-50 top-0 left-0  ">
         <h1
           className={`${textSize} mr-6 text-neutral-700 dark:text-neutral-100`}
@@ -46,7 +37,7 @@ const AppBar = ({
             ))}
         </div>
       </nav>
-    </Transition>
+    </SlideDownTransition>
   );
 };
 

@@ -1,4 +1,3 @@
-import { Transition } from "@headlessui/react";
 import {
   ArrowLongRightIcon,
   ArrowUturnLeftIcon,
@@ -7,6 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Link, useNavigate } from "@remix-run/react";
 import dayjs from "dayjs";
+import SlideUpTransition from "~/components/animations/slideUp";
 import AppBar from "~/components/navigation/AppBar";
 import IngredientTable from "~/components/recipePage/ingredientTable/ingredientTable";
 import RecipeStep from "~/components/recipePage/RecipeStep";
@@ -41,16 +41,7 @@ const RecipeIndex = () => {
           },
         ]}
       />
-      <Transition
-        enter="transition-all transform  ease-in-out  duration-500"
-        enterFrom=" opacity-0 translate-y-full "
-        enterTo=" opacity-100 translate-y-0"
-        leave="transition ease-in duration-400"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-        appear
-        show
-      >
+      <SlideUpTransition>
         <div className="text-2xl  gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-600 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
           <div>{recipe!.name}</div>
         </div>
@@ -127,7 +118,7 @@ const RecipeIndex = () => {
             </div>
           </div>
         </div>
-      </Transition>
+      </SlideUpTransition>
     </>
   );
 };

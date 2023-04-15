@@ -1,7 +1,6 @@
 import BottomNavButton from "./BottomNavButton";
 import { useLocation, useNavigate } from "@remix-run/react";
 
-import { BiDish } from "react-icons/bi";
 import {
   FolderIcon,
   ClipboardDocumentCheckIcon,

@@ -1,17 +1,14 @@
-import { Transition } from "@headlessui/react";
-import { UserIcon } from "@heroicons/react/24/solid";
+import { DocumentPlusIcon, UserIcon } from "@heroicons/react/24/outline";
 import {
   Outlet,
   useLocation,
   useNavigate,
   useNavigation,
-  useSearchParams,
   useSubmit,
 } from "@remix-run/react";
-import { useState } from "react";
-import ComboBoxCustom from "~/components/forms/Combobox";
-import SearchBar from "~/components/forms/SearchBar";
-import SearchAndFilter from "~/components/menus/SearchAndFilter";
+import { useEffect, useState } from "react";
+import SlideDownTransition from "~/components/animations/slideDown";
+
 import AppBar from "~/components/navigation/AppBar";
 import Spinner from "~/components/status/smallSpinner";
 
@@ -20,30 +17,37 @@ const MenusLayout = () => {
   const navigate = useNavigate();
   const navigation = useNavigation();
   const location = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
-  console.log({ pathname: location.pathname });
+
   const [activeTab, setActiveTab] = useState(
     location.pathname === "/app/menus" ? "Menus" : "Dishes"
   );
 
+  useEffect(() => {
+    setActiveTab(location.pathname === "/app/menus" ? "Menus" : "Dishes");
+  }, [location]);
+
   const pageChangeLoading =
     navigation.state === "loading" &&
-    navigation.location.pathname.includes("/app/menus");
+    !navigation.location.pathname.includes("/app/menus");
 
-  console.log(pageChangeLoading);
-
-  if (navigation.state === "loading" && !pageChangeLoading) {
+  if (pageChangeLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
         <Spinner size={14} />
       </div>
     );
   }
+
   return (
     <>
       <AppBar
         page={activeTab}
         buttons={[
+          {
+            Icon: DocumentPlusIcon,
+            buttonName: "Add Recipe",
+            action: () => navigate("/app/recipes/addrecipe"),
+          },
           {
             Icon: UserIcon,
             buttonName: "User",
@@ -52,18 +56,8 @@ const MenusLayout = () => {
           },
         ]}
       />
-      <Transition
-        enter="transition-all transform  ease-in-out  duration-700"
-        enterFrom=" opacity-0 -translate-y-full "
-        enterTo=" opacity-100 translate-y-0"
-        leave="transition ease-in duration-400"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-        className="z-50 relative"
-        appear
-        show
-      >
-        <div className="flex flex-2 w-full mb-3 ">
+      <SlideDownTransition>
+        <div className="flex flex-2 w-full ">
           <button
             onClick={() => {
               setActiveTab("Menus");
@@ -91,8 +85,8 @@ const MenusLayout = () => {
             Dishes
           </button>
         </div>
-      </Transition>
-      <div className="mt-3">
+      </SlideDownTransition>
+      <div className="mt-2">
         <Outlet />
       </div>
     </>
