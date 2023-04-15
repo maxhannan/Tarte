@@ -64,7 +64,7 @@ const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
       show
       afterEnter={() => setShow(true)}
     >
-      <div className="flex flex-col gap-y-4 mb-32">
+      <div className="flex flex-col gap-y-4 mb-32 mt-1">
         <div className="flex flex-col gap-y-4 ">
           <div className="col-span-5">
             <CustomTextInput

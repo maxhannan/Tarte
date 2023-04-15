@@ -42,10 +42,25 @@ const RecipeIndex = () => {
         ]}
       />
       <SlideUpTransition>
-        <div className="text-2xl  gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-600 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
+        <div className="text-3xl  gap-3  w-full items-center flex justify-between dark:text-neutral-200 mb-4 text-neutral-600 rounded-r-3xl  rounded-l-md rounded-bl-3xl">
           <div>{recipe!.name}</div>
         </div>
-        <div className="text-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3  items-center flex gap-4 justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
+
+        {recipe!.allergens.length > 0 && (
+          <div className="flex my-4 gap-3 flex-wrap">
+            {recipe!.allergens.map((a) => (
+              <div
+                key={a}
+                className=" border border-violet-500 p-1 px-4 rounded-xl rounded-tl-md  text-base text-violet-700 dark:text-violet-500 "
+              >
+                {a}
+              </div>
+            ))}
+          </div>
+        )}
+
+        <IngredientTable ingredients={recipe!.ingredients} />
+        <div className="text-lg mt-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3  items-center flex gap-4 justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
           <div>
             {" "}
             <b>Yields: </b>
@@ -56,24 +71,11 @@ const RecipeIndex = () => {
               onClick={() =>
                 navigate(`/app/recipes?category=${recipe?.category}`)
               }
-              className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl text-lg text-neutral-100 dark:text-neutral-100 "
+              className=" flex items-center gap-2 border  border-violet-500 cursor-pointer hover:border-neutral-700 hover:text-neutral-700 hover:dark:border-neutral-200 hover:dark:text-neutral-200 p-2 px-4 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl text-lg text-violet-700 dark:text-violet-500 "
             >
               {recipe?.category} <ArrowLongRightIcon className="w-5 h-5" />
             </div>
           </div>
-        </div>
-        <IngredientTable ingredients={recipe!.ingredients} />
-
-        <div className="flex mt-4 gap-2 flex-wrap">
-          {recipe!.allergens.length > 0 &&
-            recipe!.allergens.map((a) => (
-              <div
-                key={a}
-                className=" bg-violet-500 p-2 px-3 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl text-base text-neutral-100 dark:text-neutral-100 "
-              >
-                {a}
-              </div>
-            ))}
         </div>
 
         {recipe!.steps.length > 0 &&

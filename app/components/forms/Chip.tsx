@@ -6,7 +6,7 @@ const Chip = (props: Props) => {
   return (
     <div
       key={props.content}
-      className=" bg-violet-500 p-2 px-4 rounded-r-2xl  rounded-l-md rounded-bl-2xl text-base text-neutral-100 dark:text-neutral-100 "
+      className="border border-violet-500 p-1 px-4 rounded-xl  rounded-tl-md  text-base text-violet-700 dark:text-violet-500 "
     >
       {props.content}
     </div>
