@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 const SlideDownTransition = ({ children }: { children: ReactNode }) => {
   return (
     <Transition
-      enter="transition-all transform  ease-in-out  duration-700"
+      enter="transition-all transform  ease-in-out  duration-500"
       enterFrom=" opacity-0 -translate-y-full "
       enterTo=" opacity-100 translate-y-0"
       leave="transition ease-in duration-400"

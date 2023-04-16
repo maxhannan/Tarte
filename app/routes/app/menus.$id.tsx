@@ -21,6 +21,7 @@ const MenuPage = () => {
   const navigate = useNavigate();
   const menu = useLoaderData() as FullMenu;
   const navigation = useNavigation();
+
   console.log({ menu });
 
   if (navigation.state === "loading")
