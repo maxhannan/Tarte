@@ -7,6 +7,7 @@ import {
 import SlideUpTransition from "~/components/animations/slideUp";
 import MenuSummary from "~/components/menuComponents/MenuSummary";
 import SearchAndFilter from "~/components/menus/SearchAndFilter";
+import RecipeSummary from "~/components/recipefeed/RecipeSummary";
 import Spinner from "~/components/status/smallSpinner";
 import { getDishes } from "~/utils/menus.server";
 import type { DishSummaries } from "~/utils/menus.server";
@@ -55,7 +56,7 @@ const DishesPage = () => {
         ) : (
           <SlideUpTransition>
             {dishes?.map((d) => (
-              <MenuSummary
+              <RecipeSummary
                 key={d.id}
                 category={`${d._count.ingredients} Component${
                   d._count.ingredients !== 1 ? "s" : ""

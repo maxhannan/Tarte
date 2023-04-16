@@ -20,15 +20,10 @@ const RecipeSummary = ({
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate(`${link}${id}`)}
+      onClick={() => navigate(`${id}`)}
       className="w-full max-h-full border-neutral-300 border  bg-neutral-200 rounded-r-2xl rounded-l-md rounded-bl-2xl py-3   flex justify-start items-center  px-4 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-neutral-700"
     >
-      <div className="inline-flex flex-shrink-0 items-center mr-4 justify-center w-12 h-12 overflow-hidden bg-neutral-500 text-neutral-700 border-neutral-300 rounded-r-2xl rounded-l-md rounded-bl-2xl dark:bg-neutral-800 border dark:border-neutral-700">
-        <span className=" text-2xl text-neutral-200 dark:text-neutral-300">
-          {user.toLowerCase()}
-        </span>
-      </div>
-      <div className=" pl-0 pr-4 ">
+      <div className=" pl-2 pr-4 ">
         <h5 className="text-xl  text-neutral-700 dark:text-neutral-100">
           {name}
         </h5>
