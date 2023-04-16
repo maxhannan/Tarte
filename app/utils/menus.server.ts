@@ -153,6 +153,7 @@ export const getDishById = async (id: string) => {
             id: true,
           },
         },
+
         author: true,
         ingredients: {
           include: {
@@ -160,6 +161,8 @@ export const getDishById = async (id: string) => {
               select: {
                 id: true,
                 name: true,
+                category: true,
+
                 author: {
                   select: {
                     firstName: true,

@@ -57,7 +57,7 @@ const DishesPage = () => {
             {dishes?.map((d) => (
               <MenuSummary
                 key={d.id}
-                category={`${d._count.ingredients} Recipe${
+                category={`${d._count.ingredients} Component${
                   d._count.ingredients !== 1 ? "s" : ""
                 } `}
                 user={d.author!.firstName[0] + d.author!.lastName[0]}
