@@ -73,7 +73,7 @@ const DishPage = () => {
             dish?.allergens.length > 0 &&
             dish?.allergens.map((a) => <Chip key={a} content={a} />)}
         </div>
-        <div className="text-2xl mt-3 border-neutral-300 border dark:border-neutral-700  gap-3  px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4 mb-2 text-neutral-600 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl">
+        <div className="text-3xl mt-3 border-neutral-300 border dark:border-neutral-700  gap-3  px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4 mb-2 text-neutral-600 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl">
           <div>Components</div>
         </div>
         <div className="flex flex-col gap-2">
