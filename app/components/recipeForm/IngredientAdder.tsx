@@ -7,6 +7,7 @@ import type { Ingredient } from "./IngredientsSection";
 import LinkRecipeComboBox from "../forms/LinkRecipeBox";
 import { useState } from "react";
 import type { FullRecipes } from "~/utils/recipes.server";
+import { UnitsList } from "~/utils/CodedLists";
 
 interface Props {
   handleDelete: (id: string) => void;
@@ -68,11 +69,7 @@ const IngredientAdder = ({ handleDelete, ingredient, recipes }: Props) => {
               : undefined
           }
           allowCustom
-          options={[
-            { id: "Grams", value: "Grams" },
-            { id: "Kilograms", value: "Kilograms" },
-            { id: "Cups", value: "Cups" },
-          ]}
+          options={UnitsList}
         />
       </div>
       <div className="col-span-5 border-b-4 rounded-sm dark:border-neutral-700"></div>

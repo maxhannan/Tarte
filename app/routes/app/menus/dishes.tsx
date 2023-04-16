@@ -5,7 +5,7 @@ import {
   useSearchParams,
 } from "@remix-run/react";
 import SlideUpTransition from "~/components/animations/slideUp";
-import MenuSummary from "~/components/menuComponents/MenuSummary";
+
 import SearchAndFilter from "~/components/menus/SearchAndFilter";
 import RecipeSummary from "~/components/recipefeed/RecipeSummary";
 import Spinner from "~/components/status/smallSpinner";

@@ -5,8 +5,9 @@ import {
   useSearchParams,
 } from "@remix-run/react";
 import SlideUpTransition from "~/components/animations/slideUp";
-import MenuSummary from "~/components/menuComponents/MenuSummary";
+
 import SearchAndFilter from "~/components/menus/SearchAndFilter";
+import RecipeSummary from "~/components/recipefeed/RecipeSummary";
 import Spinner from "~/components/status/smallSpinner";
 import { getMenus } from "~/utils/menus.server";
 import type { MenuSummaries } from "~/utils/menus.server";
@@ -47,7 +48,7 @@ const MenusPage = () => {
         ) : (
           <SlideUpTransition>
             {menus?.map((m) => (
-              <MenuSummary
+              <RecipeSummary
                 key={m.id}
                 category={`${m._count.dishes} Dish${
                   m._count.dishes !== 1 ? "es" : ""

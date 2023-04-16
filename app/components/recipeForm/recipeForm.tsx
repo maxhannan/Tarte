@@ -13,6 +13,7 @@ import { v4 } from "uuid";
 import { useRouteData } from "~/hooks/useRouteData";
 import { useNavigation } from "@remix-run/react";
 import type { CompleteRecipe } from "~/utils/recipes.server";
+import { UnitsList } from "~/utils/CodedLists";
 
 const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
   const [show, setShow] = useState(false);
@@ -100,11 +101,7 @@ const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
                 placeholder="Unit"
                 allowCustom
                 initValue={recipeValues.yieldUnit}
-                options={[
-                  { id: "g", value: "Grams" },
-                  { id: "kg", value: "Kilograms" },
-                  { id: "c", value: "Cups" },
-                ]}
+                options={UnitsList}
               />
             </div>
           </div>
