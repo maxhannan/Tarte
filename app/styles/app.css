@@ -1524,6 +1524,14 @@ select {
   padding-top: 12rem;
 }
 
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
+.pl-0 {
+  padding-left: 0px;
+}
+
 .text-left {
   text-align: left;
 }

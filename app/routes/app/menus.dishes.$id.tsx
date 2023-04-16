@@ -5,7 +5,7 @@ import {
   PencilSquareIcon,
   ScaleIcon,
 } from "@heroicons/react/24/outline";
-import { ArrowRightIcon, PuzzlePieceIcon } from "@heroicons/react/24/outline";
+import { PuzzlePieceIcon } from "@heroicons/react/24/outline";
 import type { LoaderFunction } from "@remix-run/node";
 import {
   Link,
@@ -13,7 +13,6 @@ import {
   useNavigate,
   useNavigation,
 } from "@remix-run/react";
-import MenuDishSummary from "~/components/menuComponents/MenuDishSummary";
 import AppBar from "~/components/navigation/AppBar";
 import RecipeSummary from "~/components/recipefeed/RecipeSummary";
 import Spinner from "~/components/status/smallSpinner";
@@ -73,7 +72,7 @@ const DishPage = () => {
         appear
         show
       >
-        <div className="text-2xl  gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-600 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl">
+        <div className="text-2xl  gap-3   w-full items-center flex justify-between dark:text-neutral-200  mb-4 text-neutral-600 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl">
           <div>{dish!.name}</div>
         </div>
         <div className="flex mt-4 gap-2 flex-wrap">
@@ -113,7 +112,7 @@ const DishPage = () => {
                   className="  w-full max-h-full border-neutral-300 border   rounded-2xl rounded-tl-md  py-4   flex justify-start items-center  px-4 hover:bg-neutral-300 dark:hover:bg-neutral-700  dark:border-neutral-700"
                 >
                   <div className="font-light ">
-                    <h5 className="text-2xl text-neutral-700 dark:text-neutral-100">
+                    <h5 className="text-xl text-neutral-700 dark:text-neutral-100">
                       {i.ingredient}
                     </h5>
                   </div>
