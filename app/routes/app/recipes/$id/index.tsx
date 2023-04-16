@@ -43,12 +43,12 @@ const RecipeIndex = () => {
         ]}
       />
       <SlideUpTransition>
-        <div className="text-3xl  gap-3  w-full items-center flex justify-between dark:text-neutral-200 mb-4 text-neutral-600 rounded-r-3xl  rounded-l-md rounded-bl-3xl">
+        <div className="text-3xl  gap-3  w-full items-center flex justify-between dark:text-neutral-200 mb-3  text-neutral-600 rounded-r-3xl  rounded-l-md rounded-bl-3xl">
           <div>{recipe!.name}</div>
         </div>
 
         {recipe!.allergens.length > 0 && (
-          <div className="flex my-4 gap-2 flex-wrap">
+          <div className="flex pb-3 gap-2 flex-wrap">
             {recipe!.allergens.map((a) => (
               <Chip content={a} key={a} />
             ))}
@@ -56,7 +56,7 @@ const RecipeIndex = () => {
         )}
 
         <IngredientTable ingredients={recipe!.ingredients} />
-        <div className="text-lg mt-4 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3  items-center flex gap-4 justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
+        <div className="text-lg mt-3 bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3  items-center flex gap-4 justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl">
           <div>
             {" "}
             <b>Yields: </b>
