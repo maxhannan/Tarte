@@ -23,21 +23,24 @@ model User {
   lastName  String 
   recipes   Recipe[] 
   menus     Menu[]
-  dishes    Dish[]
+
 }
 
 model Recipe {
   id          String   @id @default(cuid())
+  dish        Boolean  @default(false)
+  section     MenuSection[]
+  menu        Menu[] 
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   name        String
   category    String
   allergens   String[]
-  dishes      Dish[]
   yieldAmt    String 
   yieldUnit   String   
   ingredients Ingredient[]
   steps       String[]
+  Notes       String[]
   author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
   authorId    String?  
   linkedIngredients Ingredient[] @relation("Linked Recipes")
@@ -60,7 +63,7 @@ model Menu {
   updatedAt   DateTime @updatedAt
   name        String
   sections    MenuSection[]
-  dishes      Dish[]
+  dishes      Recipe[]
   author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
   authorId    String?  
 }
@@ -72,21 +75,6 @@ model MenuSection {
   name        String
   menu        Menu    @relation(fields: [menuId], references: [id], onDelete: Cascade) 
   menuId      String
-  dishes      Dish[]
+  dishes      Recipe[]
 }
-
-model Dish {
-  id          String   @id @default(cuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  name        String
-  recipes     Recipe[]
-  items       String[]
-  section     MenuSection[] 
-  Menus       Menu[]
-  Notes       String[]
-  author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
-  authorId    String?  
-}
-
 

@@ -7,6 +7,7 @@ import {
 import { Link, useNavigate } from "@remix-run/react";
 import dayjs from "dayjs";
 import SlideUpTransition from "~/components/animations/slideUp";
+import Chip from "~/components/forms/Chip";
 import AppBar from "~/components/navigation/AppBar";
 import IngredientTable from "~/components/recipePage/ingredientTable/ingredientTable";
 import RecipeStep from "~/components/recipePage/RecipeStep";
@@ -47,14 +48,9 @@ const RecipeIndex = () => {
         </div>
 
         {recipe!.allergens.length > 0 && (
-          <div className="flex my-4 gap-3 flex-wrap">
+          <div className="flex my-4 gap-2 flex-wrap">
             {recipe!.allergens.map((a) => (
-              <div
-                key={a}
-                className=" border border-violet-500 p-1 px-4 rounded-xl rounded-tl-md  text-base text-violet-700 dark:text-violet-500 "
-              >
-                {a}
-              </div>
+              <Chip content={a} key={a} />
             ))}
           </div>
         )}
