@@ -53,11 +53,10 @@ export const getMenuById = async (id: string) => {
               select: {
                 id: true,
                 name: true,
-                recipes: {
-                  select: {
-                    _count: true,
-                  },
-                },
+                allergens: true,
+                category: true,
+                _count: true,
+
                 author: {
                   select: {
                     firstName: true,
@@ -79,11 +78,10 @@ export const getMenuById = async (id: string) => {
           select: {
             id: true,
             name: true,
-            recipes: {
-              select: {
-                _count: true,
-              },
-            },
+            allergens: true,
+            category: true,
+            _count: true,
+
             author: {
               select: {
                 firstName: true,
@@ -104,7 +102,10 @@ export type DishSummaries = Prisma.PromiseReturnType<typeof getDishes>;
 
 export const getDishes = async () => {
   try {
-    const dishes = await prisma.dish.findMany({
+    const dishes = await prisma.recipe.findMany({
+      where: {
+        dish: true,
+      },
       select: {
         _count: true,
         author: {
@@ -115,15 +116,18 @@ export const getDishes = async () => {
         },
         id: true,
         name: true,
-        recipes: {
+        allergens: true,
+        category: true,
+        menu: {
           select: {
-            allergens: true,
-          },
-        },
-        Menus: {
-          select: {
-            name: true,
             id: true,
+            name: true,
+            author: {
+              select: {
+                firstName: true,
+                lastName: true,
+              },
+            },
           },
         },
       },
@@ -138,44 +142,34 @@ export type FullDish = Prisma.PromiseReturnType<typeof getDishById>;
 
 export const getDishById = async (id: string) => {
   try {
-    const dish = await prisma.dish.findUnique({
+    const dish = await prisma.recipe.findUnique({
       where: {
         id: id,
       },
-      select: {
-        id: true,
-        name: true,
-        _count: true,
-        author: {
-          select: {
-            firstName: true,
-            lastName: true,
-          },
-        },
-        createdAt: true,
-        updatedAt: true,
-        Menus: {
+      include: {
+        menu: {
           select: {
             name: true,
             id: true,
           },
         },
-        recipes: {
-          select: {
-            name: true,
-            id: true,
-            allergens: true,
-            author: {
+        author: true,
+        ingredients: {
+          include: {
+            linkRecipe: {
               select: {
-                firstName: true,
-                lastName: true,
+                id: true,
+                name: true,
+                author: {
+                  select: {
+                    firstName: true,
+                    lastName: true,
+                  },
+                },
               },
             },
-            category: true,
           },
         },
-        items: true,
-        Notes: true,
       },
     });
     return dish;

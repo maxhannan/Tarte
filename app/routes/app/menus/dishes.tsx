@@ -27,7 +27,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 const DishesPage = () => {
   const dishes = useLoaderData() as DishSummaries;
   const [searchParams, setSearchParams] = useSearchParams();
-
+  console.log({ dishes });
   const navigation = useNavigation();
   const pageChangeLoading =
     navigation.state === "loading" &&
@@ -57,8 +57,8 @@ const DishesPage = () => {
             {dishes?.map((d) => (
               <MenuSummary
                 key={d.id}
-                category={`${d._count.recipes} Recipe${
-                  d._count.recipes !== 1 ? "s" : ""
+                category={`${d._count.ingredients} Recipe${
+                  d._count.ingredients !== 1 ? "s" : ""
                 } `}
                 user={d.author!.firstName[0] + d.author!.lastName[0]}
                 name={d.name}

@@ -109,6 +109,9 @@ export type FullRecipes = Prisma.PromiseReturnType<typeof getRecipes>;
 export const getRecipes = async () => {
   try {
     const recipes = await prisma.recipe.findMany({
+      where: {
+        dish: false,
+      },
       orderBy: [
         {
           name: "asc",
