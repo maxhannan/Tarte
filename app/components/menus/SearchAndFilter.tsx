@@ -108,7 +108,7 @@ const SearchAndFilter = ({
         appear
         show
       >
-        <div className="container max-w-2xl mx-auto flex  gap-x-3  mt-2">
+        <div className="container max-w-2xl mx-auto flex  gap-x-2  mt-2">
           <div className=" grow">
             <SearchBar
               handleChange={handleSearch}
@@ -138,7 +138,7 @@ const SearchAndFilter = ({
 
         <Transition
           show={openFilter}
-          className="z-30 relative flex-col flex gap-4 mt-4 "
+          className="z-30 relative flex-col flex gap-3 mt-3 "
           enter="transition-all ease-linear duration-500  overflow-hidden"
           enterFrom="transform opacity-0 max-h-0"
           enterTo="transform opacity-100 max-h-96"

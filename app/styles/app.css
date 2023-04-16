@@ -879,6 +879,10 @@ select {
   margin-top: 1rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .block {
   display: block;
 }
@@ -1206,6 +1210,10 @@ select {
 
 .gap-y-4 {
   row-gap: 1rem;
+}
+
+.gap-y-2 {
+  row-gap: 0.5rem;
 }
 
 .overflow-auto {

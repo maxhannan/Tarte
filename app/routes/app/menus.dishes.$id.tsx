@@ -13,6 +13,7 @@ import {
   useNavigate,
   useNavigation,
 } from "@remix-run/react";
+import Chip from "~/components/forms/Chip";
 import AppBar from "~/components/navigation/AppBar";
 import RecipeSummary from "~/components/recipefeed/RecipeSummary";
 import Spinner from "~/components/status/smallSpinner";
@@ -78,14 +79,7 @@ const DishPage = () => {
         <div className="flex mt-4 gap-2 flex-wrap">
           {dish?.allergens &&
             dish?.allergens.length > 0 &&
-            dish?.allergens.map((a) => (
-              <div
-                key={a}
-                className=" bg-violet-500 p-2 px-3 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl text-base text-neutral-100 dark:text-neutral-100 "
-              >
-                {a}
-              </div>
-            ))}
+            dish?.allergens.map((a) => <Chip key={a} content={a} />)}
         </div>
         <div className="text-xl mt-4  gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-600 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl">
           <div>Components</div>
@@ -102,6 +96,7 @@ const DishPage = () => {
                     i.linkRecipe.author!.lastName[0].toLowerCase()
                   }
                   id={i.linkId}
+                  link={`/app/recipes/`}
                   key={i.linkId}
                 />
               );
