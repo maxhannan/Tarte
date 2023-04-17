@@ -9,7 +9,6 @@ import {
   Form,
   useActionData,
   useLoaderData,
-  useMatches,
   useNavigate,
   useNavigation,
 } from "@remix-run/react";
@@ -90,44 +89,49 @@ const AddDishPage = () => {
             },
           ]}
         />
-        <div className="flex flex-col gap-3 mt-2 relative">
-          <CustomTextInput
-            fieldName="Dish Name"
-            identifier="dishName"
-            required
-          />
-
-          <LinkRecipeComboBox
-            name="menuLink"
-            placeholder="Link a Menu"
-            selected={selectedMenuLink}
-            setSelected={setSelectedMenuLink}
-            options={menus!.map((m) => ({ id: m.id, value: m.name }))}
-          />
-
-          {selectedMenuLink && selectedMenu && selectedMenu.sections && (
-            <LinkRecipeComboBox
-              name="sectionLink"
-              placeholder="Menu Section"
-              selected={selectedSectionLink}
-              setSelected={setSelectedSectionLink}
-              options={selectedMenu.sections.map((s) => ({
-                id: s.id,
-                value: s.name,
-              }))}
+        <SlideUpTransition>
+          <div className="flex flex-col gap-3 mt-2 relative">
+            <CustomTextInput
+              fieldName="Dish Name"
+              identifier="dishName"
+              required
             />
-          )}
-          <MultiSelectBox name="allergies" placeholder="Select Allergens" />
-          <IngredientSection recipesProp={recipes} sectionName={"Component"} />
-          <LoadingButton
-            loading={navigation.state === "submitting"}
-            type="submit"
-            buttonName="createDish"
-            buttonText="Create Dish"
-            loadingText="Creating..."
-            Icon={PlusCircleIcon}
-          />
-        </div>
+
+            <LinkRecipeComboBox
+              name="menuLink"
+              placeholder="Link a Menu"
+              selected={selectedMenuLink}
+              setSelected={setSelectedMenuLink}
+              options={menus!.map((m) => ({ id: m.id, value: m.name }))}
+            />
+
+            {selectedMenuLink && selectedMenu && selectedMenu.sections && (
+              <LinkRecipeComboBox
+                name="sectionLink"
+                placeholder="Menu Section"
+                selected={selectedSectionLink}
+                setSelected={setSelectedSectionLink}
+                options={selectedMenu.sections.map((s) => ({
+                  id: s.id,
+                  value: s.name,
+                }))}
+              />
+            )}
+            <MultiSelectBox name="allergies" placeholder="Select Allergens" />
+            <IngredientSection
+              recipesProp={recipes}
+              sectionName={"Component"}
+            />
+            <LoadingButton
+              loading={navigation.state === "submitting"}
+              type="submit"
+              buttonName="createDish"
+              buttonText="Create Dish"
+              loadingText="Creating..."
+              Icon={PlusCircleIcon}
+            />
+          </div>
+        </SlideUpTransition>
       </Form>
     </div>
   );

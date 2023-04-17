@@ -1,4 +1,3 @@
-import { Transition } from "@headlessui/react";
 import {
   ArrowLongRightIcon,
   ArrowUturnLeftIcon,
