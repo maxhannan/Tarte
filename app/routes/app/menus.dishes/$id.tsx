@@ -81,7 +81,7 @@ const DishPage = () => {
             if (i.linkId && i.linkRecipe) {
               return (
                 <RecipeSummary
-                  category={i.linkRecipe.category}
+                  category={i.qty + " " + i.unit}
                   name={i.linkRecipe.name}
                   user={
                     i.linkRecipe.author!.firstName[0].toLowerCase() +
