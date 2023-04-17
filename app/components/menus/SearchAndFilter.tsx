@@ -124,7 +124,7 @@ const SearchAndFilter = ({
                 openFilter
                   ? "rounded-r-xl rounded-l-md rounded-tl-xl "
                   : "rounded-r-xl rounded-l-md rounded-bl-xl "
-              } duration-300 text-neutral-700 border dark:border-neutral-700 border-neutral-300 transition-all h-12 w-12 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium   text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500`}
+              } duration-300 text-neutral-700 bg-opacity-50 dark:bg-opacity-50  border dark:border-neutral-700 border-neutral-300 transition-all h-12 w-12 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-neutral-300 font-medium   text-sm p-2.5 text-center inline-flex items-center dark:text-neutral-500  dark:hover:text-white dark:focus:ring-neutral-800 dark:hover:bg-neutral-500`}
             >
               {openFilter ? (
                 <XMarkIcon className="w-7 h-7" />
