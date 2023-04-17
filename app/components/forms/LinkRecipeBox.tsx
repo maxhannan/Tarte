@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { Combobox } from "@headlessui/react";
-import {
-  ChevronDownIcon,
-  XCircleIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/solid";
+import { ChevronDownIcon, XMarkIcon } from "@heroicons/react/24/solid";
 
 interface ComboBoxProps {
   options: Option[];
@@ -14,6 +10,7 @@ interface ComboBoxProps {
   initValue?: Option;
   selected: Option | null;
   setSelected: (option: Option | null) => void;
+  required?: boolean;
 }
 
 interface Option {
@@ -29,6 +26,7 @@ export default function LinkRecipeComboBox({
   initValue,
   selected,
   setSelected,
+  required = false,
 }: ComboBoxProps) {
   const [query, setQuery] = useState("");
 
@@ -52,8 +50,8 @@ export default function LinkRecipeComboBox({
 
   return (
     <Combobox value={selected} onChange={setSelected}>
-      <div className="relative">
-        <input type="hidden" value={selected?.id || ""} name="linkBoxId" />
+      <div className="relative ">
+        <input type="hidden" value={selected?.id || ""} name={`${name}Id`} />
         <Combobox.Input
           autoComplete="off"
           name={name}
@@ -61,6 +59,7 @@ export default function LinkRecipeComboBox({
           onChange={(event) => setQuery(event.target.value)}
           placeholder={placeholder}
           displayValue={selected ? (option: Option) => option.value : undefined}
+          required={required}
         />
         {selected !== null ? (
           <XMarkIcon

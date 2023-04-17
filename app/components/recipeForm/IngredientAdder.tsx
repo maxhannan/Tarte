@@ -26,7 +26,7 @@ const IngredientAdder = ({ handleDelete, ingredient, recipes }: Props) => {
       <div className="flex gap-x-2 col-span-5">
         <div className="grow">
           <CustomTextInput
-            fieldName="Ingredient Name"
+            fieldName="Name"
             identifier="ingredientName"
             defaultValue={selectedLink?.value || ingredient.ingredient}
             disabled={selectedLink ? true : false}

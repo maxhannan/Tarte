@@ -25,7 +25,7 @@ export const extractRecipe = (form: FormData) => {
   const yieldUnit = form.get("yieldUnit") as string;
   const allergies = form.get("allergies") as string;
   const iNames = form.getAll("ingredientName") as string[];
-  const linkIds = form.getAll("linkBoxId") as string[];
+  const linkIds = form.getAll("recipeLinkId") as string[];
   const ingredientAmts = form.getAll("ingredientAmt") as string[];
   const ingredientUnits = form.getAll("ingredientUnit") as string[];
   const steps = form.getAll("recipeStep") as string[];

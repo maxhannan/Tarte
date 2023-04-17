@@ -46,7 +46,8 @@ const MenusLayout = () => {
           {
             Icon: DocumentPlusIcon,
             buttonName: "Add Recipe",
-            action: () => navigate("/app/recipes/addrecipe"),
+            action: () =>
+              navigate(`${activeTab === "Dishes" ? "dishes/" : ""}add`),
           },
           {
             Icon: UserIcon,

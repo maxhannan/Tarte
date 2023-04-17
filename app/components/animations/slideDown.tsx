@@ -10,7 +10,6 @@ const SlideDownTransition = ({ children }: { children: ReactNode }) => {
       leave="transition ease-in duration-400"
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
-      className="z-50 relative"
       appear
       show
     >

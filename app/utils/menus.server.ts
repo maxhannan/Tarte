@@ -1,6 +1,49 @@
 import type { Prisma } from "@prisma/client/edge";
 import { prisma } from "./prisma.server";
 
+export const extractDish = (form: FormData) => {
+  const name = form.get("dishName") as string;
+
+  const menuLink = form.get("menuLinkId");
+  const sectionLink = form.get("sectionLinkId");
+  const allergies = form.get("allergies") as string;
+  const iNames = form.getAll("ingredientName") as string[];
+  const linkIds = form.getAll("recipeLinkId") as string[];
+  const ingredientAmts = form.getAll("ingredientAmt") as string[];
+  const ingredientUnits = form.getAll("ingredientUnit") as string[];
+
+  console.log({
+    name,
+    allergies,
+    menuLink,
+    sectionLink,
+    iNames,
+    linkIds,
+    ingredientAmts,
+    ingredientUnits,
+  });
+  const ingredients = iNames.map((i) => {
+    return {
+      ingredient: i,
+      qty: ingredientAmts[iNames.indexOf(i)],
+      unit: ingredientUnits[iNames.indexOf(i)],
+      linkId:
+        linkIds[iNames.indexOf(i)].length > 0
+          ? linkIds[iNames.indexOf(i)]
+          : undefined,
+    };
+  });
+
+  return {
+    name,
+
+    menuLink,
+    sectionLink,
+    allergens: allergies.length > 0 ? allergies?.split(",") : [],
+    ingredients,
+  };
+};
+
 export type MenuSummaries = Prisma.PromiseReturnType<typeof getMenus>;
 
 export const getMenus = async () => {
@@ -13,7 +56,13 @@ export const getMenus = async () => {
         _count: true,
         id: true,
         name: true,
-
+        sections: {
+          select: {
+            name: true,
+            id: true,
+            _count: true,
+          },
+        },
         author: {
           select: {
             firstName: true,
