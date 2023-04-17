@@ -20,7 +20,7 @@ const IngredientRow = ({
         {link ? (
           <p
             onClick={() => navigate(`/app/recipes/${link}`)}
-            className="break-normal text-violet-500 underline hover:text-violet-700 cursor-pointer flex items-center gap-2"
+            className="break-normal text-violet-500  hover:text-violet-700 cursor-pointer flex items-center gap-2"
           >
             {ingredient} <ArrowLongRightIcon className="w-6 h-6" />
           </p>
