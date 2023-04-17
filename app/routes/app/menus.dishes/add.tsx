@@ -75,7 +75,7 @@ const AddDishPage = () => {
       <Form method="post">
         <AppBar
           page="Add a Dish"
-          textSize="text-3xl"
+          textSize="text-4xl"
           buttons={[
             {
               Icon: CheckCircleIcon,
