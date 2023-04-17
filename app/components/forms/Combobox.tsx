@@ -49,7 +49,7 @@ export default function ComboBoxCustom({
         <Combobox.Input
           autoComplete="off"
           name={name}
-          className="rounded-r-xl rounded-l-md  rounded-bl-xl focus:ring-neutral-500 w-full  border   border-neutral-300 dark:border-neutral-700 h-12  p-2 pl-4 text-xl text-neutral-800 appearance-none  focus:ring-2 focus:outline-none focus:border-none bg-neutral-200    placeholder-neutral-500 dark:bg-neutral-800  dark:placeholder-neutral-400 dark:text-neutral-50   "
+          className="rounded-r-xl rounded-l-md bg-opacity-50 dark:bg-opacity-50   rounded-bl-xl focus:ring-neutral-500 w-full  border   border-neutral-300 dark:border-neutral-700 h-12  p-2 pl-4 text-xl text-neutral-800 appearance-none  focus:ring-2 focus:outline-none focus:border-none bg-neutral-200    placeholder-neutral-500 dark:bg-neutral-800  dark:placeholder-neutral-400 dark:text-neutral-50   "
           onChange={(event) => setQuery(event.target.value)}
           placeholder={placeholder}
           displayValue={selected ? (option: Option) => option.value : undefined}
