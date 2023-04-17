@@ -27,8 +27,10 @@ const MenusLayout = () => {
   }, [location]);
 
   const pageChangeLoading =
-    navigation.state === "loading" &&
-    !navigation.location.pathname.includes("/app/menus");
+    (navigation.state === "loading" &&
+      !navigation.location.pathname.includes("/app/menus")) ||
+    (navigation.state === "loading" &&
+      navigation.location.pathname === "/app/menus/dishes/add");
 
   if (pageChangeLoading) {
     return (

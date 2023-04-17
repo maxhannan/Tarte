@@ -34,6 +34,8 @@ const DishesPage = () => {
     navigation.state === "loading" &&
     navigation.location.pathname !== "/app/menus/dishes";
 
+  console.log(navigation.location?.pathname);
+
   if (pageChangeLoading) {
     return (
       <div className="flex items-center justify-center h-48">
