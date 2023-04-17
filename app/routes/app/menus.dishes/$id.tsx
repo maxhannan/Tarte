@@ -64,7 +64,7 @@ const DishPage = () => {
         ]}
       />
       <SlideUpTransition>
-        <div className="text-3xl  gap-3   w-full items-center flex justify-between dark:text-neutral-200 font-light  mb-3 text-neutral-600 rounded-r-2xl rounded-l-md rounded-bl-2xl">
+        <div className="text-3xl  gap-3   w-full items-center flex justify-between dark:text-neutral-200  mb-3 text-neutral-600 rounded-r-2xl rounded-l-md rounded-bl-2xl">
           <div>{dish!.name}</div>
         </div>
         <div className="flex  gap-2 flex-wrap">
@@ -95,7 +95,7 @@ const DishPage = () => {
               return (
                 <div
                   key={i.id}
-                  className="  w-full max-h-full border-neutral-300 border bg-neutral-200 dark:bg-neutral-800   rounded-2xl rounded-tl-md  py-4   flex justify-start items-center  px-4   dark:border-neutral-700"
+                  className="  w-full max-h-full border-neutral-300 border bg-opacity-50 dark:bg-opacity-50 bg-neutral-200 dark:bg-neutral-800   rounded-2xl rounded-tl-md  py-4   flex justify-start items-center  px-4   dark:border-neutral-700"
                 >
                   <div className=" ">
                     <h5 className="text-xl text-neutral-700 dark:text-neutral-100">
