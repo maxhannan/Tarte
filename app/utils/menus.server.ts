@@ -11,7 +11,7 @@ export const extractDish = (form: FormData) => {
   const linkIds = form.getAll("recipeLinkId") as string[];
   const ingredientAmts = form.getAll("ingredientAmt") as string[];
   const ingredientUnits = form.getAll("ingredientUnit") as string[];
-
+  const steps = form.getAll("recipeStep") as string[];
   console.log({
     name,
     allergies,
@@ -21,6 +21,7 @@ export const extractDish = (form: FormData) => {
     linkIds,
     ingredientAmts,
     ingredientUnits,
+    steps,
   });
   const ingredients = iNames.map((i) => {
     return {
@@ -41,6 +42,7 @@ export const extractDish = (form: FormData) => {
     sectionLink,
     allergens: allergies.length > 0 ? allergies?.split(",") : [],
     ingredients,
+    steps,
   };
 };
 

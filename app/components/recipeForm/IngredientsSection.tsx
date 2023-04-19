@@ -38,18 +38,7 @@ const IngredientSection = ({
       : recipes;
 
   const [ingredients, setIngredients] = useState(
-    ingredientList
-      ? ingredientList
-      : [
-          {
-            id: v4(),
-            ingredient: "",
-            qty: "",
-            unit: undefined,
-            linkId: null,
-            linkRecipe: null,
-          },
-        ]
+    ingredientList ? ingredientList : []
   );
   const addIngredient = () => {
     const newIngredient = {

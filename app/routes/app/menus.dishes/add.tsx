@@ -1,5 +1,4 @@
 import {
-  ArrowPathIcon,
   CheckCircleIcon,
   PlusCircleIcon,
   XMarkIcon,
@@ -13,16 +12,16 @@ import {
   useNavigation,
 } from "@remix-run/react";
 import { useState } from "react";
-import SlideDownTransition from "~/components/animations/slideDown";
 import SlideUpTransition from "~/components/animations/slideUp";
 import LoadingButton from "~/components/buttons/LoadingButton";
+import NotesSection from "~/components/dishForm/NotesSection";
 import type { Option } from "~/components/forms/CategoryBox";
-import ComboBoxCustom from "~/components/forms/Combobox";
 import CustomTextInput from "~/components/forms/CustomTextInput";
 import LinkRecipeComboBox from "~/components/forms/LinkRecipeBox";
 import MultiSelectBox from "~/components/forms/MultiSelectBox";
 import AppBar from "~/components/navigation/AppBar";
 import IngredientSection from "~/components/recipeForm/IngredientsSection";
+import StepSection from "~/components/recipeForm/StepSection";
 import Spinner from "~/components/status/smallSpinner";
 import { extractDish, getMenus } from "~/utils/menus.server";
 import type { MenuSummaries } from "~/utils/menus.server";
@@ -122,6 +121,8 @@ const AddDishPage = () => {
               recipesProp={recipes}
               sectionName={"Component"}
             />
+            <StepSection show={true} stepsList={[]} />
+            <NotesSection show={true} />
             <LoadingButton
               loading={navigation.state === "submitting"}
               type="submit"

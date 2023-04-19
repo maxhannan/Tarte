@@ -13,7 +13,7 @@ const StepSection = ({
   const [steps, setSteps] = useState(
     stepsList?.map((s) => {
       return { content: s, orderNum: stepsList.indexOf(s) + 1, id: v4() };
-    }) || [{ orderNum: 1, content: "", id: v4() }]
+    }) || []
   );
 
   const handleAddStep = () => {

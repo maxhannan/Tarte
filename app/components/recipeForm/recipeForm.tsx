@@ -40,17 +40,8 @@ const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
         allergens: undefined,
         yieldAmt: "",
         yieldUnit: undefined,
-        ingredients: [
-          {
-            id: v4(),
-            ingredient: "",
-            qty: undefined,
-            unit: undefined,
-            linkId: null,
-            linkRecipe: null,
-          },
-        ],
-        steps: [""],
+        ingredients: [],
+        steps: [],
       };
   const navigation = useNavigation();
   return (
