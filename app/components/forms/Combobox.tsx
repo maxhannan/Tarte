@@ -58,7 +58,10 @@ export default function ComboBoxCustom({
 
         {selected !== null ? (
           <XMarkIcon
-            onClick={() => setSelected(null)}
+            onClick={() => {
+              setSelected(null);
+              setQuery("");
+            }}
             className="w-6 h-6 absolute top-3 right-2 text-violet-500 dark:text-violet-500 hover:text-violet-600 "
           />
         ) : (

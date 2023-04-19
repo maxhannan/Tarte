@@ -25,7 +25,6 @@ const RecipeNote = ({ note, i, handleDelete, show }: Props) => {
           />
         </div>
       </div>
-
       {show && (
         <TextAreaCustom
           initValue={note}
