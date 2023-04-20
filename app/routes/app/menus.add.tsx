@@ -1,4 +1,5 @@
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { LoaderFunction } from "@remix-run/node";
 import { Form, useNavigate, useNavigation } from "@remix-run/react";
 import SlideUpTransition from "~/components/animations/slideUp";
 import ComboBoxCustom from "~/components/forms/Combobox";
@@ -6,6 +7,12 @@ import CustomTextInput from "~/components/forms/CustomTextInput";
 import MenuSections from "~/components/menuForm/menuSections";
 import AppBar from "~/components/navigation/AppBar";
 import Spinner from "~/components/status/smallSpinner";
+import { getRecipes } from "~/utils/recipes.server";
+
+export const loader: LoaderFunction = async () => {
+  const recipes = await getRecipes();
+  return recipes;
+};
 
 const AddMenuPage = () => {
   const navigate = useNavigate();
