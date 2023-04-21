@@ -1,11 +1,7 @@
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
-import {
-  Form,
-  useActionData,
-  useNavigate,
-  useNavigation,
-} from "@remix-run/react";
+import { redirect } from "@remix-run/node";
+import type { ActionFunction, LoaderFunction } from "@remix-run/node";
+import { Form, useNavigate, useNavigation } from "@remix-run/react";
 import SlideUpTransition from "~/components/animations/slideUp";
 import NotesSection from "~/components/dishForm/NotesSection";
 import ComboBoxCustom from "~/components/forms/Combobox";

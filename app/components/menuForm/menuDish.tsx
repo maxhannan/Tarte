@@ -1,8 +1,6 @@
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { UnitsList } from "~/utils/CodedLists";
 import IconButton from "../buttons/IconButton";
-import ComboBoxCustom from "../forms/Combobox";
-import CustomTextInput from "../forms/CustomTextInput";
+
 import LinkRecipeComboBox from "../forms/LinkRecipeBox";
 import { useState } from "react";
 import type { Option } from "../forms/CategoryBox";

@@ -1,7 +1,7 @@
 import { PlusIcon } from "@heroicons/react/24/solid";
 import MenuSection from "./menuSection";
 import { useState } from "react";
-import { Option } from "../forms/CategoryBox";
+import type { Option } from "../forms/CategoryBox";
 import { v4 } from "uuid";
 
 const MenuSections = () => {

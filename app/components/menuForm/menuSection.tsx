@@ -1,12 +1,11 @@
-import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import IconButton from "../buttons/IconButton";
 import CustomTextInput from "../forms/CustomTextInput";
-import IngredientSection from "../recipeForm/IngredientsSection";
 
 import MenuDishSection from "./menuDishSection";
 import type { Option } from "../forms/CategoryBox";
-import { ChangeEvent, useState } from "react";
-
+import { useState } from "react";
+import type { ChangeEvent } from "react";
 interface Props {
   handleDelete: (id: string) => void;
   section: Option;
