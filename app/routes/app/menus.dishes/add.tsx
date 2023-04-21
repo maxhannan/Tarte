@@ -8,11 +8,13 @@ import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import {
   Form,
   useLoaderData,
+  useMatches,
   useNavigate,
   useNavigation,
 } from "@remix-run/react";
 import SlideUpTransition from "~/components/animations/slideUp";
 import LoadingButton from "~/components/buttons/LoadingButton";
+import DishForm from "~/components/dishForm/DishForm";
 import NotesSection from "~/components/dishForm/NotesSection";
 import CustomTextInput from "~/components/forms/CustomTextInput";
 import MultiSelectBox from "~/components/forms/MultiSelectBox";
@@ -26,10 +28,9 @@ import { getRecipes } from "~/utils/recipes.server";
 import type { FullRecipes } from "~/utils/recipes.server";
 
 export const loader: LoaderFunction = async () => {
-  const menus = await getMenus();
   const recipes = await getRecipes();
 
-  return { menus, recipes };
+  return { recipes };
 };
 
 export const action: ActionFunction = async ({ request }) => {
@@ -52,6 +53,7 @@ const AddDishPage = () => {
   const { recipes } = useLoaderData() as {
     recipes: FullRecipes;
   };
+  console.log(useMatches());
 
   if (navigation.state === "loading") {
     return (
@@ -81,31 +83,7 @@ const AddDishPage = () => {
             },
           ]}
         />
-        <SlideUpTransition>
-          <div className="flex flex-col gap-3 mt-2 relative">
-            <CustomTextInput
-              fieldName="Dish Name"
-              identifier="dishName"
-              required
-            />
-
-            <MultiSelectBox name="allergies" placeholder="Select Allergens" />
-            <IngredientSection
-              recipesProp={recipes}
-              sectionName={"Component"}
-            />
-            <StepSection show={true} stepsList={[]} />
-            <NotesSection show={true} />
-            <LoadingButton
-              loading={navigation.state === "submitting"}
-              type="submit"
-              buttonName="createDish"
-              buttonText="Create Dish"
-              loadingText="Creating..."
-              Icon={PlusCircleIcon}
-            />
-          </div>
-        </SlideUpTransition>
+        <DishForm recipes={recipes} />
       </Form>
     </div>
   );
