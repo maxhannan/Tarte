@@ -89,7 +89,7 @@ const MenusLayout = () => {
           </button>
         </div>
       </SlideDownTransition>
-      <div className="mt-2">
+      <div className="">
         <Outlet />
       </div>
     </>
