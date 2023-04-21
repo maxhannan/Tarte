@@ -6,13 +6,18 @@ export const extractMenu = (form: FormData) => {
   const sections = form.getAll("sectionName") as string[];
   const dishSections = form.getAll("dishSection") as string[];
   const linkIds = form.getAll("dishLinkId") as string[];
-  const dishes = linkIds.map((l) => ({
-    section: dishSections[linkIds.indexOf(l)],
-    linkId: l,
-  }));
+
+  const dishes = linkIds.map((l, i) => {
+    console.log("1", dishSections[i], i);
+    return {
+      section: dishSections[i],
+      id: l,
+    };
+  });
+  console.log("2", dishes, linkIds, dishSections);
   return {
     name,
-    sections,
+    sections: sections.map((s) => ({ name: s })),
     dishes,
   };
 };
@@ -228,6 +233,65 @@ export const getDishById = async (id: string) => {
       },
     });
     return dish;
+  } catch (error) {
+    return null;
+  }
+};
+
+type menuForm = ReturnType<typeof extractMenu>;
+
+export const createMenu = async (menu: menuForm, authorId: string) => {
+  try {
+    console.log({ menu });
+    const dishes = menu.dishes;
+    const dishIds = dishes.map((d) => ({ id: d.id }));
+    const savedMenu = await prisma.menu.create({
+      data: {
+        name: menu.name,
+        author: {
+          connect: {
+            id: authorId,
+          },
+        },
+        sections: {
+          createMany: {
+            data: menu.sections,
+          },
+        },
+        dishes: {
+          connect: dishIds,
+        },
+      },
+      include: {
+        sections: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+    });
+    const connectedDishes = dishes.map((d) => ({
+      id: savedMenu.sections.find((s) => s.name === d.section)?.id,
+      name: d.section,
+    }));
+    console.log(dishes, savedMenu.sections, connectedDishes);
+    await prisma.$transaction(
+      dishes.map((dish) =>
+        prisma.recipe.update({
+          where: { id: dish.id },
+          data: {
+            section: {
+              connect: {
+                id: savedMenu.sections.find((s) => s.name === dish.section)?.id,
+              },
+            },
+          },
+        })
+      )
+    );
+    console.log(savedMenu);
+    return savedMenu;
   } catch (error) {
     return null;
   }

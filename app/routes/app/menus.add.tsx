@@ -1,5 +1,5 @@
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { ActionFunction, LoaderFunction } from "@remix-run/node";
+import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
 import {
   Form,
   useActionData,
@@ -13,8 +13,8 @@ import CustomTextInput from "~/components/forms/CustomTextInput";
 import MenuSections from "~/components/menuForm/menuSections";
 import AppBar from "~/components/navigation/AppBar";
 import Spinner from "~/components/status/smallSpinner";
-import { extractMenu, getDishes } from "~/utils/menus.server";
-import { getRecipes } from "~/utils/recipes.server";
+import { getUser } from "~/utils/auth.server";
+import { createMenu, extractMenu, getDishes } from "~/utils/menus.server";
 
 export const loader: LoaderFunction = async () => {
   const dishes = await getDishes();
@@ -24,14 +24,18 @@ export const loader: LoaderFunction = async () => {
 export const action: ActionFunction = async ({ request }) => {
   const form = await request.formData();
   const data = await extractMenu(form);
-  return data;
+  const user = await getUser(request);
+  const savedMenu = await createMenu(data, user!.id);
+  if (savedMenu) {
+    return redirect(`/app/menus/${savedMenu.id}`);
+  }
+  return null;
 };
 
 const AddMenuPage = () => {
   const navigate = useNavigate();
   const navigation = useNavigation();
-  const data = useActionData();
-  console.log({ data });
+
   if (navigation.state === "loading") {
     return (
       <div className="h-screen  flex items-center justify-center">

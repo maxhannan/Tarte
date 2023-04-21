@@ -34,7 +34,7 @@ const MenusPage = () => {
     );
   }
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 mb-24">
       <SearchAndFilter
         searchParams={searchParams}
         setSearchParams={setSearchParams}
@@ -47,17 +47,19 @@ const MenusPage = () => {
           </div>
         ) : (
           <SlideUpTransition>
-            {menus?.map((m) => (
-              <RecipeSummary
-                key={m.id}
-                category={`${m._count.dishes} Dish${
-                  m._count.dishes !== 1 ? "es" : ""
-                } `}
-                user={m.author!.firstName[0] + m.author!.lastName[0]}
-                name={m.name}
-                id={m.id}
-              />
-            ))}
+            <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2 max-w-2xl mx-auto  ">
+              {menus?.map((m) => (
+                <RecipeSummary
+                  key={m.id}
+                  category={`${m._count.dishes} Dish${
+                    m._count.dishes !== 1 ? "es" : ""
+                  } `}
+                  user={m.author!.firstName[0] + m.author!.lastName[0]}
+                  name={m.name}
+                  id={m.id}
+                />
+              ))}
+            </div>
           </SlideUpTransition>
         )}
       </div>
