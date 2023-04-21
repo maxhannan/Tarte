@@ -1,6 +1,5 @@
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
-import recipes from "~/routes/app/recipes";
-import SlideUpTransition from "../animations/slideUp";
+
 import LoadingButton from "../buttons/LoadingButton";
 import CustomTextInput from "../forms/CustomTextInput";
 import MultiSelectBox from "../forms/MultiSelectBox";
@@ -9,7 +8,7 @@ import StepSection from "../recipeForm/StepSection";
 import NotesSection from "./NotesSection";
 import type { FullRecipes } from "~/utils/recipes.server";
 import { useNavigation } from "@remix-run/react";
-import { FullDish } from "~/utils/menus.server";
+import type { FullDish } from "~/utils/menus.server";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
 
@@ -77,8 +76,8 @@ const DishForm = ({ recipes, dish }: Props) => {
           loading={navigation.state === "submitting"}
           type="submit"
           buttonName="createDish"
-          buttonText="Create Dish"
-          loadingText="Creating..."
+          buttonText={dish ? "Update Dish" : "Create Dish"}
+          loadingText={dish ? "Updating..." : "Creating..."}
           Icon={PlusCircleIcon}
         />
       </div>

@@ -1,8 +1,4 @@
-import {
-  CheckCircleIcon,
-  PlusCircleIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { redirect } from "@remix-run/node";
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import {
@@ -12,18 +8,14 @@ import {
   useNavigate,
   useNavigation,
 } from "@remix-run/react";
-import SlideUpTransition from "~/components/animations/slideUp";
-import LoadingButton from "~/components/buttons/LoadingButton";
+
 import DishForm from "~/components/dishForm/DishForm";
-import NotesSection from "~/components/dishForm/NotesSection";
-import CustomTextInput from "~/components/forms/CustomTextInput";
-import MultiSelectBox from "~/components/forms/MultiSelectBox";
+
 import AppBar from "~/components/navigation/AppBar";
-import IngredientSection from "~/components/recipeForm/IngredientsSection";
-import StepSection from "~/components/recipeForm/StepSection";
+
 import Spinner from "~/components/status/smallSpinner";
 import { getUser } from "~/utils/auth.server";
-import { createDish, extractDish, getMenus } from "~/utils/menus.server";
+import { createDish, extractDish } from "~/utils/menus.server";
 import { getRecipes } from "~/utils/recipes.server";
 import type { FullRecipes } from "~/utils/recipes.server";
 

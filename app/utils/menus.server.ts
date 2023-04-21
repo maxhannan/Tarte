@@ -73,6 +73,33 @@ export const createDish = async (dish: dishData, userid: string) => {
   }
 };
 
+export const updateDish = async (id: string, dish: dishData) => {
+  const { name, allergens, ingredients, steps } = dish;
+
+  const data = await prisma.$transaction([
+    prisma.ingredient.deleteMany({ where: { recipeId: id } }),
+    prisma.recipe.update({
+      where: { id: id },
+      data: {
+        name,
+
+        allergens,
+
+        steps,
+        ingredients: {
+          create: [...ingredients],
+        },
+      },
+      include: {
+        ingredients: true,
+        author: true,
+      },
+    }),
+  ]);
+
+  return data[1];
+};
+
 export type MenuSummaries = Prisma.PromiseReturnType<typeof getMenus>;
 
 export const getMenus = async () => {
