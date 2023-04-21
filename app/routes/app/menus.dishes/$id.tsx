@@ -17,6 +17,8 @@ import {
 import SlideUpTransition from "~/components/animations/slideUp";
 import Chip from "~/components/forms/Chip";
 import AppBar from "~/components/navigation/AppBar";
+import RecipeStep from "~/components/recipePage/RecipeStep";
+
 import RecipeSummary from "~/components/recipefeed/RecipeSummary";
 import Spinner from "~/components/status/smallSpinner";
 import { getDishById } from "~/utils/menus.server";
@@ -43,7 +45,7 @@ const DishPage = () => {
     );
   console.log({ dish }, dish?.ingredients);
   return (
-    <div>
+    <div className="mb-24">
       <AppBar
         page={""}
         textSize="text-2xl"
@@ -135,7 +137,10 @@ const DishPage = () => {
             </>
           )}
         </Disclosure>
-
+        {dish!.steps.length > 0 &&
+          dish!.steps.map((s, i) => (
+            <RecipeStep key={s} stepNum={i + 1} content={s} />
+          ))}
         <div className="text-xl bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200  p-4 mt-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl ">
           Menus
           <div className="flex gap-3 flex-wrap r mt-2">
