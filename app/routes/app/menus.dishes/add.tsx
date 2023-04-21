@@ -3,7 +3,7 @@ import {
   PlusCircleIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import type { ActionFunction, LoaderFunction } from "@remix-run/node";
+import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
 import {
   Form,
   useActionData,
@@ -23,7 +23,8 @@ import AppBar from "~/components/navigation/AppBar";
 import IngredientSection from "~/components/recipeForm/IngredientsSection";
 import StepSection from "~/components/recipeForm/StepSection";
 import Spinner from "~/components/status/smallSpinner";
-import { extractDish, getMenus } from "~/utils/menus.server";
+import { getUser } from "~/utils/auth.server";
+import { createDish, extractDish, getMenus } from "~/utils/menus.server";
 import type { MenuSummaries } from "~/utils/menus.server";
 import { getRecipes } from "~/utils/recipes.server";
 import type { FullRecipes } from "~/utils/recipes.server";
@@ -37,8 +38,15 @@ export const loader: LoaderFunction = async () => {
 
 export const action: ActionFunction = async ({ request }) => {
   const dishForm = await request.formData();
-  const dishSaved = await extractDish(dishForm);
-  return dishSaved;
+  const data = await extractDish(dishForm);
+  const user = await getUser(request);
+
+  const savedDish = await createDish(data, user!.id);
+
+  if (savedDish) {
+    return redirect(`/app/menus/dishes/${savedDish.id}`);
+  }
+  return null;
 };
 
 const AddDishPage = () => {
@@ -48,9 +56,6 @@ const AddDishPage = () => {
   const { recipes } = useLoaderData() as {
     recipes: FullRecipes;
   };
-
-  const dishSaved = useActionData();
-  console.log({ dishSaved });
 
   if (navigation.state === "loading") {
     return (

@@ -7,14 +7,11 @@ export const extractMenu = (form: FormData) => {
   const dishSections = form.getAll("dishSection") as string[];
   const linkIds = form.getAll("dishLinkId") as string[];
 
-  const dishes = linkIds.map((l, i) => {
-    console.log("1", dishSections[i], i);
-    return {
-      section: dishSections[i],
-      id: l,
-    };
-  });
-  console.log("2", dishes, linkIds, dishSections);
+  const dishes = linkIds.map((l, i) => ({
+    section: dishSections[i],
+    id: l,
+  }));
+
   return {
     name,
     sections: sections.map((s) => ({ name: s })),
@@ -32,15 +29,12 @@ export const extractDish = (form: FormData) => {
   const ingredientUnits = form.getAll("ingredientUnit") as string[];
   const steps = form.getAll("recipeStep") as string[];
 
-  const ingredients = iNames.map((i) => {
+  const ingredients = iNames.map((n, i) => {
     return {
-      ingredient: i,
-      qty: ingredientAmts[iNames.indexOf(i)],
-      unit: ingredientUnits[iNames.indexOf(i)],
-      linkId:
-        linkIds[iNames.indexOf(i)].length > 0
-          ? linkIds[iNames.indexOf(i)]
-          : undefined,
+      ingredient: n,
+      qty: ingredientAmts[i],
+      unit: ingredientUnits[i],
+      linkId: linkIds[i].length > 0 ? linkIds[i] : undefined,
     };
   });
 
@@ -50,6 +44,33 @@ export const extractDish = (form: FormData) => {
     ingredients,
     steps,
   };
+};
+
+type dishData = ReturnType<typeof extractDish>;
+
+export const createDish = async (dish: dishData, userid: string) => {
+  const { name, allergens, ingredients, steps } = dish;
+  try {
+    const savedDish = await prisma.recipe.create({
+      data: {
+        name,
+        dish: true,
+        category: "dish",
+        allergens,
+        yieldAmt: "",
+        yieldUnit: "",
+        steps,
+        ingredients: {
+          create: [...ingredients],
+        },
+
+        author: { connect: { id: userid } },
+      },
+    });
+    return savedDish;
+  } catch (error) {
+    return null;
+  }
 };
 
 export type MenuSummaries = Prisma.PromiseReturnType<typeof getMenus>;

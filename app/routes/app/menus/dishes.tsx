@@ -57,17 +57,19 @@ const DishesPage = () => {
           </div>
         ) : (
           <SlideUpTransition>
-            {dishes?.map((d) => (
-              <RecipeSummary
-                key={d.id}
-                category={`${d._count.ingredients} Component${
-                  d._count.ingredients !== 1 ? "s" : ""
-                } `}
-                user={d.author!.firstName[0] + d.author!.lastName[0]}
-                name={d.name}
-                id={d.id}
-              />
-            ))}
+            <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2 max-w-2xl mx-auto  ">
+              {dishes?.map((d) => (
+                <RecipeSummary
+                  key={d.id}
+                  category={`${d._count.ingredients} Component${
+                    d._count.ingredients !== 1 ? "s" : ""
+                  } `}
+                  user={d.author!.firstName[0] + d.author!.lastName[0]}
+                  name={d.name}
+                  id={d.id}
+                />
+              ))}
+            </div>
           </SlideUpTransition>
         )}
       </div>

@@ -30,15 +30,12 @@ export const extractRecipe = (form: FormData) => {
   const ingredientUnits = form.getAll("ingredientUnit") as string[];
   const steps = form.getAll("recipeStep") as string[];
 
-  const ingredients = iNames.map((i) => {
+  const ingredients = iNames.map((n, i) => {
     return {
-      ingredient: i,
-      qty: ingredientAmts[iNames.indexOf(i)],
-      unit: ingredientUnits[iNames.indexOf(i)],
-      linkId:
-        linkIds[iNames.indexOf(i)].length > 0
-          ? linkIds[iNames.indexOf(i)]
-          : undefined,
+      ingredient: n,
+      qty: ingredientAmts[i],
+      unit: ingredientUnits[i],
+      linkId: linkIds[i].length > 0 ? linkIds[i] : undefined,
     };
   });
 
