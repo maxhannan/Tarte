@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 const CustomTextInput = ({
   identifier,
@@ -8,6 +8,7 @@ const CustomTextInput = ({
   defaultValue,
   disabled = false,
   required = true,
+  changeHandler,
 }: {
   identifier: string;
   fieldName: string;
@@ -16,6 +17,7 @@ const CustomTextInput = ({
   defaultValue?: string;
   disabled?: boolean;
   required?: boolean;
+  changeHandler?: (e: ChangeEvent<HTMLInputElement>) => void;
 }) => {
   const [value, setValue] = useState(defaultValue || "");
 
@@ -42,7 +44,12 @@ const CustomTextInput = ({
           } `}
           placeholder={fieldName}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => {
+            setValue(e.target.value);
+            if (changeHandler) {
+              changeHandler(e);
+            }
+          }}
           required={required}
           disabled={disabled}
         />

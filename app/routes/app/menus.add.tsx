@@ -1,13 +1,19 @@
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { LoaderFunction } from "@remix-run/node";
-import { Form, useNavigate, useNavigation } from "@remix-run/react";
+import { ActionFunction, LoaderFunction } from "@remix-run/node";
+import {
+  Form,
+  useActionData,
+  useNavigate,
+  useNavigation,
+} from "@remix-run/react";
 import SlideUpTransition from "~/components/animations/slideUp";
+import NotesSection from "~/components/dishForm/NotesSection";
 import ComboBoxCustom from "~/components/forms/Combobox";
 import CustomTextInput from "~/components/forms/CustomTextInput";
 import MenuSections from "~/components/menuForm/menuSections";
 import AppBar from "~/components/navigation/AppBar";
 import Spinner from "~/components/status/smallSpinner";
-import { getDishes } from "~/utils/menus.server";
+import { extractMenu, getDishes } from "~/utils/menus.server";
 import { getRecipes } from "~/utils/recipes.server";
 
 export const loader: LoaderFunction = async () => {
@@ -15,9 +21,17 @@ export const loader: LoaderFunction = async () => {
   return dishes;
 };
 
+export const action: ActionFunction = async ({ request }) => {
+  const form = await request.formData();
+  const data = await extractMenu(form);
+  return data;
+};
+
 const AddMenuPage = () => {
   const navigate = useNavigate();
   const navigation = useNavigation();
+  const data = useActionData();
+  console.log({ data });
   if (navigation.state === "loading") {
     return (
       <div className="h-screen  flex items-center justify-center">
@@ -35,7 +49,7 @@ const AddMenuPage = () => {
             {
               Icon: CheckCircleIcon,
               buttonName: "Submit",
-              type: "button",
+              type: "submit",
               action: () => console.log("Saving..."),
             },
             {
@@ -64,6 +78,7 @@ const AddMenuPage = () => {
               allowCustom
             />
             <MenuSections />
+            <NotesSection show />
           </div>
         </SlideUpTransition>
       </Form>

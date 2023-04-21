@@ -5,6 +5,7 @@ import IngredientSection from "../recipeForm/IngredientsSection";
 
 import MenuDishSection from "./menuDishSection";
 import type { Option } from "../forms/CategoryBox";
+import { ChangeEvent, useState } from "react";
 
 interface Props {
   handleDelete: (id: string) => void;
@@ -12,12 +13,20 @@ interface Props {
 }
 
 const MenuSection = ({ section, handleDelete }: Props) => {
+  const [sectionName, setSectionName] = useState("");
+
+  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setSectionName(e.target.value);
+  };
+
   return (
     <>
       <div className="flex gap-x-2 col-span-5 ">
         <CustomTextInput
           fieldName="Section Name"
           identifier="sectionName"
+          defaultValue={section.value}
+          changeHandler={changeHandler}
           required
         />
         <div className="flex justify-center items-center ml-auto">
@@ -29,7 +38,7 @@ const MenuSection = ({ section, handleDelete }: Props) => {
           />
         </div>
       </div>
-      <MenuDishSection />
+      <MenuDishSection section={sectionName} />
     </>
   );
 };

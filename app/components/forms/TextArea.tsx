@@ -13,7 +13,7 @@ const TextAreaCustom = ({
   const [value, setValue] = useState(initValue || "");
   return (
     <TextareaAutosize
-      minRows={2}
+      minRows={3}
       name={name}
       value={value}
       onChange={(e) => setValue(e.target.value)}

@@ -1,28 +1,32 @@
 import type { Prisma } from "@prisma/client/edge";
 import { prisma } from "./prisma.server";
 
+export const extractMenu = (form: FormData) => {
+  const name = form.get("menuName") as string;
+  const sections = form.getAll("sectionName") as string[];
+  const dishSections = form.getAll("dishSection") as string[];
+  const linkIds = form.getAll("dishLinkId") as string[];
+  const dishes = linkIds.map((l) => ({
+    section: dishSections[linkIds.indexOf(l)],
+    linkId: l,
+  }));
+  return {
+    name,
+    sections,
+    dishes,
+  };
+};
+
 export const extractDish = (form: FormData) => {
   const name = form.get("dishName") as string;
 
-  const menuLink = form.get("menuLinkId");
-  const sectionLink = form.get("sectionLinkId");
   const allergies = form.get("allergies") as string;
   const iNames = form.getAll("ingredientName") as string[];
   const linkIds = form.getAll("recipeLinkId") as string[];
   const ingredientAmts = form.getAll("ingredientAmt") as string[];
   const ingredientUnits = form.getAll("ingredientUnit") as string[];
   const steps = form.getAll("recipeStep") as string[];
-  console.log({
-    name,
-    allergies,
-    menuLink,
-    sectionLink,
-    iNames,
-    linkIds,
-    ingredientAmts,
-    ingredientUnits,
-    steps,
-  });
+
   const ingredients = iNames.map((i) => {
     return {
       ingredient: i,
@@ -37,9 +41,6 @@ export const extractDish = (form: FormData) => {
 
   return {
     name,
-
-    menuLink,
-    sectionLink,
     allergens: allergies.length > 0 ? allergies?.split(",") : [],
     ingredients,
     steps,

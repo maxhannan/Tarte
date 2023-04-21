@@ -13,20 +13,16 @@ import { v4 } from "uuid";
 
 export interface Dish {
   id: string;
-  qty: string | undefined;
-  unit: string | undefined;
 
   linkRecipe: { id: string; value: string } | null;
 }
 
-const MenuDishSection = () => {
+const MenuDishSection = ({ section }: { section: string }) => {
   const [dishes, setDishes] = useState<Dish[] | []>([]);
-
+  console.log({ section });
   const addDish = () => {
     const newDish = {
       id: v4(),
-      qty: undefined,
-      unit: undefined,
 
       linkRecipe: null,
     };
@@ -41,7 +37,12 @@ const MenuDishSection = () => {
     <div className="grid grid-cols-12 col-span-5 gap-x-2 gap-y-4">
       {dishes.length > 0 &&
         dishes.map((d) => (
-          <MenuDish handleDelete={handleDelete} dish={d} key={d.id} />
+          <MenuDish
+            handleDelete={handleDelete}
+            section={section}
+            dish={d}
+            key={d.id}
+          />
         ))}
 
       <button
