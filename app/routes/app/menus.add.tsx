@@ -7,11 +7,12 @@ import CustomTextInput from "~/components/forms/CustomTextInput";
 import MenuSections from "~/components/menuForm/menuSections";
 import AppBar from "~/components/navigation/AppBar";
 import Spinner from "~/components/status/smallSpinner";
+import { getDishes } from "~/utils/menus.server";
 import { getRecipes } from "~/utils/recipes.server";
 
 export const loader: LoaderFunction = async () => {
-  const recipes = await getRecipes();
-  return recipes;
+  const dishes = await getDishes();
+  return dishes;
 };
 
 const AddMenuPage = () => {

@@ -44,7 +44,7 @@ const IngredientSection = ({
     const newIngredient = {
       id: v4(),
       ingredient: "",
-      qty: "",
+      qty: undefined,
       unit: undefined,
       linkId: null,
       linkRecipe: null,

@@ -19,6 +19,8 @@ const IngredientAdder = ({ handleDelete, ingredient, recipes }: Props) => {
   const linkOption =
     ingredient.linkId && ingredient.linkRecipe ? ingredient.linkRecipe : null;
 
+  console.log({ recipe: ingredient.linkRecipe });
+
   const [selectedLink, setSelectedLink] = useState(linkOption);
 
   return (

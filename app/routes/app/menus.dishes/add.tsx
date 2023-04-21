@@ -44,21 +44,13 @@ export const action: ActionFunction = async ({ request }) => {
 const AddDishPage = () => {
   const navigate = useNavigate();
   const navigation = useNavigation();
-  const [selectedMenuLink, setSelectedMenuLink] = useState<Option | null>(null);
-  const [selectedSectionLink, setSelectedSectionLink] = useState<Option | null>(
-    null
-  );
-  const { menus, recipes } = useLoaderData() as {
-    menus: MenuSummaries;
+
+  const { recipes } = useLoaderData() as {
     recipes: FullRecipes;
   };
 
   const dishSaved = useActionData();
   console.log({ dishSaved });
-  const selectedMenu = menus?.find((m) => m.id === selectedMenuLink?.id);
-  console.log({ selectedMenu });
-  console.log(selectedMenuLink);
-  console.log({ menus });
 
   if (navigation.state === "loading") {
     return (
@@ -96,26 +88,6 @@ const AddDishPage = () => {
               required
             />
 
-            <LinkRecipeComboBox
-              name="menuLink"
-              placeholder="Link a Menu"
-              selected={selectedMenuLink}
-              setSelected={setSelectedMenuLink}
-              options={menus!.map((m) => ({ id: m.id, value: m.name }))}
-            />
-
-            {selectedMenuLink && selectedMenu && selectedMenu.sections && (
-              <LinkRecipeComboBox
-                name="sectionLink"
-                placeholder="Menu Section"
-                selected={selectedSectionLink}
-                setSelected={setSelectedSectionLink}
-                options={selectedMenu.sections.map((s) => ({
-                  id: s.id,
-                  value: s.name,
-                }))}
-              />
-            )}
             <MultiSelectBox name="allergies" placeholder="Select Allergens" />
             <IngredientSection
               recipesProp={recipes}
