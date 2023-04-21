@@ -53,7 +53,6 @@ export default function ComboBoxCustom({
           onChange={(event) => setQuery(event.target.value)}
           placeholder={placeholder}
           displayValue={selected ? (option: Option) => option.value : undefined}
-          required
         />
 
         {selected !== null ? (
