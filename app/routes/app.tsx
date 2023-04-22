@@ -6,7 +6,7 @@ import {
   useNavigate,
   useNavigation,
 } from "@remix-run/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoadingButton from "~/components/buttons/LoadingButton";
 
 import BottomNav from "~/components/navigation/BottomNav";
@@ -49,7 +49,9 @@ export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
 const App = () => {
   const location = useLocation();
   const [page, setPage] = useState(location.pathname.split("/")[2]);
-
+  useEffect(() => {
+    setPage(location.pathname.split("/")[2]);
+  }, [location]);
   return (
     <div className=" px-4">
       <div className="container max-w-2xl mx-auto">
