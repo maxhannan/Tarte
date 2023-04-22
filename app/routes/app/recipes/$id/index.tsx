@@ -7,6 +7,7 @@ import {
 import { Link, useNavigate } from "@remix-run/react";
 import dayjs from "dayjs";
 import SlideUpTransition from "~/components/animations/slideUp";
+import CustomDisclosure from "~/components/displays/customDisclosure";
 import Chip from "~/components/forms/Chip";
 import AppBar from "~/components/navigation/AppBar";
 import IngredientTable from "~/components/recipePage/ingredientTable/ingredientTable";
@@ -73,15 +74,16 @@ const RecipeIndex = () => {
             </div>
           </div>
         </div>
-
-        {recipe!.steps.length > 0 &&
-          recipe!.steps.map((s) => (
-            <RecipeStep
-              key={s}
-              stepNum={recipe!.steps.indexOf(s) + 1}
-              content={s}
-            />
-          ))}
+        <CustomDisclosure name="Steps">
+          {recipe!.steps.length > 0 &&
+            recipe!.steps.map((s) => (
+              <RecipeStep
+                key={s}
+                stepNum={recipe!.steps.indexOf(s) + 1}
+                content={s}
+              />
+            ))}
+        </CustomDisclosure>
         {recipe!.linkedIngredients.length > 0 && (
           <div className="text-xl bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200  p-4 mt-4 text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl ">
             Component of

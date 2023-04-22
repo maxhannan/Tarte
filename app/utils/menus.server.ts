@@ -28,6 +28,7 @@ export const extractDish = (form: FormData) => {
   const ingredientAmts = form.getAll("ingredientAmt") as string[];
   const ingredientUnits = form.getAll("ingredientUnit") as string[];
   const steps = form.getAll("recipeStep") as string[];
+  const notes = form.getAll("recipeNote") as string[];
 
   const ingredients = iNames.map((n, i) => {
     return {
@@ -43,13 +44,14 @@ export const extractDish = (form: FormData) => {
     allergens: allergies.length > 0 ? allergies?.split(",") : [],
     ingredients,
     steps,
+    notes,
   };
 };
 
 type dishData = ReturnType<typeof extractDish>;
 
 export const createDish = async (dish: dishData, userid: string) => {
-  const { name, allergens, ingredients, steps } = dish;
+  const { name, allergens, ingredients, steps, notes } = dish;
   try {
     const savedDish = await prisma.recipe.create({
       data: {
@@ -60,6 +62,7 @@ export const createDish = async (dish: dishData, userid: string) => {
         yieldAmt: "",
         yieldUnit: "",
         steps,
+        Notes: notes,
         ingredients: {
           create: [...ingredients],
         },
@@ -74,7 +77,7 @@ export const createDish = async (dish: dishData, userid: string) => {
 };
 
 export const updateDish = async (id: string, dish: dishData) => {
-  const { name, allergens, ingredients, steps } = dish;
+  const { name, allergens, ingredients, steps, notes } = dish;
 
   const data = await prisma.$transaction([
     prisma.ingredient.deleteMany({ where: { recipeId: id } }),
@@ -82,9 +85,8 @@ export const updateDish = async (id: string, dish: dishData) => {
       where: { id: id },
       data: {
         name,
-
         allergens,
-
+        Notes: notes,
         steps,
         ingredients: {
           create: [...ingredients],

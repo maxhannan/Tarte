@@ -18,6 +18,7 @@ const RecipeSummary = ({
   link,
 }: recipeSummaryProps) => {
   const navigate = useNavigate();
+
   return (
     <div
       onClick={() => navigate(`${link ? link : ""}${id}`)}
@@ -32,9 +33,11 @@ const RecipeSummary = ({
         <h5 className="text-xl  text-neutral-700 dark:text-neutral-100">
           {name}
         </h5>
-        <h6 className="text-md mt-1  text-violet-500 dark:text-violet-300">
-          {category}
-        </h6>
+        {category.length > 1 && (
+          <h6 className="text-md mt-1  text-violet-500 dark:text-violet-300">
+            {category}
+          </h6>
+        )}
       </div>
       <div className=" ml-auto ">
         <ArrowRightIcon className="text-neutral-800 dark:text-neutral-200 w-5 h-5" />
