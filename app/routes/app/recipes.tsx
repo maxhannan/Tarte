@@ -3,7 +3,7 @@ import type { LoaderFunction } from "react-router";
 import { getRecipes } from "~/utils/recipes.server";
 import type { FullRecipes } from "~/utils/recipes.server";
 
-const filterAndCategorize = (
+export const filterAndCategorize = (
   recipes: FullRecipes,
   search: string | null,
   category: string | null
@@ -30,11 +30,11 @@ export const loader: LoaderFunction = async ({ request }) => {
   const search = params.get("search");
   const category = params.get("category");
   const allergies = params.get("allergies");
-  const alergyList = allergies && allergies.split(",");
+  const allergyList = allergies && allergies.split(",");
 
   let recipeList = filterAndCategorize(recipes, search, category);
   let allergyRecipes;
-  if (recipeList!.length > 0 && alergyList) {
+  if (recipeList!.length > 0 && allergyList) {
     allergyRecipes = recipeList!.filter((r) => {
       let combinedAllergies = [...r.allergens];
       r.ingredients.forEach((i) => {
@@ -44,7 +44,7 @@ export const loader: LoaderFunction = async ({ request }) => {
       });
 
       let allergyFree = true;
-      alergyList.forEach((a) => {
+      allergyList.forEach((a) => {
         if (combinedAllergies.includes(a)) {
           allergyFree = false;
         }

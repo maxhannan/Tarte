@@ -5,30 +5,47 @@ import {
   useSearchParams,
 } from "@remix-run/react";
 import SlideUpTransition from "~/components/animations/slideUp";
+import SearchAndAllergens from "~/components/menus/SearchAndAllergens";
 
-import SearchAndFilter from "~/components/menus/SearchAndFilter";
 import RecipeSummary from "~/components/recipefeed/RecipeSummary";
 import Spinner from "~/components/status/smallSpinner";
 import { getDishes } from "~/utils/menus.server";
 import type { DishSummaries } from "~/utils/menus.server";
+
+function filterDishes(
+  dishes: DishSummaries,
+  search?: string | null,
+  allergies?: string[] | null
+) {
+  if (!search && !allergies) return dishes;
+  let filteredDishes = dishes;
+  if (search && filteredDishes) {
+    filteredDishes = filteredDishes.filter((d) =>
+      d.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+  if (allergies && filteredDishes) {
+    filteredDishes = filteredDishes.filter(
+      (d) => d.allergens.filter((a) => allergies.includes(a)).length === 0
+    );
+  }
+  return filteredDishes;
+}
 
 export const loader: LoaderFunction = async ({ request }) => {
   const dishes = await getDishes();
   const url = new URL(request.url);
   const params = new URLSearchParams(url.search);
   const search = params.get("search");
-  if (search && dishes) {
-    return dishes.filter((d) =>
-      d.name.toLowerCase().includes(search?.toLowerCase())
-    );
-  }
-  return dishes;
+  const allergies = params.get("allergies")?.split(",");
+  let dishList = filterDishes(dishes, search, allergies);
+  return dishList;
 };
 
 const DishesPage = () => {
   const dishes = useLoaderData() as DishSummaries;
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log({ dishes });
+
   const navigation = useNavigation();
   const pageChangeLoading =
     navigation.state === "loading" &&
@@ -44,13 +61,12 @@ const DishesPage = () => {
     );
   }
   return (
-    <div className="flex flex-col gap-2">
-      <SearchAndFilter
+    <div className="flex flex-col gap-3">
+      <SearchAndAllergens
         searchParams={searchParams}
         setSearchParams={setSearchParams}
-        categories={["Breakfast", "Lunch"]}
       />
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3 ">
         {navigation.state === "loading" && !pageChangeLoading ? (
           <div className="flex items-center justify-center">
             <Spinner size={14} />
