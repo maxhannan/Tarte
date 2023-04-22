@@ -109,14 +109,23 @@ export const getMenus = async () => {
         name: "asc",
       },
       select: {
-        _count: true,
+        _count: {
+          select: {
+            dishes: true,
+            sections: true,
+          },
+        },
         id: true,
         name: true,
         sections: {
           select: {
             name: true,
             id: true,
-            _count: true,
+            _count: {
+              select: {
+                dishes: true,
+              },
+            },
           },
         },
         author: {
@@ -145,7 +154,12 @@ export const getMenuById = async (id: string) => {
         id: id,
       },
       select: {
-        _count: true,
+        _count: {
+          select: {
+            dishes: true,
+            sections: true,
+          },
+        },
         createdAt: true,
         updatedAt: true,
         name: true,
@@ -160,7 +174,11 @@ export const getMenuById = async (id: string) => {
                 name: true,
                 allergens: true,
                 category: true,
-                _count: true,
+                _count: {
+                  select: {
+                    section: true,
+                  },
+                },
 
                 author: {
                   select: {
@@ -185,7 +203,14 @@ export const getMenuById = async (id: string) => {
             name: true,
             allergens: true,
             category: true,
-            _count: true,
+            _count: {
+              select: {
+                ingredients: true,
+                linkedIngredients: true,
+                menu: true,
+                section: true,
+              },
+            },
 
             author: {
               select: {
@@ -212,7 +237,14 @@ export const getDishes = async () => {
         dish: true,
       },
       select: {
-        _count: true,
+        _count: {
+          select: {
+            ingredients: true,
+            linkedIngredients: true,
+            menu: true,
+            section: true,
+          },
+        },
         author: {
           select: {
             firstName: true,
