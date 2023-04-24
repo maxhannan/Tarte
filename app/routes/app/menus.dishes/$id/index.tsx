@@ -46,11 +46,11 @@ const DishIndex = () => {
       />
 
       <SlideUpTransition>
-        <div className="flex flex-col gap-2">
-          <div className="text-3xl  gap-3   w-full items-center flex justify-between dark:text-neutral-200  mb-3 text-neutral-600 rounded-r-2xl rounded-l-md rounded-bl-2xl">
+        <div className="flex flex-col gap-4">
+          <div className="text-3xl  gap-3   w-full items-center flex justify-between dark:text-neutral-200   text-neutral-600 rounded-r-2xl rounded-l-md rounded-bl-2xl">
             <div>{dish!.name}</div>
           </div>
-          <div className="flex  gap-2 flex-wrap mb-4">
+          <div className="flex  gap-2 flex-wrap ">
             {dish?.allergens &&
               dish?.allergens.length > 0 &&
               dish?.allergens.map((a) => <Chip key={a} content={a} />)}

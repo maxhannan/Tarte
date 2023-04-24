@@ -15,8 +15,12 @@ interface Props {
 }
 
 const MenuDish = ({ dish, handleDelete, section }: Props) => {
-  const dishes = useRouteData("routes/app/menus.add") as DishSummaries;
-
+  let dishes = useRouteData("routes/app/menus.add") as DishSummaries;
+  const editDishes = useRouteData("routes/app/menus.$id/edit") as DishSummaries;
+  console.log({ dishes, editDishes });
+  if (!dishes && editDishes) {
+    dishes = editDishes;
+  }
   const [selectedLink, setSelectedLink] = useState<Option | null>(
     dish.linkRecipe
   );
@@ -24,8 +28,8 @@ const MenuDish = ({ dish, handleDelete, section }: Props) => {
 
   return (
     <>
-      <div className="flex gap-x-2 col-span-11 col-start-2">
-        <div className="grow">
+      <div className="flex gap-x-2 col-span-11 col-start-2 relative">
+        <div className="grow ">
           <input type="hidden" name="dishSection" value={section} />
           <LinkRecipeComboBox
             name="dishLink"

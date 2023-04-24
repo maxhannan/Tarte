@@ -6,6 +6,7 @@ import MenuDishSection from "./menuDishSection";
 import type { Option } from "../forms/CategoryBox";
 import { useState } from "react";
 import type { ChangeEvent } from "react";
+import { useMatches } from "@remix-run/react";
 interface Props {
   handleDelete: (id: string) => void;
   section: Option;
@@ -13,7 +14,7 @@ interface Props {
 
 const MenuSection = ({ section, handleDelete }: Props) => {
   const [sectionName, setSectionName] = useState("");
-
+  console.log(useMatches());
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setSectionName(e.target.value);
   };

@@ -1,25 +1,17 @@
 import { Transition } from "@headlessui/react";
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
-import type { LoaderFunction } from "@remix-run/node";
-import { useLoaderData, useNavigate, useNavigation } from "@remix-run/react";
+import { useNavigate, useNavigation } from "@remix-run/react";
 import Accordion from "~/components/menuComponents/Accordion";
 import AppBar from "~/components/navigation/AppBar";
 import Spinner from "~/components/status/smallSpinner";
-import { getMenuById } from "~/utils/menus.server";
-import type { FullMenu } from "~/utils/menus.server";
+import { useRouteData } from "~/hooks/useRouteData";
 
-export const loader: LoaderFunction = async ({ params }) => {
-  if (params.id) {
-    const menu = await getMenuById(params.id);
-    return menu;
-  } else {
-    return null;
-  }
-};
+import type { FullMenu } from "~/utils/menus.server";
 
 const MenuPage = () => {
   const navigate = useNavigate();
-  const menu = useLoaderData() as FullMenu;
+  const menu = useRouteData("routes/app/menus.$id") as FullMenu;
   const navigation = useNavigation();
 
   console.log({ menu });
@@ -36,8 +28,13 @@ const MenuPage = () => {
         page={""}
         buttons={[
           {
+            Icon: PencilSquareIcon,
+            buttonName: "Edit Recipe",
+            action: () => navigate("edit", { replace: true }),
+          },
+          {
             Icon: ArrowUturnLeftIcon,
-            buttonName: "Add Recipe",
+            buttonName: "goBack",
             action: () => navigate(-1),
           },
         ]}
