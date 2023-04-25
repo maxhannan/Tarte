@@ -30,7 +30,8 @@ export default function MultiSelectBox({
   placeholder?: string;
 }) {
   const [selected, setSelected] = useState(initalValue || []);
-
+  const hello = "hello world";
+  console.log({ hello });
   return (
     <div className="w-full z-30">
       <input type="hidden" value={selected.join(",")} name={name} />

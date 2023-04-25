@@ -4,9 +4,17 @@ import { useState } from "react";
 import type { Option } from "../forms/CategoryBox";
 import { v4 } from "uuid";
 
-const MenuSections = () => {
-  const [sections, setSections] = useState<Option[]>([]);
-  console.log({ sections });
+import type { FullSection } from "~/utils/menus.server";
+
+interface Props {
+  menuSections?: FullSection[];
+}
+
+const MenuSections = ({ menuSections }: Props) => {
+  const [sections, setSections] = useState<Option[]>(
+    menuSections ? menuSections.map((s) => ({ id: s!.id, value: s!.name })) : []
+  );
+
   const addSection = () => {
     setSections([...sections, { id: v4(), value: "" }]);
   };
@@ -24,7 +32,17 @@ const MenuSections = () => {
       </div>
       {sections.length > 0 &&
         sections.map((s) => (
-          <MenuSection section={s} handleDelete={handleDelete} key={s.id} />
+          <MenuSection
+            section={s}
+            handleDelete={handleDelete}
+            key={s.id}
+            dishes={
+              menuSections
+                ? menuSections.filter((section) => section!.id === s.id)[0]
+                    ?.dishes
+                : null
+            }
+          />
         ))}
 
       <button

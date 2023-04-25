@@ -6,15 +6,17 @@ import MenuDishSection from "./menuDishSection";
 import type { Option } from "../forms/CategoryBox";
 import { useState } from "react";
 import type { ChangeEvent } from "react";
-import { useMatches } from "@remix-run/react";
+import type { DishSummaries } from "~/utils/menus.server";
+
 interface Props {
   handleDelete: (id: string) => void;
   section: Option;
+  dishes?: DishSummaries;
 }
 
-const MenuSection = ({ section, handleDelete }: Props) => {
+const MenuSection = ({ section, handleDelete, dishes }: Props) => {
   const [sectionName, setSectionName] = useState("");
-  console.log(useMatches());
+
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setSectionName(e.target.value);
   };
@@ -38,7 +40,7 @@ const MenuSection = ({ section, handleDelete }: Props) => {
           />
         </div>
       </div>
-      <MenuDishSection section={sectionName} />
+      <MenuDishSection section={sectionName} dishesList={dishes} />
     </>
   );
 };

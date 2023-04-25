@@ -50,7 +50,7 @@ export default function LinkRecipeComboBox({
 
   return (
     <Combobox value={selected} onChange={setSelected}>
-      <div className="relative z-50">
+      <div className="relative ">
         <input type="hidden" value={selected?.id || ""} name={`${name}Id`} />
         <Combobox.Input
           autoComplete="off"

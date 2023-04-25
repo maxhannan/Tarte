@@ -24,12 +24,11 @@ const MenuDish = ({ dish, handleDelete, section }: Props) => {
   const [selectedLink, setSelectedLink] = useState<Option | null>(
     dish.linkRecipe
   );
-  console.log({ selectedLink });
 
   return (
     <>
       <div className="flex gap-x-2 col-span-11 col-start-2 relative">
-        <div className="grow ">
+        <div className="grow relative">
           <input type="hidden" name="dishSection" value={section} />
           <LinkRecipeComboBox
             name="dishLink"

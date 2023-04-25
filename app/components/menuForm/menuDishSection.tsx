@@ -3,16 +3,27 @@ import { useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import MenuDish from "./menuDish";
 import { v4 } from "uuid";
+import type { DishSummaries } from "~/utils/menus.server";
 
 export interface Dish {
   id: string;
-
   linkRecipe: { id: string; value: string } | null;
 }
 
-const MenuDishSection = ({ section }: { section: string }) => {
-  const [dishes, setDishes] = useState<Dish[] | []>([]);
-  console.log({ section });
+interface Props {
+  section: string;
+  dishesList?: DishSummaries;
+}
+const MenuDishSection = ({ section, dishesList }: Props) => {
+  const [dishes, setDishes] = useState<Dish[] | []>(
+    dishesList
+      ? dishesList.map((d) => ({
+          id: d.id,
+          linkRecipe: { id: d.id, value: d.name },
+        }))
+      : []
+  );
+
   const addDish = () => {
     const newDish = {
       id: v4(),
