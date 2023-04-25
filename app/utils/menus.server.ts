@@ -74,10 +74,19 @@ export const createDish = async (dish: dishData, userid: string) => {
     });
     return savedDish;
   } catch (error) {
-    return null;
+    return error;
   }
 };
 
+export const deleteMenu = async (id: string) => {
+  await prisma.menu.delete({
+    where: {
+      id: id,
+    },
+  });
+
+  return null;
+};
 export const updateDish = async (id: string, dish: dishData) => {
   const { name, allergens, ingredients, steps, notes } = dish;
 
@@ -429,6 +438,7 @@ type menuForm = ReturnType<typeof extractMenu>;
 
 export const createMenu = async (menu: menuForm, authorId: string) => {
   try {
+    console.log("dishes", menu.dishes);
     const dishes = menu.dishes;
     const dishIds = dishes.map((d) => ({ id: d.id }));
     const savedMenu = await prisma.menu.create({
@@ -458,7 +468,8 @@ export const createMenu = async (menu: menuForm, authorId: string) => {
         },
       },
     });
-
+    console.log(dishes);
+    console.log("sections", savedMenu.sections, menu.sections);
     await prisma.$transaction(
       dishes.map((dish) =>
         prisma.recipe.update({
@@ -473,8 +484,10 @@ export const createMenu = async (menu: menuForm, authorId: string) => {
         })
       )
     );
+    console.log(savedMenu);
     return savedMenu;
   } catch (error) {
+    console.log(error);
     return null;
   }
 };

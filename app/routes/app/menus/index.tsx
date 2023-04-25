@@ -47,7 +47,7 @@ const MenusPage = () => {
           </div>
         ) : (
           <SlideUpTransition>
-            <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2 max-w-2xl mx-auto  ">
+            <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2 mx-auto  ">
               {menus?.map((m) => (
                 <RecipeSummary
                   key={m.id}

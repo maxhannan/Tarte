@@ -108,7 +108,7 @@ const SearchAndFilter = ({
         appear
         show
       >
-        <div className="container max-w-2xl mx-auto flex  gap-x-2  mt-2">
+        <div className="container max-w-4xl mx-auto flex  gap-x-2  mt-2">
           <div className=" grow">
             <SearchBar
               handleChange={handleSearch}

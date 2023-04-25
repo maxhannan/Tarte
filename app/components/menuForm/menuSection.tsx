@@ -15,7 +15,9 @@ interface Props {
 }
 
 const MenuSection = ({ section, handleDelete, dishes }: Props) => {
-  const [sectionName, setSectionName] = useState("");
+  const [sectionName, setSectionName] = useState(
+    section.value ? section.value : ""
+  );
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setSectionName(e.target.value);
