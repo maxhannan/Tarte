@@ -90,7 +90,13 @@ const RecipeIndex = () => {
             <div className="flex gap-3 flex-wrap r mt-2">
               {recipe!.linkedIngredients.map((li) => (
                 <div key={li.recipe.id}>
-                  <Link to={`/app/recipes/${li.recipe.id}`}>
+                  <Link
+                    to={
+                      li.recipe.dish === true
+                        ? `/app/menus/dishes/${li.recipe.id}`
+                        : `/app/recipes/${li.recipe.id}`
+                    }
+                  >
                     <div className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl text-base text-neutral-100 dark:text-neutral-100 ">
                       {li.recipe.name}{" "}
                       <ArrowLongRightIcon className="w-5 h-5" />

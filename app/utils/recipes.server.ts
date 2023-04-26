@@ -168,6 +168,7 @@ export const getRecipeById = async (id: string) => {
               select: {
                 id: true,
                 name: true,
+                dish: true,
               },
             },
           },
