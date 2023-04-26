@@ -1479,6 +1479,10 @@ select {
   padding-bottom: 1rem;
 }
 
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
 .pb-16 {
   padding-bottom: 4rem;
 }
@@ -1527,16 +1531,12 @@ select {
   padding-right: 2.25rem;
 }
 
-.pt-48 {
-  padding-top: 12rem;
-}
-
 .pt-3 {
   padding-top: 0.75rem;
 }
 
-.pb-1 {
-  padding-bottom: 0.25rem;
+.pt-48 {
+  padding-top: 12rem;
 }
 
 .text-left {

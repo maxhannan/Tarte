@@ -104,7 +104,7 @@ const MenusLayout = () => {
         </nav>
       </SlideDownTransition>
 
-      <div className="">
+      <div className=" mb-28">
         <Outlet />
       </div>
     </>
