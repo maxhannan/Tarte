@@ -74,7 +74,7 @@ export const createDish = async (dish: dishData, userid: string) => {
     });
     return savedDish;
   } catch (error) {
-    return error;
+    return null;
   }
 };
 

@@ -3,11 +3,13 @@ import { redirect } from "@remix-run/node";
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import {
   Form,
+  useActionData,
   useLoaderData,
   useMatches,
   useNavigate,
   useNavigation,
 } from "@remix-run/react";
+import { useEffect } from "react";
 
 import DishForm from "~/components/dishForm/DishForm";
 
@@ -33,7 +35,7 @@ export const action: ActionFunction = async ({ request }) => {
   const savedDish = await createDish(data, user!.id);
 
   if (savedDish) {
-    return redirect(`/app/menus/dishes/${savedDish.id}`);
+    return savedDish;
   }
   return null;
 };
@@ -45,8 +47,14 @@ const AddDishPage = () => {
   const { recipes } = useLoaderData() as {
     recipes: FullRecipes;
   };
-  console.log(useMatches());
+  const savedDish = useActionData();
 
+  useEffect(() => {
+    if (savedDish !== undefined) {
+      navigate(`/app/menus/dishes/${savedDish.id}`, { replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [savedDish]);
   if (navigation.state === "loading") {
     return (
       <div className="h-screen  flex items-center justify-center">

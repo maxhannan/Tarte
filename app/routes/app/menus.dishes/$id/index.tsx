@@ -1,10 +1,7 @@
-import { Disclosure, Transition } from "@headlessui/react";
 import {
   ArrowLongRightIcon,
   ArrowUturnLeftIcon,
-  ChevronUpIcon,
   PencilSquareIcon,
-  ScaleIcon,
 } from "@heroicons/react/24/outline";
 import { PuzzlePieceIcon } from "@heroicons/react/24/outline";
 
@@ -23,8 +20,13 @@ import type { FullDish } from "~/utils/menus.server";
 
 const DishIndex = () => {
   const dish = useRouteData("routes/app/menus.dishes/$id") as FullDish;
+
   const navigate = useNavigate();
-  console.log(dish);
+
+  if (!dish) {
+    return navigate("/app/menus/dishes");
+  }
+
   return (
     <div className="mb-24">
       <AppBar
@@ -101,20 +103,22 @@ const DishIndex = () => {
               ))}
             </CustomDisclosure>
           )}
-          <div className="text-xl bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200  p-4  text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl ">
-            Menus
-            <div className="flex gap-3 flex-wrap r mt-2">
-              {dish?.menu.map((m) => (
-                <div key={m.id}>
-                  <Link to={`/app/menus/${m.id}`}>
-                    <div className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl text-base text-neutral-100 dark:text-neutral-100 ">
-                      {m.name} <ArrowLongRightIcon className="w-5 h-5" />
-                    </div>
-                  </Link>
-                </div>
-              ))}
+          {dish.menu && dish.menu.length > 0 && (
+            <div className="text-xl bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-200  p-4  text-neutral-700 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl ">
+              Menus
+              <div className="flex gap-3 flex-wrap r mt-2">
+                {dish?.menu.map((m) => (
+                  <div key={m.id}>
+                    <Link to={`/app/menus/${m.id}`}>
+                      <div className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl text-base text-neutral-100 dark:text-neutral-100 ">
+                        {m.name} <ArrowLongRightIcon className="w-5 h-5" />
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </SlideUpTransition>
     </div>

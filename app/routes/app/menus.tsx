@@ -60,7 +60,7 @@ const MenusLayout = () => {
         ]}
       />
       <SlideDownTransition>
-        <div className="flex flex-2 w-full ">
+        <div className="flex flex-2 max-w-md ">
           <button
             onClick={() => {
               setActiveTab("Menus");
