@@ -1,4 +1,10 @@
-import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowPathIcon,
+  ArrowRightCircleIcon,
+  CheckCircleIcon,
+  PlusCircleIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import {
   useNavigate,
@@ -8,6 +14,7 @@ import {
 } from "@remix-run/react";
 import { useEffect } from "react";
 import SlideUpTransition from "~/components/animations/slideUp";
+import LoadingButton from "~/components/buttons/LoadingButton";
 import NotesSection from "~/components/dishForm/NotesSection";
 import ComboBoxCustom from "~/components/forms/Combobox";
 import CustomTextInput from "~/components/forms/CustomTextInput";
@@ -78,6 +85,7 @@ const EditMenu = () => {
               buttonName: "Submit",
               type: "submit",
               action: () => console.log("Saving..."),
+              loading: navigation.state === "submitting",
             },
             {
               Icon: XMarkIcon,
@@ -113,6 +121,14 @@ const EditMenu = () => {
             />
             <MenuSections menuSections={menu.sections} />
             <NotesSection show />
+            <LoadingButton
+              loading={navigation.state === "submitting"}
+              type="submit"
+              buttonName="createDish"
+              buttonText={"Update Menu"}
+              loadingText={"Updating..."}
+              Icon={ArrowPathIcon}
+            />
           </div>
         </SlideUpTransition>
       </Form>

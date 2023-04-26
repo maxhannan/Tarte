@@ -1,8 +1,10 @@
+import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { redirect } from "@remix-run/node";
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { Form, useNavigate, useNavigation } from "@remix-run/react";
 import SlideUpTransition from "~/components/animations/slideUp";
+import LoadingButton from "~/components/buttons/LoadingButton";
 import NotesSection from "~/components/dishForm/NotesSection";
 import ComboBoxCustom from "~/components/forms/Combobox";
 import CustomTextInput from "~/components/forms/CustomTextInput";
@@ -49,6 +51,7 @@ const AddMenuPage = () => {
             {
               Icon: CheckCircleIcon,
               buttonName: "Submit",
+              loading: navigation.state === "submitting",
               type: "submit",
               action: () => console.log("Saving..."),
             },
@@ -79,6 +82,14 @@ const AddMenuPage = () => {
             />
             <MenuSections />
             <NotesSection show />
+            <LoadingButton
+              loading={navigation.state === "submitting"}
+              type="submit"
+              buttonName="addMenu"
+              buttonText="Add Menu"
+              loadingText="Adding..."
+              Icon={PlusCircleIcon}
+            />
           </div>
         </SlideUpTransition>
       </Form>
