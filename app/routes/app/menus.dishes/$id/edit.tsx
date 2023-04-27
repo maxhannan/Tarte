@@ -4,6 +4,7 @@ import {
   useActionData,
   useLoaderData,
   useNavigate,
+  useNavigation,
 } from "@remix-run/react";
 import DishForm from "~/components/dishForm/DishForm";
 import AppBar from "~/components/navigation/AppBar";
@@ -35,7 +36,7 @@ const EditDish = () => {
   const navigate = useNavigate();
   const recipes = useLoaderData() as FullRecipes;
   const dish = useRouteData("routes/app/menus.dishes/$id") as FullDish;
-
+  const navigation = useNavigation();
   const data = useActionData();
   console.log(data);
 
@@ -57,7 +58,8 @@ const EditDish = () => {
             {
               Icon: CheckCircleIcon,
               buttonName: "Submit",
-              type: "button",
+              type: "submit",
+              loading: navigation.state === "submitting",
               action: () => console.log("Saving..."),
             },
             {

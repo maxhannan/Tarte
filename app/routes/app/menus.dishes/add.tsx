@@ -73,7 +73,8 @@ const AddDishPage = () => {
             {
               Icon: CheckCircleIcon,
               buttonName: "Submit",
-              type: "button",
+              type: "submit",
+              loading: navigation.state === "submitting",
               action: () => console.log("Saving..."),
             },
             {
