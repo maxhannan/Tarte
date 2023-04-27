@@ -12,7 +12,7 @@ import {
 } from "~/components/ui/popover";
 
 export function PrepCalendar() {
-  const [date, setDate] = React.useState<Date>();
+  const [date, setDate] = React.useState<Date>(new Date());
 
   return (
     <Popover>
