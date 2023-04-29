@@ -31,12 +31,15 @@ const PrepPage = () => {
           },
         ]}
       />
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 ">
         <SearchAndAllergens
           searchParams={searchParams}
           setSearchParams={setSearchParams}
         />
-        <PrepCalendar />
+        <div className="">
+          <PrepCalendar />
+        </div>
+
         <div className="flex flex-col gap-3 ">
           <SlideUpTransition>
             <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2  mx-auto  ">
