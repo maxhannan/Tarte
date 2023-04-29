@@ -1,10 +1,6 @@
 import * as React from "react";
 import { format } from "date-fns";
-import {
-  CalendarCheck2,
-  Calendar as CalendarIcon,
-  CalendarX2,
-} from "lucide-react";
+import { CalendarCheck2 } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 import { Button } from "~/components/ui/button";
@@ -14,8 +10,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover";
-import { CalendarDaysIcon } from "@heroicons/react/24/outline";
-import { MdCalendarMonth } from "react-icons/md";
 
 export function PrepCalendar() {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
