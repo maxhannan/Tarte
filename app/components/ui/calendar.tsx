@@ -34,14 +34,14 @@ function Calendar({
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
         table: " border-collapse space-y-1 ",
-        head_row: "flex w-full  justify-between ",
+        head_row: "flex w-full  justify-between px-1 ",
         head_cell:
-          "dark:text-neutral-400 text-neutral-700 rounded-md w-9 font-normal text-lg",
+          "dark:text-neutral-400 text-neutral-700 rounded-md w-9 font-normal text-lg ",
         row: "flex w-full mt-2",
         cell: "text-center text-sm p-0 relative bg-transparent rounded-md [&:has([aria-selected])]:bg-transparent focus-within:relative focus-within:z-20",
         day: cn(
           buttonVariants({ variant: "ghost" }),
-          "h-10 w-10 p-0 font-normal aria-selected:opacity-100 dark:text-neutral-200 text-neutral-800 text-lg "
+          "h-12 w-12 p-0 font-normal aria-selected:opacity-100 dark:text-neutral-200 text-neutral-800 text-lg "
         ),
         day_selected:
           "bg-violet-500 dark:bg-violet-400 text-primary-foreground hover:bg-violet-500 hover:dark:bg-violet-400 hover:text-primary-foreground focus:dark:bg-violet-400 focus:violet-500 focus:text-primary-foreground",
