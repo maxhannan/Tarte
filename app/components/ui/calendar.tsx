@@ -17,15 +17,15 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        "p-3 w-full max-w-xl dark:bg-neutral-900 bg-neutral-100 rounded-lg border dark:border-neutral-800 border-neutral-200",
+        "p-3 w-full max-w-xl dark:bg-neutral-800 bg-neutral-100 rounded-lg border dark:border-neutral-700 border-neutral-200 flex items-center justify-center h-auto ",
         className
       )}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
-        caption: "flex justify-center pt-1 relative items-center",
+        caption: "flex justify-center pt-1 relative items-center ",
         caption_label:
-          "text-sm font-medium dark:text-neutral-200 text-neutral-700",
+          "text-lg font-medium dark:text-neutral-200 text-neutral-700",
         nav: "space-x-1 flex items-center",
         nav_button: cn(
           buttonVariants({ variant: "outline" }),
@@ -33,15 +33,15 @@ function Calendar({
         ),
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
-        table: "w-full border-collapse space-y-1",
-        head_row: "flex",
+        table: " border-collapse space-y-1 ",
+        head_row: "flex w-full  justify-between ",
         head_cell:
-          "dark:text-neutral-400 text-neutral-700 rounded-md w-9 font-normal text-[0.8rem]",
+          "dark:text-neutral-400 text-neutral-700 rounded-md w-9 font-normal text-lg",
         row: "flex w-full mt-2",
         cell: "text-center text-sm p-0 relative bg-transparent rounded-md [&:has([aria-selected])]:bg-transparent focus-within:relative focus-within:z-20",
         day: cn(
           buttonVariants({ variant: "ghost" }),
-          "h-9 w-9 p-0 font-normal aria-selected:opacity-100 dark:text-neutral-200 text-neutral-800  "
+          "h-10 w-10 p-0 font-normal aria-selected:opacity-100 dark:text-neutral-200 text-neutral-800 text-lg "
         ),
         day_selected:
           "bg-violet-500 dark:bg-violet-400 text-primary-foreground hover:bg-violet-500 hover:dark:bg-violet-400 hover:text-primary-foreground focus:dark:bg-violet-400 focus:violet-500 focus:text-primary-foreground",

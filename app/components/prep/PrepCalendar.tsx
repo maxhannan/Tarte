@@ -36,7 +36,7 @@ export function PrepCalendar() {
       </PopoverTrigger>
       <PopoverContent
         align="start"
-        className="w-auto p-0 border-none rounded-lg bg-transparent mr-4"
+        className="w-full bg-transparent p-0 border-none rounded-lg  "
       >
         <Calendar
           mode="single"
