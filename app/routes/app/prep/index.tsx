@@ -8,6 +8,7 @@ import Spinner from "~/components/status/smallSpinner";
 import dishes from "../menus/dishes";
 import PrepListSummary from "~/components/prep/PrepListSummary";
 import { PrepCalendar } from "~/components/prep/PrepCalendar";
+import SlideDownTransition from "~/components/animations/slideDown";
 
 const PrepPage = () => {
   const navigation = useNavigation();
@@ -36,10 +37,9 @@ const PrepPage = () => {
           searchParams={searchParams}
           setSearchParams={setSearchParams}
         />
-        <div className="">
+        <SlideDownTransition>
           <PrepCalendar />
-        </div>
-
+        </SlideDownTransition>
         <div className="flex flex-col gap-3 ">
           <SlideUpTransition>
             <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2  mx-auto mb-28 ">
