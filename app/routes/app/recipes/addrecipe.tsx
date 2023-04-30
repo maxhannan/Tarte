@@ -59,7 +59,7 @@ const AddRecipe = () => {
       <Form method="post">
         <AppBar
           page="Add a Recipe"
-          textSize="text-4xl"
+          textSize="text-3xl"
           buttons={[
             {
               Icon: CheckCircleIcon,

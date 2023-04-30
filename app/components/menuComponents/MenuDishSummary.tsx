@@ -11,7 +11,7 @@ const MenuDishSummary = ({ id, name }: MenuDishSummaryProps) => {
   return (
     <div
       onClick={() => navigate(`/app/menus/dishes/${id}`)}
-      className="  w-full max-h-full border-neutral-300 border  bg-neutral-100 rounded-2xl rounded-tl-md  py-4   flex justify-start items-center  px-4 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-neutral-700"
+      className="  w-full max-h-full border-neutral-300 border bg-opacity-50 dark:bg-opacity-50  bg-neutral-100 rounded-xl  py-4   flex justify-start items-center  px-4 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-neutral-700"
     >
       <div className=" font-light">
         <h5 className="text-lg  text-neutral-700 dark:text-neutral-100">

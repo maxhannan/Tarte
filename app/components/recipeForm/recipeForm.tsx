@@ -9,7 +9,6 @@ import StepSection from "./StepSection";
 import ComboBoxCustom from "../forms/Combobox";
 import LoadingButton from "../buttons/LoadingButton";
 import { ArrowPathIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
-import { v4 } from "uuid";
 import { useRouteData } from "~/hooks/useRouteData";
 import { useNavigation } from "@remix-run/react";
 import type { CompleteRecipe } from "~/utils/recipes.server";
@@ -56,8 +55,8 @@ const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
       show
       afterEnter={() => setShow(true)}
     >
-      <div className="flex flex-col gap-y-4 mb-32 mt-1 ">
-        <div className="flex flex-col gap-y-4 ">
+      <div className="flex flex-col gap-y-2 mb-32 ">
+        <div className="flex flex-col gap-y-2 ">
           <div className="col-span-5">
             <CustomTextInput
               fieldName="Recipe Name"

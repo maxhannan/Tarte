@@ -24,7 +24,7 @@ const IngredientAdder = ({ handleDelete, ingredient, recipes }: Props) => {
   const [selectedLink, setSelectedLink] = useState(linkOption);
 
   return (
-    <div className="grid grid-cols-5  gap-y-4 gap-x-2 w-full col-span-5 ">
+    <div className="grid grid-cols-5  gap-y-2 gap-x-2 w-full col-span-5 ">
       <div className="flex gap-x-2 col-span-5">
         <div className="grow">
           <CustomTextInput
@@ -74,7 +74,7 @@ const IngredientAdder = ({ handleDelete, ingredient, recipes }: Props) => {
           options={UnitsList}
         />
       </div>
-      <div className="col-span-5 border-b-4 rounded-sm dark:border-neutral-700"></div>
+      <div className="col-span-5 border-b-4 rounded-sm dark:border-neutral-700 border-neutral-200"></div>
     </div>
   );
 };

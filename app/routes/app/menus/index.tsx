@@ -34,7 +34,7 @@ const MenusPage = () => {
     );
   }
   return (
-    <div className="flex flex-col gap-2 mb-24">
+    <div className="flex flex-col gap-2 mb-24 mt-1">
       <SearchAndFilter
         searchParams={searchParams}
         setSearchParams={setSearchParams}

@@ -1428,6 +1428,11 @@ body {
   border-bottom-right-radius: 0.75rem;
 }
 
+.rounded-l-xl {
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+}
+
 .rounded-bl-2xl {
   border-bottom-left-radius: 1rem;
 }
@@ -2474,6 +2479,11 @@ html {
   .hover\:dark\:bg-violet-400:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(167 139 250 / var(--tw-bg-opacity));
+  }
+
+  .dark\:hover\:bg-neutral-800:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(38 38 38 / var(--tw-bg-opacity));
   }
 
   .dark\:hover\:text-neutral-700:hover {

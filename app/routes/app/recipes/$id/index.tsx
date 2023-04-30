@@ -69,7 +69,7 @@ const RecipeIndex = () => {
                   onClick={() =>
                     navigate(`/app/recipes?category=${recipe?.category}`)
                   }
-                  className=" flex items-center gap-2 border  border-violet-500 cursor-pointer hover:border-neutral-700 hover:text-neutral-700 hover:dark:border-neutral-200 hover:dark:text-neutral-200 p-2 px-4 rounded-r-2xl font-light rounded-l-md rounded-bl-2xl text-lg text-violet-700 dark:text-violet-500 "
+                  className=" flex items-center gap-2 border  border-violet-500 cursor-pointer hover:border-neutral-700 hover:text-neutral-700 hover:dark:border-neutral-200 hover:dark:text-neutral-200 p-2 px-4 rounded-xl font-light  text-lg text-violet-700 dark:text-violet-500 "
                 >
                   {recipe?.category} <ArrowLongRightIcon className="w-5 h-5" />
                 </div>

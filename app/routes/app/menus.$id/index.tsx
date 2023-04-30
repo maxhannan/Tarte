@@ -24,7 +24,7 @@ const MenuPage = () => {
       </div>
     );
   return (
-    <div className=" mb-24 container mx-auto max-w-2xl">
+    <div className=" mb-28 container mx-auto max-w-2xl">
       <AppBar
         page={""}
         buttons={[
@@ -41,7 +41,7 @@ const MenuPage = () => {
         ]}
       />
       <SlideUpTransition>
-        <div className="text-2xl border border-neutral-300 dark:border-neutral-700 gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-600 rounded-r-2xl font-light rounded-l-md rounded-bl-3xl">
+        <div className="text-2xl border border-neutral-300 dark:border-neutral-700 gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-600 rounded-xl font-light ">
           <div>{menu!.name}</div>
         </div>
 

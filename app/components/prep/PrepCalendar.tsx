@@ -20,7 +20,7 @@ export function PrepCalendar() {
         <Button
           variant={"outline"}
           className={cn(
-            " justify-start text-left text-lg   font-light pl-3 pr-4 border-neutral-300 dark:border-neutral-700 h-12 rounded-xl rounded-tl-md text-neutral-700 hover:bg-neutral-200 hover:dark:bg-neutral-700 dark:text-neutral-200 bg-opacity-50 dark:bg-opacity-50 hover:dark:text-neutral-200 max-w-sm bg-neutral-200 dark:bg-neutral-800",
+            " justify-start text-left text-lg   font-light pl-3 pr-4 border-neutral-300 dark:border-neutral-700 h-12 rounded-xl  text-neutral-700 hover:bg-neutral-200 hover:dark:bg-neutral-700 dark:text-neutral-200 bg-opacity-50 dark:bg-opacity-50 hover:dark:text-neutral-200 max-w-sm bg-neutral-200 dark:bg-neutral-800",
             !date && "text-muted-foreground"
           )}
         >

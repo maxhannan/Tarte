@@ -61,7 +61,7 @@ const DishesPage = () => {
     );
   }
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 mt-1">
       <SearchAndAllergens
         searchParams={searchParams}
         setSearchParams={setSearchParams}

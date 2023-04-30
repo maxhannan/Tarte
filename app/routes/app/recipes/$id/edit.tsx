@@ -45,7 +45,7 @@ const EditRecipePage = () => {
     <div className="container mx-auto max-w-2xl">
       <Form method="post">
         <AppBar
-          page={`Edit ${recipe?.name}`}
+          page={`Edit Recipe`}
           textSize="text-3xl"
           buttons={[
             {

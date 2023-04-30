@@ -5,12 +5,12 @@ import type { FullMenu } from "~/utils/menus.server";
 
 export default function Accordion({ menu }: { menu: FullMenu }) {
   return (
-    <div className=" rounded-tl-md rounded-2xl   border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 p-2 flex flex-col gap-2">
+    <div className="  rounded-xl   border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 p-2 flex flex-col gap-2">
       {menu?.sections.map((s) => (
         <Disclosure key={s.name} defaultOpen>
           {({ open }) => (
             <>
-              <Disclosure.Button className="dark:bg-opacity-50 flex w-full items-center justify-between rounded-tl-md rounded-xl  bg-neutral-200 font-normal dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 px-4 py-3 text-left text-xl  text-neutral-700 dark:text-neutral-200  focus:outline-none focus-visible:ring focus-visible:ring-violet-500 focus-visible:ring-opacity-75">
+              <Disclosure.Button className="dark:bg-opacity-50 flex w-full items-center justify-between  rounded-xl  bg-neutral-200 font-normal dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 px-4 py-3 text-left text-xl  text-neutral-700 dark:text-neutral-200  focus:outline-none focus-visible:ring focus-visible:ring-violet-500 focus-visible:ring-opacity-75">
                 <span>{s.name}</span>
                 <ChevronUpIcon
                   className={`${open ? "rotate-180 transform" : ""} h-7 w-7 `}
