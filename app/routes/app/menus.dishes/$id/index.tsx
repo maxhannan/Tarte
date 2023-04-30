@@ -48,19 +48,18 @@ const DishIndex = () => {
       />
 
       <SlideUpTransition>
-        <div className="flex flex-col gap-2 mb-3">
-          <div className="text-3xl w-full items-center flex justify-between dark:text-neutral-200   text-neutral-600 rounded-r-2xl rounded-l-md rounded-bl-2xl">
+        <div className="flex flex-col gap-2 mb-2">
+          <div className="text-2xl border border-neutral-300 dark:border-neutral-700 gap-2 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4  text-neutral-600 rounded-xl font-light ">
             <div>{dish!.name}</div>
           </div>
-
-          <div className="flex  gap-2 flex-wrap ">
-            {dish?.allergens &&
-              dish?.allergens.length > 0 &&
-              dish?.allergens.map((a) => <Chip key={a} content={a} />)}
-          </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+          <div className="flex flex-col gap-2">
+            <div className="flex  gap-2 flex-wrap rounded-xl bg-neutral-100 border border-neutral-200 dark:bg-neutral-900 dark:border-neutral-700 p-2  ">
+              {dish?.allergens &&
+                dish?.allergens.length > 0 &&
+                dish?.allergens.map((a) => <Chip key={a} content={a} />)}
+            </div>
             <CustomDisclosure name={"Components"}>
               {dish!.ingredients.map((i) => {
                 if (i.linkId && i.linkRecipe) {
@@ -101,7 +100,7 @@ const DishIndex = () => {
               })}
             </CustomDisclosure>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
             {dish!.steps.length > 0 && (
               <CustomDisclosure name="Steps">
                 {dish!.steps.map((s, i) => (

@@ -44,21 +44,21 @@ const RecipeIndex = () => {
         ]}
       />
       <SlideUpTransition>
-        <div className="text-3xl  gap-3  w-full items-center flex justify-between dark:text-neutral-200 mb-3  text-neutral-600 rounded-r-3xl  rounded-l-md rounded-bl-3xl">
+        <div className="text-2xl border border-neutral-300 dark:border-neutral-700 gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full mb-2 items-center flex justify-between dark:text-neutral-200 p-4  text-neutral-600 rounded-xl font-light ">
           <div>{recipe!.name}</div>
         </div>
 
-        {recipe!.allergens.length > 0 && (
-          <div className="flex pb-3 gap-2 flex-wrap">
-            {recipe!.allergens.map((a) => (
-              <Chip content={a} key={a} />
-            ))}
-          </div>
-        )}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-2">
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
+            {recipe!.allergens.length > 0 && (
+              <div className="inline-flex  gap-2 flex-wrap rounded-xl bg-neutral-100 border border-neutral-200 dark:bg-neutral-900 dark:border-neutral-700 p-2 ">
+                {recipe!.allergens.map((a) => (
+                  <Chip content={a} key={a} />
+                ))}
+              </div>
+            )}
             <IngredientTable ingredients={recipe!.ingredients} />
-            <div className="text-lg  bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3  items-center flex gap-4 justify-between dark:text-neutral-200 p-4 mb-4 text-neutral-700 rounded-xl font-light ">
+            <div className="text-lg  bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3  items-center flex gap-4 justify-between dark:text-neutral-200 p-4 mb-2 text-neutral-700 rounded-xl font-light ">
               <div>
                 {" "}
                 <b>Yields: </b>
@@ -76,7 +76,7 @@ const RecipeIndex = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2">
             {recipe!.steps.length > 0 && (
               <CustomDisclosure name="Steps">
                 {recipe!.steps.map((s) => (
@@ -101,7 +101,7 @@ const RecipeIndex = () => {
                             : `/app/recipes/${li.recipe.id}`
                         }
                       >
-                        <div className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-r-3xl font-light rounded-l-md rounded-bl-3xl text-base text-neutral-100 dark:text-neutral-100 ">
+                        <div className=" flex items-center gap-2  bg-violet-500 hover:bg-violet-600 p-2 px-4 rounded-xl font-light  text-base text-neutral-100 dark:text-neutral-100 ">
                           {li.recipe.name}{" "}
                           <ArrowLongRightIcon className="w-5 h-5" />
                         </div>
@@ -122,7 +122,7 @@ const RecipeIndex = () => {
                 <div>
                   <b>Updated At: </b>
                   {dayjs(recipe?.updatedAt)
-                    .format("dddd/MMM/YYYY")
+                    .format("D/MMM/YYYY")
                     .split("/")
                     .join(" ")}
                 </div>

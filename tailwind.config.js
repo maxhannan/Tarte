@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         openSans: ["Open Sans", "sans-serif"],
         manRope: ["Manrope", "sans-serif"],
+        workSans: ["Work Sans", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

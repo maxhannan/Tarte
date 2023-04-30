@@ -53,7 +53,7 @@ const App = () => {
     setPage(location.pathname.split("/")[2]);
   }, [location]);
   return (
-    <div className=" px-3">
+    <div className=" px-3 ">
       <div className="container  mx-auto">
         <Outlet />
       </div>
