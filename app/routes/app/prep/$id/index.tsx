@@ -1,4 +1,5 @@
 import { DocumentPlusIcon } from "@heroicons/react/24/outline";
+import { Label } from "@radix-ui/react-label";
 import type { ActionFunction } from "@remix-run/node";
 import { Form, useActionData, useNavigation } from "@remix-run/react";
 import { Image } from "lucide-react";
@@ -6,6 +7,7 @@ import { Image } from "lucide-react";
 import LoadingButton from "~/components/buttons/LoadingButton";
 import CustomTextInput from "~/components/forms/CustomTextInput";
 import AppBar from "~/components/navigation/AppBar";
+import { Input } from "~/components/ui/input";
 import { uploadImage } from "~/utils/images.server";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -31,11 +33,24 @@ const PrepListPage = () => {
         ]}
       />
       <Form method="post" encType="multipart/form-data">
-        <CustomTextInput
-          type="file"
-          fieldName="image upload"
-          identifier="uploadedImage"
-        />
+        <div className="grid w-full max-w-sm items-center gap-1 text-neutral-200 mb-2">
+          <Label htmlFor="picture" className="text-neutral-200">
+            Picture
+          </Label>
+          <Input
+            id="picture"
+            type="file"
+            name="uploadedImage"
+            className="file:text-neutral-200  p-0 file:text-base inline-flex file:h-full text-base border-neutral-700 file:bg-neutral-800 file:hover:bg-neutral-700 file:mr-2 rounded-xl"
+          />
+          <p
+            className=" text-sm text-gray-500 dark:text-gray-300"
+            id="file_input_help"
+          >
+            SVG, PNG, JPG or GIF (MAX. 800x400px).
+          </p>
+        </div>
+
         <LoadingButton
           Icon={Image}
           buttonName="Upload"
