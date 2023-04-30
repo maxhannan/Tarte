@@ -63,5 +63,16 @@ module.exports = {
     require("@headlessui/tailwindcss"),
     require("@tailwindcss/forms"),
     require("tailwindcss-animate"),
+    require("daisyui"),
   ],
+  daisyui: {
+    styled: true,
+    themes: false,
+    base: false,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: "",
+    darkTheme: "dark",
+  },
 };
