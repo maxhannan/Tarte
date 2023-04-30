@@ -2130,6 +2130,15 @@ html {
   height: 100%;
 }
 
+.file\:rounded-xl::file-selector-button {
+  border-radius: 0.75rem;
+}
+
+.file\:rounded-l-xl::file-selector-button {
+  border-top-left-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
+}
+
 .file\:border-0::file-selector-button {
   border-width: 0px;
 }

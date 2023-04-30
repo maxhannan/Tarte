@@ -40,8 +40,9 @@ const PrepListPage = () => {
           <Input
             id="picture"
             type="file"
+            accept="image/png, image/jpeg"
             name="uploadedImage"
-            className="file:text-neutral-200  p-0 file:text-base inline-flex file:h-full text-base border-neutral-700 file:bg-neutral-800 file:hover:bg-neutral-700 file:mr-2 rounded-xl"
+            className="file:text-neutral-200  p-0 file:text-base inline-flex file:h-full text-base border-neutral-700 file:bg-neutral-800 file:hover:bg-neutral-700 file:mr-2 rounded-xl file:rounded-l-xl"
           />
           <p
             className=" text-sm text-gray-500 dark:text-gray-300"
