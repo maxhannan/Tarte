@@ -29,6 +29,7 @@ model User {
 
 model Recipe {
   id          String   @id @default(cuid())
+  images      String[]
   dish        Boolean  @default(false)
   section     MenuSection[]
   menu        Menu[] 
