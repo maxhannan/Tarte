@@ -42,7 +42,7 @@ const EditRecipePage = () => {
   }, [data]);
 
   return (
-    <div>
+    <div className="container mx-auto max-w-2xl">
       <Form method="post">
         <AppBar
           page={`Edit ${recipe?.name}`}

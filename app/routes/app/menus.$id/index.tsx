@@ -24,7 +24,7 @@ const MenuPage = () => {
       </div>
     );
   return (
-    <div className=" mb-24">
+    <div className=" mb-24 container mx-auto max-w-2xl">
       <AppBar
         page={""}
         buttons={[

@@ -54,7 +54,7 @@ const App = () => {
   }, [location]);
   return (
     <div className=" px-3">
-      <div className="container max-w-4xl mx-auto">
+      <div className="container  mx-auto">
         <Outlet />
       </div>
       <BottomNav page={page} setPage={setPage} />

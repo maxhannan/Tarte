@@ -43,7 +43,7 @@ const RecipesPage = () => {
   }
 
   return (
-    <>
+    <div className=" container mx-auto max-w-4xl">
       <AppBar
         page={"Recipes"}
         buttons={[
@@ -76,7 +76,7 @@ const RecipesPage = () => {
           {recipes && <RecipeFeed recipeList={recipeList} />}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

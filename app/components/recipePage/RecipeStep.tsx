@@ -13,7 +13,7 @@ const RecipeStep = ({
       onClick={() => setChecked(!checked)}
       className={`${
         checked ? "dark:bg-neutral-700 bg-neutral-300" : "dark:bg-neutral-800 "
-      }  border border-neutral-300 dark:border-neutral-700 bg-neutral-200 bg-opacity-50 dark:bg-opacity-50 transition-all duration-300 rounded-r-3xl p-4 rounded-l-md rounded-bl-3xl text-lg text-neutral-700 dark:text-neutral-100 `}
+      }  border border-neutral-300 dark:border-neutral-700 bg-neutral-200 bg-opacity-50 dark:bg-opacity-50 transition-all duration-300 rounded-xl p-4 text-lg text-neutral-700 dark:text-neutral-100 `}
     >
       <h5 className="text-xl mb-2">Step {stepNum}</h5>
       <p className="text-lg font-light ">{content}</p>

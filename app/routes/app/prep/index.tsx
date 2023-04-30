@@ -21,7 +21,7 @@ const PrepPage = () => {
     );
   }
   return (
-    <div>
+    <div className=" container mx-auto max-w-4xl">
       <AppBar
         page={"Prep"}
         buttons={[

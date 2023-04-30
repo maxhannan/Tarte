@@ -41,7 +41,7 @@ function Calendar({
         cell: "text-center text-sm p-0 relative bg-transparent rounded-md [&:has([aria-selected])]:bg-transparent focus-within:relative focus-within:z-20",
         day: cn(
           buttonVariants({ variant: "ghost" }),
-          "h-[46px] w-[46px] font-normal aria-selected:opacity-100 dark:text-neutral-200 text-neutral-800 text-lg "
+          "h-[46px] w-[46px] font-normal aria-selected:opacity-100 dark:text-neutral-200 text-neutral-800 text-lg rounded-lg   "
         ),
         day_selected:
           "bg-violet-500 dark:bg-violet-400 text-primary-foreground hover:bg-violet-500 hover:dark:bg-violet-400 hover:text-primary-foreground focus:dark:bg-violet-400 focus:violet-500 focus:text-primary-foreground",

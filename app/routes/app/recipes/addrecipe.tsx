@@ -55,7 +55,7 @@ const AddRecipe = () => {
   }
 
   return (
-    <div>
+    <div className="container mx-auto max-w-2xl">
       <Form method="post">
         <AppBar
           page="Add a Recipe"
