@@ -34,27 +34,38 @@ const PrepListPage = () => {
       />
       <div></div>
       <div className="max-w-sm container mx-auto carousel rounded-box border border-neutral-700 mb-2 ">
-        <div className="carousel-item w-full object-contain">
+        <div id="item1" className="carousel-item w-full ">
           <img
             src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/805c7a1c-cc08-447e-1f19-6c09211c3700/carousel"
-            className="object-cover"
+            className="object-contain"
             alt="Tailwind CSS Carousel component"
           />
         </div>
-        <div className="carousel-item w-full object-contain">
+        <div id="item2" className="carousel-item w-full ">
           <img
             src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/a519da05-e2c7-48e7-dd9f-2cf425bf0d00/carousel"
-            className=" object-cover"
+            className=" object-contain"
             alt="Tailwind CSS Carousel component"
           />
         </div>
-        <div className="carousel-item w-full object-contain">
+        <div id="item3" className="carousel-item w-full ">
           <img
             src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/26dc6ed7-3023-47cf-4556-6e5c4400cf00/carousel"
             className=" object-contain"
             alt="Tailwind CSS Carousel component"
           />
         </div>
+      </div>
+      <div className="flex justify-center w-full py-2 gap-2  ">
+        <a href="#item1" className="btn btn-xs">
+          1
+        </a>
+        <a href="#item2" className="btn btn-xs">
+          2
+        </a>
+        <a href="#item3" className="btn btn-xs">
+          3
+        </a>
       </div>
       <Form method="post" encType="multipart/form-data">
         <div className="grid w-full max-w-sm items-center gap-1 text-neutral-200 mb-2">
