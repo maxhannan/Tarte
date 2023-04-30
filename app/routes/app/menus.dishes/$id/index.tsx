@@ -28,7 +28,7 @@ const DishIndex = () => {
   }
 
   return (
-    <div className="mb-24">
+    <div className="mb-28">
       <AppBar
         page={""}
         textSize="text-2xl"
