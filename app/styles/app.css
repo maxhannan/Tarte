@@ -3643,21 +3643,12 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
-.file\:mr-2::file-selector-button {
-  margin-right: 0.5rem;
-}
-
 .file\:mr-4::file-selector-button {
   margin-right: 1rem;
 }
 
 .file\:h-full::file-selector-button {
   height: 100%;
-}
-
-.file\:rounded-l-xl::file-selector-button {
-  border-top-left-radius: 0.75rem;
-  border-bottom-left-radius: 0.75rem;
 }
 
 .file\:rounded-r-xl::file-selector-button {
@@ -3669,23 +3660,8 @@ html {
   border-width: 0px;
 }
 
-.file\:border-neutral-700::file-selector-button {
-  --tw-border-opacity: 1;
-  border-color: rgb(64 64 64 / var(--tw-border-opacity));
-}
-
-.file\:bg-neutral-800::file-selector-button {
-  --tw-bg-opacity: 1;
-  background-color: rgb(38 38 38 / var(--tw-bg-opacity));
-}
-
 .file\:bg-transparent::file-selector-button {
   background-color: transparent;
-}
-
-.file\:bg-neutral-100::file-selector-button {
-  --tw-bg-opacity: 1;
-  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
 }
 
 .file\:bg-violet-500::file-selector-button {
@@ -3715,11 +3691,6 @@ html {
 .file\:text-neutral-200::file-selector-button {
   --tw-text-opacity: 1;
   color: rgb(229 229 229 / var(--tw-text-opacity));
-}
-
-.file\:text-neutral-800::file-selector-button {
-  --tw-text-opacity: 1;
-  color: rgb(38 38 38 / var(--tw-text-opacity));
 }
 
 .file\:transition-all::file-selector-button {
@@ -3841,19 +3812,9 @@ html {
   opacity: 1;
 }
 
-.file\:hover\:bg-neutral-700:hover::file-selector-button {
-  --tw-bg-opacity: 1;
-  background-color: rgb(64 64 64 / var(--tw-bg-opacity));
-}
-
 .file\:hover\:bg-violet-400:hover::file-selector-button {
   --tw-bg-opacity: 1;
   background-color: rgb(167 139 250 / var(--tw-bg-opacity));
-}
-
-.file\:hover\:bg-violet-600:hover::file-selector-button {
-  --tw-bg-opacity: 1;
-  background-color: rgb(124 58 237 / var(--tw-bg-opacity));
 }
 
 .file\:hover\:text-neutral-200:hover::file-selector-button {
@@ -4129,31 +4090,6 @@ html {
   .dark\:placeholder-neutral-400::placeholder {
     --tw-placeholder-opacity: 1;
     color: rgb(163 163 163 / var(--tw-placeholder-opacity));
-  }
-
-  .file\:dark\:bg-neutral-800::file-selector-button {
-    --tw-bg-opacity: 1;
-    background-color: rgb(38 38 38 / var(--tw-bg-opacity));
-  }
-
-  .file\:dark\:bg-neutral-700::file-selector-button {
-    --tw-bg-opacity: 1;
-    background-color: rgb(64 64 64 / var(--tw-bg-opacity));
-  }
-
-  .file\:dark\:bg-neutral-600::file-selector-button {
-    --tw-bg-opacity: 1;
-    background-color: rgb(82 82 82 / var(--tw-bg-opacity));
-  }
-
-  .file\:dark\:bg-neutral-900::file-selector-button {
-    --tw-bg-opacity: 1;
-    background-color: rgb(23 23 23 / var(--tw-bg-opacity));
-  }
-
-  .file\:dark\:bg-violet-400::file-selector-button {
-    --tw-bg-opacity: 1;
-    background-color: rgb(167 139 250 / var(--tw-bg-opacity));
   }
 
   .file\:dark\:bg-violet-500::file-selector-button {

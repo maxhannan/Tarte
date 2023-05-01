@@ -52,7 +52,7 @@ const RecipeIndex = () => {
           },
         ]}
       />
-      {recipe!.images.length > 1 && (
+      {recipe!.images.length > 0 && (
         <Carousel
           isOpen={isOpen}
           setIsOpen={setIsOpen}

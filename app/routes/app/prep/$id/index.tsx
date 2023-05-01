@@ -38,7 +38,7 @@ const PrepListPage = () => {
           },
         ]}
       />
-      <Carousel isOpen={isOpen} setIsOpen={setIsOpen} />
+
       <div>
         <IconButton
           Icon={ImageIcon}
