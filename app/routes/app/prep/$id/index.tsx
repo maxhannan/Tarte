@@ -63,7 +63,7 @@ const PrepListPage = () => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md bg-transparent ">
+              <Dialog.Panel className="w-full max-w-md bg-transparent">
                 <div className="carousel rounded-xl  min-w-full h-auto">
                   <div
                     id="item1"
