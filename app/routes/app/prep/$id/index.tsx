@@ -65,14 +65,14 @@ const PrepListPage = () => {
               <div id="item3" className="carousel-item w-full ">
                 <img
                   src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/26dc6ed7-3023-47cf-4556-6e5c4400cf00/carousel"
-                  className="w-full  object-contain"
+                  className="w-full  min-h-full object-contain"
                   alt="Tailwind CSS Carousel component"
                 />
               </div>
               <div id="item4" className="carousel-item w-full ">
                 <img
                   src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/eaedb384-b8ab-4639-bdaf-1c8d3e9efa00/carousel"
-                  className="w-full  object-contain"
+                  className="w-full min-h-full object-contain"
                   alt="Tailwind CSS Carousel component"
                 />
               </div>
