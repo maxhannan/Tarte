@@ -46,7 +46,7 @@ const PrepListPage = () => {
         <div className="fixed inset-0 bg-black/60" aria-hidden="true" />
         {/* Full-screen container to center the panel */}
         <div className="fixed inset-0 flex items-center justify-center">
-          <Dialog.Panel className="w-full max-w-md bg-neutral-100 dark:bg-transparent  rounded-xl p-4">
+          <Dialog.Panel className="w-full max-w-md bg-neutral-100   rounded-xl p-4">
             <div className="  carousel rounded-box  border border-neutral-200 dark:border-neutral-700  ">
               <div id="item1" className="carousel-item w-full ">
                 <img
