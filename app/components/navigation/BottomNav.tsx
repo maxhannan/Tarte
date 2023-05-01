@@ -29,7 +29,7 @@ const BottomNav = ({
     navigate(pathString);
   };
   return (
-    <div className="fixed z-50 w-full  h-24 md:h-fit   bottom-0 left-0 bg-neutral-100 border-t    dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700">
+    <div className="fixed z-50 w-full  h-24   bottom-0 left-0 bg-neutral-100 border-t    dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700">
       <div className="grid h-full max-w-lg  pb-4 md:p-3 mx-auto grid-cols-5 gap-0">
         <BottomNavButton
           active={page}
