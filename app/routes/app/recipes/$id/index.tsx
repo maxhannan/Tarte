@@ -6,7 +6,10 @@ import {
 } from "@heroicons/react/24/outline";
 import { Link, useNavigate } from "@remix-run/react";
 import dayjs from "dayjs";
+import { ImageIcon } from "lucide-react";
+import { useState } from "react";
 import SlideUpTransition from "~/components/animations/slideUp";
+import Carousel from "~/components/displays/Carousel";
 import CustomDisclosure from "~/components/displays/customDisclosure";
 import Chip from "~/components/forms/Chip";
 import AppBar from "~/components/navigation/AppBar";
@@ -19,6 +22,7 @@ import type { CompleteRecipe } from "~/utils/recipes.server";
 const RecipeIndex = () => {
   const recipe = useRouteData("routes/app/recipes/$id") as CompleteRecipe;
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
   console.log(recipe);
   return (
     <>
@@ -32,6 +36,11 @@ const RecipeIndex = () => {
             action: () => navigate("edit", { replace: true }),
           },
           {
+            Icon: ImageIcon,
+            buttonName: "openModa",
+            action: () => setIsOpen(!isOpen),
+          },
+          {
             Icon: ScaleIcon,
             buttonName: "Language",
             action: () => console.log("addRecipe"),
@@ -43,6 +52,8 @@ const RecipeIndex = () => {
           },
         ]}
       />
+      <Carousel isOpen={isOpen} setIsOpen={setIsOpen} />
+
       <SlideUpTransition>
         <div className="text-2xl border border-neutral-300 dark:border-neutral-700 gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full mb-2 items-center flex justify-between dark:text-neutral-200 p-4  text-neutral-600 rounded-xl font-light ">
           <div>{recipe!.name}</div>
