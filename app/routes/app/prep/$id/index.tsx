@@ -48,24 +48,24 @@ const PrepListPage = () => {
         <div className="fixed inset-0 flex items-center justify-center">
           <Dialog.Panel className="w-full max-w-md bg-neutral-100 dark:bg-transparent  rounded-xl p-4">
             <div className=" container mx-auto carousel rounded-box  border border-neutral-200 dark:border-neutral-700 ">
-              <div id="item1" className="carousel-item w-full ">
+              <div id="item1" className="carousel-item w-full h-full">
                 <img
                   src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/805c7a1c-cc08-447e-1f19-6c09211c3700/carousel"
                   className="object-contain"
                   alt="Tailwind CSS Carousel component"
                 />
               </div>
-              <div id="item2" className="carousel-item w-full ">
+              <div id="item2" className="carousel-item w-full h-full ">
                 <img
                   src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/a519da05-e2c7-48e7-dd9f-2cf425bf0d00/carousel"
                   className="object-contain"
                   alt="Tailwind CSS Carousel component"
                 />
               </div>
-              <div id="item3" className="carousel-item w-full object-contain">
+              <div id="item3" className="carousel-item w-full h-full ">
                 <img
                   src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/26dc6ed7-3023-47cf-4556-6e5c4400cf00/carousel"
-                  className=" min-h-full min-w-full object-contain"
+                  className=" object-contain"
                   alt="Tailwind CSS Carousel component"
                 />
               </div>
