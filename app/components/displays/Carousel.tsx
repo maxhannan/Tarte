@@ -23,7 +23,7 @@ const Carousel = ({ isOpen, setIsOpen }: Props) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/80" aria-hidden="true" />
+          <div className="fixed inset-0 bg-black/90" aria-hidden="true" />
         </Transition.Child>
         <div className="fixed inset-0 flex items-center justify-center p-4">
           <Transition.Child
