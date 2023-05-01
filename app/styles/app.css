@@ -3266,6 +3266,14 @@ body {
   --tw-bg-opacity: 1;
 }
 
+.bg-opacity-20 {
+  --tw-bg-opacity: 0.2;
+}
+
+.bg-opacity-10 {
+  --tw-bg-opacity: 0.1;
+}
+
 .fill-violet-500 {
   fill: #8b5cf6;
 }
@@ -4167,6 +4175,14 @@ html {
 
   .dark\:bg-opacity-100 {
     --tw-bg-opacity: 1;
+  }
+
+  .dark\:bg-opacity-20 {
+    --tw-bg-opacity: 0.2;
+  }
+
+  .dark\:bg-opacity-10 {
+    --tw-bg-opacity: 0.1;
   }
 
   .dark\:text-gray-300 {
