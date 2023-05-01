@@ -46,33 +46,33 @@ const PrepListPage = () => {
         <div className="fixed inset-0 bg-black/60" aria-hidden="true" />
         {/* Full-screen container to center the panel */}
         <div className="fixed inset-0 flex items-center justify-center">
-          <Dialog.Panel className="w-full max-w-md bg-neutral-100   rounded-xl p-4">
+          <Dialog.Panel className="w-full max-w-md bg-neutral-100 dark:bg-transparent   rounded-xl p-4">
             <div className="  carousel rounded-box  border border-neutral-200 dark:border-neutral-700  ">
               <div id="item1" className="carousel-item w-full ">
                 <img
                   src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/805c7a1c-cc08-447e-1f19-6c09211c3700/carousel"
-                  className="w-full object-scale-down"
+                  className="w-full object-cover"
                   alt="Tailwind CSS Carousel component"
                 />
               </div>
               <div id="item2" className="carousel-item w-full ">
                 <img
                   src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/a519da05-e2c7-48e7-dd9f-2cf425bf0d00/carousel"
-                  className="w-full object-scale-down"
+                  className="w-full object-cover"
                   alt="Tailwind CSS Carousel component"
                 />
               </div>
               <div id="item3" className="carousel-item w-full ">
                 <img
-                  src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/26dc6ed7-3023-47cf-4556-6e5c4400cf00/carousel"
-                  className="max-w-full h-auto object-scale-down"
+                  src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/eaedb384-b8ab-4639-bdaf-1c8d3e9efa00/carousel"
+                  className="w-full object-cover"
                   alt="Tailwind CSS Carousel component"
                 />
               </div>
-              <div id="item4" className="carousel-item w-full bg-im">
+              <div id="item4" className="carousel-item w-full ">
                 <img
-                  src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/eaedb384-b8ab-4639-bdaf-1c8d3e9efa00/carousel"
-                  className="max-w-full h-auto object-scale-down "
+                  src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/26dc6ed7-3023-47cf-4556-6e5c4400cf00/carousel"
+                  className="w-full object-cover"
                   alt="Tailwind CSS Carousel component"
                 />
               </div>
