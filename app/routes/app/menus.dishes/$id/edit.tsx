@@ -50,7 +50,7 @@ const EditDish = () => {
   console.log({ dish });
   return (
     <div className="mb-24">
-      <Form method="post">
+      <Form method="post" encType="multipart/form-data">
         <AppBar
           page="Edit Dish"
           textSize="text-4xl"

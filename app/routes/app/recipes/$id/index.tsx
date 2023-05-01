@@ -52,7 +52,13 @@ const RecipeIndex = () => {
           },
         ]}
       />
-      <Carousel isOpen={isOpen} setIsOpen={setIsOpen} />
+      {recipe!.images.length > 1 && (
+        <Carousel
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          imgSrcs={recipe!.images}
+        />
+      )}
 
       <SlideUpTransition>
         <div className="text-2xl border border-neutral-300 dark:border-neutral-700 gap-3 bg-neutral-200 dark:bg-neutral-800 px-4 w-full mb-2 items-center flex justify-between dark:text-neutral-200 p-4  text-neutral-600 rounded-xl font-light ">

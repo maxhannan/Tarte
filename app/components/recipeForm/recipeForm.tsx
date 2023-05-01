@@ -13,6 +13,7 @@ import { useRouteData } from "~/hooks/useRouteData";
 import { useNavigation } from "@remix-run/react";
 import type { CompleteRecipe } from "~/utils/recipes.server";
 import { UnitsList } from "~/utils/CodedLists";
+import ImageInput from "../forms/ImageInput";
 
 const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
   const [show, setShow] = useState(false);
@@ -76,6 +77,7 @@ const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
               }))}
             />
           </div>
+          <ImageInput />
           <div className="grid grid-cols-6 gap-x-2  ">
             <div className="col-span-2">
               <CustomTextInput

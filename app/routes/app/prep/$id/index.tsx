@@ -10,6 +10,7 @@ import IconButton from "~/components/buttons/IconButton";
 import LoadingButton from "~/components/buttons/LoadingButton";
 import Carousel from "~/components/displays/Carousel";
 import CustomTextInput from "~/components/forms/CustomTextInput";
+import ImageInput from "~/components/forms/ImageInput";
 import AppBar from "~/components/navigation/AppBar";
 import { Input } from "~/components/ui/input";
 import { uploadImage } from "~/utils/images.server";
@@ -47,24 +48,7 @@ const PrepListPage = () => {
       </div>
 
       <Form method="post" encType="multipart/form-data">
-        <div className="grid w-full max-w-sm items-center gap-1 text-neutral-200 mb-2">
-          <Label htmlFor="picture" className="text-neutral-200">
-            Picture
-          </Label>
-          <Input
-            id="picture"
-            type="file"
-            accept="image/png, image/jpeg"
-            name="uploadedImage"
-            className="file:text-neutral-200  p-0 file:text-base inline-flex file:h-full text-base border-neutral-700 file:bg-neutral-800 file:hover:bg-neutral-700 file:mr-2 rounded-xl file:rounded-l-xl"
-          />
-          <p
-            className=" text-sm text-gray-500 dark:text-gray-300"
-            id="file_input_help"
-          >
-            SVG, PNG, JPG or GIF (MAX. 800x400px).
-          </p>
-        </div>
+        <ImageInput />
 
         <LoadingButton
           Icon={Image}

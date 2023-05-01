@@ -6,7 +6,10 @@ import {
 import { PuzzlePieceIcon } from "@heroicons/react/24/outline";
 
 import { Link, useNavigate } from "@remix-run/react";
+import { ImageIcon } from "lucide-react";
+import { useState } from "react";
 import SlideUpTransition from "~/components/animations/slideUp";
+import Carousel from "~/components/displays/Carousel";
 import CustomDisclosure from "~/components/displays/customDisclosure";
 import Chip from "~/components/forms/Chip";
 import AppBar from "~/components/navigation/AppBar";
@@ -20,7 +23,7 @@ import type { FullDish } from "~/utils/menus.server";
 
 const DishIndex = () => {
   const dish = useRouteData("routes/app/menus.dishes/$id") as FullDish;
-
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   if (!dish) {
@@ -38,7 +41,11 @@ const DishIndex = () => {
             buttonName: "Edit Recipe",
             action: () => navigate("edit", { replace: true }),
           },
-
+          {
+            Icon: ImageIcon,
+            buttonName: "openModa",
+            action: () => setIsOpen(!isOpen),
+          },
           {
             Icon: ArrowUturnLeftIcon,
             buttonName: "User",
@@ -46,7 +53,7 @@ const DishIndex = () => {
           },
         ]}
       />
-
+      <Carousel isOpen={isOpen} setIsOpen={setIsOpen} />
       <SlideUpTransition>
         <div className="flex flex-col gap-2 mb-2">
           <div className="text-2xl border border-neutral-300 dark:border-neutral-700 gap-2 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4  text-neutral-600 rounded-xl font-light ">

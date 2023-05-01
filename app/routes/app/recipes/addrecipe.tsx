@@ -19,7 +19,7 @@ import { createRecipe, extractRecipe } from "~/utils/recipes.server";
 export const action: ActionFunction = async ({ request }) => {
   const user = await getUser(request);
   const form = await request.formData();
-  const newRecipe = extractRecipe(form);
+  const newRecipe = await extractRecipe(form);
 
   if (user) {
     const savedRecipe = await createRecipe(newRecipe, user.id);
@@ -56,7 +56,7 @@ const AddRecipe = () => {
 
   return (
     <div className="container mx-auto max-w-2xl">
-      <Form method="post">
+      <Form method="post" encType="multipart/form-data">
         <AppBar
           page="Add a Recipe"
           textSize="text-3xl"

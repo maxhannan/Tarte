@@ -1,11 +1,13 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "./prisma.server";
+import { uploadImage } from "./images.server";
 
 interface Recipe {
   name: string;
   category: string;
   allergens: string[];
   yieldAmt: string;
+  savedImages: string[];
   yieldUnit: string;
   ingredients: Ingredient[];
   steps: string[];
@@ -18,7 +20,7 @@ interface Ingredient {
   linkId: string | undefined;
 }
 
-export const extractRecipe = (form: FormData) => {
+export const extractRecipe = async (form: FormData) => {
   const name = form.get("recipeName") as string;
   const category = form.get("category") as string;
   const yieldAmt = form.get("yieldAmt") as string;
@@ -29,6 +31,9 @@ export const extractRecipe = (form: FormData) => {
   const ingredientAmts = form.getAll("ingredientAmt") as string[];
   const ingredientUnits = form.getAll("ingredientUnit") as string[];
   const steps = form.getAll("recipeStep") as string[];
+  const images = form.getAll("uploadedImage") as Blob[];
+  console.log({ images });
+  const savedImages = await uploadImage(images);
 
   const ingredients = iNames.map((n, i) => {
     return {
@@ -42,6 +47,7 @@ export const extractRecipe = (form: FormData) => {
   return {
     name,
     category,
+    savedImages,
     yieldAmt,
     yieldUnit,
     allergens: allergies.length > 0 ? allergies?.split(",") : [],
@@ -51,12 +57,21 @@ export const extractRecipe = (form: FormData) => {
 };
 
 export const createRecipe = async (recipe: Recipe, userId: string) => {
-  const { name, category, allergens, yieldUnit, yieldAmt, ingredients, steps } =
-    recipe;
+  const {
+    name,
+    category,
+    allergens,
+    yieldUnit,
+    yieldAmt,
+    ingredients,
+    steps,
+    savedImages,
+  } = recipe;
 
   const newRecipe = await prisma.recipe.create({
     data: {
       name,
+      images: savedImages,
       category,
       allergens,
       yieldUnit,
