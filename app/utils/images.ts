@@ -11,21 +11,25 @@ export const uploadImage = async (images: Blob[]) => {
   return savedImages;
 };
 
-const singleUpload = async (image: Blob) => {
+export const singleUpload = async (image: Blob) => {
+  const url = await getUrl();
+  console.log({ url });
   const body = new FormData();
   body.append("file", image, image.name);
-  const response = await fetch(
-    `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_USER}/images/v1`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.CLOUDFLARE_API}`,
-      },
-      body,
-    }
-  );
+  const response = await fetch(url.result.uploadURL, {
+    method: "POST",
+
+    body,
+  });
   console.log({ response });
   const desereli = await response.json();
   console.log({ desereli });
-  return desereli.result.variants[1];
+  return desereli.result.variants[0];
+};
+
+export const getUrl = async () => {
+  const ImageLink = await fetch("/app/ImageLink", { method: "GET" }).then(
+    (res) => res.json()
+  );
+  return ImageLink;
 };

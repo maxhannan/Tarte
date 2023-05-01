@@ -1,6 +1,6 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "./prisma.server";
-import { uploadImage } from "./images.server";
+import { uploadImage } from "./images";
 
 interface Recipe {
   name: string;
@@ -31,9 +31,7 @@ export const extractRecipe = async (form: FormData) => {
   const ingredientAmts = form.getAll("ingredientAmt") as string[];
   const ingredientUnits = form.getAll("ingredientUnit") as string[];
   const steps = form.getAll("recipeStep") as string[];
-  const images = form.getAll("uploadedImage") as Blob[];
-  console.log({ images });
-  const savedImages = await uploadImage(images);
+  const savedImages = JSON.parse(form.get("imageLinks") as string);
 
   const ingredients = iNames.map((n, i) => {
     return {

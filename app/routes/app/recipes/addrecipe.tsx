@@ -1,24 +1,27 @@
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import type { ActionFunction } from "@remix-run/node";
+import { ActionFunction, json } from "@remix-run/node";
 
 import {
   Form,
   useActionData,
   useNavigate,
   useNavigation,
+  useSubmit,
 } from "@remix-run/react";
-import { useEffect } from "react";
+import { FormEventHandler, useEffect, useRef } from "react";
 
 import AppBar from "~/components/navigation/AppBar";
 import RecipeForm from "~/components/recipeForm/recipeForm";
 import Spinner from "~/components/status/smallSpinner";
 
 import { getUser } from "~/utils/auth.server";
+import { getUrl, singleUpload, uploadImage } from "~/utils/images";
 import { createRecipe, extractRecipe } from "~/utils/recipes.server";
 
 export const action: ActionFunction = async ({ request }) => {
   const user = await getUser(request);
   const form = await request.formData();
+
   const newRecipe = await extractRecipe(form);
 
   if (user) {
@@ -35,7 +38,8 @@ const AddRecipe = () => {
   const navigate = useNavigate();
   const navigation = useNavigation();
   const data = useActionData();
-
+  const formRef = useRef<HTMLFormElement>(null);
+  const submit = useSubmit();
   const loading =
     navigation.state === "submitting" || navigation.state === "loading";
 
@@ -54,9 +58,26 @@ const AddRecipe = () => {
     );
   }
 
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      const Images = formData.getAll("uploadedImage") as Blob[];
+      const SavedImages = await uploadImage(Images);
+      console.log({ SavedImages });
+      formData.set("imageLinks", JSON.stringify(SavedImages));
+      submit(formData, { method: "post" });
+    }
+  };
+
   return (
     <div className="container mx-auto max-w-2xl">
-      <Form method="post" encType="multipart/form-data">
+      <Form
+        ref={formRef}
+        method="post"
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+      >
         <AppBar
           page="Add a Recipe"
           textSize="text-3xl"

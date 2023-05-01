@@ -13,7 +13,7 @@ import CustomTextInput from "~/components/forms/CustomTextInput";
 import ImageInput from "~/components/forms/ImageInput";
 import AppBar from "~/components/navigation/AppBar";
 import { Input } from "~/components/ui/input";
-import { uploadImage } from "~/utils/images.server";
+import { uploadImage } from "~/utils/images";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();

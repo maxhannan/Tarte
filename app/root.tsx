@@ -1,4 +1,9 @@
-import type { MetaFunction, LinksFunction } from "@remix-run/node";
+import {
+  MetaFunction,
+  LinksFunction,
+  LoaderFunction,
+  json,
+} from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -6,6 +11,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 import styles from "./styles/app.css";
 
@@ -32,8 +38,16 @@ export const meta: MetaFunction = () => ({
 
   "apple-touch-fullscreen": "yes",
 });
-
+export const loader: LoaderFunction = async () => {
+  return json({
+    ENV: {
+      CLOUDFLARE_USER: process.env.CLOUDFLARE_USER,
+      CLOUDFLARE_API: process.env.CLOUDFLARE_API,
+    },
+  });
+};
 export default function App() {
+  const data = useLoaderData<typeof loader>();
   return (
     <html lang="en">
       <head>
@@ -48,6 +62,11 @@ export default function App() {
       <body className="bg-neutral-100 dark:bg-neutral-900 font-workSans   ">
         <Outlet />
         <ScrollRestoration />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(data.ENV)}`,
+          }}
+        />
         <Scripts />
         <LiveReload />
       </body>

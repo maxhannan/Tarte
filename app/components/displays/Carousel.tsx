@@ -46,7 +46,7 @@ const Carousel = ({ isOpen, setIsOpen, imgSrcs }: Props) => {
                   >
                     <img
                       src={img}
-                      className="object-contain "
+                      className="object-cover "
                       alt="Tailwind CSS Carousel component"
                     />
                   </div>
