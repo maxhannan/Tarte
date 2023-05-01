@@ -65,7 +65,7 @@ const PrepListPage = () => {
               <div id="item3" className="carousel-item w-full object-contain">
                 <img
                   src="https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A/26dc6ed7-3023-47cf-4556-6e5c4400cf00/carousel"
-                  className=" h-full w-full object-contain"
+                  className=" min-h-full min-w-full object-contain"
                   alt="Tailwind CSS Carousel component"
                 />
               </div>
