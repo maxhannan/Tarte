@@ -85,16 +85,16 @@ const RecipeForm = ({
             />
           </div>
           <ImageInput />
-          <div className="w-full flex flex-wrap border rounded-xl items-center justify-between p-2 ">
+          <div className="w-full flex flex-wrap  items-center justify-start gap-2 py-2 ">
             {recipe!.images.length > 0 &&
               recipe?.images.map((image) => (
                 <div key={image} className="relative">
                   <img
-                    className="w-12 h-12 rounded object-cover"
+                    className="w-20 h-14 rounded object-cover"
                     src={image}
                     alt="Default avatar"
                   ></img>
-                  <span className="top-0 right-0 absolute  w-5 h-5 bg-red-400 rounded-full flex justify-center items-center">
+                  <span className="-top-1 -right-1 absolute  w-5 h-5 bg-red-500 rounded-full flex justify-center items-center">
                     <XMarkIcon className="w-3 h-3" />
                   </span>
                 </div>

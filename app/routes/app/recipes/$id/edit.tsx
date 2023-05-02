@@ -7,7 +7,7 @@ import {
   useNavigate,
   useNavigation,
 } from "@remix-run/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AppBar from "~/components/navigation/AppBar";
 import RecipeForm from "~/components/recipeForm/recipeForm";
 import { useRouteData } from "~/hooks/useRouteData";
@@ -31,6 +31,7 @@ const EditRecipePage = () => {
   const navigation = useNavigation();
   const data = useActionData();
   console.log({ recipe });
+  const [imageList, setImageList] = useState([]);
   const loading =
     navigation.state === "submitting" || navigation.state === "loading";
 
