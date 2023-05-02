@@ -30,7 +30,7 @@ const EditRecipePage = () => {
   const navigate = useNavigate();
   const navigation = useNavigation();
   const data = useActionData();
-  console.log(data);
+  console.log({ recipe });
   const loading =
     navigation.state === "submitting" || navigation.state === "loading";
 
