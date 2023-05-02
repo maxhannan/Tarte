@@ -38,7 +38,7 @@ const Carousel = ({ isOpen, setIsOpen, imgSrcs }: Props) => {
             leaveTo="opacity-0 scale-95"
           >
             <Dialog.Panel className="w-full max-w-xl bg-transparent">
-              <div className="carousel rounded-xl  w-full h-auto ">
+              <div className="carousel rounded-xl  w-full h-auto max-h-[70vh] ">
                 {imgSrcs.map((img, i) => (
                   <div
                     key={i}
