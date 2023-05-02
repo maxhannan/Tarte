@@ -2590,6 +2590,10 @@ body {
   height: 100vh;
 }
 
+.h-\[80vh\] {
+  height: 80vh;
+}
+
 .max-h-0 {
   max-height: 0px;
 }
@@ -2608,6 +2612,14 @@ body {
 
 .max-h-full {
   max-height: 100%;
+}
+
+.max-h-\[80vh\] {
+  max-height: 80vh;
+}
+
+.max-h-\[90vh\] {
+  max-height: 90vh;
 }
 
 .w-10 {
@@ -2668,6 +2680,10 @@ body {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-auto {
+  width: auto;
 }
 
 .min-w-full {
@@ -3133,6 +3149,16 @@ body {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
+.object-center {
+  -o-object-position: center;
+     object-position: center;
 }
 
 .p-0 {

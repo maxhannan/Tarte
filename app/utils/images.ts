@@ -1,4 +1,4 @@
-export const uploadImage = async (images: Blob[]) => {
+export const uploadImage = async (images: File[]) => {
   if (images.length < 1) {
     return [];
   }
@@ -11,14 +11,13 @@ export const uploadImage = async (images: Blob[]) => {
   return savedImages;
 };
 
-export const singleUpload = async (image: Blob) => {
+export const singleUpload = async (image: File) => {
   const url = await getUrl();
   console.log({ url });
   const body = new FormData();
   body.append("file", image, image.name);
   const response = await fetch(url.result.uploadURL, {
     method: "POST",
-
     body,
   });
   console.log({ response });

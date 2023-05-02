@@ -62,7 +62,7 @@ const AddRecipe = () => {
     e.preventDefault();
     if (formRef.current) {
       const formData = new FormData(formRef.current);
-      const Images = formData.getAll("uploadedImage") as Blob[];
+      const Images = formData.getAll("uploadedImage") as File[];
       const SavedImages = await uploadImage(Images);
       console.log({ SavedImages });
       formData.set("imageLinks", JSON.stringify(SavedImages));

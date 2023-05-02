@@ -37,16 +37,16 @@ const Carousel = ({ isOpen, setIsOpen, imgSrcs }: Props) => {
             leaveTo="opacity-0 scale-95"
           >
             <Dialog.Panel className="w-full max-w-xl bg-transparent">
-              <div className="carousel rounded-xl  min-w-full h-auto">
+              <div className="carousel rounded-xl  w-full h-auto ">
                 {imgSrcs.map((img, i) => (
                   <div
                     key={i}
                     id={`item${i}`}
-                    className="carousel-item w-full bg-neutral-100 dark:bg-neutral-900 "
+                    className="carousel-item w-full h-auto "
                   >
                     <img
                       src={img}
-                      className="object-cover "
+                      className=" object-contain w-full h-auto"
                       alt="Tailwind CSS Carousel component"
                     />
                   </div>
