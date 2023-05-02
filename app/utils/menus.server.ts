@@ -31,7 +31,7 @@ export const extractDish = (form: FormData) => {
   const ingredientUnits = form.getAll("ingredientUnit") as string[];
   const steps = form.getAll("recipeStep") as string[];
   const notes = form.getAll("recipeNote") as string[];
-
+  const savedImages = JSON.parse(form.get("imageLinks") as string);
   const ingredients = iNames.map((n, i) => {
     return {
       ingredient: n,
@@ -44,6 +44,7 @@ export const extractDish = (form: FormData) => {
   return {
     name,
     allergens: allergies.length > 0 ? allergies?.split(",") : [],
+    savedImages,
     ingredients,
     steps,
     notes,
@@ -53,13 +54,14 @@ export const extractDish = (form: FormData) => {
 type dishData = ReturnType<typeof extractDish>;
 
 export const createDish = async (dish: dishData, userid: string) => {
-  const { name, allergens, ingredients, steps, notes } = dish;
+  const { name, allergens, ingredients, steps, notes, savedImages } = dish;
   try {
     const savedDish = await prisma.recipe.create({
       data: {
         name,
         dish: true,
         category: "dish",
+        images: savedImages || [],
         allergens,
         yieldAmt: "",
         yieldUnit: "",

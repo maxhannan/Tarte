@@ -104,7 +104,7 @@ const AddRecipe = () => {
           ]}
         />
 
-        <RecipeForm />
+        <RecipeForm formLoading={imageLoading} />
       </Form>
     </div>
   );

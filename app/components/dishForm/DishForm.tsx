@@ -11,13 +11,15 @@ import { useNavigation } from "@remix-run/react";
 import type { FullDish } from "~/utils/menus.server";
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
+import ImageInput from "../forms/ImageInput";
 
 interface Props {
   recipes: FullRecipes;
   dish?: FullDish;
+  formLoading?: boolean;
 }
 
-const DishForm = ({ recipes, dish }: Props) => {
+const DishForm = ({ recipes, dish, formLoading = false }: Props) => {
   const [show, setShow] = useState(false);
   const navigation = useNavigation();
   console.log({ dish });
@@ -65,6 +67,7 @@ const DishForm = ({ recipes, dish }: Props) => {
           placeholder="Select Allergens"
           initalValue={dishValues.allergens}
         />
+        <ImageInput />
         <IngredientSection
           recipesProp={recipes}
           ingredientList={dishValues.ingredients}
@@ -73,7 +76,7 @@ const DishForm = ({ recipes, dish }: Props) => {
         <StepSection show={show} stepsList={dishValues.steps} />
         <NotesSection show={true} />
         <LoadingButton
-          loading={navigation.state === "submitting"}
+          loading={navigation.state === "submitting" || formLoading}
           type="submit"
           buttonName="createDish"
           buttonText={dish ? "Update Dish" : "Create Dish"}

@@ -8,8 +8,9 @@ import {
   useMatches,
   useNavigate,
   useNavigation,
+  useSubmit,
 } from "@remix-run/react";
-import { useEffect } from "react";
+import { FormEventHandler, useEffect, useRef, useState } from "react";
 
 import DishForm from "~/components/dishForm/DishForm";
 
@@ -17,6 +18,7 @@ import AppBar from "~/components/navigation/AppBar";
 
 import Spinner from "~/components/status/smallSpinner";
 import { getUser } from "~/utils/auth.server";
+import { uploadImage } from "~/utils/images";
 import { createDish, extractDish } from "~/utils/menus.server";
 import { getRecipes } from "~/utils/recipes.server";
 import type { FullRecipes } from "~/utils/recipes.server";
@@ -43,7 +45,9 @@ export const action: ActionFunction = async ({ request }) => {
 const AddDishPage = () => {
   const navigate = useNavigate();
   const navigation = useNavigation();
-
+  const formRef = useRef<HTMLFormElement>(null);
+  const submit = useSubmit();
+  const [imageLoading, setImageLoading] = useState(false);
   const { recipes } = useLoaderData() as {
     recipes: FullRecipes;
   };
@@ -63,9 +67,32 @@ const AddDishPage = () => {
     );
   }
 
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    if (formRef.current) {
+      setImageLoading(true);
+      const formData = new FormData(formRef.current);
+      const Images = formData.getAll("uploadedImage") as File[];
+      console.log({ Images });
+      if (Images.length > 0 && Images[0].size > 0) {
+        const SavedImages = await uploadImage(Images);
+
+        formData.set("imageLinks", JSON.stringify(SavedImages));
+      }
+
+      setImageLoading(false);
+      submit(formData, { method: "post" });
+    }
+  };
+
   return (
     <div className="mb-24">
-      <Form method="post">
+      <Form
+        ref={formRef}
+        method="post"
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+      >
         <AppBar
           page="Add a Dish"
           textSize="text-4xl"
@@ -74,7 +101,7 @@ const AddDishPage = () => {
               Icon: CheckCircleIcon,
               buttonName: "Submit",
               type: "submit",
-              loading: navigation.state === "submitting",
+              loading: navigation.state === "submitting" || imageLoading,
               action: () => console.log("Saving..."),
             },
             {
@@ -84,7 +111,7 @@ const AddDishPage = () => {
             },
           ]}
         />
-        <DishForm recipes={recipes} />
+        <DishForm recipes={recipes} formLoading={imageLoading} />
       </Form>
     </div>
   );

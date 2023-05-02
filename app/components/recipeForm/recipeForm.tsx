@@ -15,7 +15,13 @@ import type { CompleteRecipe } from "~/utils/recipes.server";
 import { UnitsList } from "~/utils/CodedLists";
 import ImageInput from "../forms/ImageInput";
 
-const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
+const RecipeForm = ({
+  recipe,
+  formLoading = false,
+}: {
+  recipe?: CompleteRecipe;
+  formLoading?: boolean;
+}) => {
   const [show, setShow] = useState(false);
   const { categories } = useRouteData("routes/app/recipes") as {
     categories: string[];
@@ -122,7 +128,8 @@ const RecipeForm = ({ recipe }: { recipe?: CompleteRecipe }) => {
           <LoadingButton
             loading={
               navigation.state === "submitting" ||
-              navigation.state === "loading"
+              navigation.state === "loading" ||
+              formLoading
             }
             type="submit"
             buttonName="addRecipe"
