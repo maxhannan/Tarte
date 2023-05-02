@@ -1,4 +1,5 @@
 import { Transition, Dialog } from "@headlessui/react";
+import { Link } from "@remix-run/react";
 import { Fragment } from "react";
 
 interface Props {
@@ -54,13 +55,14 @@ const Carousel = ({ isOpen, setIsOpen, imgSrcs }: Props) => {
               </div>
               <div className="flex justify-center w-full py-2 gap-2  ">
                 {imgSrcs.map((img, i) => (
-                  <a
+                  <Link
                     key={i}
-                    href={`#item${i}`}
+                    to={`#item${i}`}
+                    replace
                     className="btn btn-sm bg-neutral-800 border border-neutral-700 rounded-xl active:bg-red-500 hover:bg-red-500"
                   >
                     {i + 1}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </Dialog.Panel>
