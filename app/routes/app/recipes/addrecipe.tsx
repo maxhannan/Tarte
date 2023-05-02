@@ -8,7 +8,7 @@ import {
   useNavigation,
   useSubmit,
 } from "@remix-run/react";
-import { FormEventHandler, useEffect, useRef } from "react";
+import { FormEventHandler, useEffect, useRef, useState } from "react";
 
 import AppBar from "~/components/navigation/AppBar";
 import RecipeForm from "~/components/recipeForm/recipeForm";
@@ -39,6 +39,7 @@ const AddRecipe = () => {
   const navigation = useNavigation();
   const data = useActionData();
   const formRef = useRef<HTMLFormElement>(null);
+  const [imageLoading, setImageLoading] = useState(false);
   const submit = useSubmit();
   const loading =
     navigation.state === "submitting" || navigation.state === "loading";
@@ -61,11 +62,17 @@ const AddRecipe = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     if (formRef.current) {
+      setImageLoading(true);
       const formData = new FormData(formRef.current);
       const Images = formData.getAll("uploadedImage") as File[];
-      const SavedImages = await uploadImage(Images);
-      console.log({ SavedImages });
-      formData.set("imageLinks", JSON.stringify(SavedImages));
+      console.log({ Images });
+      if (Images.length > 0 && Images[0].size > 0) {
+        const SavedImages = await uploadImage(Images);
+
+        formData.set("imageLinks", JSON.stringify(SavedImages));
+      }
+
+      setImageLoading(false);
       submit(formData, { method: "post" });
     }
   };
@@ -87,7 +94,7 @@ const AddRecipe = () => {
               buttonName: "Submit",
               type: "submit",
               action: () => console.log("Saving..."),
-              loading: loading,
+              loading: loading || imageLoading,
             },
             {
               Icon: XMarkIcon,

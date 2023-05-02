@@ -20,7 +20,7 @@ interface Ingredient {
   linkId: string | undefined;
 }
 
-export const extractRecipe = async (form: FormData) => {
+export const extractRecipe = (form: FormData) => {
   const name = form.get("recipeName") as string;
   const category = form.get("category") as string;
   const yieldAmt = form.get("yieldAmt") as string;
@@ -41,7 +41,17 @@ export const extractRecipe = async (form: FormData) => {
       linkId: linkIds[i].length > 0 ? linkIds[i] : undefined,
     };
   });
-
+  console.log({ iNames, ingredientAmts, ingredientUnits, linkIds });
+  console.log({
+    name,
+    category,
+    savedImages,
+    yieldAmt,
+    yieldUnit,
+    allergens: allergies.length > 0 ? allergies?.split(",") : [],
+    ingredients,
+    steps,
+  });
   return {
     name,
     category,
@@ -69,7 +79,7 @@ export const createRecipe = async (recipe: Recipe, userId: string) => {
   const newRecipe = await prisma.recipe.create({
     data: {
       name,
-      images: savedImages,
+      images: savedImages || [],
       category,
       allergens,
       yieldUnit,
@@ -88,7 +98,7 @@ export const createRecipe = async (recipe: Recipe, userId: string) => {
 export const updateRecipe = async (id: string, recipe: Recipe) => {
   const { name, category, allergens, yieldUnit, yieldAmt, ingredients, steps } =
     recipe;
-
+  console.log({ ingredients });
   const data = await prisma.$transaction([
     prisma.ingredient.deleteMany({ where: { recipeId: id } }),
     prisma.recipe.update({
