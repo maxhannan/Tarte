@@ -92,7 +92,7 @@ const RecipeForm = ({
                   <div className="relative  w-[80px] h-[56px] overflow-hidden  rounded-xl ">
                     <img
                       className=" object-cover"
-                      src={image.replace("carousel", "w-20")}
+                      src={image.replace("carousel", "icon")}
                       alt="Default avatar"
                     />
                   </div>
