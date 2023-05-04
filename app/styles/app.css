@@ -2682,6 +2682,10 @@ body {
   max-height: 100%;
 }
 
+.max-h-14 {
+  max-height: 3.5rem;
+}
+
 .w-10 {
   width: 2.5rem;
 }
