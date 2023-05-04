@@ -85,21 +85,24 @@ const RecipeForm = ({
             />
           </div>
           <ImageInput />
-          <div className="w-full flex flex-wrap  items-center justify-start gap-2 py-2 ">
-            {recipe!.images.length > 0 &&
-              recipe?.images.map((image) => (
+          {recipe && recipe.images.length > 0 && (
+            <div className="w-full flex flex-wrap  items-center justify-start gap-2 py-2 ">
+              {recipe?.images.map((image) => (
                 <div key={image} className="relative">
-                  <img
-                    className="w-20 h-14 rounded object-cover"
-                    src={image}
-                    alt="Default avatar"
-                  ></img>
+                  <div className="relative w-20 h-14 rounded overflow-hidden">
+                    <img
+                      className=" w-full h-auto  object-cover"
+                      src={image}
+                      alt="Default avatar"
+                    ></img>
+                  </div>
                   <span className="-top-1 -right-1 absolute  w-5 h-5 bg-red-500 rounded-full flex justify-center items-center">
                     <XMarkIcon className="w-3 h-3" />
                   </span>
                 </div>
               ))}
-          </div>
+            </div>
+          )}
           <div className="grid grid-cols-6 gap-x-2  ">
             <div className="col-span-2">
               <CustomTextInput
