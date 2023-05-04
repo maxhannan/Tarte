@@ -89,9 +89,9 @@ const RecipeForm = ({
             <div className="w-full flex flex-wrap  items-center justify-start gap-2 py-2 ">
               {recipe?.images.map((image) => (
                 <div key={image} className="relative">
-                  <div className="relative w-20 h-14 rounded overflow-hidden">
+                  <div className="relative w-20 h-14 rounded-xl overflow-hidden">
                     <img
-                      className=" w-full h-auto  object-cover"
+                      className=" w-20 h-auto  object-cover"
                       src={image}
                       alt="Default avatar"
                     ></img>
