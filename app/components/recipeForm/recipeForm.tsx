@@ -94,7 +94,7 @@ const RecipeForm = ({
                       className=" object-cover"
                       src={image}
                       alt="Default avatar"
-                    ></img>
+                    />
                   </div>
                   <span className="-top-1 -right-1 absolute  w-5 h-5 bg-red-500 rounded-full flex justify-center items-center">
                     <XMarkIcon className="w-3 h-3" />
