@@ -2658,6 +2658,10 @@ body {
   height: 100vh;
 }
 
+.h-\[56px\] {
+  height: 56px;
+}
+
 .max-h-0 {
   max-height: 0px;
 }
@@ -2752,6 +2756,10 @@ body {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[80px\] {
+  width: 80px;
 }
 
 .max-w-2xl {
