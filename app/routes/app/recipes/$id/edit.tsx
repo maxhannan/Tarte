@@ -1,4 +1,5 @@
-import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { TrashIcon } from "@heroicons/react/24/outline";
+import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import type { ActionFunction } from "@remix-run/node";
 import {
@@ -9,6 +10,7 @@ import {
   useNavigation,
   useSubmit,
 } from "@remix-run/react";
+import { DeleteIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { FormEventHandler } from "react";
 import AppBar from "~/components/navigation/AppBar";
@@ -49,6 +51,12 @@ const EditRecipePage = () => {
   const handleDeleteImage = (path: string) => {
     setDeleteImageList([...deleteImageList, path]);
     setImageList((imageList) => imageList.filter((image) => image !== path));
+  };
+
+  const handleDeleteRecipe = async () => {
+    const data = new FormData();
+    data.set("id", recipe!.id);
+    submit(data, { method: "delete", action: "/app/recipes/deleterecipe" });
   };
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -93,6 +101,13 @@ const EditRecipePage = () => {
           page={`Edit Recipe`}
           textSize="text-3xl"
           buttons={[
+            {
+              Icon: TrashIcon,
+              buttonName: "Delete",
+
+              action: () => handleDeleteRecipe(),
+              loading: loading || imageLoading,
+            },
             {
               Icon: CheckCircleIcon,
               buttonName: "Submit",

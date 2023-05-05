@@ -211,3 +211,15 @@ export const getRecipeById = async (id: string) => {
     return null;
   }
 };
+
+export const deleteRecipe = async (id: string) => {
+  try {
+    await prisma.recipe.delete({
+      where: {
+        id: id,
+      },
+    });
+  } catch (error) {
+    return null;
+  }
+};

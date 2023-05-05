@@ -1,17 +1,16 @@
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { redirect } from "@remix-run/node";
+
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import {
   Form,
   useActionData,
   useLoaderData,
-  useMatches,
   useNavigate,
   useNavigation,
   useSubmit,
 } from "@remix-run/react";
-import { FormEventHandler, useEffect, useRef, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
+import type { FormEventHandler } from "react";
 import DishForm from "~/components/dishForm/DishForm";
 
 import AppBar from "~/components/navigation/AppBar";

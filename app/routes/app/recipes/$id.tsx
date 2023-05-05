@@ -1,4 +1,4 @@
-import type { LoaderFunction } from "@remix-run/node";
+import { LoaderFunction, redirect } from "@remix-run/node";
 import { Outlet, useLoaderData, useNavigation } from "@remix-run/react";
 
 import Spinner from "~/components/status/smallSpinner";
@@ -7,6 +7,9 @@ import { getRecipeById } from "~/utils/recipes.server";
 
 export const loader: LoaderFunction = async ({ request, params }) => {
   const recipe = await getRecipeById(params.id!);
+  if (!recipe) {
+    return redirect("/app/recipes");
+  }
   return recipe;
 };
 

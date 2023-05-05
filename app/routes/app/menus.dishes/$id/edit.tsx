@@ -1,4 +1,8 @@
-import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  CheckCircleIcon,
+  TrashIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import {
   Form,
   useActionData,
@@ -16,7 +20,8 @@ import type { FullDish } from "~/utils/menus.server";
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { getRecipes } from "~/utils/recipes.server";
 import type { FullRecipes } from "~/utils/recipes.server";
-import { FormEventHandler, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { FormEventHandler } from "react";
 import { uploadImage } from "~/utils/images";
 
 export const loader: LoaderFunction = async () => {
@@ -85,6 +90,12 @@ const EditDish = () => {
     }
   };
 
+  const handleDeleteRecipe = async () => {
+    const data = new FormData();
+    data.set("id", dish!.id);
+    submit(data, { method: "delete", action: "/app/menus/dishes/deletedish" });
+  };
+
   useEffect(() => {
     if (data !== undefined) {
       navigate(`/app/menus/dishes/${data}`, { replace: true });
@@ -105,6 +116,13 @@ const EditDish = () => {
           page="Edit Dish"
           textSize="text-4xl"
           buttons={[
+            {
+              Icon: TrashIcon,
+              buttonName: "Delete",
+
+              action: () => handleDeleteRecipe(),
+              loading: navigation.state === "submitting" || imageLoading,
+            },
             {
               Icon: CheckCircleIcon,
               buttonName: "Submit",
