@@ -13,7 +13,7 @@ import PrepListItem from "~/components/prep/PrepListItem";
 const PrepListPage = () => {
   const navigate = useNavigate();
   return (
-    <div className=" container mx-auto max-w-4xl">
+    <div className=" container mx-auto max-w-4xl mb-28">
       <AppBar
         page={"PM Grill"}
         buttons={[
