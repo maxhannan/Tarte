@@ -1,64 +1,75 @@
-import { Dialog, Transition } from "@headlessui/react";
-import { DocumentPlusIcon } from "@heroicons/react/24/outline";
-import { Label } from "@radix-ui/react-label";
-import type { ActionFunction } from "@remix-run/node";
-import { Form, useActionData, useNavigation } from "@remix-run/react";
-import { Image, ImageIcon } from "lucide-react";
-import { Fragment, useState } from "react";
-import IconButton from "~/components/buttons/IconButton";
-
-import LoadingButton from "~/components/buttons/LoadingButton";
-import Carousel from "~/components/displays/Carousel";
+import {
+  ArrowRightIcon,
+  ArrowUturnLeftIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/outline";
+import { useNavigate } from "@remix-run/react";
+import CustomDisclosure from "~/components/displays/customDisclosure";
 import CustomTextInput from "~/components/forms/CustomTextInput";
-import ImageInput from "~/components/forms/ImageInput";
+import SearchBar from "~/components/forms/SearchBar";
 import AppBar from "~/components/navigation/AppBar";
-import { Input } from "~/components/ui/input";
-import { uploadImage } from "~/utils/images";
+import PrepListItem from "~/components/prep/PrepListItem";
 
-export const action: ActionFunction = async ({ request }) => {
-  const formData = await request.formData();
-  const response = await uploadImage(formData);
-  console.log(response);
-  return response;
-};
 const PrepListPage = () => {
-  const navigation = useNavigation();
-  const response = useActionData();
-  const [isOpen, setIsOpen] = useState(false);
-  console.log(response);
+  const navigate = useNavigate();
   return (
-    <div>
+    <div className=" container mx-auto max-w-4xl">
       <AppBar
-        page={"Prep"}
+        page={"PM Grill"}
         buttons={[
           {
-            Icon: DocumentPlusIcon,
+            Icon: ArrowUturnLeftIcon,
             buttonName: "Add Recipe",
-            action: () => console.log("addRecipe"),
+            action: () => navigate(-1),
           },
         ]}
       />
-
-      <div>
-        <IconButton
-          Icon={ImageIcon}
-          buttonName="openModa"
-          action={() => setIsOpen(!isOpen)}
-        />
+      <SearchBar
+        handleChange={() => (e: string) => console.log(e)}
+        value={""}
+      />
+      <div className="w-full flex flex-col gap-2 mt-2">
+        <CustomDisclosure name={"Hummus"}>
+          <PrepListItem name={"Hummus Base"} unit="Quarts" />
+          <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
+          <PrepListItem name={"Tahini Puree"} unit="Quarts" />
+          <PrepListItem name={"Pita Bread/Socca Wraps"} unit="EA" />
+          <PrepListItem name={"Chopped Parsely"} unit="Pints" />
+          <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
+        </CustomDisclosure>
+        <CustomDisclosure name={"Hummus"}>
+          <PrepListItem name={"Hummus Base"} unit="Quarts" />
+          <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
+          <PrepListItem name={"Tahini Puree"} unit="Quarts" />
+          <PrepListItem name={"Pita Bread/Socca Wraps"} unit="EA" />
+          <PrepListItem name={"Chopped Parsely"} unit="Pints" />
+          <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
+        </CustomDisclosure>
+        <CustomDisclosure name={"Hummus"}>
+          <PrepListItem name={"Hummus Base"} unit="Quarts" />
+          <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
+          <PrepListItem name={"Tahini Puree"} unit="Quarts" />
+          <PrepListItem name={"Pita Bread/Socca Wraps"} unit="EA" />
+          <PrepListItem name={"Chopped Parsely"} unit="Pints" />
+          <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
+        </CustomDisclosure>
+        <CustomDisclosure name={"Hummus"}>
+          <PrepListItem name={"Hummus Base"} unit="Quarts" />
+          <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
+          <PrepListItem name={"Tahini Puree"} unit="Quarts" />
+          <PrepListItem name={"Pita Bread/Socca Wraps"} unit="EA" />
+          <PrepListItem name={"Chopped Parsely"} unit="Pints" />
+          <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
+        </CustomDisclosure>
+        <CustomDisclosure name={"Hummus"}>
+          <PrepListItem name={"Hummus Base"} unit="Quarts" />
+          <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
+          <PrepListItem name={"Tahini Puree"} unit="Quarts" />
+          <PrepListItem name={"Pita Bread/Socca Wraps"} unit="EA" />
+          <PrepListItem name={"Chopped Parsely"} unit="Pints" />
+          <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
+        </CustomDisclosure>
       </div>
-
-      <Form method="post" encType="multipart/form-data">
-        <ImageInput />
-
-        <LoadingButton
-          Icon={Image}
-          buttonName="Upload"
-          buttonText="Upload"
-          type="submit"
-          loading={navigation.state === "submitting"}
-          loadingText="uploading..."
-        />
-      </Form>
     </div>
   );
 };
