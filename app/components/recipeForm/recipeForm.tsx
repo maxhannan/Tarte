@@ -15,14 +15,20 @@ import type { CompleteRecipe } from "~/utils/recipes.server";
 import { UnitsList } from "~/utils/CodedLists";
 import ImageInput from "../forms/ImageInput";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { IMAGE_URL } from "~/utils/images";
 
+interface Props {
+  recipe?: CompleteRecipe;
+  formLoading?: boolean;
+  imageList?: string[];
+  handleDeleteImage?: (path: string) => void;
+}
 const RecipeForm = ({
   recipe,
   formLoading = false,
-}: {
-  recipe?: CompleteRecipe;
-  formLoading?: boolean;
-}) => {
+  imageList,
+  handleDeleteImage = () => undefined,
+}: Props) => {
   const [show, setShow] = useState(false);
   const { categories } = useRouteData("routes/app/recipes") as {
     categories: string[];
@@ -51,6 +57,7 @@ const RecipeForm = ({
         steps: [],
       };
   const navigation = useNavigation();
+
   return (
     <Transition
       enter="transition-all transform  ease-in-out  duration-500"
@@ -85,18 +92,21 @@ const RecipeForm = ({
             />
           </div>
           <ImageInput />
-          {recipe && recipe.images.length > 0 && (
+          {imageList && imageList.length > 0 && (
             <div className="w-full flex flex-wrap  items-center justify-start gap-2 py-2 ">
-              {recipe?.images.map((image) => (
+              {imageList.map((image) => (
                 <div key={image} className="relative ">
                   <div className="relative  w-[80px] h-[56px] overflow-hidden  rounded-xl ">
                     <img
                       className=" object-cover"
-                      src={image.replace("carousel", "icon")}
+                      src={[IMAGE_URL, image, "icon"].join("/")}
                       alt="Default avatar"
                     />
                   </div>
-                  <span className="-top-1 -right-1 absolute  w-5 h-5 bg-red-500 rounded-full flex justify-center items-center">
+                  <span
+                    onClick={() => handleDeleteImage(image)}
+                    className="-top-1 -right-1 absolute  w-5 h-5 bg-red-500 rounded-full flex justify-center items-center hover:bg-red-700 hover:text-neutral-100 transition-all duration-200"
+                  >
                     <XMarkIcon className="w-3 h-3" />
                   </span>
                 </div>

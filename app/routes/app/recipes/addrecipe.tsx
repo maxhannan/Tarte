@@ -1,5 +1,5 @@
 import { CheckCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { ActionFunction, json } from "@remix-run/node";
+import type { ActionFunction } from "@remix-run/node";
 
 import {
   Form,
@@ -8,14 +8,15 @@ import {
   useNavigation,
   useSubmit,
 } from "@remix-run/react";
-import { FormEventHandler, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { FormEventHandler } from "react";
 
 import AppBar from "~/components/navigation/AppBar";
 import RecipeForm from "~/components/recipeForm/recipeForm";
 import Spinner from "~/components/status/smallSpinner";
 
 import { getUser } from "~/utils/auth.server";
-import { getUrl, singleUpload, uploadImage } from "~/utils/images";
+import { uploadImage } from "~/utils/images";
 import { createRecipe, extractRecipe } from "~/utils/recipes.server";
 
 export const action: ActionFunction = async ({ request }) => {

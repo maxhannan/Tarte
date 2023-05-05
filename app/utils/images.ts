@@ -1,4 +1,4 @@
-export const uploadImage = async (images: File[]) => {
+export const uploadImage = async (images: File[]): Promise<string[]> => {
   if (images.length < 1) {
     return [];
   }
@@ -23,7 +23,7 @@ export const singleUpload = async (image: File) => {
   console.log({ response });
   const desereli = await response.json();
   console.log({ desereli });
-  return desereli.result.variants[0];
+  return desereli.result.id;
 };
 
 export const getUrl = async () => {
@@ -32,3 +32,5 @@ export const getUrl = async () => {
   );
   return ImageLink;
 };
+
+export const IMAGE_URL = "https://imagedelivery.net/0xmRpZUcpgGyk0D6fR-N6A";

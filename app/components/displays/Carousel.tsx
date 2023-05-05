@@ -1,6 +1,7 @@
 import { Transition, Dialog } from "@headlessui/react";
 import { Link } from "@remix-run/react";
 import { Fragment } from "react";
+import { IMAGE_URL } from "~/utils/images";
 
 interface Props {
   isOpen: boolean;
@@ -46,7 +47,7 @@ const Carousel = ({ isOpen, setIsOpen, imgSrcs }: Props) => {
                     className="carousel-item w-full h-auto "
                   >
                     <img
-                      src={img}
+                      src={[IMAGE_URL, img, "carousel"].join("/")}
                       className=" object-contain w-full h-auto"
                       alt="Tailwind CSS Carousel component"
                     />

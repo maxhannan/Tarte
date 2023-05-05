@@ -1,6 +1,5 @@
 import type { Prisma } from "@prisma/client";
 import { prisma } from "./prisma.server";
-import { uploadImage } from "./images";
 
 interface Recipe {
   name: string;
@@ -96,8 +95,16 @@ export const createRecipe = async (recipe: Recipe, userId: string) => {
 };
 
 export const updateRecipe = async (id: string, recipe: Recipe) => {
-  const { name, category, allergens, yieldUnit, yieldAmt, ingredients, steps } =
-    recipe;
+  const {
+    name,
+    category,
+    allergens,
+    yieldUnit,
+    yieldAmt,
+    ingredients,
+    steps,
+    savedImages,
+  } = recipe;
   console.log({ ingredients });
   const data = await prisma.$transaction([
     prisma.ingredient.deleteMany({ where: { recipeId: id } }),
@@ -106,6 +113,7 @@ export const updateRecipe = async (id: string, recipe: Recipe) => {
       data: {
         name,
         category,
+        images: savedImages || [],
         allergens,
         yieldUnit,
         yieldAmt,
