@@ -90,7 +90,7 @@ export const deleteMenu = async (id: string) => {
   return null;
 };
 export const updateDish = async (id: string, dish: dishData) => {
-  const { name, allergens, ingredients, steps, notes } = dish;
+  const { name, allergens, ingredients, steps, notes, savedImages } = dish;
 
   const data = await prisma.$transaction([
     prisma.ingredient.deleteMany({ where: { recipeId: id } }),
@@ -98,6 +98,7 @@ export const updateDish = async (id: string, dish: dishData) => {
       where: { id: id },
       data: {
         name,
+        images: savedImages || [],
         allergens,
         Notes: notes,
         steps,
