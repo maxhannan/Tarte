@@ -121,7 +121,6 @@ const EditDish = () => {
               buttonName: "Delete",
 
               action: () => handleDeleteRecipe(),
-              loading: navigation.state === "submitting" || imageLoading,
             },
             {
               Icon: CheckCircleIcon,
