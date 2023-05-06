@@ -1,11 +1,7 @@
-import {
-  ArrowRightIcon,
-  ArrowUturnLeftIcon,
-  CheckCircleIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "@remix-run/react";
 import CustomDisclosure from "~/components/displays/customDisclosure";
-import CustomTextInput from "~/components/forms/CustomTextInput";
+
 import SearchBar from "~/components/forms/SearchBar";
 import AppBar from "~/components/navigation/AppBar";
 import PrepListItem from "~/components/prep/PrepListItem";

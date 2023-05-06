@@ -1,11 +1,8 @@
-import { DocumentPlusIcon, UserIcon } from "@heroicons/react/24/solid";
-import { useNavigation, useSearchParams } from "@remix-run/react";
+import { useNavigation } from "@remix-run/react";
 import SlideUpTransition from "~/components/animations/slideUp";
-import SearchAndAllergens from "~/components/menus/SearchAndAllergens";
-import AppBar from "~/components/navigation/AppBar";
-import RecipeSummary from "~/components/recipefeed/RecipeSummary";
+
 import Spinner from "~/components/status/smallSpinner";
-import dishes from "../menus/dishes";
+
 import PrepListSummary from "~/components/prep/PrepListSummary";
 import { PrepCalendar } from "~/components/prep/PrepCalendar";
 import SlideDownTransition from "~/components/animations/slideDown";
@@ -13,7 +10,7 @@ import SearchBar from "~/components/forms/SearchBar";
 
 const PrepPage = () => {
   const navigation = useNavigation();
-  const [searchParams, setSearchParams] = useSearchParams();
+
   if (navigation.state === "loading") {
     return (
       <div className="flex items-center justify-center h-screen">
