@@ -9,6 +9,7 @@ import dishes from "../menus/dishes";
 import PrepListSummary from "~/components/prep/PrepListSummary";
 import { PrepCalendar } from "~/components/prep/PrepCalendar";
 import SlideDownTransition from "~/components/animations/slideDown";
+import SearchBar from "~/components/forms/SearchBar";
 
 const PrepPage = () => {
   const navigation = useNavigation();
@@ -22,24 +23,25 @@ const PrepPage = () => {
   }
   return (
     <div className=" container mx-auto max-w-4xl">
-      <AppBar
-        page={"Prep"}
-        buttons={[
-          {
-            Icon: DocumentPlusIcon,
-            buttonName: "Add Recipe",
-            action: () => console.log("addRecipe"),
-          },
-        ]}
-      />
+      <SlideDownTransition>
+        <nav className=" flex py-3  mx-auto max-h-full items-center justify-between  duration-300 bg-neutral-100 dark:bg-neutral-900   w-full top-0 left-0  ">
+          <h1
+            className={`text-4xl mr-6 text-neutral-700 dark:text-neutral-100`}
+          >
+            Prep
+          </h1>
+
+          <div className="grow flex justify-end gap-2">
+            <PrepCalendar />
+          </div>
+        </nav>
+      </SlideDownTransition>
       <div className="flex flex-col gap-3 ">
-        <SearchAndAllergens
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
+        <SearchBar
+          handleChange={() => (e: string) => console.log(e)}
+          value={""}
         />
-        <SlideDownTransition>
-          <PrepCalendar />
-        </SlideDownTransition>
+
         <div className="flex flex-col gap-3  ">
           <SlideUpTransition>
             <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2  mx-auto mb-28 ">

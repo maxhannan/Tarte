@@ -21,7 +21,7 @@ const PrepListSummary = ({ id, name }: Props) => {
           {name}
         </h5>
 
-        <h6 className="text-md  mt-1 ">
+        <h6 className="text-md text-neutral-700 dark:text-neutral-200 mt-1 ">
           Created:{" "}
           <span className="text-md  mt-1  font-light text-violet-500 dark:text-violet-400">
             16 Apr 2023

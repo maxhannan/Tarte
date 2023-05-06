@@ -33,7 +33,7 @@ const PrepListPage = () => {
           <PrepListItem name={"Hummus Base"} unit="Quarts" />
           <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
           <PrepListItem name={"Tahini Puree"} unit="Quarts" />
-          <PrepListItem name={"Pita Bread/Socca Wraps"} unit="EA" />
+          <PrepListItem name={"Pita Bread / Socca Wraps"} unit="EA" />
           <PrepListItem name={"Chopped Parsely"} unit="Pints" />
           <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
         </CustomDisclosure>
@@ -41,7 +41,7 @@ const PrepListPage = () => {
           <PrepListItem name={"Hummus Base"} unit="Quarts" />
           <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
           <PrepListItem name={"Tahini Puree"} unit="Quarts" />
-          <PrepListItem name={"Pita Bread/Socca Wraps"} unit="EA" />
+          <PrepListItem name={"Pita Bread / Socca Wraps"} unit="EA" />
           <PrepListItem name={"Chopped Parsely"} unit="Pints" />
           <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
         </CustomDisclosure>
@@ -49,7 +49,7 @@ const PrepListPage = () => {
           <PrepListItem name={"Hummus Base"} unit="Quarts" />
           <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
           <PrepListItem name={"Tahini Puree"} unit="Quarts" />
-          <PrepListItem name={"Pita Bread/Socca Wraps"} unit="EA" />
+          <PrepListItem name={"Pita Bread / Socca Wraps"} unit="EA" />
           <PrepListItem name={"Chopped Parsely"} unit="Pints" />
           <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
         </CustomDisclosure>
@@ -57,7 +57,7 @@ const PrepListPage = () => {
           <PrepListItem name={"Hummus Base"} unit="Quarts" />
           <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
           <PrepListItem name={"Tahini Puree"} unit="Quarts" />
-          <PrepListItem name={"Pita Bread/Socca Wraps"} unit="EA" />
+          <PrepListItem name={"Pita Bread / Socca Wraps"} unit="EA" />
           <PrepListItem name={"Chopped Parsely"} unit="Pints" />
           <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
         </CustomDisclosure>
@@ -65,7 +65,7 @@ const PrepListPage = () => {
           <PrepListItem name={"Hummus Base"} unit="Quarts" />
           <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
           <PrepListItem name={"Tahini Puree"} unit="Quarts" />
-          <PrepListItem name={"Pita Bread/Socca Wraps"} unit="EA" />
+          <PrepListItem name={"Pita Bread / Socca Wraps"} unit="EA" />
           <PrepListItem name={"Chopped Parsely"} unit="Pints" />
           <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
         </CustomDisclosure>
