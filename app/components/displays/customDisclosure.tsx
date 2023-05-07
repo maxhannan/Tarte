@@ -25,7 +25,7 @@ const CustomDisclosure = ({ name, children }: Props) => {
               enterTo="transform opacity-100  "
               leave="transition-all ease-linear duration-200 overflow-hidden"
               leaveFrom="transform opacity-100 "
-              leaveTo="transform opacity-0 "
+              leaveTo="transform opacity-0  "
             >
               <Disclosure.Panel className=" pb-2 flex mt-2 flex-col gap-2 text-sm text-gray-500">
                 {children}

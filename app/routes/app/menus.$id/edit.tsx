@@ -74,7 +74,7 @@ const EditMenu = () => {
     return navigate("/app/menus");
   }
   return (
-    <div className="mb-24">
+    <div className="mb-24 container mx-auto max-w-4xl">
       <Form method="post">
         <AppBar
           page="Edit Menu"

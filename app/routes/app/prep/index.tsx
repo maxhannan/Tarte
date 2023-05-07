@@ -57,11 +57,10 @@ const PrepPage = () => {
               />
             </div>
             <div className="flex-none">
-              <LoadingButton
-                buttonText="Create"
+              <IconButton
                 Icon={ArrowRightIcon}
-                action={() => setOpenDialog(true)}
-                buttonName="Add list"
+                buttonName="create"
+                action={() => console.log("hello")}
               />
             </div>
           </div>
