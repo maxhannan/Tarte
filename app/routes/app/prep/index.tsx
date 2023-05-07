@@ -53,7 +53,7 @@ const PrepPage = () => {
               <ComboBoxCustom
                 name="Template"
                 options={[{ id: "1", value: "PM Grill" }]}
-                placeholder="Select Template"
+                placeholder="Template"
               />
             </div>
             <div className="flex-none">
