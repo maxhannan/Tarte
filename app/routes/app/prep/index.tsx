@@ -11,10 +11,9 @@ import IconButton from "~/components/buttons/IconButton";
 import { ArrowRightIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import CustomModal from "~/components/displays/CustomModal";
-import SelectBox from "~/components/forms/SelectBox";
-import { Dialog } from "@headlessui/react";
+
 import ComboBoxCustom from "~/components/forms/Combobox";
-import { ArrowBigRight } from "lucide-react";
+
 import LoadingButton from "~/components/buttons/LoadingButton";
 
 const PrepPage = () => {
@@ -52,7 +51,7 @@ const PrepPage = () => {
           <div className="w-full flex gap-2  ">
             <div className="grow">
               <ComboBoxCustom
-                name="Select Template"
+                name="Template"
                 options={[{ id: "1", value: "PM Grill" }]}
                 placeholder="Select Template"
               />
