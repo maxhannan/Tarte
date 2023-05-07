@@ -1,0 +1,39 @@
+
+model PrepList {
+  id          String   @id @default(cuid())
+  taskGroups  taskGroup[]
+  date        DateTime
+  author      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model taskGroup { 
+  id          String   @id @default(cuid())
+  prepList    PrepList @relation(fields: [prepListId], references: [id], onDelete: Cascade)
+  prepListId  String
+  taskComponents  taskComponent[]
+  linkRecipeId String? 
+  template    PrepListTemplate? @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  templateId String?
+}
+
+model taskComponent{
+  id          String   @id @default(cuid())
+  taskGroup   taskGroup @relation(fields: [taskGroupId], references: [id], onDelete: Cascade)
+  taskGroupId String
+  completed   Boolean
+  onHand      String
+  prepQty     String
+  linkRecipeId String? 
+
+}
+
+model PrepListTemplate {
+  id    String  @id @default(cuid())
+  name  String
+  taskGroups  taskGroup[]
+  author String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

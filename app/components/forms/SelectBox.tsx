@@ -14,7 +14,7 @@ const SelectBox = () => {
   const [selected, setSelected] = useState(people[0]);
   return (
     <Listbox value={selected} onChange={setSelected}>
-      <div className="">
+      <div className="w-full">
         <Listbox.Button className="relative border h-12 w-full text-xl cursor-default pl-4 dark:border-neutral-700 rounded-xl   bg-neutral-200 focus:ring-2 focus:border-neutral-50  focus:ring-neutral-400  dark:bg-neutral-800 border-neutral-300 dark:placeholder-neutral-400 dark:text-neutral-50 py-2 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 ">
           <span className="block truncate">{selected.name}</span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">

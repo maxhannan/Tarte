@@ -33,7 +33,7 @@ const LoadingButton = ({
         </>
       ) : (
         <>
-          {buttonText} <Icon className="w-6 h-6" />
+          {buttonText} <Icon className="w-6 h-6 ml-2" />
         </>
       )}
     </button>
