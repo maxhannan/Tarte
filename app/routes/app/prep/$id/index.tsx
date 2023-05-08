@@ -1,7 +1,4 @@
-import {
-  ArrowUturnLeftIcon,
-  CheckBadgeIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "@remix-run/react";
 import CustomDisclosure from "~/components/displays/customDisclosure";
 
@@ -30,8 +27,8 @@ const PrepListPage = () => {
       <div className="w-full grid md:grid-cols-2 gap-2 mt-2">
         <div className="flex flex-col gap-2">
           <CustomDisclosure name={"Hummus"}>
-            <div className="  max-w-full  bg-neutral-200 border-neutral-300  bg-opacity-50 dark:bg-opacity-50   rounded-xl   px-2 grid grid-cols-12  gap-1   dark:bg-neutral-800 ">
-              <div className=" font-light col-span-6 flex gap-2 items-center mr-1">
+            <div className="  max-w-full  bg-neutral-100 border-neutral-300  bg-opacity-50 dark:bg-opacity-50   rounded-xl   px-2 grid grid-cols-10  gap-1   dark:bg-neutral-800 ">
+              <div className=" font-light col-span-5 flex gap-2 items-center mr-1">
                 <div>
                   <h5 className="text-lg text-neutral-700 dark:text-neutral-100 ">
                     Task
@@ -54,8 +51,8 @@ const PrepListPage = () => {
             <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
           </CustomDisclosure>
           <CustomDisclosure name={"Labneh"}>
-            <div className="  max-w-full  bg-neutral-200 border-neutral-300  bg-opacity-50 dark:bg-opacity-50   rounded-xl   px-2 grid grid-cols-12  gap-1   dark:bg-neutral-800 ">
-              <div className=" font-light col-span-6 flex gap-2 items-center mr-1">
+            <div className="  max-w-full  bg-neutral-100 border-neutral-300  bg-opacity-50 dark:bg-opacity-50   rounded-xl   px-2 grid grid-cols-10  gap-1   dark:bg-neutral-800 ">
+              <div className=" font-light col-span-5 flex gap-2 items-center mr-1">
                 <div>
                   <h5 className="text-lg text-neutral-700 dark:text-neutral-100 ">
                     Task
@@ -78,8 +75,8 @@ const PrepListPage = () => {
             <PrepListItem name={"Agrumato Oil"} unit="Squeeze Bottle" />
           </CustomDisclosure>
           <CustomDisclosure name={"Baba Ghanoush"}>
-            <div className="  max-w-full  bg-neutral-200 border-neutral-300  bg-opacity-50 dark:bg-opacity-50   rounded-xl   px-2 grid grid-cols-12  gap-1   dark:bg-neutral-800 ">
-              <div className=" font-light col-span-6 flex gap-2 items-center mr-1">
+            <div className="  max-w-full  bg-neutral-100 border-neutral-300  bg-opacity-50 dark:bg-opacity-50   rounded-xl   px-2 grid grid-cols-10  gap-1   dark:bg-neutral-800 ">
+              <div className=" font-light col-span-5 flex gap-2 items-center mr-1">
                 <div>
                   <h5 className="text-lg text-neutral-700 dark:text-neutral-100 ">
                     Task
@@ -109,8 +106,8 @@ const PrepListPage = () => {
         </div>
         <div className="flex flex-col gap-2">
           <CustomDisclosure name={"Hummus"}>
-            <div className="  max-w-full  bg-neutral-200 border-neutral-300  bg-opacity-50 dark:bg-opacity-50   rounded-xl   px-2 grid grid-cols-12  gap-1   dark:bg-neutral-800 ">
-              <div className=" font-light col-span-6 flex gap-2 items-center mr-1">
+            <div className="  max-w-full  bg-neutral-100 border-neutral-300  bg-opacity-50 dark:bg-opacity-50   rounded-xl   px-2 grid grid-cols-10  gap-1   dark:bg-neutral-800 ">
+              <div className=" font-light col-span-5 flex gap-2 items-center mr-1">
                 <div>
                   <h5 className="text-lg text-neutral-700 dark:text-neutral-100 ">
                     Task
@@ -133,8 +130,8 @@ const PrepListPage = () => {
             <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
           </CustomDisclosure>
           <CustomDisclosure name={"Hummus"}>
-            <div className="  max-w-full  bg-neutral-200 border-neutral-300  bg-opacity-50 dark:bg-opacity-50   rounded-xl   px-2 grid grid-cols-12  gap-1   dark:bg-neutral-800 ">
-              <div className=" font-light col-span-6 flex gap-2 items-center mr-1">
+            <div className="  max-w-full  bg-neutral-100 border-neutral-300  bg-opacity-50 dark:bg-opacity-50   rounded-xl   px-2 grid grid-cols-10  gap-1   dark:bg-neutral-800 ">
+              <div className=" font-light col-span-5 flex gap-2 items-center mr-1">
                 <div>
                   <h5 className="text-lg text-neutral-700 dark:text-neutral-100 ">
                     Task
