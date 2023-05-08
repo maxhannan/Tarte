@@ -31,7 +31,7 @@ const PrepPage = () => {
       <SlideDownTransition>
         <nav className=" flex py-3  mx-auto max-h-full items-center justify-between  duration-300 bg-neutral-100 dark:bg-neutral-900   w-full top-0 left-0  ">
           <h1
-            className={`text-4xl mr-6 text-neutral-700 dark:text-neutral-100 font-light`}
+            className={`text-4xl  text-neutral-700 dark:text-neutral-100 font-light`}
           >
             Prep
           </h1>

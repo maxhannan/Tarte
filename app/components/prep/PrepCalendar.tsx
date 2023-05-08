@@ -23,7 +23,7 @@ export function PrepCalendar() {
         )}
       >
         <CalendarCheck2 className="w-5 h-5 text-neutral-500 dark:text-neutral-400 mr-2" />
-        {date ? format(date, "PPP") : <span>Pick a date</span>}
+        {date ? format(date, "PP") : <span>Pick a date</span>}
       </Button>
       <Transition appear show={isOpen} as={React.Fragment}>
         <Dialog
