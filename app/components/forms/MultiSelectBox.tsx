@@ -49,7 +49,7 @@ export default function MultiSelectBox({
         multiple
       >
         <div className="relative ">
-          <Listbox.Button className=" relative bg-opacity-50 dark:bg-opacity-50  w-full cursor-default border py-2 px-2 border-gray-300 dark:border-neutral-700 rounded-xl  bg-neutral-200 dark:bg-neutral-800 pl-3 pr-10 text-left  text-lg focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-300 ">
+          <Listbox.Button className=" relative bg-opacity-50 dark:bg-opacity-50 font-light w-full cursor-default border py-2 px-2 border-gray-300 dark:border-neutral-700 rounded-xl  bg-neutral-200 dark:bg-neutral-800 pl-3 pr-10 text-left  text-lg focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-300 ">
             <span className="flex flex-wrap gap-2 items-center ">
               {selected.length > 0 ? (
                 selected.map((person) => <Chip key={person} content={person} />)

@@ -58,7 +58,7 @@ const MenusLayout = () => {
   return (
     <div className=" container mx-auto max-w-4xl">
       <SlideDownTransition>
-        <nav className=" flex pt-3 pb-1 mx-auto max-h-full items-center justify-between  duration-300 bg-neutral-100 dark:bg-neutral-900   w-full top-0 left-0  ">
+        <nav className=" flex pt-3 pb-1 mx-auto max-h-full items-center justify-between  duration-300 bg-neutral-100 dark:bg-neutral-900 font-light  w-full top-0 left-0  ">
           <div className="flex flex-2 max-w-md ">
             <button
               onClick={() => {

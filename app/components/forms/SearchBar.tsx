@@ -20,8 +20,8 @@ const SearchBar = ({
         <input
           id={"search"}
           name={"search"}
-          className={`rounded-xl transition-all bg-opacity-50 dark:bg-opacity-50 duration-300 block h-12 w-full p-2 pl-10 text-xl text-neutral-900  bg-neutral-200 focus:ring-2 focus:border-neutral-50  border border-neutral-300 focus:outline-none  focus:ring-neutral-400 placeholder-neutral-600 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-neutral-50 dark:focus:ring-violet-500 dark:focus:border-violet-500`}
-          placeholder={""}
+          className={`rounded-xl transition-all bg-opacity-50 dark:bg-opacity-50 duration-300 font-light block h-12 w-full p-2 pl-10 text-xl text-neutral-900  bg-neutral-200 focus:ring-2 focus:border-neutral-50  border border-neutral-300 focus:outline-none  focus:ring-neutral-400 placeholder-neutral-600 dark:bg-neutral-800 dark:border-neutral-600 dark:placeholder-neutral-400 dark:text-neutral-50 dark:focus:ring-violet-500 dark:focus:border-violet-500`}
+          placeholder={"Search..."}
           value={value}
           onChange={(e) => {
             handleChange(e.target.value);

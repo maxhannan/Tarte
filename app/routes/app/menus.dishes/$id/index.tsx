@@ -93,7 +93,7 @@ const DishIndex = () => {
                   return (
                     <div
                       key={i.id}
-                      className="  w-full max-h-full border-neutral-300 border bg-opacity-50 dark:bg-opacity-50 bg-neutral-200 dark:bg-neutral-800   rounded-xl  py-4   flex justify-start items-center  px-4   dark:border-neutral-700"
+                      className="  w-full max-h-full border-neutral-300 border bg-opacity-50 dark:bg-opacity-50 bg-neutral-200 dark:bg-neutral-800   rounded-xl  pl-4 pr-2 font-light py-4   flex justify-start items-center  px-4   dark:border-neutral-700"
                     >
                       <div className=" ">
                         <h5 className="text-xl text-neutral-700 dark:text-neutral-100">

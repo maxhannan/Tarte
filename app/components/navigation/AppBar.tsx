@@ -16,7 +16,7 @@ const AppBar = ({
 }) => {
   return (
     <SlideDownTransition>
-      <nav className=" flex py-3  mx-auto max-h-full items-center justify-between  duration-300 bg-neutral-100 dark:bg-neutral-900   w-full top-0 left-0  ">
+      <nav className=" flex py-3  mx-auto max-h-full items-center justify-between  duration-300 bg-neutral-100 dark:bg-neutral-900   w-full top-0 left-0 font-light ">
         <h1
           className={`${textSize} mr-6 text-neutral-700 dark:text-neutral-100`}
         >

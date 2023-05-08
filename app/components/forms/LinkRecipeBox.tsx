@@ -55,7 +55,7 @@ export default function LinkRecipeComboBox({
         <Combobox.Input
           autoComplete="off"
           name={name}
-          className="rounded-xl w-full  bg-opacity-50 dark:bg-opacity-50  focus:ring-neutral-500  border relative  border-neutral-300 dark:border-neutral-700 h-12 pr-9 pl-4 text-xl text-neutral-800 appearance-none  focus:ring-2 focus:outline-none focus:border-none bg-neutral-200    placeholder-neutral-500 dark:bg-neutral-800  dark:placeholder-neutral-400 dark:text-neutral-50   "
+          className="rounded-xl w-full  bg-opacity-50 dark:bg-opacity-50  font-light focus:ring-neutral-500  border relative  border-neutral-300 dark:border-neutral-700 h-12 pr-9 pl-4 text-xl text-neutral-800 appearance-none  focus:ring-2 focus:outline-none focus:border-none bg-neutral-200    placeholder-neutral-500 dark:bg-neutral-800  dark:placeholder-neutral-400 dark:text-neutral-50   "
           onChange={(event) => setQuery(event.target.value)}
           placeholder={placeholder}
           displayValue={selected ? (option: Option) => option.value : undefined}

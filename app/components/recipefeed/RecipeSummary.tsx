@@ -22,7 +22,7 @@ const RecipeSummary = ({
   return (
     <div
       onClick={() => navigate(`${link ? link : ""}${id}`)}
-      className="w-full max-h-full border-neutral-300 border dark:bg-opacity-50 bg-opacity-50 bg-neutral-200 rounded-xl py-3 pr-4  flex justify-start items-center  px-2 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-neutral-700"
+      className="w-full max-h-full font-light border-neutral-300 border dark:bg-opacity-50 bg-opacity-50 bg-neutral-200 rounded-xl py-3 pr-4  flex justify-start items-center  px-2 hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:border-neutral-700"
     >
       <div className="inline-flex flex-shrink-0 items-center mr-4 justify-center w-14 h-14 overflow-hidden bg-neutral-200 text-neutral-700 dark:text-neutral-300 border-neutral-300 rounded-xl  dark:bg-neutral-800 border dark:border-violet-400">
         <span className=" text-xl  ">{user.toUpperCase()}</span>

@@ -30,7 +30,7 @@ const PrepListPage = () => {
       <div className="w-full grid lg:grid-cols-2 gap-2 mt-2">
         <div className="flex flex-col gap-2">
           <CustomDisclosure name={"Hummus"}>
-            <div className="  max-w-full  bg-neutral-200 border-neutral-300 border bg-opacity-50 dark:bg-opacity-50   rounded-xl  py-1 px-2 grid grid-cols-12  gap-1   dark:bg-neutral-800 dark:border-neutral-700">
+            <div className="  max-w-full  bg-neutral-200 border-neutral-300 border bg-opacity-50 dark:bg-opacity-50   rounded-xl  py-1 px-2 grid grid-cols-12  gap-2   dark:bg-neutral-800 dark:border-neutral-700">
               <div className=" font-light col-span-5 flex gap-2 items-center mr-1">
                 <div>
                   <h5 className="text-lg text-neutral-700 dark:text-neutral-100 ">
