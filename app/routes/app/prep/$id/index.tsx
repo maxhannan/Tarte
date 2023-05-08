@@ -53,7 +53,7 @@ const PrepListPage = () => {
             <PrepListItem name={"Chopped Parsely"} unit="Pints" />
             <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
           </CustomDisclosure>
-          <CustomDisclosure name={"Hummus"}>
+          <CustomDisclosure name={"Labneh"}>
             <div className="  max-w-full  bg-neutral-200 border-neutral-300 border bg-opacity-50 dark:bg-opacity-50   rounded-xl  py-1 px-2 grid grid-cols-12  gap-1   dark:bg-neutral-800 dark:border-neutral-700">
               <div className=" font-light col-span-5 flex gap-2 items-center mr-1">
                 <div>
@@ -70,14 +70,14 @@ const PrepListPage = () => {
               </div>
             </div>
 
-            <PrepListItem name={"Hummus Base"} unit="Quarts" />
-            <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
-            <PrepListItem name={"Tahini Puree"} unit="Quarts" />
-            <PrepListItem name={"Pita Bread / Socca Wraps"} unit="EA" />
-            <PrepListItem name={"Chopped Parsely"} unit="Pints" />
-            <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
+            <PrepListItem name={"Labneh"} unit="Quarts" />
+            <PrepListItem name={"Rehydrated Raisins"} unit="Quarts" />
+            <PrepListItem name={"Roasted Carrots"} unit="Quarts" />
+
+            <PrepListItem name={"Chopped Cilantro"} unit="Pints" />
+            <PrepListItem name={"Agrumato Oil"} unit="Squeeze Bottle" />
           </CustomDisclosure>
-          <CustomDisclosure name={"Hummus"}>
+          <CustomDisclosure name={"Baba Ghanoush"}>
             <div className="  max-w-full  bg-neutral-200 border-neutral-300 border bg-opacity-50 dark:bg-opacity-50   rounded-xl  py-1 px-2 grid grid-cols-12  gap-1   dark:bg-neutral-800 dark:border-neutral-700">
               <div className=" font-light col-span-5 flex gap-2 items-center mr-1">
                 <div>
@@ -94,12 +94,17 @@ const PrepListPage = () => {
               </div>
             </div>
 
-            <PrepListItem name={"Hummus Base"} unit="Quarts" />
-            <PrepListItem name={"Crispy Chickpeas"} unit="Quarts" />
+            <PrepListItem name={"Baba Ghanoush"} unit="Quarts" />
+            <PrepListItem name={"Olive Pinenut Tapenade"} unit="Quarts" />
             <PrepListItem name={"Tahini Puree"} unit="Quarts" />
-            <PrepListItem name={"Pita Bread / Socca Wraps"} unit="EA" />
+            <PrepListItem name={"Crushed Ice"} unit="EA" />
             <PrepListItem name={"Chopped Parsely"} unit="Pints" />
             <PrepListItem name={"Jean Reno"} unit="Squeeze Bottle" />
+            <PrepListItem name={"Radishes for Crudite"} unit="Quarts" />
+            <PrepListItem name={"Turnips for Crudite"} unit="Quarts" />
+            <PrepListItem name={"Carrots for Crudite"} unit="Quarts" />
+            <PrepListItem name={"Endives for Crudite"} unit="Quarts" />
+            <PrepListItem name={"Lemon Water Spritz"} unit="Quarts" />
           </CustomDisclosure>
         </div>
         <div className="flex flex-col gap-2">
