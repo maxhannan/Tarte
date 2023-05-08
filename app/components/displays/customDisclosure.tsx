@@ -12,7 +12,7 @@ const CustomDisclosure = ({ name, children }: Props) => {
       <Disclosure defaultOpen>
         {({ open }) => (
           <>
-            <Disclosure.Button className="dark:bg-opacity-50 transition-all duration-300 flex w-full items-center justify-between  rounded-xl  bg-neutral-200 font-normal dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 px-2 py-3 text-left text-xl  text-neutral-700 dark:text-neutral-200  focus:outline-none focus-visible:ring focus-visible:ring-violet-500 focus-visible:ring-opacity-75">
+            <Disclosure.Button className="dark:bg-opacity-50 transition-all duration-300 flex w-full items-center justify-between  rounded-xl  bg-neutral-200 font-normal dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 px-3 py-3 text-left text-xl  text-neutral-700 dark:text-neutral-200  focus:outline-none focus-visible:ring focus-visible:ring-violet-500 focus-visible:ring-opacity-75">
               <span>{name}</span>
               <ChevronUpIcon
                 className={`${open ? "rotate-180 transform" : ""} h-7 w-7 `}
@@ -27,7 +27,7 @@ const CustomDisclosure = ({ name, children }: Props) => {
               leaveFrom="transform opacity-100 "
               leaveTo="transform opacity-0  "
             >
-              <Disclosure.Panel className=" flex flex-col gap-1 text-sm text-gray-500 mt-1.5">
+              <Disclosure.Panel className=" flex flex-col gap-1 text-sm text-gray-500 mt-1.5 px-1 pb-1">
                 {children}
               </Disclosure.Panel>
             </Transition>
