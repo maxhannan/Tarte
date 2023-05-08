@@ -8,8 +8,12 @@ import { Button } from "~/components/ui/button";
 import { Dialog, Transition } from "@headlessui/react";
 import { Calendar } from "../ui/calendar";
 
-export function PrepCalendar() {
-  const [date, setDate] = React.useState<Date | undefined>(new Date());
+interface Props {
+  date: Date | undefined;
+  setDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
+}
+
+export function PrepCalendar({ date, setDate }: Props) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (

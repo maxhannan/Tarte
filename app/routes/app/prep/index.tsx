@@ -8,17 +8,40 @@ import { PrepCalendar } from "~/components/prep/PrepCalendar";
 import SlideDownTransition from "~/components/animations/slideDown";
 import SearchBar from "~/components/forms/SearchBar";
 import IconButton from "~/components/buttons/IconButton";
-import { ArrowRightIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowRightIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  PlusCircleIcon,
+} from "@heroicons/react/24/outline";
 import { useState } from "react";
 import CustomModal from "~/components/displays/CustomModal";
 
 import ComboBoxCustom from "~/components/forms/Combobox";
 
 import LoadingButton from "~/components/buttons/LoadingButton";
+import { add, formatRelative } from "date-fns";
+import { enUS } from "date-fns/locale";
+
+const formatRelativeLocale = {
+  lastWeek: "'Last' eeee",
+  yesterday: "'Yesterday'",
+  today: "'Today'",
+  tomorrow: "'Tomorrow'",
+  nextWeek: "'This' eeee",
+  other: "dd.MM.yyyy",
+};
+
+const locale = {
+  ...enUS,
+  // @ts-ignore
+  formatRelative: (token) => formatRelativeLocale[token],
+};
 
 const PrepPage = () => {
   const navigation = useNavigation();
   const [openDialog, setOpenDialog] = useState(false);
+  const [date, setDate] = useState<Date | undefined>(new Date());
   if (navigation.state === "loading") {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -37,7 +60,7 @@ const PrepPage = () => {
           </h1>
 
           <div className="grow flex justify-end gap-2">
-            <PrepCalendar />
+            <PrepCalendar date={date} setDate={setDate} />
             <IconButton
               Icon={PlusCircleIcon}
               action={() => setOpenDialog(true)}
@@ -81,12 +104,29 @@ const PrepPage = () => {
           </div>
         </div>
       </CustomModal>
-      <div className="flex flex-col gap-3 ">
+      <div className="flex flex-col gap-2 ">
         <SearchBar
           handleChange={() => (e: string) => console.log(e)}
           value={""}
         />
-
+        <div className="flex w-full items-center justify-between bg-neutral-200 rounded-xl border border-neutral-300 p-2 dark:bg-neutral-800 dark:bg-opacity-50 dark:border-neutral-700">
+          <IconButton
+            Icon={ChevronLeftIcon}
+            buttonName="prev"
+            action={() => date && setDate(add(date, { days: -1 }))}
+          />
+          <span
+            className={`text-2xl  text-neutral-700 dark:text-neutral-100 font-light flex items-center justify-center text-center`}
+          >
+            {date &&
+              formatRelative(date, new Date(), { locale, weekStartsOn: 6 })}
+          </span>
+          <IconButton
+            Icon={ChevronRightIcon}
+            buttonName="prev"
+            action={() => date && setDate(add(date, { days: 1 }))}
+          />
+        </div>
         <div className="flex flex-col gap-3  ">
           <SlideUpTransition>
             <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2  mx-auto mb-28 ">
