@@ -9,6 +9,7 @@ import SlideDownTransition from "~/components/animations/slideDown";
 import SearchBar from "~/components/forms/SearchBar";
 import IconButton from "~/components/buttons/IconButton";
 import {
+  ArrowLeftIcon,
   ArrowRightIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -109,23 +110,25 @@ const PrepPage = () => {
           handleChange={() => (e: string) => console.log(e)}
           value={""}
         />
-        <div className="flex w-full items-center justify-between bg-neutral-200 rounded-xl border border-neutral-300 p-2 dark:bg-neutral-800 dark:bg-opacity-50 dark:border-neutral-700">
-          <IconButton
-            Icon={ChevronLeftIcon}
-            buttonName="prev"
-            action={() => date && setDate(add(date, { days: -1 }))}
-          />
+        <div className="flex w-full items-center justify-between bg-neutral-200 rounded-xl border border-neutral-300 p-1 dark:bg-neutral-800 dark:bg-opacity-50 dark:border-neutral-700">
+          <button
+            onClick={() => date && setDate(add(date, { days: -1 }))}
+            className="h-9 w-9 border flex items-center justify-center dark:border-neutral-700 border-neutral-300 rounded-xl"
+          >
+            <ArrowLeftIcon className="w-5 h-5 text-neutral-700 dark:text-neutral-100" />
+          </button>
           <span
-            className={`text-2xl  text-neutral-700 dark:text-neutral-100 font-light flex items-center justify-center text-center`}
+            className={`text-xl  text-neutral-700 dark:text-neutral-100 font-light flex items-center justify-center text-center`}
           >
             {date &&
               formatRelative(date, new Date(), { locale, weekStartsOn: 6 })}
           </span>
-          <IconButton
-            Icon={ChevronRightIcon}
-            buttonName="prev"
-            action={() => date && setDate(add(date, { days: 1 }))}
-          />
+          <button
+            onClick={() => date && setDate(add(date, { days: 1 }))}
+            className="h-10 w-10 border flex items-center justify-center dark:border-neutral-700 border-neutral-300 rounded-xl"
+          >
+            <ArrowRightIcon className="w-5 h-5 text-neutral-700 dark:text-neutral-100" />
+          </button>
         </div>
         <div className="flex flex-col gap-3  ">
           <SlideUpTransition>
