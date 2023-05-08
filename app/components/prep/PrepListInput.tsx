@@ -39,7 +39,7 @@ const PrepListInput = ({
           id={identifier}
           name={identifier}
           type={type}
-          className={`rounded-xl bg-opacity-50 dark:bg-opacity-50  dark:bg-neutral-800 bg-neutral-200 rounded-bl-xl focus:ring-neutral-500  border relative    h-12 w-full p-2 pl-${padding} text-lg  appearance-none  focus:ring-2 focus:outline-none focus:border-none     placeholder-neutral-500   dark:placeholder-neutral-400   ${
+          className={`rounded-xl bg-opacity-50 dark:bg-opacity-50  dark:bg-neutral-800 bg-neutral-200 rounded-bl-xl focus:ring-neutral-500  border relative    h-10 w-full p-2 pl-${padding} text-base font-light appearance-none  focus:ring-2 focus:outline-none focus:border-none     placeholder-neutral-500   dark:placeholder-neutral-400   ${
             disabled
               ? "border-2 border-violet-500 text-violet-500 "
               : " text-neutral-800 dark:text-neutral-50 border-neutral-300 dark:border-neutral-700"

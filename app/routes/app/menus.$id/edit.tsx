@@ -1,8 +1,6 @@
 import {
   ArrowPathIcon,
-  ArrowRightCircleIcon,
   CheckCircleIcon,
-  PlusCircleIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";

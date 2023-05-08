@@ -3,7 +3,6 @@ import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 import { useNavigate, useNavigation } from "@remix-run/react";
 import SlideUpTransition from "~/components/animations/slideUp";
 import CustomDisclosure from "~/components/displays/customDisclosure";
-import Accordion from "~/components/menuComponents/Accordion";
 import MenuDishSummary from "~/components/menuComponents/MenuDishSummary";
 import AppBar from "~/components/navigation/AppBar";
 import Spinner from "~/components/status/smallSpinner";
@@ -15,8 +14,6 @@ const MenuPage = () => {
   const navigate = useNavigate();
   const menu = useRouteData("routes/app/menus.$id") as FullMenu;
   const navigation = useNavigation();
-
-  console.log({ menu });
 
   if (navigation.state === "loading")
     return (

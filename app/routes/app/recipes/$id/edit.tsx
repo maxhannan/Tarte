@@ -106,7 +106,6 @@ const EditRecipePage = () => {
               buttonName: "Delete",
 
               action: () => handleDeleteRecipe(),
-              loading: loading || imageLoading,
             },
             {
               Icon: CheckCircleIcon,

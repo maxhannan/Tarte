@@ -8,7 +8,7 @@ interface Props {
 
 const CustomDisclosure = ({ name, children }: Props) => {
   return (
-    <div className="rounded-2xl border   border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 p-2">
+    <div className="rounded-2xl border   border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 p-1">
       <Disclosure defaultOpen>
         {({ open }) => (
           <>
@@ -27,7 +27,7 @@ const CustomDisclosure = ({ name, children }: Props) => {
               leaveFrom="transform opacity-100 "
               leaveTo="transform opacity-0  "
             >
-              <Disclosure.Panel className=" pb-2 flex mt-2 flex-col gap-2 text-sm text-gray-500">
+              <Disclosure.Panel className=" pb-1 flex mt-1 flex-col gap-1 text-sm text-gray-500">
                 {children}
               </Disclosure.Panel>
             </Transition>
