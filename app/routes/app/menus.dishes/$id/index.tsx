@@ -62,7 +62,7 @@ const DishIndex = () => {
       )}
       <SlideUpTransition>
         <div className="flex flex-col gap-2 mb-2">
-          <div className="text-2xl border border-neutral-300 dark:border-neutral-700 gap-2 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4  text-neutral-600 rounded-xl font-light ">
+          <div className="text-2xl lg:text-3xl border border-neutral-300 dark:border-neutral-700 gap-2 bg-neutral-200 dark:bg-neutral-800 px-4 w-full items-center flex justify-between dark:text-neutral-200 p-4  text-neutral-600 rounded-xl font-light ">
             <div>{dish!.name}</div>
           </div>
         </div>
@@ -96,11 +96,11 @@ const DishIndex = () => {
                       className="  w-full max-h-full border-neutral-300 border bg-opacity-50 dark:bg-opacity-50 bg-neutral-200 dark:bg-neutral-800   rounded-xl  pl-4 pr-2 font-light py-4   flex justify-start items-center  px-4   dark:border-neutral-700"
                     >
                       <div className=" ">
-                        <h5 className="text-xl text-neutral-700 dark:text-neutral-100">
+                        <h5 className="text-xl lg:text-2xl text-neutral-700 dark:text-neutral-100">
                           {i.ingredient}
                         </h5>
                         {(i.qty || i.unit) && (
-                          <h6 className="text-md mt-1  text-violet-500 dark:text-violet-300">
+                          <h6 className="text-md lg:text-lg mt-1  text-violet-500 dark:text-violet-300">
                             {i.qty && i.qty} {i.unit && i.unit}
                           </h6>
                         )}

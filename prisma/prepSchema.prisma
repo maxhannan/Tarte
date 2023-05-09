@@ -23,8 +23,8 @@ model taskComponent{
   taskGroup   taskGroup @relation(fields: [taskGroupId], references: [id], onDelete: Cascade)
   taskGroupId String
   completed   Boolean
-  onHand      String
-  prepQty     String
+  onHand      String?
+  prepQty     String?
   linkRecipeId String? 
 
 }
