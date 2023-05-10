@@ -65,7 +65,7 @@ const RecipeIndex = () => {
           <div>{recipe!.name}</div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-2">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-2">
           <div className="flex flex-col gap-2">
             {recipe!.allergens.length > 0 && (
               <div className="inline-flex  gap-2 flex-wrap rounded-xl bg-neutral-100 border border-neutral-200 dark:bg-neutral-900 dark:border-neutral-700 p-2 ">

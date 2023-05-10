@@ -71,7 +71,7 @@ export default function ComboBoxCustom({
             />
           </Combobox.Button>
         )}
-        <Combobox.Options className="absolute mt-2 bg-neutral-100 z-50   rounded-r-2xl rounded-l-sm rounded-bl-2xl max-h-48 w-full  overflow-auto rounded-md  dark:bg-neutral-800 py-1 text-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  ">
+        <Combobox.Options className="absolute mt-2 bg-neutral-100 z-50   rounded-2xl  max-h-48 w-full  overflow-auto  dark:bg-neutral-800 py-1 text-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  ">
           {allowCustom && query.length > 0 && !checkIfExists(query, options) && (
             <Combobox.Option
               className={({ active }) =>
@@ -96,7 +96,7 @@ export default function ComboBoxCustom({
               className={({ active }) =>
                 `relative cursor-default select-none py-2 pl-10 pr-4 ${
                   active
-                    ? "bg-neutral-700  text-neutral-100"
+                    ? "bg-neutral-700 bg-opacity-70 text-neutral-100"
                     : "dark:text-neutral-300 text-neutral-700"
                 }`
               }

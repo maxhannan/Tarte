@@ -76,7 +76,16 @@ const PrepPage = () => {
             <div className="grow">
               <ComboBoxCustom
                 name="Template"
-                options={[{ id: "1", value: "PM Grill" }]}
+                options={[
+                  { id: "1", value: "PM Grill" },
+                  { id: "1", value: "PM Grill" },
+                  { id: "1", value: "PM Grill" },
+                  { id: "1", value: "PM Grill" },
+                  { id: "1", value: "PM Grill" },
+                  { id: "1", value: "PM Grill" },
+                  { id: "1", value: "PM Grill" },
+                  { id: "1", value: "PM Grill" },
+                ]}
                 placeholder="Template"
               />
             </div>
