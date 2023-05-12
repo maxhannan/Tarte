@@ -11,11 +11,17 @@ import { Calendar } from "../ui/calendar";
 interface Props {
   date: Date | undefined;
   setDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
+  handleDateChange: (date: Date) => void;
 }
 
-export function PrepCalendar({ date, setDate }: Props) {
+export function PrepCalendar({ date, setDate, handleDateChange }: Props) {
   const [isOpen, setIsOpen] = React.useState(false);
 
+  const changeHandler = (date: Date | undefined) => {
+    if (date) {
+      handleDateChange(date);
+    }
+  };
   return (
     <>
       <Button
@@ -60,7 +66,7 @@ export function PrepCalendar({ date, setDate }: Props) {
                 <Calendar
                   mode="single"
                   selected={date}
-                  onSelect={setDate}
+                  onSelect={changeHandler}
                   initialFocus
                 />
               </Dialog.Panel>

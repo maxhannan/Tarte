@@ -1,12 +1,15 @@
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "@remix-run/react";
+import { format } from "date-fns";
+import { PrepListSummary } from "~/utils/prepLists";
 
 interface Props {
   id: string;
-  name: string;
+
+  prepList: PrepListSummary;
 }
 
-const PrepListSummary = ({ id, name }: Props) => {
+const PrepListSummary = ({ id, prepList }: Props) => {
   const navigate = useNavigate();
   return (
     <div
@@ -18,13 +21,13 @@ const PrepListSummary = ({ id, name }: Props) => {
       </div>
       <div className="  pr-2">
         <h5 className="text-xl  text-neutral-700 dark:text-neutral-100">
-          {name}
+          {prepList!.name}
         </h5>
 
         <h6 className="text-md text-neutral-700 dark:text-neutral-200 mt-1 lg:text-lg">
           Created:{" "}
           <span className=" mt-1  font-light text-violet-500 dark:text-violet-400">
-            16 Apr 2023
+            {format(new Date(prepList!.createdAt), "PP")}
           </span>
         </h6>
       </div>
