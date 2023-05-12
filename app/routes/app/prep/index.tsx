@@ -33,8 +33,14 @@ import { PrepListSummaries, getPrepListsByDate } from "~/utils/prepLists";
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   const params = new URLSearchParams(url.search);
-  console.log(params.get("date"));
-  const date = new Date(params.get("date") || new Date());
+  const dateParam = params.get("date");
+  console.log({ dateParam, true: dateParam === null });
+
+  const date =
+    dateParam === null
+      ? new Date(format(new Date(), "yyyy-MM-dd"))
+      : new Date(dateParam);
+  console.log({ date, newDate: new Date() });
   const prepLists = await getPrepListsByDate(date);
   return prepLists;
 };
@@ -63,8 +69,6 @@ const PrepPage = () => {
   const prepLists = useLoaderData() as PrepListSummaries;
 
   const handleDateChange = (date: Date) => {
-    date.getUTCDate();
-
     searchParams.set("date", format(date, "yyyy-MM-dd"));
     setSearchParams(searchParams);
     setDate(date);
