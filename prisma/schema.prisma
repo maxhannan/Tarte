@@ -24,6 +24,7 @@ model User {
   lastName  String 
   recipes   Recipe[] 
   menus     Menu[]
+  prepLists PrepList[]
 
 }
 
@@ -46,6 +47,8 @@ model Recipe {
   author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
   authorId    String?  
   linkedIngredients Ingredient[] @relation("Linked Recipes")
+  taskGroups  taskGroup[]
+  tasks       tasks[]
 }
 
 model Ingredient {
@@ -81,3 +84,49 @@ model MenuSection {
   dishes      Recipe[]
 }
 
+model PrepList {
+  id          String   @id @default(cuid())
+  name        String
+  date        DateTime
+  author      User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  authorId    String?  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  taskGroups  taskGroup[]
+  
+}
+
+
+model taskGroup {
+  id          String   @id @default(cuid())
+  name        String 
+  prepList    PrepList @relation(fields: [prepListId], references: [id], onDelete: Cascade)
+  prepListId  String
+  linkRecipe  Recipe?  @relation(fields: [linkRecipeId], references: [id],  onDelete: SetNull) 
+  linkRecipeId String? 
+  tasks       tasks[]
+  template    PrepListTemplate? @relation(fields: [templateId], references: [id], onDelete: Cascade)
+  templateId String?
+}
+
+model tasks {
+  id          String   @id @default(cuid())
+  name        String
+  taskGroup   taskGroup @relation(fields: [taskGroupId], references: [id], onDelete: Cascade)
+  taskGroupId String
+  completed   Boolean @default(false)
+  onHand      String?  
+  prepQty     String?
+  linkRecipe  Recipe?  @relation(fields: [linkRecipeId], references: [id],  onDelete: SetNull) 
+  linkRecipeId String? 
+}
+
+model PrepListTemplate {
+  id    String  @id @default(cuid())
+  name  String
+  taskGroups  taskGroup[]
+  author String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+}

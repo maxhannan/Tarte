@@ -9,8 +9,12 @@ import AppBar from "~/components/navigation/AppBar";
 import PrepListItem from "~/components/prep/PrepListItem";
 
 export const action: ActionFunction = async ({ request }) => {
-  console.log("hello world");
-  return null;
+  const data = await request.formData();
+  const id = data.get("id");
+  const inv = data.get("inv");
+  const prep = data.get("prep");
+  console.log({ id, inv, prep });
+  return { id, inv, prep };
 };
 
 export type PrepItem = {
@@ -24,7 +28,7 @@ export type PrepItem = {
 const PrepListPage = () => {
   const navigate = useNavigate();
 
-  const [prepItems, setPrepItems] = useState<PrepItem[]>([
+  const prepItems = [
     {
       inv: undefined,
       prep: undefined,
@@ -32,25 +36,15 @@ const PrepListPage = () => {
       name: "Hummus Base",
       unit: "Quarts",
     },
-  ]);
+    {
+      inv: undefined,
+      prep: undefined,
+      id: "gfhjdklfdsgs",
+      name: "Tahini Puree",
+      unit: "Quarts",
+    },
+  ];
 
-  const handleChange = (
-    field: string,
-    id: string,
-    newVal: number | undefined
-  ) => {
-    const newItems = prepItems.map((item) => {
-      if (item.id === id) {
-        return {
-          ...item,
-          [field]: newVal,
-        };
-      }
-      return item;
-    });
-    console.log({ newItems });
-    setPrepItems(newItems);
-  };
   return (
     <div className=" container mx-auto mb-28 max-w-4xl ">
       <AppBar
@@ -87,12 +81,9 @@ const PrepListPage = () => {
                 </div>
               </div>
 
-              <PrepListItem
-                name={"Hummus Base"}
-                unit="Quarts"
-                prepItem={prepItems[0]}
-                handleChange={handleChange}
-              />
+              {prepItems.map((item) => (
+                <PrepListItem key={item.id} prepItem={item} />
+              ))}
             </CustomDisclosure>
           </div>
         </div>
