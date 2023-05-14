@@ -71,9 +71,12 @@ const PrepPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [date, setDate] = useState<Date | undefined>(new Date());
   const prepLists = useLoaderData() as PrepListSummaries;
-  const prepListsToday = prepLists.filter((prepList) =>
-    isSameDay(new Date(prepList.date), date)
-  );
+  const prepListsToday =
+    prepLists && prepLists.length > 0
+      ? prepLists.filter((prepList) =>
+          isSameDay(new Date(prepList.date), date!)
+        )
+      : null;
   const handleDateChange = (date: Date) => {
     searchParams.set("date", date.toDateString());
     setSearchParams(searchParams);

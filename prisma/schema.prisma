@@ -117,6 +117,7 @@ model tasks {
   completed   Boolean @default(false)
   onHand      String?  
   prepQty     String?
+  prepUnit    String?
   linkRecipe  Recipe?  @relation(fields: [linkRecipeId], references: [id],  onDelete: SetNull) 
   linkRecipeId String? 
 }
