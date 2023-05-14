@@ -35,7 +35,18 @@ export const action: ActionFunction = async ({ request }) => {
   const id = data.get("id") as string;
   const inv = data.get("inv") as string;
   const prep = data.get("prep") as string;
-  const updatedTask = await updateTask(id, { onHand: inv, prepQty: prep });
+  const completed = data.get("completed") as string;
+  console.log({
+    onHand: inv,
+    prepQty: prep,
+    completed: completed === "yes" ? true : false,
+  });
+  console.log({ completed });
+  const updatedTask = await updateTask(id, {
+    onHand: inv,
+    prepQty: prep,
+    completed: completed === "yes" ? true : false,
+  });
   console.log({ id, inv, prep });
   return updatedTask;
 };
@@ -55,7 +66,7 @@ const PrepListPage = () => {
 
   const navigation = useNavigation();
   const prepList = useLoaderData() as PrepListSummary;
-  console.log({ prepList });
+
   if (navigation.state === "loading") {
     return (
       <div className="flex justify-center items-center h-screen">

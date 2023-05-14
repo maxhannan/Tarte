@@ -98,6 +98,7 @@ export async function getPrepListById(id: string) {
 interface updatedTask {
   onHand: string;
   prepQty: string;
+  completed: boolean;
 }
 export const updateTask = async (id: string, updatedTask: updatedTask) => {
   try {
@@ -108,6 +109,7 @@ export const updateTask = async (id: string, updatedTask: updatedTask) => {
       data: {
         onHand: updatedTask.onHand,
         prepQty: updatedTask.prepQty,
+        completed: updatedTask.completed,
       },
     });
     return task;

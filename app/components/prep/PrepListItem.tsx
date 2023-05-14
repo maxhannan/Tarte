@@ -7,7 +7,7 @@ import {
 import PrepListInput from "./PrepListInput";
 import { PrepItem } from "~/routes/app/prep/$id";
 import { Form, NavLink, useFetcher } from "@remix-run/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   prepItem: PrepItem;
@@ -15,33 +15,50 @@ interface Props {
 
 const PrepListItem = ({ prepItem }: Props) => {
   const fetcher = useFetcher();
-
+  const [completed, setCompleted] = useState(prepItem.completed);
   const formRef = useRef<HTMLFormElement>(null);
   async function handleSubmit() {
     fetcher.submit(formRef.current!);
   }
+
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    handleSubmit();
+  }, [completed]);
   return (
     <fetcher.Form method="POST" ref={formRef}>
-      <div className="  max-w-full  bg-neutral-100 border-neutral-300 border bg-opacity-50 dark:bg-opacity-50   rounded-xl  py-2 px-2 grid grid-cols-10 gap-1   dark:bg-neutral-800 dark:border-neutral-700">
-        <div className=" font-light col-span-5 lg:col-span-7 flex gap-2 items-center mr-2">
+      <div
+        className={`max-w-full border transition-all duration-300 bg-neutral-100 dark:bg-neutral-800 bg-opacity-50 dark:bg-opacity-50 rounded-xl  py-2 px-2 grid grid-cols-10 gap-1     ${
+          completed
+            ? " border-green-400 dark:border-green-400 "
+            : "border-neutral-300  dark:border-neutral-700  "
+        }`}
+      >
+        <div className="  col-span-5 lg:col-span-7 flex gap-2 items-center mr-2">
           <div>
             {prepItem.linkRecipeId ? (
               <NavLink
                 to={`/app/recipes/${prepItem.linkRecipeId}`}
-                className="flex gap-2 items-center cursor-pointer hover:opacity-80"
+                className="  gap-2 items-center cursor-pointer hover:opacity-80 justify-start"
               >
-                <h5 className="text-sm lg:text-lg text-violet-500 dark:text-violet-400 ">
+                <h5 className="flex items-center text-base md:text-lg text-violet-500 dark:text-violet-400  ">
                   {prepItem.name}
+                  <ArrowLongRightIcon className="text-violet-500 dark:text-violet-400  w-5 h-5 ml-1" />
                 </h5>
-                <ArrowLongRightIcon className="text-violet-500 dark:text-violet-400  w-5 h-5" />
               </NavLink>
             ) : (
-              <h5 className="text-sm lg:text-lg text-neutral-700 dark:text-neutral-100 ">
+              <h5
+                className={`text-base lg:text-lg text-neutral-700 dark:text-neutral-100  `}
+              >
                 {prepItem.name}
               </h5>
             )}
 
-            <h6 className="text-sm text-neutral-700 dark:text-neutral-100 ">
+            <h6 className="text-base text-neutral-700 dark:text-neutral-100 ">
               {`(${prepItem.prepUnit})`}
             </h6>
           </div>
@@ -74,7 +91,18 @@ const PrepListItem = ({ prepItem }: Props) => {
           />
         </div>
         <div className="col-span-1  flex items-center justify-center text-green-500 dark:text-green-400">
-          <CheckBadgeIcon className="w-8 h-8" />
+          <input
+            type="hidden"
+            name="completed"
+            value={completed === true ? "yes" : "no"}
+            onChange={(e) => console.log("hello")}
+          />
+          <CheckBadgeIcon
+            className="w-8 h-8"
+            onClick={() => {
+              setCompleted((completed) => !completed);
+            }}
+          />
         </div>
       </div>
     </fetcher.Form>
