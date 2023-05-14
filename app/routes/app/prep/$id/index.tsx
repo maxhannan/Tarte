@@ -1,13 +1,24 @@
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
-import { Form, useLoaderData, useNavigate } from "@remix-run/react";
+import {
+  Form,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+} from "@remix-run/react";
 import { useState } from "react";
+
 import CustomDisclosure from "~/components/displays/customDisclosure";
 
 import SearchBar from "~/components/forms/SearchBar";
 import AppBar from "~/components/navigation/AppBar";
 import PrepListItem from "~/components/prep/PrepListItem";
-import { PrepListSummary, getPrepListById } from "~/utils/prepLists";
+import Spinner from "~/components/status/smallSpinner";
+import {
+  PrepListSummary,
+  getPrepListById,
+  updateTask,
+} from "~/utils/prepLists";
 
 export const loader: LoaderFunction = async ({ request, params }) => {
   const id = params.id;
@@ -21,11 +32,12 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
 export const action: ActionFunction = async ({ request }) => {
   const data = await request.formData();
-  const id = data.get("id");
-  const inv = data.get("inv");
-  const prep = data.get("prep");
+  const id = data.get("id") as string;
+  const inv = data.get("inv") as string;
+  const prep = data.get("prep") as string;
+  const updatedTask = await updateTask(id, { onHand: inv, prepQty: prep });
   console.log({ id, inv, prep });
-  return { id, inv, prep };
+  return updatedTask;
 };
 
 export type PrepItem = {
@@ -33,15 +45,24 @@ export type PrepItem = {
   id: string;
   onHand: string | null;
   prepQty: string | null;
+  prepUnit: string | null;
   linkRecipeId: string | null;
   name: string;
 };
 
 const PrepListPage = () => {
   const navigate = useNavigate();
+
+  const navigation = useNavigation();
   const prepList = useLoaderData() as PrepListSummary;
   console.log({ prepList });
-
+  if (navigation.state === "loading") {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Spinner size={14} />
+      </div>
+    );
+  }
   return (
     <div className=" container mx-auto mb-28 max-w-4xl ">
       <AppBar

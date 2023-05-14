@@ -24,7 +24,7 @@ const PrepListItem = ({ prepItem }: Props) => {
               {prepItem.name}
             </h5>
             <h6 className="text-sm text-neutral-700 dark:text-neutral-100 ">
-              {`(${prepItem.unit})`}
+              {`(${prepItem.prepUnit})`}
             </h6>
           </div>
         </div>
@@ -35,8 +35,8 @@ const PrepListItem = ({ prepItem }: Props) => {
             type="number"
             className={`rounded-xl bg-opacity-50 dark:bg-opacity-50  text-neutral-800 dark:text-neutral-50 border-neutral-300 dark:border-neutral-700  dark:bg-neutral-800 bg-neutral-200 rounded-bl-xl focus:ring-neutral-500  border relative    h-10 w-full p-2 pl-2 text-base font-light appearance-none  focus:ring-2 focus:outline-none focus:border-none     placeholder-neutral-500   dark:placeholder-neutral-400 `}
             placeholder={"Inv"}
-            defaultValue={prepItem.inv?.toString()}
-            onChange={(e) => {
+            defaultValue={prepItem.onHand ? prepItem.onHand : ""}
+            onBlur={(e) => {
               handleSubmit();
             }}
           />
@@ -47,7 +47,7 @@ const PrepListItem = ({ prepItem }: Props) => {
             type="number"
             className={`rounded-xl bg-opacity-50 dark:bg-opacity-50  text-neutral-800 dark:text-neutral-50 border-neutral-300 dark:border-neutral-700  dark:bg-neutral-800 bg-neutral-200 rounded-bl-xl focus:ring-neutral-500  border relative    h-10 w-full p-2 pl-2 text-base font-light appearance-none  focus:ring-2 focus:outline-none focus:border-none     placeholder-neutral-500   dark:placeholder-neutral-400 `}
             placeholder={"Prep"}
-            defaultValue={prepItem.prep?.toString()}
+            defaultValue={prepItem.prepQty ? prepItem.prepQty : ""}
             onChange={(e) => {
               handleSubmit();
             }}

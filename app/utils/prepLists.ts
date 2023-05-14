@@ -74,6 +74,9 @@ export async function getPrepListById(id: string) {
             },
             _count: true,
             tasks: {
+              orderBy: {
+                name: "asc",
+              },
               include: {
                 linkRecipe: {
                   select: {
@@ -92,3 +95,23 @@ export async function getPrepListById(id: string) {
     return null;
   }
 }
+interface updatedTask {
+  onHand: string;
+  prepQty: string;
+}
+export const updateTask = async (id: string, updatedTask: updatedTask) => {
+  try {
+    const task = await prisma.tasks.update({
+      where: {
+        id,
+      },
+      data: {
+        onHand: updatedTask.onHand,
+        prepQty: updatedTask.prepQty,
+      },
+    });
+    return task;
+  } catch (error) {
+    return null;
+  }
+};
