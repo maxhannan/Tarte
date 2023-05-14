@@ -1,11 +1,10 @@
 import { Disclosure, Transition } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import IconButton from "../buttons/IconButton";
 
 interface Props {
   name: string;
   children: React.ReactNode;
-  link?: boolean;
-  to?: string;
 }
 
 const CustomDisclosure = ({ name, children }: Props) => {
@@ -14,13 +13,14 @@ const CustomDisclosure = ({ name, children }: Props) => {
       <Disclosure defaultOpen>
         {({ open }) => (
           <>
-            <Disclosure.Button className="dark:bg-opacity-50 transition-all duration-300 flex w-full items-center justify-between  rounded-xl  bg-neutral-200 font-normal dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 px-3 py-3 text-left text-xl lg:text-2xl  text-neutral-700 dark:text-neutral-200  focus:outline-none focus-visible:ring focus-visible:ring-violet-500 focus-visible:ring-opacity-75">
-              <span>{name}</span>
-              <ChevronUpIcon
-                className={`${open ? "rotate-180 transform" : ""} h-7 w-7 `}
-              />
-            </Disclosure.Button>
-
+            <div className="flex items-center gap-4">
+              <Disclosure.Button className="dark:bg-opacity-50 transition-all duration-300 flex w-full items-center justify-between  rounded-xl  bg-neutral-200 font-normal dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 px-3 py-3 text-left text-xl lg:text-2xl  text-neutral-700 dark:text-neutral-200  focus:outline-none focus-visible:ring focus-visible:ring-violet-500 focus-visible:ring-opacity-75">
+                <span>{name}</span>
+                <ChevronUpIcon
+                  className={`${open ? "rotate-180 transform" : ""} h-7 w-7 `}
+                />
+              </Disclosure.Button>
+            </div>
             <Transition
               enter="transition-all ease-linear  duration-300  overflow-hidden"
               enterFrom="transform opacity-0 "
