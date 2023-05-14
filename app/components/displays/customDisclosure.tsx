@@ -4,6 +4,8 @@ import { ChevronUpIcon } from "@heroicons/react/24/outline";
 interface Props {
   name: string;
   children: React.ReactNode;
+  link?: boolean;
+  to?: string;
 }
 
 const CustomDisclosure = ({ name, children }: Props) => {
