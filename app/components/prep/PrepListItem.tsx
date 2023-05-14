@@ -51,7 +51,7 @@ const PrepListItem = ({ prepItem }: Props) => {
           <input
             name={"inv"}
             type="number"
-            inputMode="numeric"
+            inputMode="decimal"
             className={`rounded-xl bg-opacity-50 dark:bg-opacity-50  text-neutral-800 dark:text-neutral-50 border-neutral-300 dark:border-neutral-700  dark:bg-neutral-800 bg-neutral-200 rounded-bl-xl focus:ring-neutral-500  border relative    h-10 w-full p-2 pl-2 text-base font-light appearance-none  focus:ring-2 focus:outline-none focus:border-none     placeholder-neutral-500   dark:placeholder-neutral-400 `}
             placeholder={"Inv"}
             defaultValue={prepItem.onHand ? prepItem.onHand : ""}
@@ -64,7 +64,7 @@ const PrepListItem = ({ prepItem }: Props) => {
           <input
             name={"prep"}
             type="number"
-            inputMode="numeric"
+            inputMode="decimal"
             className={`rounded-xl bg-opacity-50 dark:bg-opacity-50  text-neutral-800 dark:text-neutral-50 border-neutral-300 dark:border-neutral-700  dark:bg-neutral-800 bg-neutral-200 rounded-bl-xl focus:ring-neutral-500  border relative    h-10 w-full p-2 pl-2 text-base font-light appearance-none  focus:ring-2 focus:outline-none focus:border-none     placeholder-neutral-500   dark:placeholder-neutral-400 `}
             placeholder={"Prep"}
             defaultValue={prepItem.prepQty ? prepItem.prepQty : ""}
