@@ -43,7 +43,7 @@ export async function getPrepListsByDate(date: Date) {
       },
     });
 
-    return prepLists.filter((prepList) => isSameDay(prepList.date, date));
+    return prepLists;
   } catch (error) {
     return null;
   }

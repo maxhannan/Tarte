@@ -25,7 +25,14 @@ import CustomModal from "~/components/displays/CustomModal";
 import ComboBoxCustom from "~/components/forms/Combobox";
 
 import LoadingButton from "~/components/buttons/LoadingButton";
-import { add, format, formatRelative, set } from "date-fns";
+import {
+  add,
+  format,
+  formatRelative,
+  isSameDay,
+  parseISO,
+  set,
+} from "date-fns";
 import { enUS } from "date-fns/locale";
 import { LoaderFunction } from "@remix-run/node";
 import { PrepListSummaries, getPrepListsByDate } from "~/utils/prepLists";
@@ -36,13 +43,12 @@ export const loader: LoaderFunction = async ({ request }) => {
   const dateParam = params.get("date");
   console.log({ dateParam, true: dateParam === null });
 
-  const date =
-    dateParam === null
-      ? new Date(format(new Date(), "yyyy-MM-dd"))
-      : new Date(dateParam);
-  console.log({ date, newDate: new Date() });
+  const date = dateParam === null ? new Date() : new Date(dateParam);
+
   const prepLists = await getPrepListsByDate(date);
-  return prepLists;
+  return prepLists?.filter((prepList) =>
+    isSameDay(date!, new Date(prepList.date))
+  );
 };
 
 const formatRelativeLocale = {
@@ -69,7 +75,8 @@ const PrepPage = () => {
   const prepLists = useLoaderData() as PrepListSummaries;
 
   const handleDateChange = (date: Date) => {
-    searchParams.set("date", format(date, "yyyy-MM-dd"));
+    console.log(date);
+    searchParams.set("date", date.toDateString());
     setSearchParams(searchParams);
     setDate(date);
   };
