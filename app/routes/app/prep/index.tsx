@@ -46,9 +46,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   const date = dateParam === null ? new Date() : new Date(dateParam);
 
   const prepLists = await getPrepListsByDate(date);
-  return prepLists?.filter((prepList) =>
-    isSameDay(date!, new Date(prepList.date))
-  );
+  return prepLists;
 };
 
 const formatRelativeLocale = {
@@ -73,9 +71,10 @@ const PrepPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [date, setDate] = useState<Date | undefined>(new Date());
   const prepLists = useLoaderData() as PrepListSummaries;
-
+  const prepListsToday = prepLists.filter((prepList) =>
+    isSameDay(new Date(prepList.date), date)
+  );
   const handleDateChange = (date: Date) => {
-    console.log(date);
     searchParams.set("date", date.toDateString());
     setSearchParams(searchParams);
     setDate(date);
@@ -185,8 +184,8 @@ const PrepPage = () => {
           <div className="flex flex-col gap-3  ">
             <SlideUpTransition>
               <div className="grid z-0 relative grid-flow-row  auto-rows-max gap-y-2  mx-auto mb-28 ">
-                {prepLists && prepLists.length > 0 ? (
-                  prepLists.map((prepList) => (
+                {prepListsToday && prepListsToday.length > 0 ? (
+                  prepListsToday.map((prepList) => (
                     <PrepListSummary
                       key={prepList.id}
                       id={prepList.id}
